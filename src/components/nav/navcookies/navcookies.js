@@ -1,12 +1,22 @@
 import React, {Component,Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import Status from '../../tracker/status';
+import { callbackify } from 'util';
 
 class NavCookies extends Component{
+    
     componentDidMount(){
-        M.Tabs.init(this.navcookie)
+        const options = {
+            swipeable: true,
+            
+        };
+        M.Tabs.init(this.navcookie, options);
     }
+
+
+
     render(){
+        
         return(
             <Fragment>
                 <ul ref={(element)=>this.navcookie=element} id="tabs-swipe-demo" className="tabs navcookie">
