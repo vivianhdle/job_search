@@ -4,22 +4,18 @@ import ModalStartForm from '../modal/index.js';
 
 class Status extends Component{
     state={
-        modalOpen:true
+        modalOpen:false
     }
     handleAdd(){
 
     }
     render(){
-        const {progress}=this.props;
+        const {progress, id}=this.props;
         const {modalOpen}=this.state;
         return(
             <Fragment>
-                <div className="header">
-                    <div className="menu"><i className="material-icons">menu</i></div>
-                    <div className="title">{progress}</div>
-                </div>
-                <div className="job-container">
-                    <div>jobs go here</div>
+                <div className="job-container" id={id}>
+                    <div>{progress}</div>
                     <button className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></button>
                 </div>
                 <ModalStartForm isOpen={modalOpen}/>

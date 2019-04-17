@@ -17,6 +17,7 @@ class Modal extends Component{
                 </div>
             )
         }
+        return null;
     }
 }
 
