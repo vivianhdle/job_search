@@ -5,6 +5,14 @@ import { callbackify } from 'util';
 
 class NavCookies extends Component{
     
+    renderLinks(){
+        return(
+            <li>
+                <Link to="/">Job Tracker</Link>
+            </li>
+        );
+    }
+
     componentDidMount(){
         const options = {
             swipeable: true,
@@ -12,8 +20,6 @@ class NavCookies extends Component{
         };
         M.Tabs.init(this.navcookie, options);
     }
-
-
 
     render(){
         

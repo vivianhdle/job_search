@@ -12,7 +12,7 @@ class Modal extends Component{
             return (
                 <div className="add-form-modal">
                     <div className="form">
-                        {/* <AddForm add={this.handleAdd}/> */}
+                        <AddForm add={this.handleAdd}/>
                     </div>
                 </div>
             )
