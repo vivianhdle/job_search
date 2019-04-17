@@ -1,0 +1,27 @@
+.tracker-container{
+    background-color:white;
+    height:100%;
+    margin:0;
+
+    .header{
+    background-color:yellow;
+    height:10%;
+    font-size:24px;
+        .menu{
+            background-color:pink;
+            height:100%;
+            display:inline-block;
+            width:25%;
+        }
+        .title{
+            background-color:red;
+            height:100%;
+            display:inline-block;
+            width:75%;
+        }
+    }
+    .job-container{
+        background-color:lightgray;
+        height:90%;
+    }
+}
