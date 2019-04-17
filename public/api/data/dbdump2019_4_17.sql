@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contact_info` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `contact_id` bigint(20) UNSIGNED NOT NULL,
+  `tracker_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `phone` bigint(10) UNSIGNED NOT NULL
@@ -40,7 +40,7 @@ CREATE TABLE `contact_info` (
 -- Dumping data for table `contact_info`
 --
 
-INSERT INTO `contact_info` (`id`, `contact_id`, `name`, `email`, `phone`) VALUES
+INSERT INTO `contact_info` (`id`, `tracker_id`, `name`, `email`, `phone`) VALUES
 (1, 1, 'Mr.Jobs', 'mrjobs@apple.com', 17232322456);
 
 -- --------------------------------------------------------
@@ -51,7 +51,7 @@ INSERT INTO `contact_info` (`id`, `contact_id`, `name`, `email`, `phone`) VALUES
 
 CREATE TABLE `note_item` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `note_id` bigint(20) UNSIGNED NOT NULL,
+  `tracker_id` bigint(20) UNSIGNED NOT NULL,
   `created` datetime NOT NULL,
   `input` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -60,7 +60,7 @@ CREATE TABLE `note_item` (
 -- Dumping data for table `note_item`
 --
 
-INSERT INTO `note_item` (`id`, `note_id`, `created`, `input`) VALUES
+INSERT INTO `note_item` (`id`, `tracker_id`, `created`, `input`) VALUES
 (1, 1, '2019-04-15 19:08:38', 'Just applied today, waiting to hear back in two weeks'),
 (2, 1, '2019-04-17 00:05:40', 'Saw this guy again at the meetup, he said his daughter is turning 2');
 
