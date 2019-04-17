@@ -1,0 +1,14 @@
+.tracker-container{
+    background-color:white;
+    height:calc(100% - 64px);
+    margin:0;
+    
+    .job-container{
+        background-color:lightgray;
+        height:90%;
+    }
+
+    > .carousel{
+        height: calc(100% - 48px);
+    }
+}
