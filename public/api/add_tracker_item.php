@@ -4,10 +4,6 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-// if(!empty($_GET['tracker_id'])){
-//     throw new Exception('You must send a tracker_id with your request');
-// }
-
 // if(!empty($_GET['user_id'])){
 //     throw new Exception('You must send a user_id with your request');
 // }
@@ -32,10 +28,13 @@ require_once('mysqlconnect.php');
 // $note_item = $_GET['note_item'] = '';//need to set as ''?
 // $link = $_GET['link'] = '';//need to set as ''?
 
+$json_input = file_get_contents("php://input");
+$input = json_decode($json_input, true);
+print_r($input);
+
 $output['success'] = false;
 
 $user_id = 1;
-$tracker_id = 1;
 $title = 'Data Monkey';
 $company = 'Google';
 $progress = 'Waiting for Response';
@@ -60,6 +59,7 @@ $tracker_item_statement = mysqli_prepare($conn, $tracker_item_query);
 mysqli_stmt_bind_param($tracker_item_statement, 'dssss', $user_id, $title, $company, $progress, $link);
 $tracker_item_result = mysqli_stmt_execute($tracker_item_statement);
 $tracker_item_result = mysqli_stmt_get_result($tracker_item_statement);
+$returned_tracker_id = $tracker_item_statement->insert_id;
 
 if(mysqli_affected_rows($conn) === 0){
     throw new Exception('tracker item was not added');
@@ -74,7 +74,7 @@ if($contact_info){
     ";
 
     $contact_statement = mysqli_prepare($conn, $contact_query);
-    mysqli_stmt_bind_param($contact_statement, 'dssd', $tracker_id, $contact_info['name'], $contact_info['email'], $contact_info['phone']);
+    mysqli_stmt_bind_param($contact_statement, 'dssd', $returned_tracker_id, $contact_info['name'], $contact_info['email'], $contact_info['phone']);
     $contact_result = mysqli_stmt_execute($contact_statement);
     $contact_result = mysqli_stmt_get_result($contact_statement);
     
@@ -91,7 +91,7 @@ if($note_item){
     ";
 
     $note_statement = mysqli_prepare($conn, $note_query);
-    mysqli_stmt_bind_param($note_statement, 'ds', $tracker_id, $note_item);
+    mysqli_stmt_bind_param($note_statement, 'ds', $returned_tracker_id, $note_item);
     $note_result = mysqli_stmt_execute($note_statement);
     $note_result = mysqli_stmt_get_result($note_statement);
     
