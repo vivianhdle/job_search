@@ -30,7 +30,7 @@
     }
 
     while($row = mysqli_fetch_assoc($result)){
-        $tracker_item_contact_query = "SELECT `name`, `email`, `phone` FROM `contact_info` WHERE `tracker_id`=$tracker_id";
+        $tracker_item_contact_query = "SELECT  `id`, `name`, `email`, `phone` FROM `contact_info` WHERE `tracker_id`=$tracker_id";
     
         $contact_result = mysqli_query($conn, $tracker_item_contact_query);
     
@@ -46,13 +46,14 @@
     
         while($contact_row = mysqli_fetch_assoc($contact_result)){
             $contact[] = [
+                'id' => (int)$contact_row['id'],
                 'name' => $contact_row['name'],
                 'email' => $contact_row['email'],
                 'phone' => (int)$contact_row['phone'],
             ];
         }
 
-        $tracker_item_note_query = "SELECT `created`, `input` FROM `note_item` WHERE `tracker_id`=$tracker_id";
+        $tracker_item_note_query = "SELECT `id`, `created`, `input` FROM `note_item` WHERE `tracker_id`=$tracker_id";
     
         $note_result = mysqli_query($conn, $tracker_item_note_query);
     
@@ -68,6 +69,7 @@
     
         while($note_row = mysqli_fetch_assoc($note_result)){
             $note[] = [
+                'id' => (int)$note_row['id'],
                 'created' => $note_row['created'],
                 'input' => $note_row['input'],
             ];
