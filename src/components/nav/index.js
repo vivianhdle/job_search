@@ -18,7 +18,7 @@ class Nav extends Component{
             <Fragment>
                 <nav>
                     <div className="nav-wrapper">
-                        <Link className="brand-logo" to="/">Logo</Link>
+                        <Link className="brand-logo" to="/">Tracker</Link>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>

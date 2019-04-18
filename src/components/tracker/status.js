@@ -18,25 +18,32 @@ class Status extends Component{
             cards:resp.data.data
         })
     }
+    handleAdd(){
+        console.log('add form here')
+    }
     render(){
-        console.log(this.state.cards)
-        const cards = this.state.cards.map((card)=>{
+        const {progress, id}=this.props;
+        const {modalOpen}=this.state;
+        const cards = this.state.cards.filter((card)=>{
+            return card.progress === progress
+        }).map((card)=>{
             return (
                 <SmallCard key={card.id} {...card}/>
             )
         })
-        const {progress, id}=this.props;
-        const {modalOpen}=this.state;
         
         return(
             <Fragment>
                 <div className="job-container" id={id}>
-                    <div className="progress-title center">{progress}</div>
-                    <div className="card-container row">
+                    <div className="progress-title center ">{progress}</div>
+                    <div className="card-container row col s12">
                         {cards}
                         {cards}
                         {cards}
-                        <button className="add"><i className="material-icons center">add</i></button>
+                        {!cards ? <div>Click the add button to add a card!</div>:null}
+                        <div className="row col s12 center">
+                            <button onClick={this.handleAdd} className="add btn-floating center btn-large waves-effect waves-light red"><i className="material-icons center">add</i></button>
+                        </div>
                     </div>
                 </div>
                 <ModalStartForm isOpen={modalOpen}/>
