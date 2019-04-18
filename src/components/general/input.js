@@ -9,7 +9,7 @@ export default props => {
         <div className={`input-field col ${col}`}>
             <input type={type} {...input} id={id} />
             <label htmlFor={id}>{label}</label>
-            {/* <p className="red-text">{touched && error}</p> */}
+            {/* <p className="red-text text-darken-2">{touched && error}</p>  */}
         </div>
     )
 }
