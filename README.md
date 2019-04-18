@@ -1,6 +1,6 @@
 <img align="right" width="150" src="https://github.com/Learning-Fuze/react-with-server/blob/master/public/dist/php-react.png">
 
-# c219_jobsearch
+# Job Search Assistant
 
 > This repo contains the Job Search Assistant Application.
 
@@ -19,7 +19,7 @@
 >    - Use phpMyAdmin (or similar) to create a database
 > 1. Start dev server
 >    - `npm start`
-> 1. Open a browser and navigate to `localhost:3000` You should see "Welcome to React".
+> 1. Open a browser and navigate to `localhost:3000`
 
 ### Bundle For Deployment
 
