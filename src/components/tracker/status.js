@@ -4,7 +4,7 @@ import ModalStartForm from '../modal/index.js';
 
 class Status extends Component{
     state={
-        modalOpen:true
+        modalOpen:false
     }
     handleAdd(){
 
