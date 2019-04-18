@@ -4,8 +4,6 @@
     require_once('config.php');
     require_once('mysqlconnect.php');
 
-    $output['success'] = false;
-
     // if(empty($_SESSION['user_id'])){
     //     throw new Exception('Missing user id');
     // }
@@ -14,8 +12,17 @@
     //     throw new Exception('Missing tracker id');
     // }
 
+    $json_input = file_get_contents("php://input");
+    $input = json_decode($json_input, true);
+
+    if(empty($input['tracker_id'])){
+        throw new Exception('You must send a tracker id with your request');
+    }
+
     $user_id = 1;//hard coded for now
-    $tracker_id = 1;//hard coded for now
+    $tracker_id = $input['tracker_id'];
+
+    $output['success'] = false;
 
     $tracker_item_query = "SELECT ti.`created`, ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` JOIN `contact_info` AS ci ON ti.`id`=ci.`tracker_id` JOIN `note_item` AS ni ON ti.`id`=ni.`tracker_id` WHERE ti.`id`=$tracker_id LIMIT 1";
     
