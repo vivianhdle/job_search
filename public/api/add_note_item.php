@@ -32,7 +32,7 @@ $note_item_query = "INSERT INTO `note_item` SET
 ";
 
 $note_item_statement = mysqli_prepare($conn, $note_item_query);
-mysqli_stmt_bind_param($note_item_statement, 'ds', $tracker_id, $note_item);
+mysqli_stmt_bind_param($note_item_statement, 'is', $tracker_id, $note_item);
 $note_item_result = mysqli_stmt_execute($note_item_statement);
 $note_item_result = mysqli_stmt_get_result($note_item_statement);
 
