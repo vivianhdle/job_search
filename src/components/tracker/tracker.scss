@@ -6,6 +6,17 @@
     .job-container{
         background-color:lightgray;
         height:90%;
+
+        .progress-title{
+            background-color:rgba(243, 243, 243, 0.856);
+            height:7%;
+            font-size:30px;
+        }
+        .card-container{
+            background-color:rgba(243, 243, 243, 0.856);
+            height:93%;
+            overflow-y: scroll;
+        }
     }
 
     > .carousel{
