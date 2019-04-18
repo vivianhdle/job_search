@@ -10,14 +10,9 @@
     //     throw new Exception('Missing user id');
     // }
 
-    // if(empty($_SESSION['tracker_id'])){
-    //     throw new Exception('Missing tracker id');
-    // }
-
     $user_id = 1;//hard coded for now
-    $tracker_id = 1;//hard coded for now
 
-    $query = "SELECT ti.`created`, ti.`title`, ti.`company`, ti.`progress` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE u.`id`=$user_id";
+    $query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE u.`id`=$user_id";
     
     $result = mysqli_query($conn, $query);
 
@@ -31,6 +26,7 @@
 
     while($row = mysqli_fetch_assoc($result)){
         $output['data'][] = [
+            'id' => $row['id'],
             'created' => $row['created'],
             'title' => $row['title'],
             'company' => $row['company'],
