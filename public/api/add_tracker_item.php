@@ -4,47 +4,38 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
+$json_input = file_get_contents("php://input");
+$input = json_decode($json_input, true);
+
 // if(!empty($_GET['user_id'])){
 //     throw new Exception('You must send a user_id with your request');
 // }
 
-// if(!empty($_GET['title'])){
-//     throw new Exception('You must send a title with your request');
-// }
+if(!empty($input['title'])){
+    throw new Exception('You must send a title with your request');
+}
 
-// if(!empty($_GET['company'])){
-//     throw new Exception('You must send a company with your request');
-// }
+if(!empty($input['company'])){
+    throw new Exception('You must send a company with your request');
+}
 
-// if(!empty($_GET['progress'])){
-//     throw new Exception('You must send a progress with your request');
-// }
-
-// $user_id = (int)$_GET['user_id'];
-// $title = $_GET['title'];
-// $company = $_GET['company'];
-// $progress = $_GET['progress'];
-// $contact_info = $_GET['contact_info'] = '';//need to set as ''?
-// $note_item = $_GET['note_item'] = '';//need to set as ''?
-// $link = $_GET['link'] = '';//need to set as ''?
-
-$json_input = file_get_contents("php://input");
-$input = json_decode($json_input, true);
-print_r($input);
+if(!empty($input['progress'])){
+    throw new Exception('You must send a progress with your request');
+}
 
 $output['success'] = false;
 
 $user_id = 1;
-$title = 'Data Monkey';
-$company = 'Google';
-$progress = 'Waiting for Response';
+$title = $input['title'];
+$company = $input['company'];
+$progress = $input['progress'];
 $contact_info = [
-    "name" => "Mr.Googles",
-    "email" => "mrgoogles@google.com",
-    "phone" => 1234567890
+    "name" => $input['contact']['name'],
+    "email" => $input['contact']['email'],
+    "phone" => $input['contact']['phone']
 ];
-$note_item = 'Snuck my business card into Mr.Googles back pocket. Hope he calls back';
-$link = 'www.google.com';
+$note_item = $input['note'];
+$link = $input['link'];
 
 $tracker_item_query = "INSERT INTO `tracker_item` SET 
     `user_id`=?,
