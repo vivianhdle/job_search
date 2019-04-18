@@ -11,15 +11,15 @@ $input = json_decode($json_input, true);
 //     throw new Exception('You must send a user_id with your request');
 // }
 
-if(!empty($input['title'])){
+if(empty($input['title'])){
     throw new Exception('You must send a title with your request');
 }
 
-if(!empty($input['company'])){
+if(empty($input['company'])){
     throw new Exception('You must send a company with your request');
 }
 
-if(!empty($input['progress'])){
+if(empty($input['progress'])){
     throw new Exception('You must send a progress with your request');
 }
 
