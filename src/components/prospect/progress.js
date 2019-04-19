@@ -11,7 +11,7 @@ class DropDown extends Component {
     }
 
     componentDidMount() {
-        console.log(this.progress);
+        //console.log(this.progress);
         M.FormSelect.init(this.progress);
 
     }
@@ -19,7 +19,8 @@ class DropDown extends Component {
     renderSelect = (props) =>{
         return(
         <select {...props.input} ref={(element) => { this.progress = element }}>
-            <option value="Started Applications">Started Application</option>
+            <option value="" disabled selected>Application Status</option>
+            <option value="Started Application">Started Application</option>
             <option value="Waiting for Response">Waiting for Response</option>
             <option value="Follow-up Needed">Follow-up Needed</option>
             <option value="Archived">Archived</option>
@@ -29,7 +30,7 @@ class DropDown extends Component {
 
     render() {
         return (
-            <div className="input-field col s10">
+            <div className="input-field dropdown col s10">
                 <Field name="progress" component={this.renderSelect} label="Application Progress" />
             </div>
         );

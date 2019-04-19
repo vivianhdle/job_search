@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './modal.scss';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import AddForm from './add-form';
 import axios from 'axios';
 
@@ -23,15 +23,23 @@ class Prospect extends Component {
 
     async handleAdd(values) {
         const resp = await axios.post('/api/add_tracker_item.php', values);
-        // console.log(resp)
+        console.log("Response: ",resp.data.success);
+        console.log("Values: ", values);
+        if(resp.data.success === true){
+            
+            <Redirect to="/"/>
+        }
+
     }
+
     render() {
 
         return (
 
                 <div className="add-form-modal">
                     <div className="form">
-                        <AddForm add={this.handleAdd} onClick={this.setRedirect}/>
+                        <AddForm add={this.handleAdd}/>
+                        
                     </div>
                 </div>
 
