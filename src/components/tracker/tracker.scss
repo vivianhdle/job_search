@@ -16,6 +16,16 @@
             background-color:rgba(243, 243, 243, 0.856);
             height:93%;
             overflow-y: scroll;
+            .card{
+                box-shadow: none;
+            }
+            .row{
+                margin-bottom: 0;
+            }
+
+            .card{
+                border-radius:5px;
+            }
         }
     }
 

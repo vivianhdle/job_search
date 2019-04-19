@@ -3,6 +3,7 @@ import './tracker.scss';
 import ModalStartForm from '../modal/index.js';
 import SmallCard from '../job_card/small-card';
 import axios from 'axios';
+import Header from '../general/header';
 
 class Status extends Component{
     state={
@@ -13,7 +14,7 @@ class Status extends Component{
         this.getDetails();
     }
     async getDetails(){
-        const resp = await axios.get('/api/data/get_jobcard_display.json');
+        const resp = await axios.get('/api/get_jobcard_display.php');
         this.setState({
             cards:resp.data.data
         })
@@ -35,14 +36,13 @@ class Status extends Component{
         return(
             <Fragment>
                 <div className="job-container" id={id}>
-                    <div className="progress-title center ">{progress}</div>
+                    <Header title={progress}/>
+                    {/* <div className="progress-title center ">{progress}</div> */}
                     <div className="card-container row col s12">
                         {cards}
-                        {cards}
-                        {cards}
-                        {!cards ? <div>Click the add button to add a card!</div>:null}
+                        {/* {!cards ? <div>Click the add button to add a card!</div>:null} */}
                         <div className="row col s12 center">
-                            <button onClick={this.handleAdd} className="add btn-floating center btn-large waves-effect waves-light red"><i className="material-icons center">add</i></button>
+                            <button onClick={this.handleAdd} className=" blue-grey btn-small btn-floating center btn-large waves-effect waves-light red"><i className="material-icons center">add</i></button>
                         </div>
                     </div>
                 </div>
