@@ -11,7 +11,7 @@ const App = () => (
     <div className="app-container">
         <Nav/>
         <Switch>
-            <Route exact path="/" component={Tracker}/>
+            <Route exact path="/tracker" component={Tracker}/>
             <Route path="/prospect" component={Prospect}/>
         </Switch>
     </div>

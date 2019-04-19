@@ -1,50 +1,36 @@
 import React, { Component, Fragment } from 'react';
 import './modal.scss';
-import {Redirect, Link} from 'react-router-dom';
+import { Route, Redirect, Link } from 'react-router';
 import AddForm from './add-form';
 import axios from 'axios';
 
 class Prospect extends Component {
-    state ={
+    state = {
         redirect: false
     }
 
-    setRedirect = () =>{
+    setRedirect = () => {
         this.setState({
             redirect: true
         });
     }
 
-    renderRedirect = () =>{
-        if(this.state.redirect){
-            return <Redirect to="/"/>
-        }
-    }
-
-    async handleAdd(values) {
-        const resp = await axios.post('/api/add_tracker_item.php', values);
-        console.log("Response: ",resp.data.success);
-        console.log("Values: ", values);
-        if(resp.data.success === true){
-            
-            <Redirect to="/"/>
-        }
+    handleAdd = async values => {
+        await axios.post('/api/add_tracker_item.php', values);
+        this.setRedirect();
 
     }
 
     render() {
-
         return (
-
-                <div className="add-form-modal">
-                    <div className="form">
-                        <AddForm add={this.handleAdd}/>
-                        
-                    </div>
-                </div>
-
+            <Route exact path="/prospect" render={() => (
+                this.state.redirect ? (
+                    <Redirect to="/tracker" />
+                ) : (
+                    <AddForm add={this.handleAdd} />
+                    )
+            )} />
         )
-
     }
 }
 

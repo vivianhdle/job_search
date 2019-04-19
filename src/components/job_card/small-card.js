@@ -13,7 +13,7 @@ function SmallCard(props){
             <div className="col s10 offset-s1">
             <div className="card blue-grey darken-1">
                 <div className="card-content white-text">
-                <span class="card-title">{company}</span>
+                <span className="card-title">{company}</span>
                 <span className="title">{title}</span>
                 <span className="created right">{formatTime(created)}</span>
                 </div>
