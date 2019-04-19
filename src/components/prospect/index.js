@@ -19,14 +19,13 @@ class Prospect extends Component {
         await axios.post('/api/add_tracker_item.php', values);
         console.log(values);
         this.setRedirect();
-
     }
 
     render() {
         return (
             <Route exact path="/prospect" render={() => (
                 this.state.redirect ? (
-                    <Redirect to="/tracker" />
+                    <Redirect to="/" />
                 ) : (
                     <div className="add-form-progress">
                         <div className="form">
