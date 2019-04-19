@@ -6,7 +6,7 @@ import ContactForm from './contact';
 import DropDown from './progress';
 
 const AddJobCardForm = props => {
-    const { add, handleSubmit } = props;
+    const { add, handleSubmit, goToTracker } = props;
     return (
         <form onSubmit={handleSubmit(add)}>
 
@@ -32,15 +32,8 @@ const AddJobCardForm = props => {
                 <Field id="note" col="s10 offset-s1" name="note" component={Input} label="Notes" />
             </div>
             <div className="btn-wrapper row">
-                <button className="btn submit-button teal lighten-1">Submit</button>
+                <button className="btn teal lighten-1 submit-button" onClick={goToTracker}>Submit</button>
             </div>
-            {/* <div className="link-wrapper row">
-                <Link to="/" className="link col s10 offset-s1">
-                    <button className="btn green">
-                        Return to Home
-                </button>
-                </Link>
-            </div> */}
         </form>
     )
 }

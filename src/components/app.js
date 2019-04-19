@@ -11,8 +11,12 @@ const App = () => (
     <div className="app-container">
         <Nav/>
         <Switch>
-            <Route exact path="/" component={Tracker}/>
-            <Route path="/prospect" component={Prospect}/>
+            <Route exact path="/tracker" render={(routingprops)=>{
+                return <Tracker {...routingprops}/>
+            }}/>
+            <Route path="/prospect" render={(routingprops)=>{
+                return <Prospect {...routingprops} />
+            }}/>
         </Switch>
     </div>
         
