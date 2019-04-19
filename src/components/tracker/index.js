@@ -6,7 +6,7 @@ class Tracker extends Component{
     render(){
         let width=window.innerWidth;
         return (
-            <div className="tracker-container">
+            <div className="tracker-container show-on-small">
                 <Status progress="Started Application" id="test-swipe-1"/>
                 <Status progress="Waiting for Response" id="test-swipe-2"/>
                 <Status progress="Follow-up Needed" id="test-swipe-3"/>

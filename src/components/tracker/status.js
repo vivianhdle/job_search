@@ -35,7 +35,7 @@ class Status extends Component{
         
         return(
             <Fragment>
-                <div className="job-container" id={id}>
+                <div className="job-container show-on-medium-and-up" id={id}>
                     <Header title={progress}/>
                     {/* <div className="progress-title center ">{progress}</div> */}
                     <div className="card-container row col s12">

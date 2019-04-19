@@ -2,11 +2,13 @@
     background-color:white;
     height:calc(100% - 64px);
     margin:0;
+    display:flex;
     
     .job-container{
         background-color:lightgray;
         height:90%;
-
+        width:100%;
+        
         .progress-title{
             background-color:rgba(243, 243, 243, 0.856);
             height:7%;
