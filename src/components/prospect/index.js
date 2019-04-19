@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import './modal.scss';
+import './progress.scss';
 import { Route, Redirect, Link } from 'react-router';
 import AddForm from './add-form';
 import axios from 'axios';
@@ -17,6 +17,7 @@ class Prospect extends Component {
 
     handleAdd = async values => {
         await axios.post('/api/add_tracker_item.php', values);
+        console.log(values);
         this.setRedirect();
 
     }
@@ -27,7 +28,12 @@ class Prospect extends Component {
                 this.state.redirect ? (
                     <Redirect to="/tracker" />
                 ) : (
-                    <AddForm add={this.handleAdd} />
+                    <div className="add-form-progress">
+                        <div className="form">
+                        <AddForm add={this.handleAdd} />
+                        </div>
+                    </div>
+                    
                     )
             )} />
         )

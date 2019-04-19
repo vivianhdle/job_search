@@ -10,7 +10,7 @@ const AddJobCardForm = props => {
     return (
         <form onSubmit={handleSubmit(add)}>
 
-            <div className="row application-title">
+            <div className="row application-title" col="s10 offset-1">
                 Job Prospect
             </div>
             <DropDown />
@@ -34,13 +34,13 @@ const AddJobCardForm = props => {
             <div className="btn-wrapper row">
                 <button className="btn green submit-button">Submit</button>
             </div>
-            <div className="link-wrapper row">
+            {/* <div className="link-wrapper row">
                 <Link to="/" className="link col s10 offset-s1">
                     <button className="btn green">
                         Return to Home
                 </button>
                 </Link>
-            </div>
+            </div> */}
         </form>
     )
 }
