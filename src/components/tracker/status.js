@@ -43,6 +43,7 @@ class Status extends Component {
                 this.state.redirect ? (
                     <Redirect to="/prospect" />
                 ) : (
+                    <div>
                         <div className="job-container show-on-medium-and-up" id={id}>
                             <Header title={progress} />
                             <AddButton icon={'add'} click={this.handleAdd} />
@@ -51,6 +52,7 @@ class Status extends Component {
                                 {cards}
                             </div>
                         </div>
+                    </div>
                     )
             )} />
         )
