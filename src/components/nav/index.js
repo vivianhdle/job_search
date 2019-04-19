@@ -9,6 +9,9 @@ class Nav extends Component{
                 <li>
                     <Link to="/">Home</Link>
                 </li>
+                <li>
+                    <Link to="/prospect">Job Prospect</Link>
+                </li>
             </Fragment>
         )
     }

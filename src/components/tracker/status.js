@@ -1,12 +1,10 @@
 import React, {Component,Fragment} from 'react';
 import './tracker.scss';
-import ModalStartForm from '../modal/index.js';
 import SmallCard from '../job_card/small-card';
 import axios from 'axios';
 
 class Status extends Component{
     state={
-        modalOpen:false,
         cards:[]
     }
     componentDidMount(){
@@ -23,7 +21,6 @@ class Status extends Component{
     }
     render(){
         const {progress, id}=this.props;
-        const {modalOpen}=this.state;
         const cards = this.state.cards.filter((card)=>{
             return card.progress === progress
         }).map((card)=>{
@@ -46,7 +43,6 @@ class Status extends Component{
                         </div>
                     </div>
                 </div>
-                <ModalStartForm isOpen={modalOpen}/>
             </Fragment>
         )
     }
