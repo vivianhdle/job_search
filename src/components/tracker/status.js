@@ -6,7 +6,7 @@ import axios from 'axios';
 
 class Status extends Component{
     state={
-        modalOpen:false,
+        modalOpen:true,
         cards:[]
     }
     componentDidMount(){

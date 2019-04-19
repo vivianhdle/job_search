@@ -1,0 +1,16 @@
+POST 
+http://localhost/api/add_tracker_item.php
+Body: raw
+
+{
+    "title": "Front End Developer",
+    "company": "Apple",
+    "progress": "Started Application",
+    "contact": {
+        "name": "Mr.Jobs",
+        "email": "mrjobs@apple.com",
+        "phone": 17232322456
+    },
+    "note": "Just applied today, waiting to hear back in two weeks",
+    "link": "www.apple.com"
+}

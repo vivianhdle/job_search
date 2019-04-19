@@ -42,11 +42,11 @@ $tracker_item_query = "UPDATE `tracker_item` SET
     `company`=?,
     `progress`=?,
     `link`=?
-    WHERE `id`=$tracker_id
+    WHERE `id`=?
 ";
 
 $tracker_item_statement = mysqli_prepare($conn, $tracker_item_query);
-mysqli_stmt_bind_param($tracker_item_statement, 'ssss', $title, $company, $progress, $link);
+mysqli_stmt_bind_param($tracker_item_statement, 'ssssi', $title, $company, $progress, $link, $tracker_id);
 $tracker_item_result = mysqli_stmt_execute($tracker_item_statement);
 $tracker_item_result = mysqli_stmt_get_result($tracker_item_statement);
 
@@ -58,7 +58,7 @@ $contact_item_query = "UPDATE `contact_info` SET
     `name`=?,
     `email`=?,
     `phone`=?
-    WHERE `id`=?
+    WHERE `id`=? AND `tracker_id`=?
 ";
 
 foreach($contact_info as $value){
@@ -68,7 +68,7 @@ foreach($contact_info as $value){
     $phone = $value['phone'];
 
     $contact_item_statement = mysqli_prepare($conn, $contact_item_query);
-    mysqli_stmt_bind_param($contact_item_statement, 'ssii', $name, $email, $phone, $id);
+    mysqli_stmt_bind_param($contact_item_statement, 'ssiii', $name, $email, $phone, $id, $tracker_id);
     $contact_item_result = mysqli_stmt_execute($contact_item_statement);
     $contact_item_result = mysqli_stmt_get_result($contact_item_statement);  
     
