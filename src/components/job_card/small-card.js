@@ -1,5 +1,6 @@
 import React from 'react';
 import {formatTime} from '../helpers';
+import './small-card.scss';
 
 function SmallCard(props){
     const {company,created,id,progress,title} = props;
@@ -10,8 +11,10 @@ function SmallCard(props){
                 <div className="card-content black-text">
                     <span className="card-title">{company}</span>
                     <span className="title">{title}</span>
-                    <span className="created right">{formatTime(created)}</span>
+                    <br/>
+                    <span className="created right "><em>{formatTime(created)}</em></span>
                 </div>
+                
             </div>
             </div>
         </div>

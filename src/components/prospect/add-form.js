@@ -32,7 +32,7 @@ const AddJobCardForm = props => {
                 <Field id="note" col="s10 offset-s1" name="note" component={Input} label="Notes" />
             </div>
             <div className="btn-wrapper row">
-                <button className="btn green submit-button">Submit</button>
+                <button className="btn submit-button teal lighten-1">Submit</button>
             </div>
             {/* <div className="link-wrapper row">
                 <Link to="/" className="link col s10 offset-s1">

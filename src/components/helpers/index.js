@@ -4,5 +4,11 @@ export function formatTime(timestamp){
     var day = date.getDate();
     var month = date.getMonth();
     var year = date.getFullYear();
-    return `${months[month]} ${day}, ${year}`
+    var hours = date.getHours();
+    var minutes= date.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    minutes = minutes<10 ? '0'+minutes :minutes;
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    return `${months[month]} ${day}, ${year} ${hours}:${minutes}${ampm}`
 }
