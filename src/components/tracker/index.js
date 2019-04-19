@@ -17,5 +17,7 @@ class Tracker extends Component{
     }
     
 }
+
+
 export default Tracker
 // feed NavCookies Status elements

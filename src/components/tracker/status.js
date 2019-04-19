@@ -3,6 +3,7 @@ import './tracker.scss';
 import SmallCard from '../job_card/small-card';
 import axios from 'axios';
 import Header from '../general/header';
+import AddButton from '../general/button';
 
 class Status extends Component{
     state={
@@ -35,13 +36,10 @@ class Status extends Component{
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
                     <Header title={progress}/>
-                    {/* <div className="progress-title center ">{progress}</div> */}
+                    <AddButton icon={'add'}/>
                     <div className="card-container row col s12">
                         {cards}
-                        {/* {!cards ? <div>Click the add button to add a card!</div>:null} */}
-                        <div className="row col s12 center">
-                            <button onClick={this.handleAdd} className=" blue-grey btn-small btn-floating center btn-large waves-effect waves-light red"><i className="material-icons center">add</i></button>
-                        </div>
+                        {cards}
                     </div>
                 </div>
             </Fragment>

@@ -1,26 +1,24 @@
 import React, {Component,Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import Status from '../../tracker/status';
-import { callbackify } from 'util';
 import './navcookies.scss';
 
 class NavCookies extends Component{
     state ={
         options:{
-            swipeable:false
+            swipeable:true
         }
     }
     
     renderLinks(){
         return(
             <li>
-                <Link to="/">Job Tracker</Link>
+                <Link to="/">Jo Tracker</Link>
             </li>
         );
     }
 
     componentDidMount(){
-        M.Tabs.init(this.navcookie, this.state);
+        M.Tabs.init(this.navcookie, this.state.options);
     }
 
     render(){
