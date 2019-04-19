@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Field} from 'redux-form';
-import Input from '../general';
+import Input from '../general/input';
 
 class ContactForm extends Component{
     componentDidMount(){

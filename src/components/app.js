@@ -5,12 +5,14 @@ import {Route,Switch} from 'react-router-dom';
 import '../assets/css/app.scss';
 import Tracker from './tracker';
 import Nav from './nav';
+import Prospect from './prospect';
 
 const App = () => (
     <div className="app-container">
         <Nav/>
         <Switch>
             <Route exact path="/" component={Tracker}/>
+            <Route path="/prospect" component={Prospect}/>
         </Switch>
     </div>
         
