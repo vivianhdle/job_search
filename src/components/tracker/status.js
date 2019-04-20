@@ -38,7 +38,6 @@ class Status extends Component {
                     <AddButton icon={'add'} goToProspect={this.goToProspect}/>
                     <div className="card-container row col s12">
                         {cards}
-                        {cards}
                     </div>
                 </div>
             </Fragment>
