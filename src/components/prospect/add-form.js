@@ -6,10 +6,10 @@ import ContactForm from './contact';
 import DropDown from './progress';
 import Header from '../general/header';
 const AddJobCardForm = props => {
-    const { add, handleSubmit, goToTracker } = props;
+    const { add, handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit(add)}>
-            <Header title={"Job Prospect"}/>
+            <Header title={"Job Prospect"} color={"white"}/>
             <DropDown />
             <div className="row">
                 <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
@@ -29,7 +29,7 @@ const AddJobCardForm = props => {
                 <Field id="note" col="s10 offset-s1" name="note" component={Input} label="Notes" />
             </div>
             <div className="btn-wrapper row">
-                <button className="btn teal lighten-1 submit-button" onClick={goToTracker}>Submit</button>
+                <button className="btn teal lighten-1 submit-button">Submit</button>
             </div>
         </form>
     )
