@@ -6,6 +6,7 @@ import '../assets/css/app.scss';
 import Tracker from './tracker';
 import Nav from './nav';
 import Prospect from './prospect';
+import ViewCard from './view_card';
 
 const App = () => (
     <div className="app-container">
@@ -16,6 +17,9 @@ const App = () => (
             }}/>
             <Route path="/prospect" render={(routingprops)=>{
                 return <Prospect {...routingprops} />
+            }}/>
+            <Route path="/view" render={()=>{
+                return <ViewCard/>
             }}/>
         </Switch>
     </div>
