@@ -1,17 +1,24 @@
-import React,{Component} from 'react';
+import React,{Component, Fragment} from 'react';
 import Status from './status';
 import NavCookies from '../nav/navcookies';
+import {Route} from 'react-router-dom';
 
 class Tracker extends Component{
     render(){
         let width=window.innerWidth;
         return (
             <div className="tracker-container show-on-small">
-                {/* <Status progress="Started Application" id="test-swipe-1"/>
-                <Status progress="Waiting for Response" id="test-swipe-2"/>
-                <Status progress="Follow-up Needed" id="test-swipe-3"/>
-                <Status progress="Archived" id="test-swipe-4"/>
-                <NavCookies/> */}
+                <Route render={(routingprops)=>{
+                    return(
+                        <Fragment>
+                        <Status progress="Started Application" id="test-swipe-1" {...routingprops}/>
+                        <Status progress="Waiting for Response" id="test-swipe-2" {...routingprops}/>
+                        <Status progress="Follow-up Needed" id="test-swipe-3" {...routingprops}/>
+                        <Status progress="Archived" id="test-swipe-4" {...routingprops}/>
+                        </Fragment>
+                    )
+                }} />
+                <NavCookies/>
             </div>
         )
     }
@@ -20,4 +27,3 @@ class Tracker extends Component{
 
 
 export default Tracker
-// feed NavCookies Status elements
