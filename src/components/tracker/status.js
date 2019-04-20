@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './tracker.scss';
-import SmallCard from '../job_card/small-card';
+import SmallCard from '../cards/small_card';
 import axios from 'axios';
 import Header from '../general/header';
 import AddButton from '../general/button';
