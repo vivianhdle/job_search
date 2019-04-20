@@ -1,24 +1,48 @@
-import React from 'react';
-import {formatTime} from '../helpers';
+import React, { Component } from 'react';
+import { formatTime } from '../helpers';
 import './small-card.scss';
+import { Route } from 'react-router-dom';
+import ViewCard from 'react-router-dom';
 
-function SmallCard(props){
-    const {company,created,id,progress,title} = props;
-    return(
-        <div className="row">
-            <div className="col s10 offset-s1">
-            <div className="card grey white">
-                <div className="card-content black-text">
-                    <span className="card-title">{company}</span>
-                    <span className="title">{title}</span>
-                    <br/>
-                    <span className="created right "><em>{formatTime(created)}</em></span>
-                </div>
-                
+class SmallCard extends Component {
+    constructor(props){
+        super(props);
+        this.id = null;
+    }
+
+    handleCardClick = () => {
+        this.props.history.push(`/tracker/${this.id}`);
+    }
+
+    render() {
+        const { company, created, id, progress, title, history } = this.props;
+        this.id = id;
+        return (
+            <div className="row">
+
+                        <div className="col s10 offset-s1">
+                            <div className="card grey white" onClick={this.handleCardClick}>
+                                <div className="card-content black-text">
+                                    <span className="card-title">{company}</span>
+                                    <span className="title">{title}</span>
+                                    <br />
+                                    <span className="created right "><em>{formatTime(created)}</em></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <Route path="/view" render={(routingprops) => {
+                        return <ViewCard {...routingprops} />
+                    }} />
             </div>
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default SmallCard;
+
+/*
+
+
+
+*/

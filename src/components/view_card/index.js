@@ -13,7 +13,11 @@ class ViewCard extends Component{
     }
 
     async getRespData(){
-        const resp = await axios.get('/api/data/get_tracker_item.json');
+        const {params} = this.props.match;
+        const resp = await axios.get(`/api/data/get_tracker_item.json?id=${params.id}`);
+        console.log('params', params.id);
+
+        //const resp = await axios.get(`/api/get_tracker_item.php?id=${params.id}`);
         this.setState({
             respData: resp.data.data
         })
@@ -23,6 +27,8 @@ class ViewCard extends Component{
     render(){
         const respInfo = this.state.respData; 
         console.log(respInfo);
+        console.log(this.props)
+
 
         return(
             <div>
