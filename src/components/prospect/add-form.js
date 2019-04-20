@@ -5,11 +5,13 @@ import Input from '../general/input';
 import ContactForm from './contact';
 import DropDown from './progress';
 import Header from '../general/header';
+import TextArea from '../general/textarea';
+
 const AddJobCardForm = props => {
     const { add, handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit(add)}>
-            <Header title={"Job Prospect"} color={"white"}/>
+            <Header title="Add Job Prospect" alignment="left-align" margin="5%" bgcolor="white"/>
             <DropDown />
             <div className="row">
                 <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
@@ -26,10 +28,10 @@ const AddJobCardForm = props => {
                 </FormSection>
             </div>
             <div className="row">
-                <Field id="note" col="s10 offset-s1" name="note" component={Input} label="Notes" />
+                <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" />
             </div>
             <div className="btn-wrapper row">
-                <button className="btn teal lighten-1 submit-button">Submit</button>
+                <button className="btn blue-grey submit-button">Submit</button>
             </div>
         </form>
     )

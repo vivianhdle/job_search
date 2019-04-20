@@ -9,6 +9,7 @@ class Prospect extends Component {
     }
 
     handleAdd = async values => {
+        console.log(values);
         const resp = await axios.post('/api/add_tracker_item.php', values);
         this.goToTracker();
     }

@@ -1,6 +1,7 @@
 import React,{Component,Fragment} from 'react';
 import SideNav from './sidenav';
 import {Link} from 'react-router-dom';
+import './nav.scss';
 
 class Nav extends Component{
     renderLinks(){

@@ -1,13 +1,17 @@
+
+
+
 .tracker-container{
     background-color:white;
-    height:calc(100% - 56px);
+    height:calc(100% - 13.5%);
     margin:0;
     display:flex;
     
     .job-container{
         background-color:lightgray;
-        height:calc(100% - 48px);
+        height:100%;
         width:100%;
+        // padding-bottom: 14%;
 
         .card-container{
             background-color:rgba(243, 243, 243, 0.856);
@@ -33,53 +37,9 @@
     
 
     > .carousel{
-        height: calc(100% - 48px);
+        height: 100%;
     }
 }
-
-// .tracker-container{
-//     background-color:white;
-//     height:calc(100% - 64px);
-//     margin:0;
-//     display:flex;
-    
-//     .job-container{
-//         background-color:lightgray;
-//         height:100%;
-//         width:100%;
-        
-//         .progress-title{
-//             background-color:rgba(243, 243, 243, 0.856);
-//             height:7%;
-//             font-size:30px;
-//         }
-//         .card-container{
-//             background-color:rgba(243, 243, 243, 0.856);
-//             height:92%;
-//             overflow-y: scroll;
-//             margin-bottom:0;
-            
-//             .card{
-//                 box-shadow: none;
-//             }
-//             .row{
-//                 margin-bottom: 0;
-//             }
-
-//             .card{
-//                 border-radius:5px;
-//             }
-//         }
-//         .card-container::-webkit-scrollbar {
-//             display: none;
-//         }
-//     }
-    
-
-//     > .carousel{
-//         height: calc(100% - 48px);
-//     }
-// }
 
 
 

@@ -7,7 +7,6 @@ import AddButton from '../general/button';
 
 class Status extends Component {
     state = {
-        modalOpen: false,
         cards: [],
         redirect: false
     }
