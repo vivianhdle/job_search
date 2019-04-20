@@ -11,7 +11,7 @@ const App = () => (
     <div className="app-container">
         <Nav/>
         <Switch>
-            <Route exact path="/tracker" render={(routingprops)=>{
+            <Route exact path="/" render={(routingprops)=>{
                 return <Tracker {...routingprops}/>
             }}/>
             <Route path="/prospect" render={(routingprops)=>{
