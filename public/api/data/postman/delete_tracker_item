@@ -1,5 +1,6 @@
-POST 
+GET
 http://localhost/api/delete_tracker_item.php
-Body: raw
+Params
 
-{"tracker_id":42}
+KEY: trackerId
+VALUE: 1

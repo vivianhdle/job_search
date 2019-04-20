@@ -8,23 +8,16 @@
     //     throw new Exception('Missing user id');
     // }
 
-    // if(empty($_SESSION['tracker_id'])){
-    //     throw new Exception('Missing tracker id');
-    // }
-
-    $json_input = file_get_contents("php://input");
-    $input = json_decode($json_input, true);
-
-    if(empty($input['tracker_id'])){
-        throw new Exception('You must send a tracker id with your request');
-    }
+    if(empty($_GET['trackerId'])){
+        throw new Exception('You must send a tracker_id with your request');
+    };
 
     $user_id = 1;//hard coded for now
-    $tracker_id = $input['tracker_id'];
+    $tracker_id = (int)$_GET['trackerId'];
 
     $output['success'] = false;
 
-    $tracker_item_query = "SELECT ti.`created`, ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` JOIN `contact_info` AS ci ON ti.`id`=ci.`tracker_id` JOIN `note_item` AS ni ON ti.`id`=ni.`tracker_id` WHERE ti.`id`=$tracker_id LIMIT 1";
+    $tracker_item_query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` JOIN `contact_info` AS ci ON ti.`id`=ci.`tracker_id` JOIN `note_item` AS ni ON ti.`id`=ni.`tracker_id` WHERE ti.`id`=$tracker_id LIMIT 1";
     
     $result = mysqli_query($conn, $tracker_item_query);
 
@@ -83,6 +76,7 @@
         }    
     
         $output['data'] = [
+            'id' => (int)$row['id'],
             'created' => $row['created'],
             'title' => $row['title'],
             'company' => $row['company'],
