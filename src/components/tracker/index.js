@@ -16,7 +16,6 @@ class Tracker extends Component{
                         <Status progress="Follow-up Needed" id="test-swipe-3" {...routingprops}/>
                         <Status progress="Archived" id="test-swipe-4" {...routingprops}/>
                         </Fragment>
-                        
                     )
                 }} />
                 <NavCookies/>
@@ -28,4 +27,3 @@ class Tracker extends Component{
 
 
 export default Tracker
-// feed NavCookies Status elements
