@@ -1,8 +1,9 @@
 import React from 'react';
 import {formatTime} from '../helpers';
-import './small-card.scss';
+import './small_card.scss';
 
 function SmallCard(props){
+    console.log(props);
     const {company,created,id,progress,title} = props;
     return(
         <div className="row">
