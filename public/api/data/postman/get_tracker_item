@@ -1,5 +1,6 @@
-POST
+GET
 http://localhost/api/get_tracker_item.php
-Body: raw
+Params
 
-{"tracker_id":1}
+KEY: trackerId
+VALUE: 1
