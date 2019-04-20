@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { formatTime } from '../helpers';
 import './small-card.scss';
 import { Route } from 'react-router-dom';
-import ViewCard from 'react-router-dom';
+import ViewCard from '../view_card';
 
 class SmallCard extends Component {
     constructor(props){
