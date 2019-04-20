@@ -5,14 +5,14 @@ function ContactCard(props){
 
     return(
         <li>
-            <div class="collapsible-header"><i class="material-icons">contacts</i>{name}</div>
-            <div class="collapsible-body">
+            <div className="collapsible-header"><i className="material-icons">contacts</i>{name}</div>
+            <div className="collapsible-body">
                 <span>
-                    <i class="material-icons prefix">email</i>{email}
+                    <i className="material-icons prefix">email</i>{email}
                 </span>
                 <br/>
                 <span>
-                    <i class="material-icons prefix">phone</i>{phone}
+                    <i className="material-icons prefix">phone</i>{phone}
                 </span>
             </div>
         </li>
