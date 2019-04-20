@@ -37,7 +37,7 @@ class ViewCard extends Component{
     render(){
         if(!this.state.isLoaded){
             return(
-            <div>Loading...</div>
+            <div className="row Loading">Loading...</div>
             )
         }else{
             const {title,company,contact=[],created,link,note=[],progress} = this.state.respData
