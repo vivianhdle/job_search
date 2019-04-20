@@ -6,7 +6,7 @@ import {Route} from 'react-router-dom';
 class Tracker extends Component{
     render(){
         return (
-            <div className="tracker-container show-on-small">
+            <div className="tracker-container">
                 <Route render={(routingprops)=>{
                     return(
                         <Fragment>
