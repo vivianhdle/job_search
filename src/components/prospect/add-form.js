@@ -4,15 +4,12 @@ import { reduxForm, Field, FormSection } from 'redux-form';
 import Input from '../general/input';
 import ContactForm from './contact';
 import DropDown from './progress';
-
+import Header from '../general/header';
 const AddJobCardForm = props => {
     const { add, handleSubmit, goToTracker } = props;
     return (
         <form onSubmit={handleSubmit(add)}>
-
-            <div className="row application-title" col="s10 offset-1">
-                Job Prospect
-            </div>
+            <Header title={"Job Prospect"}/>
             <DropDown />
             <div className="row">
                 <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
