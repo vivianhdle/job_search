@@ -4,7 +4,7 @@ import Header from '../general/header';
 
 class ViewCard extends Component{
     state = {
-        respData: [],
+        respData: null,
     }
 
     componentDidMount(){
@@ -18,9 +18,15 @@ class ViewCard extends Component{
         console.log('params', params.id);
 
         //const resp = await axios.get(`/api/get_tracker_item.php?id=${params.id}`);
-        this.setState({
-            respData: resp.data.data
-        })
+        if(resp.data.data.success){
+            this.setState({
+                respData: resp.data.data
+            })
+        } else{
+            this.state({
+                respData: false
+            })
+        }
         
     }
 
