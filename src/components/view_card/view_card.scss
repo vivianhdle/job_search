@@ -6,22 +6,11 @@
     background-color: white;
 }
 
-.material-icons.prefix {
-    padding-right: 7%;
-}
 
 .view-main-text.company {
     font-size: 24px;
 }
 
-.view-main-text {
-    margin: 3% 0;
-}
-
-.card {
-    margin: 4% 0;
-    border-radius: 5px;
-}
 
 .details-container{
     background-color: rgba(243, 243, 243, 0.856);
@@ -53,8 +42,18 @@
         display: inline-block;
         vertical-align: top;
     }
-
+    .material-icons.prefix {
+        padding-right: 7%;
+    }
     .contact-email {
         margin-bottom: 11%;
+    }
+    .view-main-text {
+        margin: 3% 0;
+    }
+    
+    .card {
+        margin: 4% 0;
+        border-radius: 5px;
     }
 }
