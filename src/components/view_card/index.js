@@ -5,7 +5,7 @@ import { formatTime } from '../helpers';
 import './view_card.scss'
 import ContactCard from '../cards/contact_card';
 import Header from '../general/header';
-
+import ContactList from './contact_list';
 
 class ViewCard extends Component {
     state = {
@@ -36,11 +36,6 @@ class ViewCard extends Component {
                     <NoteCard key={note.id} {...note} />
                 )
             })
-            const contactElements = contact.map((contact) => {
-                return (
-                    <ContactCard key={contact.id} {...contact} />
-                )
-            })
             return (
                 <div className="details-container">
                     <div className="row">
@@ -53,13 +48,7 @@ class ViewCard extends Component {
                             <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="contacts col s10 offset-s1">
-                            <ul className="collapsible" ref={(element) => this.contacts = element}>
-                                {contactElements}
-                            </ul>
-                        </div>
-                    </div>
+                    <ContactList contact={contact}/>
                     <div className="notes">
                         {noteElements}
                     </div>
