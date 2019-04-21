@@ -36,3 +36,28 @@
     margin: 4% 0;
     border-radius: 5px;
 }
+
+.editform {
+    .edit-progress {
+        margin-top: 0;
+
+        .select-wrapper input.select-dropdown {
+            font-size: 25px;
+        }
+    }
+
+    .input.company {
+        font-size: 24px;
+        margin-bottom: 4px
+    }
+
+    .input.title,
+    .input.link {
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    .input-field {
+        margin: 0;
+    }
+}

@@ -15,7 +15,7 @@ function ViewDetails(props){
                     <div className="view-main-text company">{company}</div>
                     <span><button onClick={props.handleEdit} className="blue-grey btn-floating waves-effect btn-small right"><i className="material-icons">edit</i></button></span>
                     <div className="view-main-text">{title}</div>
-                    <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Website Link</a>
+                    <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Posting Link</a>
                     <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                 </div>
             </div>

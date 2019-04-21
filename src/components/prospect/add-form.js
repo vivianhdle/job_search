@@ -17,10 +17,10 @@ const AddJobCardForm = props => {
                 <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
             </div>
             <div className="row">
-                <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting" />
+                <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name" />
             </div>
             <div className="row">
-                <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name" />
+                <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" />
             </div>
             <div className="row">
                 <FormSection name='contact' col="s10 offset-s1">
