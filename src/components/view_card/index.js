@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NoteCard from '../cards/note_card';
-import './view_card.scss';
 import ViewFormCard from './view_form_card';
 import ContactList from './contact_list';
 import NoteList from './note_list';
+import './view_card.scss';
 
 class ViewCard extends Component {
     state = {
@@ -30,16 +30,9 @@ class ViewCard extends Component {
             )
         } else {
             const { title, company, contact = [], created, link, note = [], progress } = this.state.respData
-            const noteElements = note.map((note) => {
-                return (
-                    <NoteCard key={note.id} {...note} />
-                )
-            })
             return (
                 <div className="details-container">
-                    <ViewFormCard/>
-                    <ContactList contact={contact}/>
-                    <NoteList note={note}/>>
+                    <ViewFormCard {...this.state.respData}/>
                 </div>
             )
         }
