@@ -14,11 +14,13 @@ class ViewCard extends Component {
     }
     async getRespData() {
         const { params } = this.props.match;
+        console.log('params:',params);
         const resp = await axios.get(`/api/get_tracker_item.php?trackerId=${params.id}`);
         this.setState({
             respData: resp.data.data,
             isLoaded: true
         })
+        console.log('resp:',resp);
     }
     editMode=()=>{
         console.log('edit mode')

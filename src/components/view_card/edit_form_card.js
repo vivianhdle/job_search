@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Component,Fragment} from 'react';
 import Input from '../general/input';
 import {Field,reduxForm,FormSection} from 'redux-form';
 import ContactForm from '../prospect/contact';
@@ -8,15 +8,28 @@ import ContactList from './contact_list';
 import {formatTime} from '../helpers';
 import Header from '../general/header';
 import './edit_form_card.scss';
+import Dropdown from '../prospect/progress';
 
 
+class EditFormCard extends Component{
+    state={
+        addNote:false,
+        addContact:false,
+        form:{
+            company:'',
+            title:'',
+            link:''
+        }
+    }
+    componentDidMount(){
 
-function EditFormCard(props){
-    var {title,company,contact=[],created,link,note=[],progress} = props
-    console.log('Edit Form Card:',props)
-    return(
+    }
+    render(){
+        var {title,company,contact=[],created,link,note=[],progress} = this.props
+        console.log('Edit Form Card:',this.props)
+        return(
         <Fragment>
-            <Header title={progress} bgcolor="rgba(243, 243, 243, 0.856)"/>
+            <Dropdown col="s10 offset-s1" active={progress}/>
             <form action="">
                 <div className="row">
                     <Field id="company" col="s10 offset-s1" currentValue={company} name="company" component={Input} />
@@ -30,7 +43,9 @@ function EditFormCard(props){
                 <NoteList note={note}/>
             </form>
         </Fragment>  
-    )
+        )
+    }
+    
 }
 
 export default reduxForm({

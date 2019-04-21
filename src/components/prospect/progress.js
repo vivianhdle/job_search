@@ -34,9 +34,13 @@ class DropDown extends Component {
     }
 
     render() {
+        console.log('Dropdown props:',this.props);
+        const {col}=this.props
         return (
-            <div className="input-field dropdown col s10 row">
-                <Field defaultValue="" name="progress" component={this.renderSelect}/>
+            <div className="row">
+                <div className={`input-field col ${col}`}>
+                    <Field defaultValue="" name="progress" component={this.renderSelect}/>
+                </div>
             </div>
         );
     }
