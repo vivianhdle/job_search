@@ -4,7 +4,6 @@ import './note_card.scss'
 
 function NoteCard(props){
     const {id,created,input} = props
-    console.log(props);
     return(
         <div className="row">
             <div className="col s10 offset-s1">

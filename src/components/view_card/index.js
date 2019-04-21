@@ -21,7 +21,6 @@ class ViewCard extends Component {
         })
     }
     editMode=()=>{
-        console.log('edit mode')
         this.setState({editable:true});
     }
     render() {
@@ -33,7 +32,7 @@ class ViewCard extends Component {
             return (
                 <div className="details-container">
                     {!this.state.editable && <ViewDetails handleEdit={this.editMode} {...this.state.respData}/>}
-                    {this.state.editable && <EditFormCard {...this.state.respData}/>}
+                    {this.state.editable && <EditFormCard respData={this.state.respData}/>}
                 </div>
             )
         }
