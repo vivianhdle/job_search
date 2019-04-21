@@ -29,7 +29,7 @@ class EditFormCard extends Component{
         console.log('Edit Form Card:',this.props)
         return(
         <Fragment>
-            <Dropdown col="s10 offset-s1" active={progress}/>
+            <Dropdown col="s10 offset-s1" progress={progress}/>
             <form action="">
                 <div className="row">
                     <Field id="company" col="s10 offset-s1" currentValue={company} name="company" component={Input} />
