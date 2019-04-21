@@ -10,16 +10,6 @@
     padding-right: 7%;
 }
 
-.contact-email,
-.contact-phone {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.contact-email {
-    margin-bottom: 11%;
-}
-
 .view-main-text.company {
     font-size: 24px;
 }
@@ -57,5 +47,14 @@
             font-size:2em;
             font-weight: 300;
         }
+    }
+    .contact-email,
+    .contact-phone {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .contact-email {
+        margin-bottom: 11%;
     }
 }
