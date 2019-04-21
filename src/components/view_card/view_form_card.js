@@ -34,7 +34,7 @@ function ViewFormCard(props){
                     <Field id="link" col="s10 offset-s1" currentValue={link} name="link" component={Input}/>
                 </div>
                 <div className="row">
-                    <div className="s10 right-align offset-s1 col created" col="s10 offset-s1" ><em>Added {formatTime(created)}</em></div>
+                    <div className="s10 right-align offset-s1 col view-main-text created" col="s10 offset-s1" ><em>Added {formatTime(created)}</em></div>
                 </div>
                 <ContactList contact={contact}/>
                 <NoteList note={note}/>
