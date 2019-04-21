@@ -20,8 +20,8 @@ class Nav extends Component{
         const links = this.renderLinks()
         return(
             <Fragment>
-                <nav className="blue-grey">
-                    <div className="nav-wrapper navbar-fixed">
+                <nav>
+                    <div className="nav-wrapper navbar-fixed blue-grey">
                         <Link className="brand-logo" to="/">Tracker</Link>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
