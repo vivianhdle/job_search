@@ -6,6 +6,7 @@ import './view_card.scss'
 import ContactCard from '../cards/contact_card';
 import Header from '../general/header';
 import ContactList from './contact_list';
+import NoteList from './note_list';
 
 class ViewCard extends Component {
     state = {
@@ -49,9 +50,7 @@ class ViewCard extends Component {
                         </div>
                     </div>
                     <ContactList contact={contact}/>
-                    <div className="notes">
-                        {noteElements}
-                    </div>
+                    <NoteList note={note}/>>
                 </div>
             )
         }
