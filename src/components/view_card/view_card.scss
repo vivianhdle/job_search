@@ -1,8 +1,39 @@
 .details-container{
-    background-color:white;
-    height:93%;
+    background-color: rgba(243, 243, 243, 0.856);
+    min-height: 93%;
 }
 
 .Loading{
     font-size: 3em;
+}
+
+.collapsible {
+    background-color: white;
+}
+
+.material-icons.prefix {
+    padding-right: 7%;
+}
+
+.contact-email,
+.contact-phone {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contact-email {
+    margin-bottom: 11%;
+}
+
+.view-main-text.company {
+    font-size: 24px;
+}
+
+.view-main-text {
+    margin: 6% 0;
+}
+
+.card {
+    margin: 4% 0;
+    border-radius: 5px;
 }

@@ -8,11 +8,17 @@ function ContactCard(props){
             <div className="collapsible-header"><i className="material-icons">contacts</i>{name}</div>
             <div className="collapsible-body">
                 <span>
-                    <i className="material-icons prefix">email</i>{email}
+                    <i className="material-icons prefix">email</i>
+                    <div className="contact-email">
+                        {email}
+                    </div>
                 </span>
                 <br/>
                 <span>
-                    <i className="material-icons prefix">phone</i>{phone}
+                    <i className="material-icons prefix">phone</i>
+                    <div className="contact-phone">
+                        {phone}
+                    </div>
                 </span>
             </div>
         </li>

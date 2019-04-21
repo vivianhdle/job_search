@@ -25,7 +25,7 @@ class SmallCard extends Component {
                             <span className="card-title">{company}</span>
                             <span className="title">{title}</span>
                             <br />
-                            <span className="created right "><em>{formatTime(created)}</em></span>
+                            <span className="created right"><em>{formatTime(created)}</em></span>
                         </div>
                     </div>
                 </div>

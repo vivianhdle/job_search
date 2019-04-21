@@ -1,87 +1,73 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import NoteCard from '../cards/note_card';
-import CardContact from '../cards/contact_card';
-import {formatTime} from '../helpers';
+import { formatTime } from '../helpers';
 import './view_card.scss'
 import ContactCard from '../cards/contact_card';
-import {Field,reduxForm} from 'redux-form';
+import Header from '../general/header';
 
 
-class ViewCard extends Component{
+class ViewCard extends Component {
     state = {
-        isLoaded:false,
-        respData:null
+        isLoaded: false,
+        respData: null
     }
-
-    componentDidMount(){
+    componentDidMount() {
         this.getRespData();
-        
-        
     }
-
-    async getRespData(){
-        const {params} = this.props.match;
-        //const resp = await axios.get(`/api/data/get_tracker_item.json?id=${params.id}`);
-        console.log('params', params.id);
+    async getRespData() {
+        const { params } = this.props.match;
         const resp = await axios.get(`/api/get_tracker_item.php?trackerId=${params.id}`);
         this.setState({
             respData: resp.data.data,
-            isLoaded:true
+            isLoaded: true
         })
         M.Collapsible.init(this.contacts);
-        console.log('Resp Info', this.state.respData);
-        console.log('Props', this.props);
     }
-
-    render(){
-        if(!this.state.isLoaded){
-            return(
-            <div className="row Loading">Loading...</div>
-            )
-        }else{
-            const {title,company,contact=[],created,link,note=[],progress} = this.state.respData
-        const noteElements = note.map((note)=>{
+    render() {
+        if (!this.state.isLoaded) {
             return (
-                <NoteCard key={note.id} {...note}/>
+                <div className="row Loading">Loading...</div>
             )
-        })
-        const contactElements=contact.map((contact)=>{
-            return(
-                <ContactCard key={contact.id} {...contact} />
-            )
-        })
-        //more than one contact
-        console.log(this.state.respData);
-
-        return(
-            <div className="details-container">
-                <div className="row">
-                    <div className="info col s10 offset-s1">
-                        <h5>{progress}</h5>
-                        <span><button className="btn-floating waves-effect btn-small right"><i className="material-icons">edit</i></button></span>
-                        <div><strong>{company}</strong></div>
-                        <div>{title}</div>
-                        <div>{link}</div>
-                        <div className="right-align created"><em>Added {formatTime(created)}</em></div>
+        } else {
+            const { title, company, contact = [], created, link, note = [], progress } = this.state.respData
+            const noteElements = note.map((note) => {
+                return (
+                    <NoteCard key={note.id} {...note} />
+                )
+            })
+            const contactElements = contact.map((contact) => {
+                return (
+                    <ContactCard key={contact.id} {...contact} />
+                )
+            })
+            return (
+                <div className="details-container">
+                    <div className="row">
+                        <div className="info col s10 offset-s1">
+                            <Header title={progress} bgcolor="rgba(243, 243, 243, 0.856)" />
+                            <div className="view-main-text company">{company}</div>
+                            <span><button className="blue-grey btn-floating waves-effect btn-small right"><i className="material-icons">edit</i></button></span>
+                            <div className="view-main-text">{title}</div>
+                            <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Website Link</a>
+                            <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="contacts col s10 offset-s1">
+                            <ul className="collapsible" ref={(element) => this.contacts = element}>
+                                {contactElements}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="notes">
+                        {noteElements}
                     </div>
                 </div>
-                <div className="row">
-                    <div className="contacts col s10 offset-s1">
-                        <ul className="collapsible" ref={(element)=>this.contacts=element}>
-                            {contactElements}
-                        </ul>
-                    </div>
-                </div>
-                
-                <div className="notes">
-                    {noteElements}
-                </div>
-            </div>
-        )
-    }
+            )
         }
-        
+    }
+
 }
 
 export default ViewCard;

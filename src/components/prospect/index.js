@@ -5,7 +5,7 @@ import axios from 'axios';
 
 class Prospect extends Component {
     goToTracker = () =>{
-        this.props.history.push('/');
+        this.props.history.push('/tracker');
     }
 
     handleAdd = async values => {
