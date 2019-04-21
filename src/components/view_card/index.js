@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import NoteCard from '../cards/note_card';
-import ViewFormCard from './view_form_card';
-import ContactList from './contact_list';
-import NoteList from './note_list';
-import './view_card.scss';
+import EditFormCard from './edit_form_card';
+import ViewDetails from './view_details';
 
 class ViewCard extends Component {
     state = {
         isLoaded: false,
-        respData: null
+        respData: null,
+        editable:false
     }
     componentDidMount() {
         this.getRespData();
@@ -21,7 +19,10 @@ class ViewCard extends Component {
             respData: resp.data.data,
             isLoaded: true
         })
-        M.Collapsible.init(this.contacts);
+    }
+    editMode=()=>{
+        console.log('edit mode')
+        this.setState({editable:true});
     }
     render() {
         if (!this.state.isLoaded) {
@@ -29,10 +30,10 @@ class ViewCard extends Component {
                 <div className="row Loading">Loading...</div>
             )
         } else {
-            const { title, company, contact = [], created, link, note = [], progress } = this.state.respData
             return (
                 <div className="details-container">
-                    <ViewFormCard {...this.state.respData}/>
+                    {!this.state.editable && <ViewDetails handleEdit={this.editMode} {...this.state.respData}/>}
+                    {this.state.editable && <EditFormCard {...this.state.respData}/>}
                 </div>
             )
         }

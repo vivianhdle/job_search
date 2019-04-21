@@ -2,7 +2,8 @@ import React from 'react';
 import NoteCard from '../cards/note_card';
 
 function NoteList(props){
-    const noteElements = props.note.map((note)=>{
+    const notes = props.note
+    const noteElements = notes.map((note)=>{
         return (
             <NoteCard key={note.id} {...note}/>
         )
