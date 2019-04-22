@@ -1,16 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import Input from '../general/input';
-import { Field, reduxForm, FormSection } from 'redux-form';
-import ContactForm from '../prospect/contact';
-import TextArea from '../general/textarea';
+import { Field, reduxForm} from 'redux-form';
 import NoteList from './note_list';
 import ContactList from './contact_list';
 import { formatTime } from '../helpers';
-import Header from '../general/header';
 import './edit_form_card.scss';
 import Dropdown from '../prospect/progress';
 import './view_details.scss';
-import AddButton from '../general/button';
+import axios from 'axios';
 
 
 class EditFormCard extends Component {
@@ -19,17 +16,15 @@ class EditFormCard extends Component {
         isLoaded:false
     }
     componentDidMount() {
-        this.getData;
+        this.getData();
     }
     async getData(){
         const { params } = this.props.match;
-        console.log('params:',params);
         const resp = await axios.get(`/api/get_tracker_item.php?trackerId=${params.id}`);
         this.setState({
             respData: resp.data.data,
             isLoaded: true
         })
-        console.log('resp:',resp);
     }
     handleChange = e => {
         const { respData } = this.state;
@@ -44,9 +39,9 @@ class EditFormCard extends Component {
                 <div className="row Loading">Loading...</div>
             )
         } else {
-            const { title, company, contact = [], created, link, note = [], progress } = this.props.respData;
+            const { title, company, contact = [], created, link, note = [], progress } = this.state.respData;
             return (
-                <Fragment>
+                <div className="details-container">
                     <form action="">
                         <div className="row editform">
                                 <Dropdown col="s10 offset-s1 col edit-progress" progress={progress} />
@@ -72,7 +67,7 @@ class EditFormCard extends Component {
                             <div className="btn-floating btn-small waves-effect blue-grey"><i className="material-icons">add</i></div>
                         </div>
                     </form>
-                </Fragment>
+                </div>
             )
         }
     }
