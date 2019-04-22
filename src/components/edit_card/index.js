@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import EditCardForm from './edit_form_card';
 import axios from 'axios';
-import ViewDetails from './view_details';
 
-class ViewCard extends Component {
+class EditCard extends Component{
     state = {
-        isLoaded: false,
         respData: null,
-        editable:false
+        isLoaded:false
     }
     componentDidMount() {
-        this.getRespData();
+        this.getData();
     }
-    async getRespData() {
+    async getData(){
         const { params } = this.props.match;
-        console.log('params:',params);
         const resp = await axios.get(`/api/get_tracker_item.php?trackerId=${params.id}`);
         this.setState({
             respData: resp.data.data,
             isLoaded: true
         })
-        console.log('resp:',resp);
     }
-    editMode=()=>{
-        const {params} = this.props.match;
-        this.props.history.push(`/tracker/edit/${params.id}`);
+    handleChange = e => {
+        const { respData } = this.state;
+        respData[e.target.name] = e.target.value;
+        this.setState({
+            respData
+        })
     }
-    render() {
+    render(){
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>
@@ -33,12 +33,12 @@ class ViewCard extends Component {
         } else {
             return (
                 <div className="details-container">
-                    {!this.state.editable && <ViewDetails handleEdit={this.editMode} {...this.state.respData}/>}
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange}/>
                 </div>
             )
-        }
+        }            
     }
-
 }
 
-export default ViewCard;
+
+export default EditCard;
