@@ -7,11 +7,15 @@ import Tracker from './tracker';
 import Nav from './nav';
 import Prospect from './prospect';
 import ViewCard from './view_card';
+import EditFormCard from './view_card/edit_form_card';
 
 const App = () => (
     <div className="app-container">
         <Nav />
         <Switch>
+            <Route path="/tracker/edit/:id" render={(routingprops) => {
+                return <EditFormCard {...routingprops} />
+            }} />
             <Route path="/tracker/:id" render={(routingprops) => {
                 return <ViewCard {...routingprops} />
             }} />

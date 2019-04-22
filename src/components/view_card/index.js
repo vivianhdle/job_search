@@ -23,7 +23,8 @@ class ViewCard extends Component {
         console.log('resp:',resp);
     }
     editMode=()=>{
-        this.setState({editable:true});
+        const {params} = this.props.match;
+        this.props.history.push(`/tracker/edit/${params.id}`);
     }
     render() {
         if (!this.state.isLoaded) {
