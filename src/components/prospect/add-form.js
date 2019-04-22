@@ -17,7 +17,7 @@ class AddJobCardForm extends Component {
     }
     addNewContact = () => {
         let {contactForm, contactCount} = this.state;
-        contactForm = [...contactForm, <ContactForm key={contactCount}/>]
+        contactForm = [...contactForm, <ContactForm key={contactCount} name={`contact${contactCount}`}/>]
         contactCount++;
         this.setState({
             contactForm,
