@@ -8,8 +8,8 @@ function NoteCard(props){
     return(
         <div className="row">
             <div className="col s10 offset-s1">
-                <div className="card blue-grey darken-1">
-                <div className="card-content white-text">
+                <div className="card white">
+                <div className="card-content teal-text text-lighten-2">
                     <p>{input}</p>
                     <span className="card-date created right"><em>{formatTime(created)}</em></span>
                 </div>
