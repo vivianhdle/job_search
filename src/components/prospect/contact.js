@@ -9,7 +9,6 @@ class ContactForm extends Component {
 
     render() {
         return (
-
             <Fragment>
                 <FormSection name='contact' col="s10 offset-s1">
                     <ul className="collapsible" ref={(element) => {
@@ -25,7 +24,6 @@ class ContactForm extends Component {
                         </li>
                     </ul>
                 </FormSection>
-
             </Fragment>
         );
     }
