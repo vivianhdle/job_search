@@ -12,7 +12,7 @@ const AddJobCardForm = props => {
     return (
         <form onSubmit={handleSubmit(add)}>
             <Header title="Add Job Prospect" alignment="left-align" margin="5%" bgcolor="white"/>
-            <DropDown col="s10 offset-1"/>
+            <DropDown col="s10 offset-s1"/>
             <div className="row">
                 <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
             </div>

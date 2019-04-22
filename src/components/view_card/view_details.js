@@ -12,10 +12,10 @@ function ViewDetails(props){
             <div className="row">
                 <div className="info col s10 offset-s1">
                     <Header title={progress} bgcolor="rgba(243, 243, 243, 0.856)" />
-                    <div className="view-main-text company">{company}</div>
+                    <div className="view-main-text company teal-text text-lighten-2">{company}</div>
                     <span><button onClick={props.handleEdit} className="blue-grey btn-floating waves-effect btn-small right"><i className="material-icons">edit</i></button></span>
                     <div className="view-main-text">{title}</div>
-                    <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Posting Link</a>
+                    <a href={link} target="_blank" className="view-main-text  orange-text text-darken-1">{link}</a>
                     <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                 </div>
             </div>

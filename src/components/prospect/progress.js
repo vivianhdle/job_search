@@ -38,7 +38,7 @@ class DropDown extends Component {
         const {col,progress=''}=this.props
         return (
             <div className="row">
-                <div className={`input-field col ${col}`}>
+                <div className={`input-field ${col}`}>
                     <Field defaultValue={progress} name="progress" component={this.renderSelect}/>
                 </div>
             </div>

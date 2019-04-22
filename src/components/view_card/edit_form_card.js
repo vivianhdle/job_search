@@ -46,8 +46,8 @@ class EditFormCard extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
-                    </div>
+                            <div className="right-align created col s10 offset-s1 view-main-text"><em>Added {formatTime(created)}</em></div>
+                        </div>
                     <ContactList contact={contact} />
                     <NoteList note={note} />
                 </form>
