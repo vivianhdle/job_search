@@ -7,7 +7,7 @@ import NoteList from './note_list';
 import ContactList from './contact_list';
 import { formatTime } from '../helpers';
 import Header from '../general/header';
-// import './edit_form_card.scss';
+import './edit_form_card.scss';
 import Dropdown from '../prospect/progress';
 import './view_details.scss';
 
@@ -48,8 +48,8 @@ class EditFormCard extends Component {
                         <div className="row">
                             <div className="right-align created col s10 offset-s1 view-main-text"><em>Added {formatTime(created)}</em></div>
                         </div>
-                    <ContactList contact={contact} />
-                    <NoteList note={note} />
+                    <ContactList contact={contact} edit="true"/>
+                    <NoteList note={note} edit="true"/>
                 </form>
             </Fragment>
         )

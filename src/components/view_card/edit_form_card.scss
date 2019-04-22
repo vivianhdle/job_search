@@ -1,59 +1,22 @@
-.loading{
-    font-size: 3em;
+.deletebutton{
+    position: relative;
+    top: 18px;
+    color: white;
+    right: 38px;
+    i{ 
+        font-size:18px;
+        color:white;
+        border-radius:50%;
+        border:1px solid rgb(202, 200, 200);
+    }
 }
 
-.collapsible {
-    background-color: white;
-}
+// .collapsible-header .contact.deletebutton>i{
+//     right: 40px;
+//     position: absolute;
+// }
 
-
-.view-main-text.company {
-    font-size: 24px;
-}
-
-
-.details-container{
-    background-color: rgba(243, 243, 243, 0.856);
-    min-height: 93%;
-
-    .input-field{
-        margin-top:0;
-        margin-bottom:0;
-    
-        input[type=text]:not(.browser-default).company,input[type=text]:not(.browser-default).title,input[type=text]:not(.browser-default).link{
-            border:none;
-        }
-        input[type=text]:not(.browser-default).title{
-            font-size:1.2em;
-            font-weight:400
-        }
-        input[type=text]:not(.browser-default).link{
-            font-size:1.2em;
-            font-weight:400
-        }
-        input[type=text]:not(.browser-default).company{
-            color:#26a69a;
-            font-size:2em;
-            font-weight: 300;
-        }
-    }
-    .contact-email,
-    .contact-phone {
-        display: inline-block;
-        vertical-align: top;
-    }
-    .material-icons.prefix {
-        padding-right: 7%;
-    }
-    .contact-email {
-        margin-bottom: 11%;
-    }
-    .view-main-text {
-        margin: 3% 0;
-    }
-    
-    .card {
-        margin: 4% 0;
-        border-radius: 5px;
-    }
+span.contact{
+    right: 40px;
+    position: absolute;
 }

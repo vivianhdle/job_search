@@ -1,9 +1,10 @@
 import React from 'react';
 import {formatTime} from '../helpers';
 import './note_card.scss'
+import DeleteButton from '../general/button';
 
 function NoteCard(props){
-    const {id,created,input} = props
+    const {id,created,input,edit} = props
     return(
         <div className="row">
             <div className="col s10 offset-s1">
@@ -14,6 +15,7 @@ function NoteCard(props){
                 </div>
                 </div>
             </div>
+            {edit && <DeleteButton icon="close" classes="deletebutton"/>}
         </div>
     )
 }
