@@ -8,7 +8,7 @@ class ContactList extends Component{
     render(){
         const contactElements = this.props.contact.map((contact)=>{
             return(
-                <ContactCard key={contact.id} {...contact} />
+                <ContactCard edit={this.props.edit} key={contact.id} {...contact} />
             )
         })
         return (

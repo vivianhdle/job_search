@@ -5,7 +5,7 @@ function NoteList(props){
     const notes = props.note
     const noteElements = notes.map((note)=>{
         return (
-            <NoteCard key={note.id} {...note}/>
+            <NoteCard edit={props.edit} key={note.id} {...note}/>
         )
     })
     return (

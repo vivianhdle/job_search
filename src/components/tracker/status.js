@@ -44,7 +44,7 @@ class Status extends Component {
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
                     <Header title={progress} />
-                    <AddButton icon={'add'} goToProspect={this.goToProspect} />
+                    <AddButton icon='add' classes="addbutton" goToProspect={this.goToProspect} />
                     <div className="card-container row col s12">
                         {cards}
                     </div>
