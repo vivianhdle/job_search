@@ -27,7 +27,6 @@ class AddJobCardForm extends Component {
     render() {
         const { add, handleSubmit } = this.props;
         const {contactForm} = this.state;
-        console.log(contactForm);
         return (
             <form onSubmit={handleSubmit(add)}>
                 <Header title="Add Job Prospect" alignment="left-align" margin="5%" bgcolor="white" />
@@ -43,7 +42,9 @@ class AddJobCardForm extends Component {
                 </div>
                 <div className="row">
                     {contactForm}
-                    <button className="btn" onClick={this.addNewContact}>add</button>
+                </div>
+                <div className="btn-wrapper row">
+                    <button type="button" className="btn-floating center btn-small waves-effect blue-grey" onClick={this.addNewContact}><i className="material-icons">add</i></button>
                 </div>
                 <div className="row">
                     <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" />
