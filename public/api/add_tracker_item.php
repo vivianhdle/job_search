@@ -29,11 +29,7 @@ $user_id = 1;
 $title = $input['title'];
 $company = $input['company'];
 $progress = $input['progress'];
-$contact_info = [
-    "name" => $input['contact']['name'],
-    "email" => $input['contact']['email'],
-    "phone" => $input['contact']['phone']
-];
+$contact_info = $input['contact'];
 $note_item = $input['note'];
 $link = $input['link'];
 
@@ -64,14 +60,20 @@ if($contact_info){
         `phone`=?    
     ";
 
-    $contact_statement = mysqli_prepare($conn, $contact_query);
-    mysqli_stmt_bind_param($contact_statement, 'issi', $returned_tracker_id, $contact_info['name'], $contact_info['email'], $contact_info['phone']);
-    $contact_result = mysqli_stmt_execute($contact_statement);
-    $contact_result = mysqli_stmt_get_result($contact_statement);
-    
-    if(mysqli_affected_rows($conn) === 0){
-        throw new Exception('tracker contact was not added');
-    }    
+    foreach($contact_info as $value){
+        $name = $value['name'];
+        $email = $value['email'];
+        $phone = $value['phone'];
+
+        $contact_item_statement = mysqli_prepare($conn, $contact_query);
+        mysqli_stmt_bind_param($contact_item_statement, 'issi', $returned_tracker_id, $name, $email, $phone);
+        $contact_item_result = mysqli_stmt_execute($contact_item_statement);
+        $contact_item_result = mysqli_stmt_get_result($contact_item_statement);  
+        
+        if(mysqli_affected_rows($conn) === 0){
+            throw new Exception(`tracker contact was not added`);
+        }
+    }
 }
 
 if($note_item){
@@ -80,7 +82,7 @@ if($note_item){
         `input`=?,
         `created`=NOW()
     ";
-
+    
     $note_statement = mysqli_prepare($conn, $note_query);
     mysqli_stmt_bind_param($note_statement, 'is', $returned_tracker_id, $note_item);
     $note_result = mysqli_stmt_execute($note_statement);
