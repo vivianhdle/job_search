@@ -6,7 +6,6 @@ class Modal extends Component {
 
     render(){
         const {children, modalIsOpen, modalClass, mscss} = this.props
-        console.log(this.props);
         if (modalIsOpen){
             return (
                 <div className={modalClass}>

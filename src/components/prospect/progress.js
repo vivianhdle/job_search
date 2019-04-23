@@ -16,7 +16,6 @@ class DropDown extends Component {
     }
 
     componentDidMount() {
-        //console.log(this.progress);
         M.FormSelect.init(this.progress);
 
     }

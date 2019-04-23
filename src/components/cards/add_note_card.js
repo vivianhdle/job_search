@@ -24,7 +24,6 @@ class AddNote extends Component {
     render() {
         const {id} = this.props;
         const {modalIsOpen} = this.state;
-        console.log('props', this.props)
         return (
             <div className="action row center">
                 <Modal modalIsOpen={modalIsOpen} modalClass="add-note-modal" mscss="note">
