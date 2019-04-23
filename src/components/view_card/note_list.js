@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import NoteCard from '../cards/note_card';
 
-function NoteList(props){
-    const notes = props.note
-    const noteElements = notes.map((note)=>{
+class NoteList extends Component{
+    state ={
+        noteElements: null
+    }
+
+    componentDidMount(){
+    const {note} = this.props;
+    const noteElements = note.map((note)=>{
         return (
-            <NoteCard edit={props.edit} key={note.id} {...note}/>
+            <NoteCard edit={this.props.edit} key={note.id} {...note}/>
         )
     })
-    return (
+    this.setState({
+        noteElements: noteElements
+    })
+    }
+
+    render(){
+        return(
         <div className="notes">
-            {noteElements}
+            {this.state.noteElements}
         </div>
-    )
+    )}
 }
 export default NoteList;
