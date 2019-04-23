@@ -4,31 +4,51 @@ import { Field, FieldArray } from 'redux-form';
 import TextArea from '../general/textarea';
 import Input from '../general/input';
 import NoteForm from './note_form';
+import Modal from '../general/modal';
 
 class AddNote extends Component {
-    state = {
-        noteForm: [],
-        noteCount: 0
+    state={
+        modalIsOpen: false
     }
-    componentDidMount(){
-        this.addNewNote();
-    }
-    addNewNote = () => {
-        let {noteForm, noteCount} = this.state;
-        noteForm = [...noteForm, <NoteForm key={noteCount} name={`note${noteCount}`}/>]
-        noteCount++;
+    // state = {
+    //     noteForm: [],
+    //     noteCount: 0
+    // }
+    // componentDidMount(){
+    //     this.addNewNote();
+    // }
+    // addNewNote = () => {
+    //     let {noteForm, noteCount} = this.state;
+    //     noteForm = [...noteForm, <NoteForm key={noteCount} name={`note${noteCount}`}/>]
+    //     noteCount++;
+    //     this.setState({
+    //         noteForm,
+    //         noteCount
+    //     })
+    // }
+
+    showModal=()=>{
         this.setState({
-            noteForm,
-            noteCount
+            modalIsOpen: true
         })
     }
 
+    hideModal=()=>{
+        this.setState({
+            modalIsOpen: false
+        })
+    }
+
+
     render() {
-        const {noteForm} = this.state;
+        const {modalIsOpen} = this.state;
+        //const {noteForm} = this.state;
         return (
             <div className="action row center">
-                {noteForm}
-                <div className="btn-floating btn-small waves-effect blue-grey" onClick={this.addNewNote}>
+                <Modal modalIsOpen={modalIsOpen} modalClass="add-note-modal" mscss="note">
+                    <NoteForm name="note"/>
+                </Modal>
+                <div className="btn-floating btn-small waves-effect blue-grey" onClick={this.showModal}>
                     <i className="material-icons">
                         add
                     </i>

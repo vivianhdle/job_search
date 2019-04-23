@@ -27,8 +27,9 @@ class EditFormCard extends Component {
                     <div className="row">
                         <Field id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"} />
                     </div>
-                    <NoteList note={note}/>
                     <AddNote/>
+                    <NoteList note={note}/>
+                    
                 </form>
             </div>
                 )

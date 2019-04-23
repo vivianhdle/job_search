@@ -4,18 +4,6 @@ import './note_card.scss'
 import DeleteButton from '../general/button';
 
 class NoteCard extends Component{
-    constructor(props){
-        super(props);
-    }
-
-    editNote = () =>{
-
-    }
-
-    componentDidMount(){
-        
-    }
-
     render(){
         const {id,created,input,edit} = this.props
     return(
@@ -28,12 +16,12 @@ class NoteCard extends Component{
                 </div>
                 </div>
             </div>
-            {edit && <DeleteButton icon="close" classes="deletebutton"/>}
+            
         </div>
     )
     }
 }
 
-
-
 export default NoteCard;
+
+//{edit && <DeleteButton icon="close" classes="deletebutton"/>}

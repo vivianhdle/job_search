@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import './modal.scss';
+
 
 class Modal extends Component {
 
-    componentDidMount() {
-        M.Modal.init(this.modal)
-    }
-
-    render() {
-        return (
-            <div className="modal-container" ref={(element) => { this.modal = element }}>>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-                <div id="modal1" class="modal">
-                    <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    render(){
+        const {children, modalIsOpen, modalClass, mscss} = this.props
+        console.log(this.props);
+        if (modalIsOpen){
+            return (
+                <div className={modalClass}>
+                    <div className={mscss}>
+                        {children}
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        return null;
     }
 }
+
+export default Modal;
