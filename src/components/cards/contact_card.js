@@ -7,22 +7,22 @@ function ContactCard(props){
     return(
         <Fragment>
             <li>
-                <div className="collapsible-header">
-                    <i className="material-icons">contacts</i>
+                <div className="collapsible-header grey-text text-darken-2">
+                    <i className="material-icons grey-text text-darken-2">contacts</i>
                     {name}
                     {edit && <DeleteButton icon="cancel" classes="contact"/>}  
                 </div>
                 <div className="collapsible-body">
                     <span>
-                        <i className="material-icons prefix">email</i>
-                        <div className="contact-email">
+                        <i className="material-icons prefix grey-text text-darken-2">email</i>
+                        <div className="contact-email grey-text text-darken-2">
                             {email}
                         </div>
                     </span>
                     <br/>
                     <span>
-                        <i className="material-icons prefix">phone</i>
-                        <div className="contact-phone">
+                        <i className="material-icons prefix grey-text text-darken-2">phone</i>
+                        <div className="contact-phone grey-text text-darken-2">
                             {phone}
                         </div>
                     </span>

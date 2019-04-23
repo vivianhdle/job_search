@@ -1,19 +1,35 @@
-// .deletebutton{
-//     position: relative;
-//     top: 18px;
-//     right: 38px;
-//     i{
-//         color: #4db6ac;
-//         font-size:18px;
-//         border-radius:50%;
-//         border:1px solid rgb(202, 200, 200);
-//     }
-// }
+.deletebutton{
+    position: relative;
+    top: 18px;
+    right: 38px;
+    i{
+        color: #4db6ac;
+        font-size:18px;
+        border-radius:50%;
+        border:1px solid rgb(202, 200, 200);
+    }
+}
 
-// span.contact{
-//     right: 40px;
-//     position: absolute;
-// }
-// .collapsible{
-//     box-shadow:none;
-// }
+span.contact{
+    right: 40px;
+    position: absolute;
+}
+.collapsible{
+    box-shadow:none;
+}
+
+.edit-container{
+    background-color:white;
+    height: 93%;
+    .form{
+        height:100%;
+        overflow:scroll;
+        form{
+            height: 100%;
+            width: 100%;
+            .select-dropdown{
+                color: #9e9e9e;
+            }
+        }
+    }
+}

@@ -1,6 +1,8 @@
+@import '../../assets/css/variables.scss';
+
 .details-container{
-    background-color: rgba(243, 243, 243, 0.856);
     min-height: 93%;
+    
     .material-icons.prefix {
         padding-right: 7%;
     }
@@ -22,6 +24,11 @@
     
     .view-main-text {
         margin: 6% 0;
+    }
+    .edit{
+        position:fixed;
+        bottom:25px;
+        right:25px;
     }
 }
 

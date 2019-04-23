@@ -4,7 +4,6 @@ import './header.scss';
 function Header(props){
     const {alignment="center",margin,bgcolor} = props;
     const style= {
-        "backgroundColor":bgcolor,
         "marginTop":margin
     }
     return(
