@@ -27,9 +27,9 @@ $contact_info_query = "INSERT INTO `contact_info` SET
     `phone`=?
 ";
 
-$name = $contact_info['name'];
-$email = $contact_info['email'];
-$phone = $contact_info['phone'];
+$name = $contact_info['name'] = '';
+$email = $contact_info['email'] = '';
+$phone = $contact_info['phone'] = '';
 
 $contact_info_statement = mysqli_prepare($conn, $contact_info_query);
 mysqli_stmt_bind_param($contact_info_statement, 'issi', $tracker_id, $name, $email, $phone);
