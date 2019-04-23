@@ -50,7 +50,7 @@ class AddJobCardForm extends Component {
                     <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" />
                 </div>
                 <div className="btn-wrapper row">
-                    <button className="btn blue-grey submit-button">Submit</button>
+                    <button className="btn blue-grey">Submit</button>
                 </div>
             </form>
         )

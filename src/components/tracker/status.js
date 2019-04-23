@@ -3,9 +3,9 @@ import './tracker.scss';
 import SmallCard from '../cards/small_card';
 import axios from 'axios';
 import Header from '../general/header';
-import AddButton from '../general/buttons/button';
 import ViewCard from '../view_card';
 import { Route } from 'react-router-dom';
+import ActionButton from '../general/buttons/action_button';
 
 class Status extends Component {
     state = {
@@ -25,9 +25,6 @@ class Status extends Component {
     goToProspect = () => {
         this.props.history.push('/prospect');
     }
-
-
-
     render() {
         const { progress, id } = this.props;
         const cards = this.state.cards.filter((card) => {
@@ -44,10 +41,10 @@ class Status extends Component {
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
                     <Header title={progress} />
-                    <AddButton icon='add' classes="addbutton" goToProspect={this.goToProspect} />
                     <div className="card-container row col s12">
                         {cards}
                     </div>
+                    <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1" icon="add"/>
                 </div>
             </Fragment>
 
