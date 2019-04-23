@@ -3,12 +3,11 @@ import Input from '../general/input';
 import { Field, reduxForm } from 'redux-form';
 import NoteList from '../view_card/note_list';
 import ContactList from '../view_card/contact_list';
-import { formatTime } from '../helpers';
 import './edit_form_card.scss';
 import DropDown from '../prospect/progress';
 import Header from '../general/header';
 import ActionButton from '../general/buttons/action_button';
-import AddNote from '../cards/add_note_card';
+import AddNote from './add_note/add_note_card';
 import AddContact from './add_contact/add_contact';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
@@ -19,7 +18,7 @@ class EditFormCard extends Component {
         addContactOpen:false,
         addNoteOpen:false
     }
-    
+
     async componentDidMount(){
         await ReactDOM.findDOMNode(this.link).getElementsByTagName("input")[0].focus();
         await ReactDOM.findDOMNode(this.company).getElementsByTagName("input")[0].focus();
@@ -93,7 +92,7 @@ class EditFormCard extends Component {
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
                     <ContactList contact={contact} edit="true" />
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
-                    <NoteList note={note} />
+                    <NoteList note={note} edit={true}/>
                 </div>
         )
     }

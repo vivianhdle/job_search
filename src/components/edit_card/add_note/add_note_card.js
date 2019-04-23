@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Modal from '../general/modal';
+import Modal from '../../general/modal';
 import { reduxForm,Field } from 'redux-form';
-import ActionButton from '../general/buttons/action_button';
-import Input from '../general/input';
+import ActionButton from '../../general/buttons/action_button';
+import Input from '../../general/input';
 
 class AddNote extends Component {
     render() {
