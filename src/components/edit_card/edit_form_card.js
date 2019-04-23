@@ -38,6 +38,12 @@ class EditFormCard extends Component {
         })
     }
 
+    exitContactModal = () => {
+        this.setState({
+            addContactOpen:false
+        })
+    }
+
     addNoteModal = () => {
         this.setState({
             addNoteOpen:true
@@ -55,6 +61,9 @@ class EditFormCard extends Component {
             contact: values
         }
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
+        this.setState({
+            addContactOpen:false
+        })
 
     }
     handleAddNote = async values =>{
@@ -70,7 +79,7 @@ class EditFormCard extends Component {
         const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit} = this.props;
         return (
                 <div className="form">
-                    {this.state.addContactOpen && <AddContact addContact={this.handleAddContact}/>}
+                    {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal}/>}
                     {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote}/>}
                     <form onSubmit = {handleSubmit(this.handleAdd)}>
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
