@@ -9,14 +9,25 @@ import DropDown from '../prospect/progress';
 import Header from '../general/header';
 import ActionButton from '../general/action_button';
 import AddNote from '../cards/add_note_card';
+import AddContact from './add_contact/add_contact';
 
 
 class EditFormCard extends Component {
-
+    state={
+        addContactOpen:false,
+        addNoteOpen:false
+    }
+    addContactModal = () => {
+        console.log('flipping the switch')
+        this.setState({
+            addContactOpen:true
+        })
+    }
     render() {
         const { title, company, contact = [], created, link, note = [], progress, handleChange } = this.props;
         return (
                 <div className="form">
+                    {this.state.addContactOpen && <AddContact/>}
                     <form>
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white"/>
                         <DropDown col="s10 offset-s1 col edit-progress"/>
@@ -29,10 +40,10 @@ class EditFormCard extends Component {
                         <div className="row">
                             <Field id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"}/>
                         </div>
-                        <AddNote/>
+                        {this.state.addNoteOpen && <AddNote/>}
                     </form>
-                    <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn"/>
-                    <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn"/>
+                    <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
+                    <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn" handleClick={this.addContactModal}/>
                     <ContactList contact={contact} edit="true"/>
                     <NoteList note={note}/>
                 </div>
