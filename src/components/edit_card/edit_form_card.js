@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../general/input';
-import { Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import NoteList from '../view_card/note_list';
 import ContactList from '../view_card/contact_list';
 import { formatTime } from '../helpers';
@@ -8,9 +8,11 @@ import './edit_form_card.scss';
 import DropDown from '../prospect/progress';
 import Header from '../general/header';
 import ActionButton from '../general/action_button';
+import AddNote from '../cards/add_note_card';
 
 
 class EditFormCard extends Component {
+
     render() {
         const { title, company, contact = [], created, link, note = [], progress, handleChange } = this.props;
         return (
@@ -27,16 +29,17 @@ class EditFormCard extends Component {
                         <div className="row">
                             <Field id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"}/>
                         </div>
+                        <AddNote/>
                     </form>
                     <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn"/>
                     <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn"/>
                     <ContactList contact={contact} edit="true"/>
+                    <NoteList note={note}/>
                 </div>
         )
     }
 }
-
 export default reduxForm({
-    form: 'edit-job-card',
-    // validate: validate
+                    form: 'edit-job-card',
+                // validate: validate
 })(EditFormCard);

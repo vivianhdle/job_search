@@ -5,7 +5,8 @@ import axios from 'axios';
 class EditCard extends Component{
     state = {
         respData: null,
-        isLoaded:false
+        isLoaded:false,
+        params: null
     }
     componentDidMount() {
         this.getData();
@@ -15,7 +16,8 @@ class EditCard extends Component{
         const resp = await axios.get(`/api/get_tracker_item.php?trackerId=${params.id}`);
         this.setState({
             respData: resp.data.data,
-            isLoaded: true
+            isLoaded: true,
+            params: params
         })
     }
     handleChange = e => {

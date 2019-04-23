@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {formatTime} from '../helpers';
 import './note_card.scss'
 import DeleteButton from '../general/button';
 
-function NoteCard(props){
-    const {id,created,input,edit} = props
+class NoteCard extends Component{
+    render(){
+        const {id,created,input,edit} = this.props
     return(
-        <div className="row">
+        <div className="row" >
             <div className="col s10 offset-s1">
                 <div className="card white">
                 <div className="card-content blue-grey-text">
@@ -15,11 +16,12 @@ function NoteCard(props){
                 </div>
                 </div>
             </div>
-            {edit && <DeleteButton icon="close" classes="deletebutton"/>}
+            
         </div>
     )
+    }
 }
 
-
-
 export default NoteCard;
+
+//{edit && <DeleteButton icon="close" classes="deletebutton"/>}
