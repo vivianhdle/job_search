@@ -4,7 +4,7 @@ import ContactList from './contact_list';
 import Header from '../general/header';
 import './view_details.scss';
 import {formatTime} from '../helpers/index';
-import ActionButton from '../general/action_button';
+import ActionButton from '../general/buttons/action_button';
 
 class ViewDetails extends Component{
     render(){
@@ -13,7 +13,6 @@ class ViewDetails extends Component{
             <Fragment>
                 <div className="row">
                     <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey btn-floating" size="btn"/>
-                    {/* <span><button className="blue-grey btn-floating waves-effect btn right edit"><i className="material-icons">edit</i></button></span> */}
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
                         <div className="view-main-text grey-text text-darken-2">{title}</div>

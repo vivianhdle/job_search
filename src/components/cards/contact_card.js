@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import DeleteButton from '../general/button';
 import './contact_card.scss'
 
 function ContactCard(props){
@@ -11,7 +10,6 @@ function ContactCard(props){
                 <div className="collapsible-header grey-text text-darken-2">
                     <i className="material-icons grey-text text-darken-2">contacts</i>
                     {name}
-                    {/* {edit && <DeleteButton icon="cancel" classes="contact"/>}   */}
                 </div>
                 <div className="collapsible-body">
                     <span>

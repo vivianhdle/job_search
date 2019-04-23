@@ -7,7 +7,7 @@ import { formatTime } from '../helpers';
 import './edit_form_card.scss';
 import DropDown from '../prospect/progress';
 import Header from '../general/header';
-import ActionButton from '../general/action_button';
+import ActionButton from '../general/buttons/action_button';
 import AddNote from '../cards/add_note_card';
 import AddContact from './add_contact/add_contact';
 
@@ -23,11 +23,15 @@ class EditFormCard extends Component {
             addContactOpen:true
         })
     }
+    handleAddContact = (values) => {
+        console.log('values:',values);
+        //axios call here
+    }
     render() {
         const { title, company, contact = [], created, link, note = [], progress, handleChange } = this.props;
         return (
                 <div className="form">
-                    {this.state.addContactOpen && <AddContact/>}
+                    {this.state.addContactOpen && <AddContact addContact={this.handleAddContact}/>}
                     <form>
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white"/>
                         <DropDown col="s10 offset-s1 col edit-progress"/>
@@ -42,8 +46,8 @@ class EditFormCard extends Component {
                         </div>
                         {this.state.addNoteOpen && <AddNote/>}
                     </form>
-                    <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
-                    <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn" handleClick={this.addContactModal}/>
+                    <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
+                    <ActionButton icon="note_add" classes="teal lighten-1 btn-floating" size="btn" handleClick={this.addContactModal}/>
                     <ContactList contact={contact} edit="true"/>
                     <NoteList note={note}/>
                 </div>
@@ -51,6 +55,6 @@ class EditFormCard extends Component {
     }
 }
 export default reduxForm({
-                    form: 'edit-job-card',
-                // validate: validate
+        form: 'edit-job-card',
+    // validate: validate
 })(EditFormCard);

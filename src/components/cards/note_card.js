@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {formatTime} from '../helpers';
 import './note_card.scss'
-import DeleteButton from '../general/button';
 
 class NoteCard extends Component{
     render(){
