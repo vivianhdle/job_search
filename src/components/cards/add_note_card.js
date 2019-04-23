@@ -1,31 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { Field, FieldArray } from 'redux-form';
-import TextArea from '../general/textarea';
-import Input from '../general/input';
 import NoteForm from './note_form';
 import Modal from '../general/modal';
+import ActionButton from '../general/action_button';
 
 class AddNote extends Component {
     state={
         modalIsOpen: false
     }
-    // state = {
-    //     noteForm: [],
-    //     noteCount: 0
-    // }
-    // componentDidMount(){
-    //     this.addNewNote();
-    // }
-    // addNewNote = () => {
-    //     let {noteForm, noteCount} = this.state;
-    //     noteForm = [...noteForm, <NoteForm key={noteCount} name={`note${noteCount}`}/>]
-    //     noteCount++;
-    //     this.setState({
-    //         noteForm,
-    //         noteCount
-    //     })
-    // }
 
     showModal=()=>{
         this.setState({
@@ -39,20 +21,16 @@ class AddNote extends Component {
         })
     }
 
-
     render() {
+        const {id} = this.props;
         const {modalIsOpen} = this.state;
-        //const {noteForm} = this.state;
+        console.log('props', this.props)
         return (
             <div className="action row center">
                 <Modal modalIsOpen={modalIsOpen} modalClass="add-note-modal" mscss="note">
-                    <NoteForm name="note"/>
+                    <NoteForm name="note" id={id}/>
                 </Modal>
-                <div className="btn-floating btn-small waves-effect blue-grey" onClick={this.showModal}>
-                    <i className="material-icons">
-                        add
-                    </i>
-                </div>
+                <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn" handleClick={this.showModal}/>
             </div>
         )
     }

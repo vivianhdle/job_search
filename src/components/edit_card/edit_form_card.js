@@ -14,7 +14,7 @@ import AddNote from '../cards/add_note_card';
 class EditFormCard extends Component {
 
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, id } = this.props;
         return (
                 <div className="form">
                     <form>
@@ -29,10 +29,10 @@ class EditFormCard extends Component {
                         <div className="row">
                             <Field id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"}/>
                         </div>
-                        <AddNote/>
+                        
                     </form>
                     <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn"/>
-                    <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn"/>
+                    <AddNote id={id}/>
                     <ContactList contact={contact} edit="true"/>
                     <NoteList note={note}/>
                 </div>
