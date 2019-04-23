@@ -13,7 +13,6 @@ if(empty($input['note'])){
 
 $output['success'] = false;
 
-$user_id = 1;
 $id= $input['id'];
 $note= $input['note'];
 

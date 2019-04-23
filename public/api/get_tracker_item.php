@@ -4,16 +4,12 @@
     require_once('config.php');
     require_once('mysqlconnect.php');
 
-    // if(empty($_SESSION['user_id'])){
-    //     throw new Exception('Missing user id');
-    // }
-
-    if(empty($_GET['trackerId'])){
+    if(empty($_GET['tracker_id'])){
         throw new Exception('You must send a tracker_id with your request');
     };
 
     $user_id = 1;//hard coded for now
-    $tracker_id = (int)$_GET['trackerId'];
+    $tracker_id = (int)$_GET['tracker_id'];
 
     $output['success'] = false;
 

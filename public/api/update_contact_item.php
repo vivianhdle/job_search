@@ -13,7 +13,6 @@ if(empty($input['contact'])){
 
 $output['success'] = false;
 
-$user_id = 1;
 $contact_info = $input['contact'];
 $id = $contact_info['id'];
 $name = $contact_info['name'];

@@ -2,5 +2,5 @@ GET
 http://localhost/api/get_tracker_item.php
 Params
 
-KEY: trackerId
+KEY: tracker_id
 VALUE: 1

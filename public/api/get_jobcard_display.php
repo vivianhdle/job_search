@@ -6,10 +6,6 @@
 
     $output['success'] = false;
 
-    // if(empty($_SESSION['user_id'])){
-    //     throw new Exception('Missing user id');
-    // }
-
     $user_id = 1;//hard coded for now
 
     $query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE u.`id`=$user_id";
