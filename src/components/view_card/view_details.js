@@ -22,7 +22,9 @@ class ViewDetails extends Component{
                         <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                     </div>
                 </div>
+                <Header title="Contacts" alignment="left" newClass="view-section-header"/>
                 <ContactList contact={contact}/>
+                <Header title="Notes" alignment="left" newClass="view-section-header"/>
                 <NoteList note={note}/>
             </Fragment>
         )

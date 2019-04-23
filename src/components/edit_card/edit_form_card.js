@@ -49,7 +49,9 @@ class EditFormCard extends Component {
                 </form>
                 <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn" />
                 <AddNote id={id} />
+                <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
                 <ContactList contact={contact} edit="true" />
+                <Header title="Notes" alignment="left" newClass="edit-section-header"/>
                 <NoteList note={note} />
             </div>
         )

@@ -2,7 +2,8 @@
 
 # Job Search Assistant
 
-> This repo contains the Job Search Assistant Application.
+> Website: http://devjobsearch.jungiang.com/
+> This repo contains the Job Search Assistant Application. Designed for mobile, the app serves as a resource organization hub for those looking for a new job opportunity. Add new job prospects to your tracking list to efficiently organize the current status of your job applications. Make updates to your current job prospects by adding new contacts to reach out to or with notes to know the status history of each application. 
 
 ### Setup Instructions
 
