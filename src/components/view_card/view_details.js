@@ -4,14 +4,16 @@ import ContactList from './contact_list';
 import Header from '../general/header';
 import './view_details.scss';
 import {formatTime} from '../helpers/index';
+import ActionButton from '../general/action_button';
 
 class ViewDetails extends Component{
     render(){
-        const { title, company, contact = [], created, link, note = [], progress } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleEdit } = this.props;
         return(
             <Fragment>
                 <div className="row">
-                    <span><button onClick={this.props.handleEdit} className="blue-grey btn-floating waves-effect btn right edit"><i className="material-icons">edit</i></button></span>
+                    <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey btn-floating" size="btn"/>
+                    {/* <span><button className="blue-grey btn-floating waves-effect btn right edit"><i className="material-icons">edit</i></button></span> */}
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
                         <div className="view-main-text grey-text text-darken-2">{title}</div>

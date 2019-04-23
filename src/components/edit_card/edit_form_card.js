@@ -7,6 +7,8 @@ import { formatTime } from '../helpers';
 import './edit_form_card.scss';
 import DropDown from '../prospect/progress';
 import Header from '../general/header';
+import ActionButton from '../general/action_button';
+
 
 class EditFormCard extends Component {
     render() {
@@ -26,6 +28,9 @@ class EditFormCard extends Component {
                             <Field id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"}/>
                         </div>
                     </form>
+                    <ActionButton icon="contacts" classes="blue-grey btn-floating add-contact" size="btn"/>
+                    <ActionButton icon="note_add" classes="blue-grey btn-floating" size="btn"/>
+                    <ContactList contact={contact} edit="true"/>
                 </div>
         )
     }

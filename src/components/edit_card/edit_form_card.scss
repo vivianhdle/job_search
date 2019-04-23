@@ -23,16 +23,20 @@ span.contact{
 .edit-container{
     background-color:white;
     height: 93%;
+    overflow-y:scroll;
     .form{
-        height:100%;
+
         overflow:scroll;
         form{
             height: 100%;
             width: 100%;
-            
+
             .select-dropdown,{
                 color:$light-gray
             }
         }
+    }
+    .add-contact{
+        bottom:9%;
     }
 }

@@ -3,19 +3,6 @@
 .details-container{
     min-height: 93%;
     
-    .material-icons.prefix {
-        padding-right: 7%;
-    }
-    
-    .contact-email,
-    .contact-phone {
-        display: inline-block;
-        vertical-align: top;
-    }
-    
-    .contact-email {
-        margin-bottom: 11%;
-    }
     
     .view-main-text.company {
         font-size: 24px;
@@ -24,11 +11,6 @@
     
     .view-main-text {
         margin: 6% 0;
-    }
-    .edit{
-        position:fixed;
-        bottom:25px;
-        right:25px;
     }
 }
 
@@ -43,34 +25,4 @@
 .card {
     margin: 4% 0;
     border-radius: 5px;
-}
-
-.editform {
-    .edit-progress {
-        margin-top: 0;
-
-        .select-wrapper input.select-dropdown {
-            font-size: 25px;
-            border:none;
-        }
-    }
-    input[type=text]:not(.browser-default).company,input[type=text]:not(.browser-default).title,input[type=text]:not(.browser-default).link{
-            border:none;
-    }
-
-    .input.company {
-        font-size: 24px;
-        margin-bottom: 4px;
-        font-weight:300;
-    }
-
-    .input.title,
-    .input.link {
-        font-size: 14px;
-        margin: 0;
-    }
-    
-    .input-field {
-        margin: 0;
-    }
 }
