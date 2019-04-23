@@ -19,42 +19,59 @@ class EditFormCard extends Component {
         addContactOpen:false,
         addNoteOpen:false
     }
+    
     async componentDidMount(){
         await ReactDOM.findDOMNode(this.link).getElementsByTagName("input")[0].focus();
         await ReactDOM.findDOMNode(this.company).getElementsByTagName("input")[0].focus();
         ReactDOM.findDOMNode(this.title).getElementsByTagName("input")[0].focus();
-    }    
+    }   
+    
     handleAdd = async values => {
         const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id)}
         await axios.post('/api/update_tracker_item.php', newValues);
         this.goToTracker();
     }
+
     addContactModal = () => {
         this.setState({
             addContactOpen:true
         })
     }
+
     addNoteModal = () => {
         this.setState({
             addNoteOpen:true
         })
     }
+
     goToTracker = () =>{
         this.props.history.push(`/tracker/${this.props.match.params.id}`);
     }
-    handleAddContact = (values) => {
-        console.log('values:',values);
-        //axios call here
+
+    handleAddContact = async values => {
+        const{id} = this.props;
+        const contactValue ={
+            tracker_id: id,
+            contact: values
+        }
+        const resp = await axios.post('/api/add_contact_item.php', contactValue);
+
     }
-    handleAddNote = values =>{
-        console.log('values:',values);
+    handleAddNote = async values =>{
+        const {id} = this.props;
+        const noteValue = {
+            tracker_id: id,
+            note: values.note
+        };
+        const resp = await axios.post(`/api/add_note_item.php`, noteValue);
     }
+
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, id , handleSubmit} = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit} = this.props;
         return (
                 <div className="form">
                     {this.state.addContactOpen && <AddContact addContact={this.handleAddContact}/>}
-                    {this.state.addNoteOpen && <AddNote id={id} addNote={this.handleAddNote}/>}
+                    {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote}/>}
                     <form onSubmit = {handleSubmit(this.handleAdd)}>
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
                         <DropDown ref={(input)=>this.dropdown=input} col="s10 offset-s1 col edit-progress" />
