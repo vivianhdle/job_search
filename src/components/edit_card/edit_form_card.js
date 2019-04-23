@@ -46,13 +46,16 @@ class EditFormCard extends Component {
         console.log('values:',values);
         //axios call here
     }
+    handleAddNote = values =>{
+        console.log('values:',values);
+    }
     render() {
         const { title, company, contact = [], created, link, note = [], progress, handleChange, id , handleSubmit} = this.props;
         return (
                 <div className="form">
                     {this.state.addContactOpen && <AddContact addContact={this.handleAddContact}/>}
-                    {this.state.addContactOpen && <AddNote id={id} addContact={this.handleAddNote}/>}
-                    <form>
+                    {this.state.addNoteOpen && <AddNote id={id} addNote={this.handleAddNote}/>}
+                    <form onSubmit = {handleSubmit(this.handleAdd)}>
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
                         <DropDown ref={(input)=>this.dropdown=input} col="s10 offset-s1 col edit-progress" />
                         <div className="row">
@@ -69,7 +72,7 @@ class EditFormCard extends Component {
                         </div>
                     </form>
                     <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
-                    <ActionButton icon="note_add" classes="teal lighten-1 btn-floating" size="btn" handleClick={this.addContactModal}/>
+                    <ActionButton icon="note_add" classes="teal lighten-1 btn-floating" size="btn" handleClick={this.addNoteModal}/>
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
                     <ContactList contact={contact} edit="true" />
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
