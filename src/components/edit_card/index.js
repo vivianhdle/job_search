@@ -28,6 +28,7 @@ class EditCard extends Component{
         })
     }
     render(){
+        
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>
