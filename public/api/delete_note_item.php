@@ -7,10 +7,6 @@ require_once('mysqlconnect.php');
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
 
-// if(!empty($_GET['user_id'])){
-//     throw new Exception('You must send a user_id with your request');
-// }
-
 if(empty($input['tracker_id'])){
     throw new Exception('You must send a tracker id with your request');
 }
@@ -21,7 +17,6 @@ if(empty($input['note_id'])){
 
 $output['success'] = false;
 
-$user_id = 1;
 $tracker_id = $input['tracker_id'];
 $note_id = $input['note_id'];
 
