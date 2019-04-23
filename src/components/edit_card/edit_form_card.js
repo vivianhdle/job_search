@@ -9,46 +9,39 @@ import DropDown from '../prospect/progress';
 import Header from '../general/header';
 import ActionButton from '../general/action_button';
 import AddNote from '../cards/add_note_card';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 
 class EditFormCard extends Component {
+    async componentDidMount(){
+        await ReactDOM.findDOMNode(this.link).getElementsByTagName("input")[0].focus();
+        await ReactDOM.findDOMNode(this.company).getElementsByTagName("input")[0].focus();
+        ReactDOM.findDOMNode(this.title).getElementsByTagName("input")[0].focus();
+    }
     goToTracker = () =>{
-        this.props.history.push(`/tracker/${params.id}`);
+        this.props.history.push(`/tracker/${this.props.match.params.id}`);
     }
     handleAdd = async values => {
-        // let newContact = [];
-        // for(let object in values){
-        //     if(typeof values[object] === 'object')
-        //         newContact.push(values[object]);
-        // }
-        // values = {
-        //     progress: values.progress,
-        //     company: values.company,
-        //     title: values.title,
-        //     link: values.link,
-        //     contact: newContact,
-        //     note: values.note
-        // }
-        console.log(values);
-        debugger;
-        // await axios.post('/api/add_tracker_item.php', values);
-        // this.goToTracker();
+        const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id)}
+        await axios.post('/api/update_tracker_item.php', newValues);
+        this.goToTracker();
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, id } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, id , handleSubmit} = this.props;
         return (
             <div className="form">
-                <form onSubmit={this.handleAdd}>
+                <form onSubmit={handleSubmit(this.handleAdd)}>
                     <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
-                    <DropDown col="s10 offset-s1 col edit-progress" />
+                    <DropDown ref={(input)=>this.dropdown=input} col="s10 offset-s1 col edit-progress" />
                     <div className="row">
-                        <Field id="title" col="s10 offset-s1" name="title" component={Input} onChange={handleChange} currentValue={title} label={!title && "Job Title"} />
+                        <Field ref={(input)=>this.title=input} id="title" col="s10 offset-s1" name="title" component={Input} onChange={handleChange} currentValue={title} label={!title && "Job Title"} />
                     </div>
                     <div className="row">
-                        <Field id="company" col="s10 offset-s1" name="company" onChange={handleChange} label={!company && "Company Name"} currentValue={company} component={Input} />
+                        <Field ref={(input)=>this.company=input} id="company" col="s10 offset-s1" name="company" onChange={handleChange} label={!company && "Company Name"} currentValue={company} component={Input} />
                     </div>
                     <div className="row">
-                        <Field id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"} />
+                        <Field ref={(input)=>this.link=input} id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"} />
                     </div>
                     <div className="btn-wrapper row right-align">
                         <button className="btn blue-grey submit-button">Submit</button>

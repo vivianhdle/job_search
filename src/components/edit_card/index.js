@@ -13,7 +13,7 @@ class EditCard extends Component{
     }
     async getData(){
         const { params } = this.props.match;
-        const resp = await axios.get(`/api/get_tracker_item.php?trackerId=${params.id}`);
+        const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
         this.setState({
             respData: resp.data.data,
             isLoaded: true,
@@ -36,7 +36,7 @@ class EditCard extends Component{
         } else {
             return (
                 <div className="edit-container">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange}/>
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props}/>
                 </div>
             )
         }            
