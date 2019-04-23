@@ -1,9 +1,11 @@
+@import "./variables.scss";
+
 body {
     margin: 0;
-    background-color:lightgray;
+    background-color:$tracker-background;
     #root{
         height:100vh;
-        background-color:lightgray;
+        background-color:$tracker-background;
 
         .app-container{
             height:100%;

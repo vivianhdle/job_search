@@ -32,7 +32,7 @@ class EditCard extends Component{
             )
         } else {
             return (
-                <div className="details-container">
+                <div className="edit-container">
                     <EditCardForm {...this.state.respData} handleChange={this.handleChange}/>
                 </div>
             )

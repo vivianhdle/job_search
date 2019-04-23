@@ -4,19 +4,21 @@ import ContactList from './contact_list';
 import Header from '../general/header';
 import './view_details.scss';
 import {formatTime} from '../helpers/index';
+import ActionButton from '../general/action_button';
 
 class ViewDetails extends Component{
     render(){
-        const { title, company, contact = [], created, link, note = [], progress } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleEdit } = this.props;
         return(
             <Fragment>
                 <div className="row">
+                    <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey btn-floating" size="btn"/>
+                    {/* <span><button className="blue-grey btn-floating waves-effect btn right edit"><i className="material-icons">edit</i></button></span> */}
                     <div className="info col s10 offset-s1">
-                        <Header title={progress} bgcolor="rgba(243, 243, 243, 0.856)" />
-                        <div className="view-main-text company teal-text text-lighten-2">{company}</div>
-                        <span><button onClick={this.props.handleEdit} className="blue-grey btn-floating waves-effect btn-small right"><i className="material-icons">edit</i></button></span>
-                        <div className="view-main-text">{title}</div>
-                        <a href={link} target="_blank" className="view-main-text orange-text text-darken-1">{link}</a>
+                        <div className="view-main-text company">{company}</div>
+                        <div className="view-main-text grey-text text-darken-2">{title}</div>
+                        <div className="view-main-text grey-text text-darken-2">{progress}</div>
+                        <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">{link}</a>
                         <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                     </div>
                 </div>
