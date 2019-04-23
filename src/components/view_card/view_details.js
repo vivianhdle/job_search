@@ -14,7 +14,8 @@ class ViewDetails extends Component{
                     <span><button onClick={this.props.handleEdit} className="blue-grey btn-floating waves-effect btn right edit"><i className="material-icons">edit</i></button></span>
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
-                        <div className="view-main-text">{title}</div>
+                        <div className="view-main-text grey-text text-darken-2">{title}</div>
+                        <div className="view-main-text grey-text text-darken-2">{progress}</div>
                         <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">{link}</a>
                         <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                     </div>
