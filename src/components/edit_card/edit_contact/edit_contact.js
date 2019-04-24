@@ -29,6 +29,12 @@ class EditContactModal extends Component{
         })
     }
 
+    handleDeleteContact = async () => {
+        const { id } = this.props;
+        await axios.post('/api/delete_contact_item.php', { "id": id });
+        this.props.view();
+    }
+
     handleEditContact = async values =>{
         console.log('val',values);
         const {id} = this.props;
@@ -52,13 +58,16 @@ class EditContactModal extends Component{
             <div className="action row">
                 <Modal modalClass="add-contact-modal" mscss="contact">
                     <button onClick={exitModal}><i className="material-icons exit">close</i></button>
+                    
                     <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
                         <Header alignment="left" title="Edit Contact" newClass="col s10 offset-s1"/>
                         <Field ref={(input)=>{this.name=input}} id="name" col="s10 offset-s1" name="name" component={Input} label={!name && "Name"}/>
                         <Field ref={(input)=>{this.email=input}} id="email" col="s10 offset-s1" name="email" component={Input} label={!email && "Email"} />
                         <Field ref={(input)=>{this.phone=input}} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
+                        
                         <button className="btn add-contact blue-grey">SUBMIT</button>
                     </form>
+                    <button className="trash" onClick={this.handleDeleteContact}><i className="material-icons grey-text">delete</i></button>
                 </Modal>
             </div>
         )
