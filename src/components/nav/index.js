@@ -7,10 +7,10 @@ class Nav extends Component{
     renderLinks(){
         return(
             <Fragment>
-                <li>
+                <li className="sidenav-close">
                     <Link to="/tracker">Home</Link>
                 </li>
-                <li>
+                <li className="sidenav-close">
                     <Link to="/prospect">Job Prospect</Link>
                 </li>
             </Fragment>

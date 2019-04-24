@@ -12,7 +12,7 @@ class ViewDetails extends Component{
         return(
             <Fragment>
                 <div className="row">
-                    <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey btn-floating" size="btn"/>
+                    <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey action-button btn-floating" size="btn"/>
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
                         <div className="view-main-text grey-text text-darken-2">{title}</div>

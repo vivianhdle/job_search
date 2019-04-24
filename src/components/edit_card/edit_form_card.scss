@@ -38,7 +38,14 @@ span.contact{
         }
     }
     .add-contact{
-        bottom:9%;
+        position:fixed;
+        bottom: 74px;
+        right:25px;
+    }
+    .add-note{
+        position:fixed;
+        bottom:25px;
+        right:25px;
     }
 }
 
