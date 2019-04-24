@@ -22,8 +22,10 @@ class ViewDetails extends Component{
                     </div>
                 </div>
                 <Header title="Contacts" alignment="left" newClass="view-section-header"/>
+                {/* <i className="material-icons">contacts</i> */}
                 <ContactList contact={contact}/>
                 <Header title="Notes" alignment="left" newClass="view-section-header"/>
+                {/* <i className="material-icons">contacts</i> */}
                 <NoteList note={note}/>
             </Fragment>
         )

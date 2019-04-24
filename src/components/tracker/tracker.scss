@@ -7,6 +7,12 @@
     display:flex;
     width: 100%;
     background-color:$tracker-background;
+
+    .add-prospect{
+        position: absolute;
+        bottom: 10%;
+        right: 3%;
+    }
     
     .job-container{
         height:100%;

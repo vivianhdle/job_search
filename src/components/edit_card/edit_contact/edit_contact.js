@@ -5,6 +5,7 @@ import Modal from '../../general/modal';
 import Input from '../../general/input';
 import Header from '../../general/header';
 import axios from 'axios';
+import './edit_contact.scss'
 import ReactDOM from 'react-dom';
 
 class EditContactModal extends Component{
@@ -49,15 +50,16 @@ class EditContactModal extends Component{
         const{phone, email, name} =this.state.form
         return (
             <div className="action row">
-                <Modal modalClass="add-contact-modal" mscss="contact">
-                    <button onClick={exitModal}><i className="material-icons exit">close</i></button>
+                <Modal modalClass="edit-contact-modal" mscss="contact">
+                    <button className="edit-exit" onClick={exitModal}><i className="material-icons exit">close</i></button>
                     <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
                         <Header alignment="left" title="Edit Contact" newClass="col s10 offset-s1"/>
                         <Field ref={(input)=>{this.name=input}} id="name" col="s10 offset-s1" name="name" component={Input} label={!name && "Name"}/>
                         <Field ref={(input)=>{this.email=input}} id="email" col="s10 offset-s1" name="email" component={Input} label={!email && "Email"} />
                         <Field ref={(input)=>{this.phone=input}} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
-                        <button className="btn add-contact blue-grey">SUBMIT</button>
+                        <button className="btn blue-grey edit-submit">SUBMIT</button>
                     </form>
+                    <button className="trash right"><i className="material-icons text-darken-2 grey-text">delete</i></button>
                 </Modal>
             </div>
         )

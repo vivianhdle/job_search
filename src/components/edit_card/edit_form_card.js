@@ -107,11 +107,11 @@ class EditFormCard extends Component {
                             <button className="btn blue-grey submit-button">Submit</button>
                         </div>
                     </form>
-                    <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
-                    <ActionButton icon="note_add" classes="teal lighten-1 btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
-                    <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
+                    <ActionButton icon="contacts" color="white-text" classes="blue-grey btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
+                    <ActionButton icon="note_add" color="white-text" classes="blue-grey btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
+                    <Header title="Contacts" alignment="left" newClass=" edit-section-header"/>
                     <ContactList contact={contact} edit={true} view={this.goToTracker}/>
-                    <Header title="Notes" alignment="left" newClass="edit-section-header"/>
+                    <Header title="Notes" alignment="left" newClass=" edit-section-header"/>
                     <NoteList note={note} edit={true} view={this.goToTracker}/>
                 </div>
         )
