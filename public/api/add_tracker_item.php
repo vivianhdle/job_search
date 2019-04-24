@@ -7,10 +7,6 @@ require_once('mysqlconnect.php');
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
 
-// if(!empty($_GET['user_id'])){
-//     throw new Exception('You must send a user_id with your request');
-// }
-
 if(empty($input['title'])){
     throw new Exception('You must send a title with your request');
 }
