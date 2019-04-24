@@ -13,7 +13,7 @@
 
     $output['success'] = false;
 
-    $tracker_item_query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` JOIN `contact_info` AS ci ON ti.`id`=ci.`tracker_id` JOIN `note_item` AS ni ON ti.`id`=ni.`tracker_id` WHERE ti.`id`=$tracker_id LIMIT 1";
+    $tracker_item_query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE ti.`id`=$tracker_id LIMIT 1";
     
     $result = mysqli_query($conn, $tracker_item_query);
 
@@ -22,7 +22,6 @@
     if(!$result){
         throw new Exception(mysqli_error($conn));
     }
-
     if(!mysqli_num_rows($result)){
         throw new Exception('Unable to retrieve tracker data');
     }
@@ -36,19 +35,17 @@
             throw new Exception(mysqli_error($conn));
         }
     
-        if(!mysqli_num_rows($contact_result)){
-            throw new Exception('Unable to retrieve tracker contact data');
-        }
-    
         $contact = [];
-    
-        while($contact_row = mysqli_fetch_assoc($contact_result)){
-            $contact[] = [
-                'id' => (int)$contact_row['id'],
-                'name' => $contact_row['name'],
-                'email' => $contact_row['email'],
-                'phone' => (int)$contact_row['phone'],
-            ];
+
+        if(mysqli_num_rows($contact_result)){
+            while($contact_row = mysqli_fetch_assoc($contact_result)){
+                $contact[] = [
+                    'id' => (int)$contact_row['id'],
+                    'name' => $contact_row['name'],
+                    'email' => $contact_row['email'],
+                    'phone' => (int)$contact_row['phone'],
+                ];
+            }    
         }
 
         $tracker_item_note_query = "SELECT `id`, `created`, `input` FROM `note_item` WHERE `tracker_id`=$tracker_id";
@@ -58,20 +55,18 @@
         if(!$note_result){
             throw new Exception(mysqli_error($conn));
         }
-    
-        if(!mysqli_num_rows($note_result)){
-            throw new Exception('Unable to retrieve tracker note data');
-        }
-    
+        
         $note = [];
-    
-        while($note_row = mysqli_fetch_assoc($note_result)){
-            $note[] = [
-                'id' => (int)$note_row['id'],
-                'created' => $note_row['created'],
-                'input' => $note_row['input'],
-            ];
-        }    
+
+        if(mysqli_num_rows($note_result)){
+            while($note_row = mysqli_fetch_assoc($note_result)){
+                $note[] = [
+                    'id' => (int)$note_row['id'],
+                    'created' => $note_row['created'],
+                    'input' => $note_row['input'],
+                ];
+            }        
+        }
     
         $output['data'] = [
             'id' => (int)$row['id'],
@@ -83,6 +78,16 @@
             'note' => $note,
             'link' => $row['link']
         ];
+
+        if($output['data']['contact'] === []){
+            unset($output['data']['contact']);
+        }
+        if($output['data']['note'] === []){
+            unset($output['data']['note']);
+        }
+        if(!$output['data']['link']){
+            unset($output['data']['link']);
+        }
     }
 
     $output['success'] = true;
