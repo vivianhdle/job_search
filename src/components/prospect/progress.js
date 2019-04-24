@@ -27,7 +27,7 @@ class DropDown extends Component {
         );
     }
     render() {
-        const { col, progress} = this.props
+        const { col, progress } = this.props
         return (
             <div className="row">
                 <div className={`input-field ${col}`}>

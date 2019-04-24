@@ -70,14 +70,14 @@ class EditFormCard extends Component {
         this.goToTracker();
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit } = this.props;
+        const { title, company, contact = [], link, note = [], progress, handleSubmit } = this.props;
         return (
             <div className="form">
                 {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 <form onSubmit={handleSubmit(this.handleAdd)}>
                     <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
-                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress}/>
+                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} />
                     <div className="row">
                         <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} />
                     </div>
