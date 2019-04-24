@@ -66,7 +66,6 @@ class EditFormCard extends Component {
     }
 
     handleAddContact = async values => {
-        console.log('Values', values)
         const{id} = this.props;
         const contactValue ={
             tracker_id: id,
@@ -111,7 +110,7 @@ class EditFormCard extends Component {
                     <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
                     <ActionButton icon="note_add" classes="teal lighten-1 btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
-                    <ContactList contact={contact} edit={true} />
+                    <ContactList contact={contact} edit={true} view={this.goToTracker}/>
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
                     <NoteList note={note} edit={true} view={this.goToTracker}/>
                 </div>

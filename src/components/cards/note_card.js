@@ -20,7 +20,6 @@ class NoteCard extends Component{
     }
     render(){
         const {id,created,input,edit, view} = this.props;
-        console.log('props',this.props)
     return(
         <div className="row" >
             <div className="col s10 offset-s1">

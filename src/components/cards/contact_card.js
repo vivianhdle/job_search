@@ -22,11 +22,11 @@ class ContactCard extends Component{
     }
 
     render(){
-    const {id,name,email,phone,edit, contact} = this.props;
+    const {id,name,email,phone,edit, contact, view} = this.props;
     return(
         <Fragment>
             <li >
-            {this.state.open && <EditContactModal exitModal={this.exitContactModal} name={name} email={email} phone={phone} id={id}/>}
+            {this.state.open && <EditContactModal view={view} exitModal={this.exitContactModal} name={name} email={email} phone={phone} id={id}/>}
                 <div className="collapsible-header grey-text text-darken-2" onClick={edit && this.handleClick}>
                     
                     <i className="material-icons grey-text text-darken-2">contacts</i>

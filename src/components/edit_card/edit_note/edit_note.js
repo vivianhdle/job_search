@@ -33,7 +33,6 @@ class EditNote extends Component {
     }
     render() {
         const { handleSubmit, closeModal } = this.props;
-        console.log('text',this.props)
         return (
             <div className="action row">
                 <Modal modalClass="edit-note-modal" mscss="note">

@@ -40,14 +40,12 @@ class EditContactModal extends Component{
                 phone: value.phone
             }
         }
-        console.log(editContact);
         const resp = await axios.post(`/api/update_contact_item.php`, editContact);
-        console.log(resp);
+        this.props.view();
     }
 
     render() {
         const {handleSubmit, exitModal} = this.props;
-        console.log('props',this.props);
         const{phone, email, name} =this.state.form
         return (
             <div className="action row">
