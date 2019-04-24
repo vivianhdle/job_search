@@ -78,6 +78,7 @@ class EditFormCard extends Component {
             note: values.note
         };
         const resp = await axios.post(`/api/add_note_item.php`, noteValue);
+        this.goToTracker();
     }
 
     render() {
