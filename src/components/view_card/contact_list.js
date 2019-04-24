@@ -8,6 +8,8 @@ class ContactList extends Component{
     render(){
         const contactElements = this.props.contact.map((contact)=>{
             return(
+                
+
                 <ContactCard view={this.props.view} edit={this.props.edit} key={contact.id} {...contact} />
             )
         })

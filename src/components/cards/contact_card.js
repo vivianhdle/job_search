@@ -17,7 +17,6 @@ class ContactCard extends Component{
     exitContactModal = () => {
         this.setState({
             open:false,
-            test: 'work dammit'
         })
     }
 
