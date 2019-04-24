@@ -3,6 +3,11 @@
 .details-container{
     min-height: 93%;
     
+    .action-button{
+        position:fixed;
+        bottom:25px;
+        right:25px;
+    }
     
     .view-main-text.company {
         font-size: 24px;

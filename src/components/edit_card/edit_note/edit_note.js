@@ -3,6 +3,7 @@ import Modal from '../../general/modal';
 import { reduxForm, Field } from 'redux-form';
 import ActionButton from '../../general/buttons/action_button';
 import Input from '../../general/input';
+import Header from '../../general/header';
 import TextArea from '../../general/textarea';
 import ReactDOM from 'react-dom';
 import './edit_note.scss';
@@ -43,24 +44,18 @@ class EditNote extends Component {
     render() {
         const { handleSubmit, closeModal } = this.props;
         return (
-            <div className="action row center">
-                <Modal modalClass="add-note-modal" mscss="note">
-                    <div className=" btn-wrapper row left-align delete">
-                        <button className=" btn white" onClick={closeModal}>
-                            <i className="material-icons red-text text-darken-1 white">close</i>
-                        </button>
+            <div className="action row">
+                <Modal modalClass="edit-note-modal" mscss="note">
+                    <div>
+                        <button className="exit" onClick={closeModal}><i className="material-icons red-text">close</i></button>
+                        <button className="trash" onClick={this.handleDeleteNote}><i className="material-icons grey-text">delete</i></button>
                     </div>
-                    <form onSubmit={handleSubmit(this.handleEditNote)} >
+                    <Header title="Edit Note" newClass="col s10 offset-s1"/>
+                    <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
                         <Field ref={(textarea) => { this.editNote = textarea }} id="note" col="s10 offset-s1" name="note" handleChange={this.handleChange} component={TextArea} currentValue={this.state.note} />
-                        <div className="btn-wrapper row left-align update">
-                            <i className="medium material-icons prefix grey-text text-darken-1">update</i>
-                            <button className="btn blue-grey">submit</button>
-                        </div>
+                        {/* <ActionButton icon="done" classes="green lighten-1 submit-contact"size="btn"/> */}
+                        <button className="btn blue-grey">SUBMIT</button>
                     </form>
-                    <div className="btn-wrapper row left-align delete">
-                        <i className="medium material-icons prefix grey-text text-darken-1">delete</i>
-                        <button className="btn red darken-1" onClick={this.handleDeleteNote}>delete</button>
-                    </div>
                 </Modal>
             </div>
         )

@@ -103,7 +103,7 @@ class EditFormCard extends Component {
                         </div>
                     </form>
                     <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
-                    <ActionButton icon="note_add" classes="teal lighten-1 btn-floating" size="btn" handleClick={this.addNoteModal}/>
+                    <ActionButton icon="note_add" classes="teal lighten-1 btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
                     <ContactList contact={contact} edit="true" />
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
