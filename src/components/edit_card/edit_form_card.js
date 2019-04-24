@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../general/input';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, initialize } from 'redux-form';
 import NoteList from '../view_card/note_list';
 import ContactList from '../view_card/contact_list';
 import './edit_form_card.scss';
@@ -11,6 +11,7 @@ import AddNote from './add_note/add_note_card';
 import AddContact from './add_contact/add_contact';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 
 class EditFormCard extends Component {
@@ -19,12 +20,17 @@ class EditFormCard extends Component {
         addNoteOpen:false
     }
 
-    async componentDidMount(){
-        await ReactDOM.findDOMNode(this.link).getElementsByTagName("input")[0].focus();
-        await ReactDOM.findDOMNode(this.company).getElementsByTagName("input")[0].focus();
-        ReactDOM.findDOMNode(this.title).getElementsByTagName("input")[0].focus();
-    }   
+    // async componentDidMount(){
+    //     await ReactDOM.findDOMNode(this.link).getElementsByTagName("input")[0].focus();
+    //     await ReactDOM.findDOMNode(this.company).getElementsByTagName("input")[0].focus();
+    //     ReactDOM.findDOMNode(this.title).getElementsByTagName("input")[0].focus();
+    // }   
     
+    componentDidMount(){
+        const action = initialize('edit-job-card', {title:this.props.title, link:this.props.link, company:this.props.company})
+        this.props.dispatch(action);
+    }
+
     handleAdd = async values => {
         const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id)}
         await axios.post('/api/update_tracker_item.php', newValues);
@@ -60,15 +66,14 @@ class EditFormCard extends Component {
     }
 
     handleAddContact = async values => {
+        console.log('Values', values)
         const{id} = this.props;
         const contactValue ={
             tracker_id: id,
             contact: values
         }
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
-        this.setState({
-            addContactOpen:false
-        })
+        this.goToTracker();
 
     }
     handleAddNote = async values =>{
@@ -91,13 +96,13 @@ class EditFormCard extends Component {
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
                         <DropDown ref={(input)=>this.dropdown=input} col="s10 offset-s1 col edit-progress" />
                         <div className="row">
-                            <Field ref={(input)=>this.title=input} id="title" col="s10 offset-s1" name="title" component={Input} onChange={handleChange} currentValue={title} label={!title && "Job Title"} />
+                            <Field ref={(input)=>this.title=input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} />
                         </div>
                         <div className="row">
-                            <Field ref={(input)=>this.company=input} id="company" col="s10 offset-s1" name="company" onChange={handleChange} label={!company && "Company Name"} currentValue={company} component={Input} />
+                            <Field ref={(input)=>this.company=input} id="company" col="s10 offset-s1" name="company" label={!company && "Company Name"} component={Input} />
                         </div>
                         <div className="row">
-                            <Field ref={(input)=>this.link=input} id="link" col="s10 offset-s1" name="link" component={Input} onChange={handleChange} currentValue={link} name="link" label={!link && "Posting Link"} />
+                            <Field ref={(input)=>this.link=input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={!link && "Posting Link"} />
                         </div>
                         <div className="btn-wrapper row right-align">
                             <button className="btn blue-grey submit-button">Submit</button>
@@ -106,13 +111,13 @@ class EditFormCard extends Component {
                     <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
                     <ActionButton icon="note_add" classes="teal lighten-1 btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
-                    <ContactList contact={contact} edit="true" />
+                    <ContactList contact={contact} edit={true} />
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
                     <NoteList note={note} edit={true} view={this.goToTracker}/>
                 </div>
         )
     }
 }
-export default reduxForm({
+export default connect() (reduxForm({
     form: 'edit-job-card',
-})(EditFormCard);
+})(EditFormCard));

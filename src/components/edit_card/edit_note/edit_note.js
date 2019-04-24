@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Modal from '../../general/modal';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm,Field, initialize } from 'redux-form';
 import ActionButton from '../../general/buttons/action_button';
 import Input from '../../general/input';
 import Header from '../../general/header';
@@ -8,25 +8,15 @@ import TextArea from '../../general/textarea';
 import ReactDOM from 'react-dom';
 import './edit_note.scss';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 class EditNote extends Component {
-    state = {
-        note: ''
-    }
+
     componentDidMount() {
-        ReactDOM.findDOMNode(this.editNote).getElementsByTagName("textarea")[0].focus();
-        const { fieldInput } = this.props;
-        this.setState({
-            note: fieldInput
-        })
+        const actions = initialize('add-note', {note: this.props.fieldInput});
+        this.props.dispatch(actions);
     }
-    handleChange = e => {
-        let { note } = this.state;
-        note = e.target.value;
-        this.setState({
-            note: note
-        })
-    }
+    
     handleEditNote = async values => {
         const { id } = this.props
         const editNoteValues = {
@@ -43,6 +33,7 @@ class EditNote extends Component {
     }
     render() {
         const { handleSubmit, closeModal } = this.props;
+        console.log('text',this.props)
         return (
             <div className="action row">
                 <Modal modalClass="edit-note-modal" mscss="note">
@@ -52,7 +43,7 @@ class EditNote extends Component {
                     </div>
                     <Header title="Edit Note" newClass="col s10 offset-s1"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
-                        <Field ref={(textarea) => { this.editNote = textarea }} id="note" col="s10 offset-s1" name="note" handleChange={this.handleChange} component={TextArea} currentValue={this.state.note} />
+                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
                         {/* <ActionButton icon="done" classes="green lighten-1 submit-contact"size="btn"/> */}
                         <button className="btn blue-grey">SUBMIT</button>
                     </form>
@@ -62,6 +53,6 @@ class EditNote extends Component {
     }
 }
 
-export default reduxForm({
+export default connect()( reduxForm({
     form: 'add-note',
-})(EditNote);
+})(EditNote));

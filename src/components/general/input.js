@@ -2,10 +2,10 @@ import React from 'react';
 
 
 export default props => {
-    const {input,classes='',type="text",label,id,col='s12', currentValue,meta:{error,touched}}=props;
+    const {input,classes='',type="text",label,id,col='s12',meta:{error,touched}}=props;
     return(
         <div className={`input-field col ${col}`}>
-            <input className={`input ${id} ${classes}`} type={type} {...input} id={id} value={currentValue}/>
+            <input className={`input ${id} ${classes}`} type={type} {...input} id={id} />
             <label htmlFor={id}>{label}</label>
         </div>
     )

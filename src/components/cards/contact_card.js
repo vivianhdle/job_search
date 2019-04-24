@@ -1,13 +1,34 @@
-import React, {Fragment} from 'react';
-import './contact_card.scss'
+import React, {Fragment, Component} from 'react';
+import './contact_card.scss';
+import EditContactModal from '../edit_card/edit_contact/edit_contact';
 
-function ContactCard(props){
-    const {id,name,email,phone,edit} = props;
 
+class ContactCard extends Component{
+    state={
+        open: false,    
+    }
+
+    handleClick = ()=>{
+        this.setState({
+            open: true
+        })
+    }
+
+    exitContactModal = () => {
+        this.setState({
+            open:false,
+            test: 'work dammit'
+        })
+    }
+
+    render(){
+    const {id,name,email,phone,edit, contact} = this.props;
     return(
         <Fragment>
-            <li>
-                <div className="collapsible-header grey-text text-darken-2">
+            <li >
+            {this.state.open && <EditContactModal exitModal={this.exitContactModal} name={name} email={email} phone={phone} id={id}/>}
+                <div className="collapsible-header grey-text text-darken-2" onClick={edit && this.handleClick}>
+                    
                     <i className="material-icons grey-text text-darken-2">contacts</i>
                     {name}
                 </div>
@@ -28,7 +49,7 @@ function ContactCard(props){
                 </div>
             </li>
         </Fragment>
-    )
+    )}
 }
 
 
