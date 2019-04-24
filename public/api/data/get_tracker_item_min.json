@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "data": {
+        "id": 50,
+        "created": "2019-04-24 12:47:41",
+        "title": "Front End Developer",
+        "company": "Apple",
+        "progress": "Archived"
+    }
+}
