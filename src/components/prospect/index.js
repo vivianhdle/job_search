@@ -4,13 +4,13 @@ import AddForm from './add-form';
 import axios from 'axios';
 
 class Prospect extends Component {
-    goToTracker = () =>{
+    goToTracker = () => {
         this.props.history.push('/tracker');
     }
     handleAdd = async values => {
         let newContact = [];
-        for(let object in values){
-            if(typeof values[object] === 'object')
+        for (let object in values) {
+            if (typeof values[object] === 'object')
                 newContact.push(values[object]);
         }
         values = {
@@ -28,7 +28,7 @@ class Prospect extends Component {
         return (
             <div className="add-form-progress">
                 <div className="form">
-                    <AddForm add={this.handleAdd} goToTracker={this.goToTracker}/>
+                    <AddForm add={this.handleAdd} goToTracker={this.goToTracker} />
                 </div>
             </div>
         )

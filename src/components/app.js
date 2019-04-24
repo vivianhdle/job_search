@@ -1,6 +1,6 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../assets/css/app.scss';
 import Tracker from './tracker';
@@ -25,10 +25,8 @@ const App = () => (
             <Route path="/prospect" render={(routingprops) => {
                 return <Prospect {...routingprops} />
             }} />
-            
         </Switch>
     </div>
-
 );
 
 export default App;

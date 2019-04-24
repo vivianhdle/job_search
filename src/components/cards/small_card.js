@@ -5,17 +5,15 @@ import { Route } from 'react-router-dom';
 import ViewCard from '../view_card';
 
 class SmallCard extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.id = null;
     }
-
     handleCardClick = () => {
         this.props.history.push(`/tracker/${this.id}`);
     }
-
     render() {
-        const { company, created, id, progress, title, history } = this.props;
+        const { company, created, id, title } = this.props;
         this.id = id;
         return (
             <div className="row">

@@ -6,7 +6,6 @@ class ContactForm extends Component {
     componentDidMount() {
         M.Collapsible.init(this.contact);
     }
-
     render() {
         return (
             <Fragment>
@@ -27,7 +26,6 @@ class ContactForm extends Component {
             </Fragment>
         );
     }
-
 }
 
 export default ContactForm;

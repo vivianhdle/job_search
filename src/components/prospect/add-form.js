@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { reduxForm, Field, FormSection } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import Input from '../general/input';
 import ContactForm from './contact';
 import DropDown from './progress';
@@ -12,12 +11,12 @@ class AddJobCardForm extends Component {
         contactForm: [],
         contactCount: 0
     }
-    componentDidMount(){
+    componentDidMount() {
         this.addNewContact();
     }
     addNewContact = () => {
-        let {contactForm, contactCount} = this.state;
-        contactForm = [...contactForm, <ContactForm key={contactCount} name={`contact${contactCount}`}/>]
+        let { contactForm, contactCount } = this.state;
+        contactForm = [...contactForm, <ContactForm key={contactCount} name={`contact${contactCount}`} />]
         contactCount++;
         this.setState({
             contactForm,
@@ -26,7 +25,7 @@ class AddJobCardForm extends Component {
     }
     render() {
         const { add, handleSubmit } = this.props;
-        const {contactForm} = this.state;
+        const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
                 <Header title="Add Job Prospect" alignment="left-align" margin="5%" bgcolor="white" />
@@ -54,26 +53,9 @@ class AddJobCardForm extends Component {
                 </div>
             </form>
         )
-
     }
 }
 
-// function validate(title, company){
-//     const error = {};
-
-//     if (!title){
-//         error.title = "Please enter your a job title/description";
-//     }
-
-//     if(!company){
-//         error.company = "Please enter a company name";
-//     }
-
-
-//     return error;
-// }
-
 export default reduxForm({
-    form: 'add-job-card',
-    // validate: validate
+    form: 'add-job-card'
 })(AddJobCardForm);

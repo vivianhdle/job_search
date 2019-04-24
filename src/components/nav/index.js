@@ -1,11 +1,11 @@
-import React,{Component,Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import SideNav from './sidenav';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './nav.scss';
 
-class Nav extends Component{
-    renderLinks(){
-        return(
+class Nav extends Component {
+    renderLinks() {
+        return (
             <Fragment>
                 <li className="sidenav-close">
                     <Link to="/tracker">Home</Link>
@@ -16,9 +16,9 @@ class Nav extends Component{
             </Fragment>
         )
     }
-    render(){
+    render() {
         const links = this.renderLinks()
-        return(
+        return (
             <Fragment>
                 <nav>
                     <div className="nav-wrapper navbar-fixed blue-grey">
@@ -26,12 +26,12 @@ class Nav extends Component{
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>
-                    <ul id="nav-mobile" className="right hide-on-med-and-down">{links}</ul>
+                        <ul id="nav-mobile" className="right hide-on-med-and-down">{links}</ul>
                     </div>
                 </nav>
-                <SideNav links={links}/>
+                <SideNav links={links} />
             </Fragment>
-            
+
         )
     }
 }

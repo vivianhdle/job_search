@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import EditCardForm from './edit_form_card';
 import axios from 'axios';
 
-class EditCard extends Component{
+class EditCard extends Component {
     state = {
         respData: null,
-        isLoaded:false,
+        isLoaded: false,
         params: null
     }
     componentDidMount() {
         this.getData();
     }
-    async getData(){
+    async getData() {
         const { params } = this.props.match;
         const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
         this.setState({
@@ -27,8 +27,7 @@ class EditCard extends Component{
             respData
         })
     }
-    render(){
-        
+    render() {
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>
@@ -36,10 +35,10 @@ class EditCard extends Component{
         } else {
             return (
                 <div className="edit-container">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props}/>
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} />
                 </div>
             )
-        }            
+        }
     }
 }
 

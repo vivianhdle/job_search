@@ -3,9 +3,7 @@ import './tracker.scss';
 import SmallCard from '../cards/small_card';
 import axios from 'axios';
 import Header from '../general/header';
-import ViewCard from '../view_card';
 import { Route } from 'react-router-dom';
-import ActionButton from '../general/buttons/action_button';
 
 class Status extends Component {
     state = {
@@ -28,9 +26,8 @@ class Status extends Component {
         }).map((card) => {
             return (
                 <Route key={card.id} render={(routingprops) => {
-                    return (<SmallCard key={card.id} {...card} {...routingprops}/>)
+                    return (<SmallCard key={card.id} {...card} {...routingprops} />)
                 }} />
-
             )
         })
         return (
@@ -42,7 +39,6 @@ class Status extends Component {
                     </div>
                 </div>
             </Fragment>
-
         )
     }
 }

@@ -6,7 +6,7 @@ class ViewCard extends Component {
     state = {
         isLoaded: false,
         respData: null,
-        editable:false
+        editable: false
     }
     componentDidMount() {
         this.getRespData();
@@ -19,8 +19,8 @@ class ViewCard extends Component {
             isLoaded: true
         })
     }
-    editMode=()=>{
-        const {params} = this.props.match;
+    editMode = () => {
+        const { params } = this.props.match;
         this.props.history.push(`/tracker/edit/${params.id}`);
     }
     render() {
@@ -31,12 +31,11 @@ class ViewCard extends Component {
         } else {
             return (
                 <div className="details-container">
-                    {!this.state.editable && <ViewDetails handleEdit={this.editMode} {...this.state.respData}/>}
+                    {!this.state.editable && <ViewDetails handleEdit={this.editMode} {...this.state.respData} />}
                 </div>
             )
         }
     }
-
 }
 
 export default ViewCard;
