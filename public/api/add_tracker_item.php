@@ -29,8 +29,17 @@ $user_id = 1;
 $title = $input['title'];
 $company = $input['company'];
 $progress = $input['progress'];
+if(!isset($input['contact'])){
+    $input['contact'] = '';
+}
 $contact_info = $input['contact'];
+if(!isset($input['note'])){
+    $input['note'] = '';
+}
 $note_item = $input['note'];
+if(!isset($input['link'])){
+    $input['link'] = '';
+}
 $link = $input['link'];
 
 $tracker_item_query = "INSERT INTO `tracker_item` SET 
