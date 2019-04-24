@@ -104,7 +104,7 @@ class EditFormCard extends Component {
                     <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
                     <ActionButton icon="note_add" classes="teal lighten-1 btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
-                    {contact.length ?  <ContactList contact={contact} edit={true} view={this.goToTracker}/> : <ContactList contact={[{name: 'Please Add Contacts', phone: '', email:'', id: 1}]}  view={this.goToTracker}/>}
+                    {contact.length ?  <ContactList contact={contact} edit={true} view={this.goToTracker}/> : <ContactList contact={[{name: 'Please Add a Contact', phone: '', email:'', id: 1}]}  view={this.goToTracker}/>}
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
                     {note.length ? <NoteList note={note} edit={true} view={this.goToTracker}/> : <NoteList note={[{input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1}]} view={this.goToTracker}/> }
                 </div>
