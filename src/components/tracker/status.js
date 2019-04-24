@@ -16,14 +16,10 @@ class Status extends Component {
         this.getDetails();
     }
     async getDetails() {
-        //const resp = await axios.get('/api/data/get_jobcard_display.json');
         const resp = await axios.get('/api/get_jobcard_display.php');
         this.setState({
             cards: resp.data.data
         })
-    }
-    goToProspect = () => {
-        this.props.history.push('/prospect');
     }
     render() {
         const { progress, id } = this.props;
@@ -44,7 +40,6 @@ class Status extends Component {
                     <div className="card-container row col s12">
                         {cards}
                     </div>
-                    <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1" icon="add"/>
                 </div>
             </Fragment>
 

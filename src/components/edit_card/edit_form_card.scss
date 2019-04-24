@@ -24,6 +24,7 @@ span.contact{
 .edit-container{
     background-color: $very-light-gray;
     height: 93%;
+    width: 100%;
     overflow-y:scroll;
     .form{
 
@@ -38,14 +39,14 @@ span.contact{
         }
     }
     .add-contact{
-        position:fixed;
-        bottom: 74px;
-        right:25px;
+        position: fixed;
+        bottom: 16%;
+        right: 3%;
     }
     .add-note{
-        position:fixed;
-        bottom:25px;
-        right:25px;
+        position: fixed;
+        bottom: 10%;
+        right: 3%;
     }
 }
 

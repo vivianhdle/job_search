@@ -37,15 +37,14 @@ class EditNote extends Component {
             <div className="action row">
                 <Modal modalClass="edit-note-modal" mscss="note">
                     <div>
-                        <button className="exit" onClick={closeModal}><i className="material-icons red-text">close</i></button>
-                        <button className="trash" onClick={this.handleDeleteNote}><i className="material-icons grey-text">delete</i></button>
+                        <button className="exit" onClick={closeModal}><i className="material-icons">close</i></button>
                     </div>
                     <Header title="Edit Note" newClass="col s10 offset-s1"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
                         <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
-                        {/* <ActionButton icon="done" classes="green lighten-1 submit-contact"size="btn"/> */}
                         <button className="btn blue-grey">SUBMIT</button>
                     </form>
+                    <button className="trash right" onClick={this.handleDeleteNote}><i className="material-icons text-darken-2 grey-text">delete</i></button>
                 </Modal>
             </div>
         )

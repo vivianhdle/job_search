@@ -9,8 +9,6 @@ import ActionButton from '../general/buttons/action_button';
 class ViewDetails extends Component{
     render(){
         const { title, company, contact =[], created, link, note = [], progress, handleEdit } = this.props;
-        console.log('Props',this.props);
-        console.log('contact', contact);
         return(
             <Fragment>
                 <div className="row">
