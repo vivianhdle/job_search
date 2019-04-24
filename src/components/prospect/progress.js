@@ -17,7 +17,7 @@ class DropDown extends Component {
     }
     renderSelect = (props) => {
         return (
-            <select {...props.input} ref={(element) => { this.progress = element }}>
+            <select {...props.input} value={props.progress} ref={(element) => { this.progress = element }}>
                 <option value="" disabled>Application Status</option>
                 <option value="Started Application">Started Application</option>
                 <option value="Waiting for Response">Waiting for Response</option>
@@ -27,11 +27,11 @@ class DropDown extends Component {
         );
     }
     render() {
-        const { col, progress = '' } = this.props
+        const { col, progress} = this.props
         return (
             <div className="row">
                 <div className={`input-field ${col}`}>
-                    <Field defaultValue={progress} name="progress" component={this.renderSelect} />
+                    <Field progress={progress} name="progress" component={this.renderSelect} />
                 </div>
             </div>
         );

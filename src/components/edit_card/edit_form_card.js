@@ -77,7 +77,7 @@ class EditFormCard extends Component {
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 <form onSubmit={handleSubmit(this.handleAdd)}>
                     <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
-                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" />
+                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress}/>
                     <div className="row">
                         <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} />
                     </div>
