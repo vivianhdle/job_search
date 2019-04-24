@@ -8,7 +8,7 @@ import ActionButton from '../general/buttons/action_button';
 
 class ViewDetails extends Component{
     render(){
-        const { title, company, contact =[], created, link, note = [{input: '', created: "1970-01-01 00:00:00", id: 1}], progress, handleEdit } = this.props;
+        const { title, company, contact =[], created, link, note = [], progress, handleEdit } = this.props;
         console.log('Props',this.props);
         console.log('contact', contact);
         return(
@@ -26,7 +26,7 @@ class ViewDetails extends Component{
                 <Header title="Contacts" alignment="left" newClass="view-section-header"/>
                 {contact.length ? <ContactList contact={contact}/> : <ContactList contact={[{name: '', phone: '', email:'', id: 1}]}/>}
                 <Header title="Notes" alignment="left" newClass="view-section-header"/>
-                <NoteList note={note}/>
+                {note.length ? <NoteList note={note}/> : <NoteList note={[{input: '', created: "", id: 1}]}/>}
             </Fragment>
         )
     }
