@@ -48,6 +48,12 @@ class EditFormCard extends Component {
             addNoteOpen:true
         })
     }
+    exitNoteModal = () => {
+        this.setState({
+            addNoteOpen:false
+        })
+    }
+
 
     goToTracker = () =>{
         this.props.history.push(`/tracker/${this.props.match.params.id}`);
@@ -79,7 +85,7 @@ class EditFormCard extends Component {
         return (
                 <div className="form">
                     {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal}/>}
-                    {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote}/>}
+                    {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal}/>}
                     <form onSubmit = {handleSubmit(this.handleAdd)}>
                         <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
                         <DropDown ref={(input)=>this.dropdown=input} col="s10 offset-s1 col edit-progress" />
