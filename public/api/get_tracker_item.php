@@ -17,8 +17,6 @@
     
     $result = mysqli_query($conn, $tracker_item_query);
 
-    print_r($result );
-
     if(!$result){
         throw new Exception(mysqli_error($conn));
     }

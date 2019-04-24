@@ -13,10 +13,7 @@ class ViewCard extends Component {
     }
     async getRespData() {
         const { params } = this.props.match;
-        console.log('param', params)
-        console.log('params id', params.id)
         const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
-        console.log("reap", resp)
         this.setState({
             respData: resp.data.data,
             isLoaded: true
@@ -27,7 +24,6 @@ class ViewCard extends Component {
         this.props.history.push(`/tracker/edit/${params.id}`);
     }
     render() {
-        console.log("Resp Data",this.state.respData);
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>

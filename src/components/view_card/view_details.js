@@ -8,8 +8,9 @@ import ActionButton from '../general/buttons/action_button';
 
 class ViewDetails extends Component{
     render(){
-        const { title, company, contact = [{name: '', email: '', phone:'', id: 1}], created, link, note = [{input: '', created: "1970-01-01 00:00:00", id: 1}], progress, handleEdit } = this.props;
+        const { title, company, contact =[], created, link, note = [{input: '', created: "1970-01-01 00:00:00", id: 1}], progress, handleEdit } = this.props;
         console.log('Props',this.props);
+        console.log('contact', contact);
         return(
             <Fragment>
                 <div className="row">
@@ -18,12 +19,12 @@ class ViewDetails extends Component{
                         <div className="view-main-text company">{company}</div>
                         <div className="view-main-text grey-text text-darken-2">{title}</div>
                         <div className="view-main-text grey-text text-darken-2">{progress}</div>
-                        {!link && <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">{link}</a>}
+                        <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">{link}</a>
                         <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                     </div>
                 </div>
                 <Header title="Contacts" alignment="left" newClass="view-section-header"/>
-                <ContactList contact={contact}/>
+                {contact.length ? <ContactList contact={contact}/> : <ContactList contact={[{name: '', phone: '', email:'', id: 1}]}/>}
                 <Header title="Notes" alignment="left" newClass="view-section-header"/>
                 <NoteList note={note}/>
             </Fragment>

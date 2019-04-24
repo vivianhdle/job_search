@@ -30,6 +30,7 @@ class EditContactModal extends Component{
     }
 
     handleEditContact = async values =>{
+        console.log('val',values);
         const {id} = this.props;
         const value = {...values}
         const editContact ={

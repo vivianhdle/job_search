@@ -20,12 +20,6 @@ class EditFormCard extends Component {
         addNoteOpen:false
     }
 
-    // async componentDidMount(){
-    //     await ReactDOM.findDOMNode(this.link).getElementsByTagName("input")[0].focus();
-    //     await ReactDOM.findDOMNode(this.company).getElementsByTagName("input")[0].focus();
-    //     ReactDOM.findDOMNode(this.title).getElementsByTagName("input")[0].focus();
-    // }   
-    
     componentDidMount(){
         const action = initialize('edit-job-card', {title:this.props.title, link:this.props.link, company:this.props.company})
         this.props.dispatch(action);
@@ -110,7 +104,7 @@ class EditFormCard extends Component {
                     <ActionButton icon="contacts" classes="teal lighten-1 btn-floating add-contact" size="btn" handleClick={this.addContactModal}/>
                     <ActionButton icon="note_add" classes="teal lighten-1 btn-floating add-note" size="btn" handleClick={this.addNoteModal}/>
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
-                    <ContactList contact={contact} edit={true} view={this.goToTracker}/>
+                    {contact.length ?  <ContactList contact={contact} edit={true} view={this.goToTracker}/> : <ContactList contact={[{name: 'Please Add Contact', phone: '', email:'', id: 1}]}  view={this.goToTracker}/>}
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
                     <NoteList note={note} edit={true} view={this.goToTracker}/>
                 </div>
