@@ -101,7 +101,7 @@ class EditFormCard extends Component {
                     <Header title="Contacts" alignment="left" newClass="edit-section-header"/>
                     <ContactList contact={contact} edit="true" />
                     <Header title="Notes" alignment="left" newClass="edit-section-header"/>
-                    <NoteList note={note} edit={true}/>
+                    <NoteList note={note} edit={true} view={this.goToTracker}/>
                 </div>
         )
     }

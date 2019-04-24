@@ -3,6 +3,5 @@ http://localhost/api/delete_contact_item.php
 Body: raw
 
 {
-	"tracker_id": 1,
-	"contact_id": 1
+	"id": 1
 }
