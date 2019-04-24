@@ -21,3 +21,10 @@ Body: raw
     "note": "Just applied today, waiting to hear back in two weeks",
     "link": "www.apple.com"
 }
+
+minimum:
+{
+    "title": "Front End Developer",
+    "company": "Apple",
+    "progress": "Started Application",
+}
