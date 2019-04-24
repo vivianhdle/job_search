@@ -6,6 +6,7 @@ class ContactList extends Component{
         M.Collapsible.init(this.contacts);
     }
     render(){
+        console.log(this.props);
         const contactElements = this.props.contact.map((contact)=>{
             return(
                 <ContactCard view={this.props.view} edit={this.props.edit} key={contact.id} {...contact} />
