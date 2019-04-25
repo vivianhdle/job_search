@@ -3,6 +3,7 @@ import Status from './status';
 import NavCookies from '../nav/navcookies';
 import { Route } from 'react-router-dom';
 import ActionButton from '../general/buttons/action_button';
+import './tracker.scss';
 
 class Tracker extends Component {
     goToProspect = () => {
