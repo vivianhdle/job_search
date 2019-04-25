@@ -90,11 +90,9 @@ class EditFormCard extends Component {
                         <button className="btn blue-grey submit-button">Submit</button>
                     </div>
                 </form>
-                <ActionButton icon="contacts" color="white-text" classes="blue-grey btn-floating add-contact" size="btn" handleClick={this.addContactModal} />
-                <ActionButton icon="note_add" color="white-text" classes="blue-grey btn-floating add-note" size="btn" handleClick={this.addNoteModal} />
-                <Header title="Contacts" alignment="left" newClass=" edit-section-header" />
+                <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToTracker} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToTracker} />}
-                <Header title="Notes" alignment="left" newClass=" edit-section-header" />
+                <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToTracker} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToTracker} />}
             </div>
         )
