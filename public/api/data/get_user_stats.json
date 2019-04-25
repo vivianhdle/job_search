@@ -1,0 +1,13 @@
+{
+    "success": true,
+    "data": {
+        "id": 1,
+        "name": "Jun Giang",
+        "total": 100,
+        "started": 20,
+        "waiting": 20,
+        "follow": 20,
+        "archived": 20,
+        "started_today": 1
+    }
+}
