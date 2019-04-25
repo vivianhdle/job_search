@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 class DropDown extends Component {
@@ -16,10 +16,11 @@ class DropDown extends Component {
         M.FormSelect.init(this.progress);
     }
     renderSelect = (props) => {
-        const {meta: { touched, error }} = props;
+        const {input, meta: { touched, error }} = props;
+        console.log('in',input);
         return (
-            <Fragment>
-            <select {...props.input} value={props.progress} ref={(element) => { this.progress = element }}>
+            <div>
+            <select {...input} ref={(element) => { this.progress = element }}>
                 <option value="" disabled>Application Status</option>
                 <option value="Started Application">Started Application</option>
                 <option value="Waiting for Response">Waiting for Response</option>
@@ -27,17 +28,15 @@ class DropDown extends Component {
                 <option value="Archived">Archived</option>
             </select>
             {touched && error && <span>{error}</span>}
-            </Fragment>
+            </div>
         );
     }
-
     render() {
-        const { col, progress} = this.props
-        const required = (value) => (value || typeof value === 'string' ? undefined : 'Required');
+        const { col} = this.props
         return (
             <div className="row">
                 <div className={`input-field ${col}`}>
-                    <Field progress={progress} name="progress" component={this.renderSelect} />
+                    <Field name="progress" component={this.renderSelect} />
                 </div>
             </div>
         );

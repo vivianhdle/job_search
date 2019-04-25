@@ -51,8 +51,7 @@ class AddJobCardForm extends Component {
 
         const { add, handleSubmit } = this.props;
         const { contactForm } = this.state;
-        console.log('Props',this.props);
-        
+
         return (
             <form onSubmit={handleSubmit(add)}>
                 <Header title="Add Job Prospect" alignment="left-align" margin="5%" bgcolor="white" />
