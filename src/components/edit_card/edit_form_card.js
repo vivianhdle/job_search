@@ -112,7 +112,7 @@ class EditFormCard extends Component {
                         <button className="btn blue-grey submit-button">Submit</button>
                     </div>
                 </form>
-                <ActionButton icon="delete_forever" color="white-text" classes="red lighten-1 btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
+                <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
