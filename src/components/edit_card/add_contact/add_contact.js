@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import Modal from '../../general/modal';
+import Modal from '../../general/modals/modal';
 import Input from '../../general/input';
 import './add_contact.scss';
 import Header from '../../general/header';
