@@ -17,7 +17,7 @@ class DropDown extends Component {
     }
     renderSelect = (props) => {
         const {input, meta: { touched, error, warning }} = props;
-        console.log('in',props);
+        console.log('in',input);
         return (
             <div>
             <select {...input} ref={(element) => { this.progress = element }}>
