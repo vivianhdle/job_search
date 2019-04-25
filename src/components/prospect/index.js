@@ -8,9 +8,52 @@ class Prospect extends Component {
     goToTracker = () => {
         this.props.history.push('/tracker');
     }
+
     handleAdd = async values => {
-        console.log('values', values);
-        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+        let newContact = [];
+            for (let object in values) {
+                if (typeof values[object] === 'object')
+                    newContact.push(values[object]);
+            }
+            values = {
+                progress: values.progress,
+                company: values.company,
+                title: values.title,
+                link: values.link,
+                contact: newContact,
+                note: values.note
+            }
+            const resp = axios.post('/api/add_tracker_item.php', values).then(
+                this.goToTracker()
+            );
+    }
+
+    render() {
+        const required = values => (values || values ? undefined : 'Required Field');
+        const number = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
+        return (
+            <div className="add-form-progress">
+                <div className="form">
+                    <AddForm add={this.handleAdd} goToTracker={this.goToTracker} required={required} number={number}/>
+                </div>
+            </div>
+        )
+    }
+}
+
+
+export default Prospect
+
+
+
+
+
+
+
+
+
+/*
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         return sleep(1000).then(() => {
             if (!values.title) {
                 throw new SubmissionError({
@@ -31,39 +74,8 @@ class Prospect extends Component {
                     _error: 'Creation Failed'
                 })
             }
-            console.log('does it work');
-            let newContact = [];
-            for (let object in values) {
-                if (typeof values[object] === 'object')
-                    newContact.push(values[object]);
-            }
-            values = {
-                progress: values.progress,
-                company: values.company,
-                title: values.title,
-                link: values.link,
-                contact: newContact,
-                note: values.note
-            }
-            const resp = axios.post('/api/add_tracker_item.php', values).then(
-                this.goToTracker()
-            );
-            console.log("resp",resp);
+            
+            
             
         })
-    }
-
-
-    render() {
-        return (
-            <div className="add-form-progress">
-                <div className="form">
-                    <AddForm add={this.handleAdd} goToTracker={this.goToTracker} />
-                </div>
-            </div>
-        )
-    }
-}
-
-
-export default Prospect
+*/
