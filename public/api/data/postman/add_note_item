@@ -1,0 +1,8 @@
+POST 
+http://localhost/api/add_note_item.php
+Body: raw
+
+{
+	"tracker_id": 1,
+	"note": "lets try adding a new note"
+}

@@ -1,0 +1,7 @@
+DELETE
+http://localhost/api/delete_note_item.php
+Body: raw
+
+{
+	"id": 1
+}

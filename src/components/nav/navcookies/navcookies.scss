@@ -1,0 +1,20 @@
+.navcookie{
+    position:fixed;
+    bottom:0;
+    height:6.5%;
+}
+
+
+.tabs .tab a {
+    color:#78909c
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    color:#424242;
+}
+.tabs .indicator{
+    background-color:#424242;
+}
+.tabs .tab a:focus, .tabs .tab a:focus.active{
+    background-color:#26a6991e;
+
+}

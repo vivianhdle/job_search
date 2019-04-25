@@ -1,0 +1,12 @@
+POST 
+http://localhost/api/update_contact_item.php
+Body: raw
+
+{
+    "contact":{
+        "id": 25,
+        "name": "Mr.Tester",
+        "email": "mrtester@test.com",
+        "phone": 88888888888
+    }
+}

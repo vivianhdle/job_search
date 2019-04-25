@@ -1,0 +1,60 @@
+$light-gray:#9e9e9e;
+$very-light-gray: rgba(243, 243, 243, 0.856);
+
+.deletebutton{
+    position: relative;
+    top: 18px;
+    right: 38px;
+    i{
+        color: #4db6ac;
+        font-size:18px;
+        border-radius:50%;
+        border:1px solid rgb(202, 200, 200);
+    }
+}
+
+span.contact{
+    right: 40px;
+    position: absolute;
+}
+.collapsible{
+    box-shadow:none;
+}
+
+.edit-container{
+    background-color: $very-light-gray;
+    height: 93%;
+    width: 100%;
+    overflow-y:scroll;
+    .form{
+
+        overflow:scroll;
+        form{
+            height: 100%;
+            width: 100%;
+
+            .select-dropdown{
+                color:$light-gray
+            }
+        }
+    }
+    .add-contact{
+        position: fixed;
+        bottom: 16%;
+        right: 3%;
+    }
+    .add-note{
+        position: fixed;
+        bottom: 10%;
+        right: 3%;
+    }
+}
+
+.submit-button {
+    margin-right: 11%;
+}
+
+.edit-section-header {
+    font-size: 1.2rem;
+    margin-left: 7%;
+}

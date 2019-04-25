@@ -1,0 +1,6 @@
+GET
+http://localhost/api/delete_tracker_item.php
+Params
+
+KEY: tracker_id
+VALUE: 1

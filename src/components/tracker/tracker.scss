@@ -1,0 +1,57 @@
+@import "../../assets/css/variables.scss";
+
+
+.tracker-container{
+    height:86.5%;
+    margin:0;
+    display:flex;
+    width: 100%;
+    background-color:$tracker-background;
+
+    .add-prospect{
+        position: absolute;
+        bottom: 10%;
+        right: 3%;
+    }
+    
+    .job-container{
+        height:100%;
+        width:100%;
+
+        .card-container{
+            height:94%;
+            overflow-y: scroll;
+            margin-bottom:0;
+            
+            .card{
+                box-shadow: none;
+            }
+            .row{
+                margin-bottom: 0;
+            }
+
+            .card{
+                border-radius:5px;
+            }
+        }
+        .card-container::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    
+
+    > .carousel{
+        height: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

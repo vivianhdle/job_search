@@ -1,0 +1,69 @@
+@import '../../assets/css/variables.scss';
+
+.add-form-progress{
+    position: relative;
+    height:93%;
+    width:100%;
+    top:0;
+    left:0;
+    background-color:$tracker-background;
+
+    .form{
+        height:100%;
+        width:100%;
+        position:relative;
+        overflow: scroll;
+        
+
+        form{
+            height: 100%;
+            width: 100%;
+
+            .select-wrapper{
+                margin-right: auto;
+                margin-left: auto;
+
+                .select-dropdown{
+                    color: #9e9e9e;
+                }
+                
+                
+            }
+
+            .collapsible{
+                position: relative;
+                width: 78%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 5%;
+                box-shadow: none;
+
+                .collapsible-header{
+                    color: #616161;
+                }
+                .collapsible-body{
+                    padding: 1rem;
+                }
+            }
+            .row{
+                margin-bottom:0px;
+            }
+            
+            .btn-wrapper{
+                position: relative;
+                text-align: center;
+            }
+
+            .link-wrapper{
+                text-align: center;
+                position: relative;
+            }
+        }
+    }
+
+    .collapsible-body{
+        .input-field{
+            float: none;
+        }
+    }
+}

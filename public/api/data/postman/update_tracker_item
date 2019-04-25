@@ -1,0 +1,25 @@
+POST 
+http://localhost/api/update_tracker_item.php
+Body: raw
+
+{
+    "tracker_id": 1,
+    "title": "Update Tester",
+    "company": "LFZ",
+    "progress": "Started Application",
+    "contact": [
+        {
+            "id": 1,
+            "name": "Mr.Tester",
+            "email": "mrtester@test.com",
+            "phone": 88888888888
+        },
+        {
+            "id": 18,
+            "name": "updater",
+            "email": "jun@updater.com",
+            "phone": 11111111111
+        }
+    ],
+    "link": "www.pleaseupdate.com"
+}

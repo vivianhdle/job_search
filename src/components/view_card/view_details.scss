@@ -1,0 +1,38 @@
+@import '../../assets/css/variables.scss';
+
+.details-container{
+    min-height: 93%;
+    
+    .action-button{
+        position: fixed;
+        bottom: 10%;
+        right: 3%;
+    }
+    
+    .view-main-text.company {
+        font-size: 24px;
+        font-weight:300;
+    }
+    
+    .view-main-text {
+        margin: 6% 0;
+    }
+}
+
+.loading{
+    font-size: 3em;
+}
+
+.collapsible {
+    background-color: white;
+}
+
+.card {
+    margin: 4% 0;
+    border-radius: 5px;
+}
+
+.view-section-header {
+    font-size: 1.2rem;
+    margin-left: 7%;
+}
