@@ -7,8 +7,8 @@
             height:100%;
             overflow-y: scroll;
             margin-bottom:0;
-        .card-container::-webkit-scrollbar {
-            display: none;
-        }
     }
+}
+.card-container::-webkit-scrollbar {
+    display: none;
 }
