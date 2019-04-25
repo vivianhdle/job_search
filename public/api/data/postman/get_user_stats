@@ -1,0 +1,6 @@
+GET
+http://localhost/api/get_user_stats.php
+Params
+
+KEY: user_id
+VALUE: 1
