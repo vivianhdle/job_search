@@ -20,7 +20,7 @@ class EditFormCard extends Component {
         addNoteOpen: false
     }
     componentDidMount() {
-        const action = initialize('edit-job-card', { title: this.props.title, link: this.props.link, company: this.props.company })
+        const action = initialize('edit-job-card', { title: this.props.title, link: this.props.link, company: this.props.company, progress: this.props.progress })
         this.props.dispatch(action);
     }
     handleAdd = async values => {

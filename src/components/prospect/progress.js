@@ -16,11 +16,11 @@ class DropDown extends Component {
         M.FormSelect.init(this.progress);
     }
     renderSelect = (props) => {
-        const {input, meta: { touched, error, warning }} = props;
+        const {progress, input, meta: { touched, error, warning }} = props;
         console.log('in',input);
         return (
             <div>
-            <select {...input} ref={(element) => { this.progress = element }}>
+            <select {...input} ref={(element) => { this.progress = element }} value={progress} >
                 <option value="" disabled>Application Status</option>
                 <option value="Started Application">Started Application</option>
                 <option value="Waiting for Response">Waiting for Response</option>
@@ -32,11 +32,12 @@ class DropDown extends Component {
         );
     }
     render() {
-        const { col, required} = this.props
+        const { col, required, progress} = this.props
+        console.log('progress', progress)
         return (
             <div className="row">
                 <div className={`input-field ${col}`}>
-                    <Field name="progress" component={this.renderSelect} validate={required} />
+                    <Field name="progress" component={this.renderSelect} validate={required} progress={progress}/>
                 </div>
             </div>
         );
