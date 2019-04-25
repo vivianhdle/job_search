@@ -1,0 +1,16 @@
+.collapsible{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: none;
+
+    .collapsible-header{
+        color: #616161;
+    }
+    .collapsible-body{
+        padding: 1rem;
+    }
+    .input-field{
+        float: none;
+    }
+}

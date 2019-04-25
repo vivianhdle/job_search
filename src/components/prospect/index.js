@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './progress.scss';
-import AddForm from './add-form';
+import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
 
 class Prospect extends Component {
@@ -28,7 +28,7 @@ class Prospect extends Component {
         return (
             <div className="add-form-progress">
                 <div className="form">
-                    <AddForm add={this.handleAdd} goToTracker={this.goToTracker} />
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} />
                 </div>
             </div>
         )

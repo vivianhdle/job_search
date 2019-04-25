@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Field, FormSection } from 'redux-form';
 import Input from '../general/input';
+import './contact.scss';
 
 class ContactForm extends Component {
     componentDidMount() {
@@ -8,8 +9,8 @@ class ContactForm extends Component {
     }
     render() {
         return (
-            <Fragment>
-                <FormSection name={this.props.name} col="s10 offset-s1">
+            <div className="col s10 offset-s1">
+                <FormSection name={this.props.name}>
                     <ul className="collapsible" ref={(element) => {
                         this.contact = element
                     }}>
@@ -23,7 +24,7 @@ class ContactForm extends Component {
                         </li>
                     </ul>
                 </FormSection>
-            </Fragment>
+            </div>
         );
     }
 }

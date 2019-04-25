@@ -5,8 +5,9 @@ import ContactForm from './contact';
 import DropDown from './progress';
 import Header from '../general/header';
 import TextArea from '../general/textarea';
+import './add_job_prospect.scss';
 
-class AddJobCardForm extends Component {
+class AddJobProspect extends Component {
     state = {
         contactForm: [],
         contactCount: 0
@@ -28,7 +29,7 @@ class AddJobCardForm extends Component {
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
-                <Header title="Add Job Prospect" alignment="left-align" margin="5%" bgcolor="white" />
+                <Header title="Add Job Prospect"/>
                 <DropDown col="s10 offset-s1 col" />
                 <div className="row">
                     <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
@@ -42,14 +43,18 @@ class AddJobCardForm extends Component {
                 <div className="row">
                     {contactForm}
                 </div>
-                <div className="btn-wrapper row">
-                    <button type="button" className="btn-floating center btn-small waves-effect blue-grey" onClick={this.addNewContact}><i className="material-icons">add</i></button>
+                <div className="row">
+                    <div className="col s10 offset-s1 center">
+                        <button type="button" className="btn-floating center btn-small waves-effect blue-grey" onClick={this.addNewContact}><i className="material-icons">add</i></button>
+                    </div>
                 </div>
                 <div className="row">
                     <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" />
                 </div>
-                <div className="btn-wrapper row">
-                    <button className="btn blue-grey">Submit</button>
+                <div className="row">
+                    <div className="col s10 offset-s1 center extra-contact">
+                        <button className="btn blue-grey">Submit</button>
+                    </div>
                 </div>
             </form>
         )
@@ -58,4 +63,4 @@ class AddJobCardForm extends Component {
 
 export default reduxForm({
     form: 'add-job-card'
-})(AddJobCardForm);
+})(AddJobProspect);

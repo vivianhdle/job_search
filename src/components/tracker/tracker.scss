@@ -2,46 +2,21 @@
 
 
 .tracker-container{
-    height:86.5%;
+    height:calc(100% - 56px); //56px is top nav bar (mobile)
     margin:0;
     display:flex;
     width: 100%;
     background-color:$tracker-background;
 
-    .add-prospect{
-        position: absolute;
-        bottom: 10%;
-        right: 3%;
-    }
-    
-    .job-container{
+    .carousel{
         height:100%;
         width:100%;
-
-        .card-container{
-            height:94%;
-            overflow-y: scroll;
-            margin-bottom:0;
-            
-            .card{
-                box-shadow: none;
-            }
-            .row{
-                margin-bottom: 0;
-            }
-
-            .card{
-                border-radius:5px;
-            }
-        }
-        .card-container::-webkit-scrollbar {
-            display: none;
-        }
+        padding-bottom:48px; //48 px to account for bottom navbar
     }
-    
-
-    > .carousel{
-        height: 100%;
+    .add-prospect{
+        position: absolute;
+        top: 12%;
+        right: 9%;
     }
 }
 

@@ -3,6 +3,7 @@ import Status from './status';
 import NavCookies from '../nav/navcookies';
 import { Route } from 'react-router-dom';
 import ActionButton from '../general/buttons/action_button';
+import './tracker.scss';
 
 class Tracker extends Component {
     goToProspect = () => {
@@ -18,7 +19,7 @@ class Tracker extends Component {
                             <Status progress="Waiting for Response" id="test-swipe-2" {...routingprops} />
                             <Status progress="Follow-up Needed" id="test-swipe-3" {...routingprops} />
                             <Status progress="Archived" id="test-swipe-4" {...routingprops} />
-                            <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1 add-prospect" icon="add" />
+                            <ActionButton handleClick={this.goToProspect} size="btn-small btn-floating" classes="blue-grey darken-1 add-prospect" icon="add" />
                         </Fragment>
                     )
                 }} />

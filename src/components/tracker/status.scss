@@ -1,0 +1,14 @@
+.job-container{
+        height:100%;
+        width:100%;
+        padding-bottom:48px; //48 px to account for bottom navbar
+        .card-container{
+            padding-bottom:48px;
+            height:100%;
+            overflow-y: scroll;
+            margin-bottom:0;
+        .card-container::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
