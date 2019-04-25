@@ -57,7 +57,7 @@ class EditNote extends Component {
                     <Header title="Edit Note" newClass="col s10 offset-s1" alignment="center"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
                         <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
-                        <button className="btn blue-grey">SUBMIT</button>
+                        <button className="btn blue-grey">SAVE</button>
                     </form>
                     <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
                 </Modal>}

@@ -109,7 +109,7 @@ class EditFormCard extends Component {
                         <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={!link && "Posting Link"} />
                     </div>
                     <div className="btn-wrapper row right-align">
-                        <button className="btn blue-grey submit-button">Submit</button>
+                        <button className="btn blue-grey save-button">SAVE</button>
                     </div>
                 </form>
                 <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
