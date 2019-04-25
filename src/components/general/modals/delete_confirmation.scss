@@ -1,0 +1,46 @@
+
+.delete-confirmation{
+    background-color:rgba(0,0,0,.75);
+    position:fixed;
+    height:100vh;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:2;
+
+    .delete-area{
+        height:40%;
+        background-color:white;
+        width:90%;
+        position:relative;
+        top:30%;
+        left:5%;
+        border-radius: 5px;
+
+        .confirm-icon{
+            .icon-text{
+                padding:1rem;
+                position:relative;
+                width:90%;
+                left:5%;
+                i{
+                    font-size:140px;
+                }
+            }
+        }
+        .confirm-text{
+            font-size: 1.5rem;
+        }
+        .confirm-btns{
+            padding:1rem;
+            button{
+                box-shadow:none;
+            }
+            button:active{
+                background-color:rgba(0,0,0,.75);
+            }
+        }
+
+    }
+
+}

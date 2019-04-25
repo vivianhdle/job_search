@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, initialize } from 'redux-form';
 import { connect } from 'react-redux';
-import Modal from '../../general/modal';
+import Modal from '../../general/modals/modal';
 import Input from '../../general/input';
 import Header from '../../general/header';
 import axios from 'axios';
 import './edit_contact.scss'
+import DeleteModal from '../../general/modals/delete_confirmation';
 
 class EditContactModal extends Component {
-    state = {
-        form: {
-            name: '',
-            email: '',
-            phone: ''
+    constructor(props){
+        super(props);
+        this.state = {
+            deleteConfirmationOpen:false,
+            form: {
+                name: '',
+                email: '',
+                phone: ''
+            }
         }
     }
     componentDidMount() {
@@ -46,11 +51,22 @@ class EditContactModal extends Component {
         await axios.post(`/api/update_contact_item.php`, editContact);
         this.props.view();
     }
+    deleteConfirmation=()=>{
+        this.setState({
+            deleteConfirmationOpen:true
+        })
+    }
+    closeConfirmation=()=>{
+        this.setState({
+            deleteConfirmationOpen:false
+        })
+    }
     render() {
         const { handleSubmit, exitModal } = this.props;
         const { phone, email, name } = this.state.form
         return (
             <div className="action row">
+                {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteContact} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
                 <Modal modalClass="edit-contact-modal" mscss="contact">
                     <button className="edit-exit" onClick={exitModal}><i className="material-icons exit">close</i></button>
                     <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
@@ -60,8 +76,8 @@ class EditContactModal extends Component {
                         <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
                         <button className="btn blue-grey edit-submit">SUBMIT</button>
                     </form>
-                    <button className="trash right" onClick={this.handleDeleteContact}><i className="material-icons text-darken-2 grey-text">delete</i></button>
-                </Modal>
+                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
+                </Modal>}
             </div>
         )
     }

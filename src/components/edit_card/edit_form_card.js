@@ -9,7 +9,6 @@ import Header from '../general/header';
 import ActionButton from '../general/buttons/action_button';
 import AddNote from './add_note/add_note_card';
 import AddContact from './add_contact/add_contact';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
