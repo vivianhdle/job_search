@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
 import { SubmissionError } from 'redux-form';
+import Modal from '../general/modals/modal';
 
 class Prospect extends Component {
     state={
@@ -27,12 +28,13 @@ class Prospect extends Component {
             }
             const resp = await axios.post('/api/add_tracker_item.php', values);
             console.log(resp);
-            // if(resp){
-            //     this.goToTracker();
-            // }
-            // if(!resp){
-
-            // }
+            if(resp.data.success){
+                this.goToTracker();
+            }else{
+                this.setState({
+                    errorMsg: resp.data.error
+                })
+            }
     }
 
     render() {
@@ -42,6 +44,10 @@ class Prospect extends Component {
             <div className="add-form-progress">
                 <div className="form">
                     <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} number={number} />
+                    {this.state.errorMsg && 
+                    <Modal>
+                        <div>{this.state.errorMsg}</div>
+                    </Modal>}
                 </div>
             </div>
         )
