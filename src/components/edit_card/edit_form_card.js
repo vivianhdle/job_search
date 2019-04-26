@@ -23,7 +23,7 @@ class EditFormCard extends Component {
         }
     }
     componentDidMount() {
-        const action = initialize('edit-job-card', { title: this.props.title, link: this.props.link, company: this.props.company })
+        const action = initialize('edit-job-card', { title: this.props.title, link: this.props.link, company: this.props.company, progress: this.props.progress })
         this.props.dispatch(action);
     }
     handleUpdate = async values => {
@@ -90,7 +90,7 @@ class EditFormCard extends Component {
         this.goToTracker();
     }
     render() {
-        const { title, company, contact = [], link, note = [], progress, handleSubmit } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone } = this.props;
         return (
             <div className="form">
                 {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
@@ -98,12 +98,12 @@ class EditFormCard extends Component {
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
                 <form onSubmit={handleSubmit(this.handleUpdate)}>
                     <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
-                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} />
+                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} validate={required} />
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={!company && "Company Name"} component={Input} />
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={!company && "Company Name"} component={Input} validate={required}/>
                     </div>
                     <div className="row">
                         <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={!link && "Posting Link"} />
@@ -114,7 +114,7 @@ class EditFormCard extends Component {
                 </form>
                 <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
-                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
+                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
             </div>

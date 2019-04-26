@@ -16,22 +16,26 @@ class DropDown extends Component {
         M.FormSelect.init(this.progress);
     }
     renderSelect = (props) => {
+        const {progress, input, meta: { touched, error, warning }} = props;
         return (
-            <select {...props.input} value={props.progress} ref={(element) => { this.progress = element }}>
+            <div>
+            <select {...input} ref={(element) => { this.progress = element }} value={progress} >
                 <option value="" disabled>Application Status</option>
                 <option value="Started Application">Started Application</option>
                 <option value="Waiting for Response">Waiting for Response</option>
                 <option value="Follow-up Needed">Follow-up Needed</option>
                 <option value="Archived">Archived</option>
             </select>
+            {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+            </div>
         );
     }
     render() {
-        const { col, progress } = this.props
+        const { col, required, progress} = this.props;
         return (
             <div className="row">
                 <div className={`input-field ${col}`}>
-                    <Field progress={progress} name="progress" component={this.renderSelect} />
+                    <Field name="progress" component={this.renderSelect} validate={required} progress={progress}/>
                 </div>
             </div>
         );

@@ -62,7 +62,7 @@ class EditContactModal extends Component {
         })
     }
     render() {
-        const { handleSubmit, exitModal } = this.props;
+        const { handleSubmit, exitModal, numberPhone } = this.props;
         const { phone, email, name } = this.state.form
         return (
             <div className="action row">
@@ -73,7 +73,7 @@ class EditContactModal extends Component {
                         <Header title="Edit Contact" newClass="col s10 offset-s1" />
                         <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label={!name && "Name"} />
                         <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label={!email && "Email"} />
-                        <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
+                        <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} validate={numberPhone}/>
                         <button className="btn blue-grey edit-submit">SAVE</button>
                     </form>
                     <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
