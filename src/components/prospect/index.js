@@ -4,6 +4,9 @@ import axios from 'axios';
 import { SubmissionError } from 'redux-form';
 
 class Prospect extends Component {
+    state={
+        errorMsg: ''
+    }
     goToTracker = () => {
         this.props.history.push('/tracker');
     }
@@ -22,9 +25,14 @@ class Prospect extends Component {
                 contact: newContact,
                 note: values.note
             }
-            const resp = axios.post('/api/add_tracker_item.php', values).then(
-                this.goToTracker()
-            );
+            const resp = await axios.post('/api/add_tracker_item.php', values);
+            console.log(resp);
+            // if(resp){
+            //     this.goToTracker();
+            // }
+            // if(!resp){
+
+            // }
     }
 
     render() {

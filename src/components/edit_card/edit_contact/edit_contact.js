@@ -34,7 +34,7 @@ class EditContactModal extends Component {
     }
     handleDeleteContact = async () => {
         const { id } = this.props;
-        await axios.post('/api/delete_contact_item.php', { "id": id });
+        const resp = await axios.post('/api/delete_contact_item.php', { "id": id });
         this.props.view();
     }
     handleEditContact = async values => {
