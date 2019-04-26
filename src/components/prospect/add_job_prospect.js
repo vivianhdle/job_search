@@ -37,8 +37,8 @@ class AddJobProspect extends Component {
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
-                <Header title="Add Job Prospect"/>
-                <DropDown col="s10 offset-s1 col" required={required} />
+                <Header title="Add Job Prospect" alignment="left-align"/>
+                <DropDown col="s10 offset-s1 col" required={required}/>
                 <div className="row">
                     <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" validate={[required]}/>
                 </div>

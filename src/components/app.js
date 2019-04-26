@@ -8,8 +8,8 @@ import Nav from './nav';
 import Prospect from './prospect';
 import ViewCard from './view_card';
 import EditCard from './edit_card';
-import Home from './home';
 import NotFound from './404/404';
+import Stats from './stats';
 
 class App extends React.Component {
     state = {
@@ -26,19 +26,15 @@ class App extends React.Component {
                 {this.state.currentPage !== 'Career Assistant' ? <Nav title={'Tracker'}/> : <Nav title={this.state.currentPage}/>}
                 <Switch>
                     <Route exact path="/" render={routingprops => {
-                        return <Home {...routingprops} handlePageRender={this.handlePageRender}/>
+                        return <Stats {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
-                    <Route path="/tracker/edit/:id" render={(routingprops) => {
-                        return <EditCard {...routingprops}/>
-                    }} />
-                    <Route path="/tracker/:id" render={(routingprops) => {
-                        return <ViewCard {...routingprops} />
+                    <Route path="/tracker/edit/:id" component={EditCard}/>
+                    <Route path="/tracker/:id" component={ViewCard}/>
                     }} />
                     <Route path="/tracker" render={(routingprops) => {
                         return <Tracker {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
-                    <Route path="/prospect" render={(routingprops) => {
-                        return <Prospect {...routingprops} />
+                    <Route path="/prospect" component={Prospect}/>
                     }} />
                     <Route component={NotFound}/>
                 </Switch>
