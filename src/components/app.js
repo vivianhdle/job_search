@@ -9,6 +9,7 @@ import Prospect from './prospect';
 import ViewCard from './view_card';
 import EditCard from './edit_card';
 import Home from './home';
+import NotFound from './404/404';
 
 class App extends React.Component {
     state = {
@@ -39,6 +40,7 @@ class App extends React.Component {
                     <Route path="/prospect" render={(routingprops) => {
                         return <Prospect {...routingprops} />
                     }} />
+                    <Route component={NotFound}/>
                 </Switch>
             </div>
         )
