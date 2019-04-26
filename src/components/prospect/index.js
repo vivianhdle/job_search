@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './progress.scss';
 import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
 import { SubmissionError } from 'redux-form';

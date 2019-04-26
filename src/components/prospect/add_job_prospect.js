@@ -38,15 +38,15 @@ class AddJobProspect extends Component {
         return (
             <form onSubmit={handleSubmit(add)}>
                 <Header title="Add Job Prospect"/>
-                <DropDown col="s10 offset-s1 col" required={required}/>
+                <DropDown col="s10 offset-s1 col" required={required} />
                 <div className="row">
-                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" validate={[required]}/>
+                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" validate={[required]}/>
                 </div>
                 <div className="row">
-                    <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name" validate={[required]}/>
+                    <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name *" validate={[required]}/>
                 </div>
                 <div className="row">
-                    <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" />
+                    <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link *" />
                 </div>
                 <div className="row">
                     {contactForm}

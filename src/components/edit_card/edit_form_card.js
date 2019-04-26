@@ -100,13 +100,13 @@ class EditFormCard extends Component {
                     <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
                     <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} validate={required} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} />
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={!company && "Company Name"} component={Input} validate={required}/>
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={!link && "Posting Link"} />
+                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={"Posting Link *"} />
                     </div>
                     <div className="btn-wrapper row right-align">
                         <button className="btn blue-grey save-button">SAVE</button>
