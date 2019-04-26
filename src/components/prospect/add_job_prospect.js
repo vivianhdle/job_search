@@ -20,9 +20,9 @@ class AddJobProspect extends Component {
 
     
     addNewContact = () => {
-        const {number} =this.props;
+        const {number, minLength} =this.props;
         let { contactForm, contactCount } = this.state;
-        contactForm = [...contactForm, <ContactForm key={contactCount} name={`contact${contactCount}`} number={number}/>]
+        contactForm = [...contactForm, <ContactForm key={contactCount} name={`contact${contactCount}`} number={number} minLength={minLength}/>]
         contactCount++;
         this.setState({
             contactForm,

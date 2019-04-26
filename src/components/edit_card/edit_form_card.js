@@ -27,7 +27,6 @@ class EditFormCard extends Component {
         this.props.dispatch(action);
     }
     handleUpdate = async values => {
-        debugger;
         const newValues = { ...values, "tracker_id": parseInt(this.props.match.params.id) }
         await axios.post('/api/update_tracker_item.php', newValues);
         this.goToViewMode();
@@ -90,10 +89,10 @@ class EditFormCard extends Component {
         this.goToTracker();
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone, minLength } = this.props;
         return (
             <div className="form">
-                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
+                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} numberPhone={numberPhone} minLength={minLength}/>}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
                 <form onSubmit={handleSubmit(this.handleUpdate)}>
@@ -114,7 +113,7 @@ class EditFormCard extends Component {
                 </form>
                 <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
-                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
+                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} numberPhone={numberPhone} minLength={minLength}/>}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
             </div>
