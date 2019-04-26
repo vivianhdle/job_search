@@ -105,7 +105,7 @@ class EditFormCard extends Component {
                         <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={"Posting Link *"} />
+                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={"Posting Link"} />
                     </div>
                     <div className="btn-wrapper row right-align">
                         <button className="btn blue-grey save-button">SAVE</button>
