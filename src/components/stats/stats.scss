@@ -1,0 +1,41 @@
+.stats-page{
+    height:calc(100% - 56px); //56px for top nav bar
+    .greeting-content{
+        position:relative;
+        min-height:38%;
+
+        .greeting{
+            position:absolute;
+            height:100%;
+            width:100%;
+            transition: all ease-in 1s;
+            font-size:3rem;
+            background-image:url("../../../public/dist/paintstroke.png");
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center;
+            font-weight:300;
+
+            .greeting-text{
+                height:50%;
+                top:25%;
+                position:relative;
+            }
+        }
+        .greeting-photo{
+            position:absolute;
+            height:100%;
+            width:100%;
+            background-image: url("../../../public/dist/mule_coder.png");
+            background-position:center;
+            background-size:contain;
+            background-repeat:no-repeat;
+            opacity:0;
+            transition: all ease-in 1s;
+        }
+    }
+    .row{
+        padding-bottom: 1rem;
+    }
+    
+}

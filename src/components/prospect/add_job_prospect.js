@@ -29,7 +29,7 @@ class AddJobProspect extends Component {
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
-                <Header title="Add Job Prospect"/>
+                <Header title="Add Job Prospect" alignment="left-align"/>
                 <DropDown col="s10 offset-s1 col" />
                 <div className="row">
                     <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title" />
