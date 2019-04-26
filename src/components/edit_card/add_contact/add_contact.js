@@ -7,7 +7,7 @@ import Header from '../../general/header';
 
 class AddContactModal extends Component {
     render() {
-        const { addContact, handleSubmit, exitModal, numberPhone, minLength} = this.props
+        const { addContact, handleSubmit, exitModal, numberPhone} = this.props
         return (
             <div className="action row">
                 <Modal modalClass="add-contact-modal" mscss="contact">
@@ -16,7 +16,7 @@ class AddContactModal extends Component {
                         <Header alignment="left" title="Add Contact" newClass="col s10 offset-s1" />
                         <Field id="name" col="s10 offset-s1" name="name" component={Input} label="Name" />
                         <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email"/>
-                        <Field id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone" validate={minLength} validate={numberPhone}/>
+                        <Field id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone" validate={numberPhone}/>
                         <button className="btn add-contacts blue-grey">SUBMIT</button>
                     </form>
                 </Modal>

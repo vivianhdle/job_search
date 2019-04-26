@@ -30,7 +30,6 @@ class EditCard extends Component {
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
         const numberPhone = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
-        const minLength = values => (values && values < 10 ? "Must Be at Least 10 characters long" : undefined);
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>
@@ -38,7 +37,7 @@ class EditCard extends Component {
         } else {
             return (
                 <div className="edit-container">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} numberPhone={numberPhone} minLength={minLength}/>
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} numberPhone={numberPhone} />
                 </div>
             )
         }
