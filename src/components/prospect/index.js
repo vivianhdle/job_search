@@ -26,13 +26,11 @@ class Prospect extends Component {
                 note: values.note
             }
             const resp = await axios.post('/api/add_tracker_item.php', values);
-            console.log(resp);
-            // if(resp){
-            //     this.goToTracker();
-            // }
-            // if(!resp){
+            if(resp.data.success){
+                this.goToTracker();
+            }else{
 
-            // }
+            }
     }
 
     render() {
