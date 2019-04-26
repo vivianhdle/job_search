@@ -8,21 +8,25 @@ class Nav extends Component {
         return (
             <Fragment>
                 <li className="sidenav-close">
-                    <Link to="/tracker">Home</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li className="sidenav-close">
-                    <Link to="/prospect">Job Prospect</Link>
+                    <Link to="/tracker">View Prospects</Link>
+                </li>
+                <li className="sidenav-close">
+                    <Link to="/prospect">Add Prospect</Link>
                 </li>
             </Fragment>
         )
     }
     render() {
         const links = this.renderLinks()
+        const {title} = this.props;
         return (
             <Fragment>
                 <nav>
                     <div className="nav-wrapper navbar-fixed blue-grey">
-                        <Link className="brand-logo" to="/tracker">Tracker</Link>
+                        <Link className="brand-logo center" to="/">{title}</Link>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>

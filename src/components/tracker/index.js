@@ -3,8 +3,12 @@ import Status from './status';
 import NavCookies from '../nav/navcookies';
 import { Route } from 'react-router-dom';
 import ActionButton from '../general/buttons/action_button';
+import './tracker.scss';
 
 class Tracker extends Component {
+    componentDidMount(){
+        this.props.handlePageRender('a');
+    }
     goToProspect = () => {
         this.props.history.push('/prospect');
     }

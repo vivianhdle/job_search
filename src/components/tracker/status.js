@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import './tracker.scss';
+import './status.scss';
 import SmallCard from '../cards/small_card';
 import axios from 'axios';
 import Header from '../general/header';
@@ -33,7 +33,7 @@ class Status extends Component {
         return (
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
-                    <Header title={progress} />
+                    <Header title={progress} alignment="center"/>
                     <div className="card-container row col s12">
                         {cards}
                     </div>

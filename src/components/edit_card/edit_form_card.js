@@ -9,24 +9,27 @@ import Header from '../general/header';
 import ActionButton from '../general/buttons/action_button';
 import AddNote from './add_note/add_note_card';
 import AddContact from './add_contact/add_contact';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
+import DeleteModal from '../general/modals/delete_confirmation';
 
 class EditFormCard extends Component {
-    state = {
-        addContactOpen: false,
-        addNoteOpen: false
+    constructor(props){
+        super(props);
+        this.state = {
+            addContactOpen: false,
+            addNoteOpen: false,
+            deleteConfirmation:false
+        }
     }
     componentDidMount() {
-        const action = initialize('edit-job-card', { title: this.props.title, link: this.props.link, company: this.props.company })
+        const action = initialize('edit-job-card', { title: this.props.title, link: this.props.link, company: this.props.company, progress: this.props.progress })
         this.props.dispatch(action);
     }
-    handleAdd = async values => {
+    handleUpdate = async values => {
         const newValues = { ...values, "tracker_id": parseInt(this.props.match.params.id) }
-        await axios.post('/api/update_tracker_item.php', newValues);
-        this.goToTracker();
+        const resp = await axios.post('/api/update_tracker_item.php', newValues);
+        this.goToViewMode();
     }
     addContactModal = () => {
         this.setState({
@@ -48,8 +51,11 @@ class EditFormCard extends Component {
             addNoteOpen: false
         })
     }
-    goToTracker = () => {
+    goToViewMode = () => {
         this.props.history.push(`/tracker/${this.props.match.params.id}`);
+    }
+    goToTracker = () => {
+        this.props.history.push(`/tracker`);
     }
     handleAddContact = async values => {
         const { id } = this.props;
@@ -58,7 +64,7 @@ class EditFormCard extends Component {
             contact: values
         }
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
-        this.goToTracker();
+        this.goToViewMode();
     }
     handleAddNote = async values => {
         const { id } = this.props;
@@ -67,36 +73,49 @@ class EditFormCard extends Component {
             note: values.note
         };
         const resp = await axios.post(`/api/add_note_item.php`, noteValue);
+        this.goToViewMode();
+    }
+    deleteConfirmationToggle=()=>{
+        this.state.deleteConfirmation ? this.setState({
+            deleteConfirmation:false
+        }):this.setState({
+            deleteConfirmation:true
+        })
+    }
+    deleteJobProspect = async () => {
+        if(this.state.deleteConfirmation){
+        const {id}=this.props.match.params;
+        const resp = await axios.get(`/api/delete_tracker_item.php?tracker_id=${id}`);}
         this.goToTracker();
     }
     render() {
-        const { title, company, contact = [], link, note = [], progress, handleSubmit } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone } = this.props;
         return (
             <div className="form">
-                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
+                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} numberPhone={numberPhone}/>}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
-                <form onSubmit={handleSubmit(this.handleAdd)}>
-                    <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
-                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} />
+                {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
+                <form onSubmit={handleSubmit(this.handleUpdate)}>
+                    <Header title="Edit Job Prospect" alignment="left-align" />
+                    <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={!title && "Job Title"} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} />
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={!company && "Company Name"} component={Input} />
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={!link && "Posting Link"} />
+                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={"Posting Link"} />
                     </div>
                     <div className="btn-wrapper row right-align">
-                        <button className="btn blue-grey submit-button">Submit</button>
+                        <button className="btn blue-grey save-button">SAVE</button>
                     </div>
                 </form>
-                <ActionButton icon="contacts" color="white-text" classes="blue-grey btn-floating add-contact" size="btn" handleClick={this.addContactModal} />
-                <ActionButton icon="note_add" color="white-text" classes="blue-grey btn-floating add-note" size="btn" handleClick={this.addNoteModal} />
-                <Header title="Contacts" alignment="left" newClass=" edit-section-header" />
-                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToTracker} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToTracker} />}
-                <Header title="Notes" alignment="left" newClass=" edit-section-header" />
-                {note.length ? <NoteList note={note} edit={true} view={this.goToTracker} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToTracker} />}
+                <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
+                <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
+                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} numberPhone={numberPhone}/>}
+                <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
+                {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
             </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from '../../general/modal';
+import Modal from '../../general/modals/modal';
 import { reduxForm, Field } from 'redux-form';
 import Header from '../../general/header';
 import TextArea from '../../general/textarea';

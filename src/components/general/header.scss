@@ -1,7 +1,11 @@
 .title-header{
-    height:6%;
-    overflow: hidden;
-    font-size:25px;
-    margin-bottom:0;
+    height:50px;
+    font-size:1.75rem;
     font-weight:300;
+    padding:10px 0;
+    +div{
+        i{
+            padding: .85rem 0;
+        }
+    }
 }

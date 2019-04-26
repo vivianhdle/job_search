@@ -1,0 +1,13 @@
+{
+    "success": true,
+    "data": {
+        "user_id": 1,
+        "user_name": "Jun Giang",
+        "total_prospects": 58,
+        "started_application": 14,
+        "waiting_for_response": 19,
+        "follow-up_needed": 12,
+        "archived": 13,
+        "started_today": 2
+    }
+}

@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { Field, FormSection } from 'redux-form';
 import Input from '../general/input';
+import './contact.scss';
 
 class ContactForm extends Component {
     componentDidMount() {
         M.Collapsible.init(this.contact);
     }
     render() {
+        const {number}= this.props;
         return (
-            <Fragment>
-                <FormSection name={this.props.name} col="s10 offset-s1">
+            <div className="col s10 offset-s1">
+                <FormSection name={this.props.name}>
                     <ul className="collapsible" ref={(element) => {
                         this.contact = element
                     }}>
@@ -18,12 +20,12 @@ class ContactForm extends Component {
                             <div className="collapsible-body">
                                 <Field id="name" col="s12" name="name" component={Input} label="Name" />
                                 <Field id="email" col="s12" name="email" component={Input} label="Email" />
-                                <Field id="phone" col="s12" name="phone" component={Input} label="Phone" />
+                                <Field id="phone" col="s12" name="phone" component={Input} label="Phone" validate={number} />
                             </div>
                         </li>
                     </ul>
                 </FormSection>
-            </Fragment>
+            </div>
         );
     }
 }

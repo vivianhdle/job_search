@@ -1,0 +1,30 @@
+@import '../../assets/css/variables.scss';
+
+.add-form-progress{
+    position: relative;
+    height:93%;
+    width:100%;
+    top:0;
+    left:0;
+    background-color:$tracker-background;
+
+    .form{
+        height:100%;
+        width:100%;
+        position:relative;
+        overflow: scroll;
+
+        form{
+            height: 100%;
+            width: 100%;
+
+            .extra-contact{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+        }
+    }
+
+
+}
