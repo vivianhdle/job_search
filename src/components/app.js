@@ -8,7 +8,7 @@ import Nav from './nav';
 import Prospect from './prospect';
 import ViewCard from './view_card';
 import EditCard from './edit_card';
-import Home from './home';
+import Stats from './stats';
 
 class App extends React.Component {
     state = {
@@ -25,7 +25,7 @@ class App extends React.Component {
                 {this.state.currentPage !== 'Career Assistant' ? <Nav title={'Tracker'}/> : <Nav title={this.state.currentPage}/>}
                 <Switch>
                     <Route exact path="/" render={routingprops => {
-                        return <Home {...routingprops} handlePageRender={this.handlePageRender}/>
+                        return <Stats {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
                     <Route path="/tracker/edit/:id" render={(routingprops) => {
                         return <EditCard {...routingprops}/>
