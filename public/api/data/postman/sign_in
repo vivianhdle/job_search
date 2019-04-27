@@ -1,0 +1,8 @@
+POST
+http://localhost/api/sign_in.php
+Params
+
+{
+    "email":"jun@email.com",
+    "password":"password1"
+}
