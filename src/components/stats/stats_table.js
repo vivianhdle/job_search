@@ -7,7 +7,7 @@ function StatsTable(props){
     return (
         <Fragment>
             <Header title="Stats Table"/>
-            <div className="stats-table col s10 offset-s1 m10 offset-m1">
+            <div className="stats-table col s10 offset-s1 m6 offset-m3 l10 offset-l1">
                 <table className="responsive-table">
                     <thead>
                         <tr>
