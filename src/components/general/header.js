@@ -2,11 +2,11 @@ import React, {Fragment} from 'react';
 import './header.scss';
 
 function Header(props) {
-    const { alignment = "center", title, newClass = "", addButton=false, addHandler} = props;
+    const { alignment = "center", title, newClass = "", addButton=false, addHandler,col='col s10 offset-s1'} = props;
     return (
-            <div className="row">
+            <div>
                 <div className={`row title-header ${alignment} ${newClass}`}>
-                    <div className="title-content col s10 offset-s1">
+                    <div className={`title-content ${col}`}>
                         {title}
                     </div>
                 </div>
