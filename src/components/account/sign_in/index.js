@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import SignInForm from './sign_in';
 import './sign_in.scss';
 import Header from '../../general/header';
+import {connect} from 'react-redux';
+import {signIn} from '../../../actions';
 
 
 class SignIn extends Component{
     signIn=values=>{
-        console.log(values)
+        this.props.signIn(values);
     }
     render(){
         return(
@@ -23,4 +25,6 @@ class SignIn extends Component{
     }
 }
 
-export default SignIn;
+export default connect(null,{
+    signIn:signIn
+})(SignIn);

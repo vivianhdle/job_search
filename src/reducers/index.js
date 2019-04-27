@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import addFormReducer from './add-card-reducer';
 import { reducer as formReducer } from 'redux-form';
+import userReducer from './user_reducer.js';
 
 const rootReducer = combineReducers({
     form: formReducer,
-    add: addFormReducer
+    user: userReducer
 });
 
 export default rootReducer;

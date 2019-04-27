@@ -12,7 +12,6 @@ function SignUpForm(props){
                     <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email *" icon="mail_outline"/>
                     <Field id="password" col="s10 offset-s1" name="password" component={Input} label="Password *" type="password" icon="lock_open"/>
                     <Field id="confirmpass" col="s10 offset-s1" name="confirmpass" component={Input} label="Confirm Password *" type="password" icon="lock_open"/>
-                    
                 </div>
                 <div className="row">
                     <div className="s10 offset-s1 col">

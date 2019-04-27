@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import SignUpForm from './sign_up';
 import Header from '../../general/header';
-import './sign_up.scss'
+import './sign_up.scss';
+import {connect} from 'react-redux';
 
 
 class SignUp extends Component{
     signUp=values=>{
         console.log(values);
     }
-
     render(){
         return(
         <div className="signup-container row">
@@ -25,5 +25,7 @@ class SignUp extends Component{
     
 }
 
-
-export default SignUp;
+export default SignUp
+// export default connect(null,{
+//     signUp:signUp
+// })(SignUp);
