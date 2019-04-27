@@ -19,6 +19,7 @@ class EditCard extends Component {
             isLoaded: true,
             params: params
         })
+
     }
     handleChange = e => {
         const { respData } = this.state;

@@ -27,14 +27,6 @@ class Prospect extends Component {
                 note: values.note
             }
             const resp = await axios.post('/api/add_tracker_item.php', values);
-            console.log(resp);
-            if(resp.data.success){
-                this.goToTracker();
-            }else{
-                this.setState({
-                    errorMsg: resp.data.error
-                })
-            }
     }
 
     render() {
@@ -42,12 +34,10 @@ class Prospect extends Component {
         const number = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
         return (
             <div className="add-form-progress">
+            <div>{this.state.errorMsg}</div>
                 <div className="form">
                     <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} number={number} />
-                    {this.state.errorMsg && 
-                    <Modal>
-                        <div>{this.state.errorMsg}</div>
-                    </Modal>}
+                        
                 </div>
             </div>
         )
@@ -57,38 +47,3 @@ class Prospect extends Component {
 
 export default Prospect
 
-
-
-
-
-
-
-
-
-/*
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-        return sleep(1000).then(() => {
-            if (!values.title) {
-                throw new SubmissionError({
-                    title: "You must enter a Job Title",
-                    _error: 'Creation Failed'
-                })
-
-            }
-            if (!values.company) {
-                throw new SubmissionError({
-                    company: "You must enter a Company Name",
-                    _error: 'Creation Failed'
-                })
-            }
-            if(!values.progress){
-                throw new SubmissionError({
-                    progress: "You must choose an App status",
-                    _error: 'Creation Failed'
-                })
-            }
-            
-            
-            
-        })
-*/

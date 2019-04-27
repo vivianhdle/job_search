@@ -29,7 +29,8 @@ class EditFormCard extends Component {
     handleUpdate = async values => {
         const newValues = { ...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
-        this.goToViewMode();
+        console.log('Resp',resp);
+        //this.goToViewMode();
     }
     addContactModal = () => {
         this.setState({
@@ -64,7 +65,17 @@ class EditFormCard extends Component {
             contact: values
         }
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
-        this.goToViewMode();
+        console.log('Resp',resp);
+            if(resp.data.success){
+                //this.goToTracker();
+            }else{
+                // this.setState({
+                //     errorMsg: resp.data.error
+                // })
+            }
+            //console.log(this.state.resp.data.error)
+
+        //this.goToViewMode();
     }
     handleAddNote = async values => {
         const { id } = this.props;
@@ -73,7 +84,17 @@ class EditFormCard extends Component {
             note: values.note
         };
         const resp = await axios.post(`/api/add_note_item.php`, noteValue);
-        this.goToViewMode();
+        console.log('Resp',resp);
+            if(resp.data.success){
+                //this.goToTracker();
+            }else{
+                // this.setState({
+                //     errorMsg: resp.data.error
+                // })
+            }
+            //console.log(this.state.resp.data.error)
+
+        //this.goToViewMode();
     }
     deleteConfirmationToggle=()=>{
         this.state.deleteConfirmation ? this.setState({
@@ -99,10 +120,10 @@ class EditFormCard extends Component {
                     <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
                     <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} value={title} />
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required} value={company}/>
                     </div>
                     <div className="row">
                         <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={"Posting Link"} />
@@ -116,6 +137,7 @@ class EditFormCard extends Component {
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} numberPhone={numberPhone}/>}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
+                {/* {<Modal></Modal>} */}
             </div>
         )
     }

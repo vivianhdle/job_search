@@ -4,6 +4,7 @@ import React from 'react';
 export default props => {
     const { input, classes = '', type = "text", label, id, col = 's12', meta: { touched, error, warning }} = props;
     const {value} = input;
+    console.log(value);
     return (
         <div className={`input-field col ${col}`}>
             <input autoComplete="off" spellCheck="false" autoCorrect="off" className={`input ${id} ${classes}`} type={type} {...input} id={id} />
