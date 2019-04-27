@@ -3,6 +3,7 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+require_once('sign_in_check.php');
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
@@ -21,7 +22,7 @@ if(empty($input['progress'])){
 
 $output['success'] = false;
 
-$user_id = 1;
+$user_id = (int)$_SESSION['user']['user_id'];
 $title = $input['title'];
 $company = $input['company'];
 $progress = $input['progress'];

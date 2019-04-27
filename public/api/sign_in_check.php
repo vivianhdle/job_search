@@ -42,8 +42,4 @@ if(!empty($_SESSION['user'])){
         'token'=>$token
     ];
 }
-
-$json_output = json_encode($output);
-
-print($json_output);
 ?>
