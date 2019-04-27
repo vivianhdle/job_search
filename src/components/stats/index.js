@@ -18,7 +18,7 @@ class Stats extends Component {
         },2000)
     }
     async getStats(){
-        const resp = await axios.get('./api/get_user_stats.php?user_id=1');
+        const resp = await axios.get('./api/get_user_stats.php');
         this.setState({
             metaStats:resp.data.data
         })

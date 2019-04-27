@@ -3,6 +3,7 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+require_once('sign_in_check.php');
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
@@ -13,16 +14,17 @@ if(empty($input['id'])){
 
 $output['success'] = false;
 
-$contact_id = $input['id'];
+$contact_id = (int)$input['id'];
 
 $contact_item_query = "DELETE FROM `contact_info` WHERE 
-    `id`=?
+    `id`=$contact_id
 ";
 
-$contact_item_statement = mysqli_prepare($conn, $contact_item_query);
-mysqli_stmt_bind_param($contact_item_statement, 'i', $contact_id);
-$contact_item_result = mysqli_stmt_execute($contact_item_statement);
-$contact_item_result = mysqli_stmt_get_result($contact_item_statement);
+$result = mysqli_query($conn, $contact_item_query);
+
+if(!$result){
+    throw new Exception(mysqli_error($conn));
+}
 
 if(mysqli_affected_rows($conn) === 0){
     throw new Exception('contact was not deleted');

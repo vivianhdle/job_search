@@ -3,12 +3,12 @@
     set_exception_handler('handleError');
     require_once('config.php');
     require_once('mysqlconnect.php');
+    require_once('sign_in_check.php');
 
     if(empty($_GET['tracker_id'])){
         throw new Exception('You must send a tracker_id with your request');
     };
 
-    $user_id = 1;//hard coded for now
     $tracker_id = (int)$_GET['tracker_id'];
 
     $output['success'] = false;
