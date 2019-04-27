@@ -17,9 +17,7 @@ if(!$result){
     throw new Exception(mysqli_error($conn));
 }
 
-if(!mysqli_num_rows($result)){
-    throw new Exception('Unable to retrieve display data');
-}
+$output['data'] = [];
 
 while($row = mysqli_fetch_assoc($result)){
     $output['data'][] = [

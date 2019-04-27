@@ -6,16 +6,12 @@ require_once('mysqlconnect.php');
 
 $output['success'] = false;
 
-if(!empty($_SESSION['user'])){
-    $token = $_SESSION['user']['token'];
-}else{
-    $json_input = file_get_contents("php://input");
-    $input = json_decode($json_input, true);
-    if(empty($input['token'])){
-        throw new Exception('token is required');
-    }
-    $token = $input['token'];
+if(empty($_SESSION['user']['token'])){
+    require_once('sign_up_guest.php');
+    require_once('sign_in_guest.php');
 }
+
+$token = $_SESSION['user']['token'];
 
 $sign_in_check_query = "SELECT * FROM `user_connection` WHERE `token`=?";
 
@@ -29,7 +25,7 @@ if(!$sign_in_check_result){
 }
 
 if(mysqli_num_rows($sign_in_check_result) !== 1){
-    throw new Exception('not logged in');
+    throw new Exception('Sign in failed, please try again.');
 }
 
 $data = mysqli_fetch_assoc($sign_in_check_result);
