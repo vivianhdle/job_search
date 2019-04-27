@@ -11,6 +11,7 @@ import EditCard from './edit_card';
 import NotFound from './404/404';
 import Stats from './stats';
 import SignIn from './account/sign_in';
+import SignUp from './account/sign_up';
 
 class App extends React.Component {
     state = {
@@ -38,6 +39,7 @@ class App extends React.Component {
                     <Route path="/prospect" component={Prospect}/>
                     }} />
                     <Route path="/sign-in" component={SignIn}/>
+                    <Route path="/sign-up" component={SignUp}/>
                     <Route component={NotFound}/>
                 </Switch>
             </div>
