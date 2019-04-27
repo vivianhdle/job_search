@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './stats.scss'
 import axios from 'axios';
 import StatTable from './stats_table';
+import Loader from '../general/loader';
+
 
 class Stats extends Component {
     state={
@@ -13,10 +15,10 @@ class Stats extends Component {
         setTimeout(()=>{
             this.photo.style.opacity = '1';
             this.greeting.style.opacity="0";
-        },5000)
+        },2000)
     }
     async getStats(){
-        const resp = await axios.get('./api/data/get_user_stats.json');
+        const resp = await axios.get('./api/get_user_stats.php?user_id=1');
         this.setState({
             metaStats:resp.data.data
         })
@@ -35,8 +37,9 @@ class Stats extends Component {
                     <StatTable {...this.state.metaStats}/>
                 </div>
             )
+        }else{
+            return <Loader/>
         }
-        return null;
     }
 }
 
