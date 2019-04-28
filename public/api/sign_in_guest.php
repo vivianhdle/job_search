@@ -50,6 +50,7 @@ $_SESSION['user'] = [
 
 $output['success'] = true;
 $output['token'] = $token;
+$output['guest'] = true;
 
 $json_output = json_encode($output);
 print($json_output);
