@@ -21,6 +21,7 @@ class DropDown extends Component {
         const {progress, input, meta: { touched, error, warning }} = props;
         return (
             <div>
+            <i className="material-icons prefix">trending_up</i>
             {progress && <select {...input} ref={(element) => { this.progress = element }}  value={progress}>
                 <option value="" disabled>Application Status *</option>
                 <option value="Started Application">Started Application</option>

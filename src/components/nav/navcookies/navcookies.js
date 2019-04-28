@@ -22,10 +22,10 @@ class NavCookies extends Component {
         return (
             <Fragment>
                 <ul ref={(element) => this.navcookie = element} id="tabs-swipe-demo" className="tabs navcookie hide-on-med-and-up">
-                    <li className="tab col s4 "><a href="#test-swipe-1"><i className="material-icons">note_add</i></a></li>
-                    <li className="tab col s4"><a className="active" href="#test-swipe-2"><i className="material-icons">watch_later</i></a></li>
-                    <li className="tab col s4"><a href="#test-swipe-3"><i className="material-icons">whatshot</i></a></li>
-                    <li className="tab col s4"><a href="#test-swipe-4"><i className="material-icons">archive</i></a></li>
+                    <li className="tab col s4 "><a className="active" href="#started-app"><i className="material-icons">note_add</i></a></li>
+                    <li className="tab col s4"><a href="#waiting"><i className="material-icons">watch_later</i></a></li>
+                    <li className="tab col s4"><a href="#follow-up"><i className="material-icons">whatshot</i></a></li>
+                    <li className="tab col s4"><a href="#archived"><i className="material-icons">archive</i></a></li>
                 </ul>
             </Fragment>
         )

@@ -3,6 +3,7 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+require_once('sign_in_check.php');
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);

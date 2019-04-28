@@ -37,16 +37,16 @@ class AddJobProspect extends Component {
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
-                <Header title="Add Job Prospect"/>
-                <DropDown col="s10 offset-s1 col" required={required} />
+                <Header title="Add Job Prospect" alignment="left-align"/>
+                <DropDown col="s10 offset-s1 col" required={required}/>
                 <div className="row">
-                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" validate={[required]}/>
+                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" icon="business_center" validate={[required]}/>
                 </div>
                 <div className="row">
-                    <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name *" validate={[required]}/>
+                    <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name *"icon="business" validate={[required]}/>
                 </div>
                 <div className="row">
-                    <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" />
+                    <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" />
                 </div>
                 <div className="row">
                     {contactForm}
@@ -57,7 +57,7 @@ class AddJobProspect extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" />
+                    <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" icon="note_add"/>
                 </div>
                 <div className="row">
                     <div className="col s10 offset-s1 center extra-contact">

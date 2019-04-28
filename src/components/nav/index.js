@@ -2,9 +2,44 @@ import React, { Component, Fragment } from 'react';
 import SideNav from './sidenav';
 import { Link } from 'react-router-dom';
 import './nav.scss';
+import { connect } from 'react-redux';
 
 class Nav extends Component {
+    state = {
+        authLinks: [
+            {
+                to: '/account/sign-out',
+                text: 'Sign Out'
+            },
+        ],
+        guestLinks: [
+            {
+                to: '/account/sign-in',
+                text: 'Sign In'
+            },
+            {
+                to: '/account/sign-up',
+                text: 'Sign Up'
+            }
+        ]
+    }
+    buildLink(link){
+        return (
+            <li key={link.to} className="sidenav-close">
+                <Link to={link.to}>{link.text}</Link>
+            </li>
+        )
+    }
     renderLinks() {
+        const {userAuth} = this.props;
+        const {authLinks, guestLinks} = this.state;
+        let navLinks = null;
+
+        if(userAuth){
+            navLinks = authLinks.map(this.buildLink);
+        }else{
+            navLinks = guestLinks.map(this.buildLink);
+        }
         return (
             <Fragment>
                 <li className="sidenav-close">
@@ -16,12 +51,13 @@ class Nav extends Component {
                 <li className="sidenav-close">
                     <Link to="/prospect">Add Prospect</Link>
                 </li>
+                {navLinks}
             </Fragment>
         )
     }
     render() {
         const links = this.renderLinks()
-        const {title} = this.props;
+        const { title } = this.props;
         return (
             <Fragment>
                 <nav>
@@ -35,9 +71,14 @@ class Nav extends Component {
                 </nav>
                 <SideNav links={links} />
             </Fragment>
-
         )
     }
 }
 
-export default Nav;
+const mapStateToProps = state => {
+    return {
+        userAuth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps)(Nav);

@@ -117,7 +117,7 @@ class EditFormCard extends Component {
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
                 <form onSubmit={handleSubmit(this.handleUpdate)}>
-                    <Header title="Edit Prospect" alignment="left-align" margin="5%" bgcolor="white" />
+                    <Header title="Edit Job Prospect" alignment="left-align" />
                     <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
                         <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} value={title} />

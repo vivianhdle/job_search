@@ -18,11 +18,11 @@ class Tracker extends Component {
                 <Route render={(routingprops) => {
                     return (
                         <Fragment>
-                            <Status progress="Started Application" id="test-swipe-1" {...routingprops} />
-                            <Status progress="Waiting for Response" id="test-swipe-2" {...routingprops} />
-                            <Status progress="Follow-up Needed" id="test-swipe-3" {...routingprops} />
-                            <Status progress="Archived" id="test-swipe-4" {...routingprops} />
-                            <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1 add-prospect" icon="add" />
+                            <Status progress="Started Application" id="started-app" {...routingprops} />
+                            <Status progress="Waiting for Response" id="waiting" {...routingprops} />
+                            <Status progress="Follow-up Needed" id="follow-up" {...routingprops} />
+                            <Status progress="Archived" id="archived" {...routingprops} />
+                            <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1 add-prospect" icon="add"/>
                         </Fragment>
                     )
                 }} />
