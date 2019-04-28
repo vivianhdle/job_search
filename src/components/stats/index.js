@@ -12,10 +12,11 @@ class Stats extends Component {
     componentDidMount(){
         this.props.handlePageRender('Career Assistant');
         this.getStats();
-        setTimeout(()=>{
-            this.photo.style.opacity = '1';
-            this.greeting.style.opacity="0";
-        },2000)
+        // setTimeout(()=>{
+        //     this.photo.style.opacity = '1';
+        //     this.greeting.style.opacity="0";
+        // },2000)
+        //turn on after debug
     }
     async getStats(){
         const resp = await axios.get('./api/get_user_stats.php');

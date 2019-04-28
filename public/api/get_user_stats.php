@@ -3,7 +3,6 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
-require_once('sign_in_check.php');
 
 $user_id = (int)$_SESSION['user']['user_id'];
 

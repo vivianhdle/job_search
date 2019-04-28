@@ -1,2 +1,2 @@
 GET
-http://localhost/api/clear_session.php
+http://localhost/api/sign_out.php
