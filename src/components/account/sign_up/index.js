@@ -3,11 +3,12 @@ import SignUpForm from './sign_up';
 import Header from '../../general/header';
 import './sign_up.scss';
 import {connect} from 'react-redux';
+import {signUp} from '../../../actions';
 
 
 class SignUp extends Component{
     signUp=values=>{
-        console.log(values);
+        this.props.signUp(values);
     }
     render(){
         return(
@@ -25,7 +26,6 @@ class SignUp extends Component{
     
 }
 
-export default SignUp
-// export default connect(null,{
-//     signUp:signUp
-// })(SignUp);
+export default connect(null,{
+    signUp:signUp
+})(SignUp);
