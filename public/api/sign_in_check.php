@@ -8,7 +8,6 @@ $output['success'] = false;
 
 if(empty($_SESSION['user']['token'])){
     require_once('sign_up_guest.php');
-    require_once('sign_in_guest.php');
 }
 
 $token = $_SESSION['user']['token'];

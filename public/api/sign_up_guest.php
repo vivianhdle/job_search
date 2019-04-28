@@ -25,4 +25,6 @@ $sign_up_result = mysqli_stmt_get_result($sign_up_statement);
 if(mysqli_affected_rows($conn) === 0){
     throw new Exception('user was not signed up');
 }
+
+require_once('sign_in_guest.php');
 ?>

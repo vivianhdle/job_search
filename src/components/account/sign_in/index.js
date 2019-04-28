@@ -9,6 +9,7 @@ import {signIn} from '../../../actions';
 class SignIn extends Component{
     signIn=values=>{
         this.props.signIn(values);
+        this.props.history.push('/');
     }
     render(){
         return(

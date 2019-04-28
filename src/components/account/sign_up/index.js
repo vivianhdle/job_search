@@ -3,17 +3,24 @@ import SignUpForm from './sign_up';
 import Header from '../../general/header';
 import './sign_up.scss';
 import {connect} from 'react-redux';
-import {signUp} from '../../../actions';
+import {signUp, signIn} from '../../../actions';
 
 
 class SignUp extends Component{
-    signUp=values=>{
+    signUp= async values=>{
+        const {email, password} = values;
         const signUpInfo = {
             user_name: values.user_name,
-            email:values.email,
-            password:values.password
+            email,
+            password
         }
-        this.props.signUp(signUpInfo);
+        const signInInfo = {
+            email,
+            password
+        }
+        await this.props.signUp(signUpInfo);
+        this.props.signIn(signInInfo);;
+        this.props.history.push('/');
     }
     render(){
         return(
@@ -32,5 +39,6 @@ class SignUp extends Component{
 }
 
 export default connect(null,{
-    signUp:signUp
+    signUp:signUp,
+    signIn:signIn
 })(SignUp);
