@@ -17,10 +17,10 @@ class Nav extends Component {
                     <Link to="/prospect">Add Prospect</Link>
                 </li>
                 <li className="sidenav-close">
-                    <Link to="/sign-in">Sign In</Link>
+                    <Link to="/account/sign-in">Sign In</Link>
                 </li>
                 <li className="sidenav-close">
-                    <Link to="/sign-up">Sign Up</Link>
+                    <Link to="/account/sign-up">Sign Up</Link>
                 </li>
             </Fragment>
         )

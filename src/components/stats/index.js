@@ -30,7 +30,12 @@ class Stats extends Component {
                 <div className="stats-page row">
                     <div className="greeting-content">
                         <div className="greeting center" ref={(element)=>{this.greeting = element}}>
-                            <div className="greeting-text grey-text text-darken-2">Welcome back, {user_name}!</div>
+                            <div className="greeting-text grey-text text-darken-2">
+                                {user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
+                                <div>
+                                    {user_name}!
+                                </div>
+                            </div>
                         </div>
                         <div className="greeting-photo" ref={(element)=>{this.photo = element}}></div>
                     </div>
