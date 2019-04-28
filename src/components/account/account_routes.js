@@ -11,8 +11,8 @@ function AccountRoutes(props){
     return(
         <Switch>
             <Route path={`${match.path}/sign-in`} component={auth(SignIn, '/', false)}/>
-            <Route path={`${match.path}/sign-up`} component={auth(SignUp, '/')}/>
-            <Route path={`${match.path}/sign-out`} component={auth(SignOut, '/', false)}/>
+            <Route path={`${match.path}/sign-up`} component={auth(SignUp, '/', false)}/>
+            <Route path={`${match.path}/sign-out`} component={auth(SignOut, '/', true)}/>
             <Route component={NotFound}/>
         </Switch>
     )

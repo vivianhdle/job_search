@@ -25,7 +25,7 @@ class Nav extends Component {
     }
     buildLink(link){
         return (
-            <li key={link.to}>
+            <li key={link.to} className="sidenav-close">
                 <Link to={link.to}>{link.text}</Link>
             </li>
         )
@@ -51,12 +51,6 @@ class Nav extends Component {
                 <li className="sidenav-close">
                     <Link to="/prospect">Add Prospect</Link>
                 </li>
-                {/* <li className="sidenav-close">
-                    <Link to="/account/sign-in">Sign In</Link>
-                </li>
-                <li className="sidenav-close">
-                    <Link to="/account/sign-up">Sign Up</Link>
-                </li> */}
                 {navLinks}
             </Fragment>
         )
@@ -88,5 +82,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(Nav);
-
-// export default Nav;

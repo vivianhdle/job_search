@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './sign_out';
 import { connect } from 'react-redux';
-import { signOut } from '../../../actions';
+import { signOut, signInGuest } from '../../../actions';
 
 class SignOut extends Component {
     componentDidMount() {
         this.props.signOut();
+        this.props.signInGuest();
+        this.props.history.push('/');
     }
     render() {
         return (
@@ -20,5 +22,6 @@ class SignOut extends Component {
 }
 
 export default connect(null, {
-    signOut
+    signOut,
+    signInGuest
 })(SignOut);

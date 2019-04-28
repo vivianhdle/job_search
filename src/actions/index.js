@@ -4,16 +4,29 @@ import axios from 'axios';
 export const checkAuth = () => async dispatch => {
     const {data: success, email = '', guest} = await axios.get('/api/sign_in_check.php');
     if(success && guest){
-        console.log(success);
         return dispatch({
             type: types.SIGN_IN,
             email
         })
     }
-
     return dispatch({
         type: types.SIGN_OUT
     })
+}
+export function signInGuest(user){
+    return function(dispatch){
+        axios.post('/api/sign_up_guest.php').then(resp=>{//change to sign_in and check for local storage
+            if(resp.data.success){
+                dispatch({
+                    type: types.SIGN_IN_GUEST
+                })
+            } else{
+                dispatch({
+                    type:types.SIGN_IN_GUEST_ERROR
+                })
+            }
+        })
+    }
 }
 export function signIn(user){
     return function(dispatch){
@@ -34,7 +47,7 @@ export function signIn(user){
 }
 export function signOut(user){
     return function(dispatch){
-        axios.get('/api/sessionclear.php').then(resp=>{
+        axios.get('/api/sign_out.php').then(resp=>{
             if(resp.data.success){
                 localStorage.removeItem('signedIn');
                 dispatch({

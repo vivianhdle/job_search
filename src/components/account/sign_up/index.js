@@ -19,8 +19,7 @@ class SignUp extends Component{
             password
         }
         await this.props.signUp(signUpInfo);
-        this.props.signIn(signInInfo);;
-        this.props.history.push('/');
+        this.props.signIn(signInInfo);
     }
     render(){
         return(
