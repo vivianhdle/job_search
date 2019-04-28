@@ -15,7 +15,7 @@ function SignUpForm(props){
                 </div>
                 <div className="row">
                     <div className="s10 offset-s1 col">
-                        <button className="btn-small blue-grey right">Sign In</button>
+                        <button className="btn-small blue-grey right">Sign Up</button>
                     </div>
                 </div>
             </form>
@@ -23,8 +23,29 @@ function SignUpForm(props){
     )
 
 }
+function validate(values){
+    const {email,password,confirmpass,user_name} = values
+    const errors = {};
+    if(!user_name){
+        errors.user_name = 'Please enter your username';
+    }
+    if(!email){
+        errors.email = 'Please enter your email';
+    }
+    if (!password){
+        errors.password = 'Please enter a password';
+    }
+    if(!confirmpass){
+        errors.confirmpass = 'Please confirm your password';
+    }
+    if(password !== confirmpass){
+        errors.confirmpass = 'Passwords do not match';
+    }
+    return errors;
+}
 
 
 export default reduxForm({
-    form: 'sign-up'
+    form: 'sign-up',
+    validate:validate
 })(SignUpForm);

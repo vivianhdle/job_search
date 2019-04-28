@@ -8,7 +8,12 @@ import {signUp} from '../../../actions';
 
 class SignUp extends Component{
     signUp=values=>{
-        this.props.signUp(values);
+        const signUpInfo = {
+            user_name: values.user_name,
+            email:values.email,
+            password:values.password
+        }
+        this.props.signUp(signUpInfo);
     }
     render(){
         return(

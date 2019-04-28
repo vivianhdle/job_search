@@ -9,8 +9,8 @@ function AccountRoutes(props){
     const {match} = props;
     return(
         <Switch>
-            <Route path={`${match.path}/sign-in`} component={auth(SignIn,'/',false)}/>
-            <Route path={`${match.path}/sign-up`} component={auth(SignUp,'/')}/>
+            <Route path={`${match.path}/sign-in`} component={SignIn}/>
+            <Route path={`${match.path}/sign-up`} component={SignUp}/>
             <Route component={NotFound}/>
         </Switch>
     )
