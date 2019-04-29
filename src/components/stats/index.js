@@ -11,11 +11,11 @@ class Stats extends Component {
         metaStats:null
     }
     componentDidMount(){
-        console.log(this.props);
         this.props.handlePageRender('Career Assistant');
-        if(localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn')){
+        this.checkSession();
+        if(localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn') && this.props.location.state !== 'signedOut'){
             this.props.signInGuest();
-        }else if(!localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn')){
+        }else if(!localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn') && this.props.location.state !== 'signedOut'){
             this.props.signUpNewGuest();
         }
         this.getStats();
@@ -24,6 +24,21 @@ class Stats extends Component {
         //     this.greeting.style.opacity="0";
         // },2000)
         //turn on after debug
+    }
+    async checkSession(){
+        const resp = await axios.get('./api/sessiontest.php');
+        const {success} = resp.data;
+        if(!success && localStorage.getItem('guest_id')){
+            this.clearUserLog();
+            this.props.signInGuest();
+        }else if(!success && !localStorage.getItem('guest_id')){
+            this.clearUserLog();
+            this.props.signUpNewGuest();
+        }
+    }
+    clearUserLog(){
+        localStorage.removeItem('signedIn');
+        localStorage.removeItem('guestSignedIn');
     }
     async getStats(){
         const resp = await axios.get('./api/get_user_stats.php');

@@ -11,7 +11,7 @@ class SignOut extends Component {
         }else{
             this.props.signUpNewGuest();
         }
-        this.props.history.push('/');
+        this.props.history.push('/', 'signedOut');
     }
     render() {
         return (

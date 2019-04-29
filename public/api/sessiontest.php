@@ -1,4 +1,12 @@
 <?php
 session_start();
-print_r($_SESSION);
+
+$output['success'] = false;
+
+if(!empty($_SESSION)){
+    $output['success'] = true;
+}
+
+$json_output = json_encode($output);
+print($json_output);
 ?>
