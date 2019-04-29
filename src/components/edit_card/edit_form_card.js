@@ -74,7 +74,6 @@ class EditFormCard extends Component {
             contact: values
         }
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
-        console.log('Resp',resp);
             if(resp.data.success){
                 this.goToViewMode();
             }else{
@@ -91,7 +90,6 @@ class EditFormCard extends Component {
             note: values.note
         };
         const resp = await axios.post(`/api/add_note_item.php`, noteValue);
-        console.log('Resp',resp);
         if(resp.data.success){
             this.goToViewMode();
         }else{
