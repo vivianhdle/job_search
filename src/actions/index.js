@@ -2,11 +2,10 @@ import types from './types';
 import axios from 'axios';
 
 export const checkAuth = () => async dispatch => {
-    const {data: {success, email = '', guest}} = await axios.get('/api/sign_in_check.php');
+    const {data: {success, guest}} = await axios.get('/api/sign_in_check.php');
     if(success && guest){
         return dispatch({
-            type: types.SIGN_IN,
-            email
+            type: types.SIGN_IN
         })
     }
     return dispatch({
@@ -16,7 +15,6 @@ export const checkAuth = () => async dispatch => {
 export function signUpNewGuest(){
     return function(dispatch){
         return axios.post('/api/sign_up_guest.php').then(resp=>{
-            console.log(resp);
             if(resp.data.success){
                 localStorage.setItem('guest_id', resp.data.guest);
                 dispatch({
@@ -27,10 +25,9 @@ export function signUpNewGuest(){
                     type:types.SIGN_IN_GUEST_ERROR
                 })
             }
-        }).then(()=>{//can't i just call it here??
+        }).then(()=>{
             const guest_id = localStorage.getItem('guest_id');
             axios.post('/api/sign_in_guest.php', {guest_id}).then(nextResp=>{
-                console.log(nextResp);
                 if(nextResp.data.success){
                     localStorage.setItem('guestSignedIn',true);
                     dispatch({
@@ -69,8 +66,7 @@ export function signIn(user){
                 localStorage.removeItem('guestSignedIn');
                 localStorage.setItem('signedIn',true);
                 dispatch({
-                    type:types.SIGN_IN,
-                    email:resp.data.email
+                    type:types.SIGN_IN
                 }) 
             } else{
                 dispatch({
@@ -97,8 +93,7 @@ export function signUp(user){
         axios.post('/api/sign_up.php',user).then(resp=>{
             if (resp.data.success){
                 dispatch({
-                    type:types.SIGN_UP,
-                    email:resp.data.email
+                    type:types.SIGN_UP
                 }) 
             } else{
                 dispatch({

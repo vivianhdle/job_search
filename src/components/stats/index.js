@@ -44,7 +44,6 @@ class Stats extends Component {
     }
     async getStats() {
         const resp = await axios.get('./api/get_user_stats.php');
-        console.log(resp);
         this.setState({
             metaStats: resp.data.data
         })
