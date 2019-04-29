@@ -30,7 +30,11 @@ $tracker_id = $input['tracker_id'];
 $title = $input['title'];
 $company = $input['company'];
 $progress = $input['progress'];
-$link = $input['link'];
+$link = null;
+
+if(isset($input['link'])){
+    $link = $input['link'];
+}
 
 $tracker_item_query = "UPDATE `tracker_item` SET 
     `title`=?,

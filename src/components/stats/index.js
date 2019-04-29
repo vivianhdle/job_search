@@ -8,7 +8,9 @@ import { signInGuest, signUpNewGuest } from '../../actions';
 
 class Stats extends Component {
     state = {
-        metaStats: null
+        metaStats: null,
+        errorMsg: '',
+        error: false
     }
     async componentDidMount() {
         this.props.handlePageRender('Career Assistant');
@@ -45,8 +47,18 @@ class Stats extends Component {
     async getStats() {
         const resp = await axios.get('./api/get_user_stats.php');
         console.log(resp);
-        this.setState({
+        if(resp.data.success){this.setState({
             metaStats: resp.data.data
+        })}else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
+    }
+    closeErrorModal = ()=>{
+        this.setState({
+            error: false
         })
     }
     render() {
@@ -54,6 +66,7 @@ class Stats extends Component {
             const { user_name } = this.state.metaStats
             return (
                 <div className="stats-page row">
+                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                     <div className="greeting-content">
                         <div className="greeting center" ref={(element) => { this.greeting = element }}>
                             <div className="greeting-text grey-text text-darken-2">

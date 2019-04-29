@@ -7,6 +7,7 @@ import './edit_note.scss';
 import axios from 'axios';
 import DeleteModal from '../../general/modals/delete_confirmation';
 import { connect } from 'react-redux';
+import ErrorHandler from '../../general/error_handler';
 
 class EditNote extends Component {
     constructor(props){
@@ -28,6 +29,7 @@ class EditNote extends Component {
             note: values.note
         }
         const resp = await axios.post('/api/update_note_item.php', editNoteValues);
+        
         if(resp.data.success){
             this.props.view();;
         }else{
@@ -40,7 +42,14 @@ class EditNote extends Component {
     handleDeleteNote = async () => {
         const { id } = this.props;
         await axios.post('/api/delete_note_item.php', { "id": id });
-        this.props.view();
+        if(resp.data.success){
+            this.props.view();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
 
     deleteConfirmation=()=>{
@@ -53,12 +62,16 @@ class EditNote extends Component {
             deleteConfirmationOpen:false
         })
     }
-
+    closeErrorModal = ()=>{
+        this.setState({
+            error: false
+        })
+    }
     render() {
         const { handleSubmit, closeModal } = this.props;
         return (
             <div className="action row">
-                {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
+                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteNote} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
                 <Modal modalClass="edit-note-modal" mscss="note">
                     <div>
