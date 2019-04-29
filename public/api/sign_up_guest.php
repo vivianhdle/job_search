@@ -21,10 +21,15 @@ $sign_up_statement = mysqli_prepare($conn, $sign_up_query);
 mysqli_stmt_bind_param($sign_up_statement, 'sss', $user_name, $email, $hashedPassword);
 $sign_up_result = mysqli_stmt_execute($sign_up_statement);
 $sign_up_result = mysqli_stmt_get_result($sign_up_statement);
+$returned_guest_id = $sign_up_statement->insert_id;
 
 if(mysqli_affected_rows($conn) === 0){
     throw new Exception('user was not signed up');
 }
 
-require_once('sign_in_guest.php');
+$output['success'] = true;
+$output['guest'] = $returned_guest_id;
+
+$json_output = json_encode($output);
+print($json_output);
 ?>

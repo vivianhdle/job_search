@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import './sign_out';
 import { connect } from 'react-redux';
-import { signOut, signInGuest } from '../../../actions';
+import { signOut, signInGuest, signUpNewGuest } from '../../../actions';
 
 class SignOut extends Component {
-    componentDidMount() {
+    async componentDidMount() {
         this.props.signOut();
-        this.props.signInGuest();
-        this.props.history.push('/');
+        if(localStorage.getItem('guest_id')){
+            await this.props.signInGuest();
+        }else{
+            await this.props.signUpNewGuest();
+        }
+        this.props.history.push('/', 'signedOut');
     }
     render() {
         return (
@@ -22,6 +26,7 @@ class SignOut extends Component {
 }
 
 export default connect(null, {
-    signOut,
-    signInGuest
+    signInGuest,
+    signUpNewGuest,
+    signOut
 })(SignOut);
