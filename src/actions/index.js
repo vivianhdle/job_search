@@ -74,8 +74,10 @@ export function signIn(user){
                 }) 
             } else{
                 dispatch({
-                    type:types.SIGN_IN_ERROR
+                    type:types.SIGN_IN_ERROR,
+                    errors: resp.data.error
                 })
+                console.log('Resp', resp.data.error);   
             }
         })
     }

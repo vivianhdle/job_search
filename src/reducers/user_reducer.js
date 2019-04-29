@@ -13,7 +13,9 @@ function userReducer(state = DEFAULT_STATE, action) {
         case types.SIGN_IN_GUEST:
             return { ...DEFAULT_STATE };
         case types.SIGN_OUT:
-            return { ...DEFAULT_STATE }
+            return { ...DEFAULT_STATE };
+        case types.SIGN_IN_ERROR:
+            return {...DEFAULT_STATE}
         default: return state;
     }
 }
