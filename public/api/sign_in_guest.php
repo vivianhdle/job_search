@@ -4,14 +4,25 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
+$json_input = file_get_contents("php://input");
+$input = json_decode($json_input, true);
+
+
+if(empty($input['guest_id'])){
+    throw new Exception('guest_id is missing');
+}
+
+$output['success'] = false;
+
+$guest_id = $input['guest_id'];
 $email = 'guest';
-$password = 'guest';//change password to id passed from front end local storage
+$password = 'guest';
 $hashedPassword = sha1($password);//DO NOT HASH ID just (int)
 
-$query="SELECT `id` FROM `user` WHERE `email`=? AND `password`=?";
+$query="SELECT `id` FROM `user` WHERE `email`=? AND `password`=? AND `id`=?";
 
 $user_statement = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($user_statement, 'ss', $email, $hashedPassword);
+mysqli_stmt_bind_param($user_statement, 'ssi', $email, $hashedPassword, $guest_id);
 $result = mysqli_stmt_execute($user_statement);
 $result = mysqli_stmt_get_result($user_statement);
 
@@ -20,7 +31,7 @@ if(!$result){
 }
 
 if(!mysqli_num_rows($result)){
-    throw new Exception('guest sign in failed');
+    throw new Exception('guest account does not exist');
 }
 
 $data = mysqli_fetch_assoc($result);
@@ -50,7 +61,7 @@ $_SESSION['user'] = [
 
 $output['success'] = true;
 $output['token'] = $token;
-$output['guest'] = true;
+$output['guest'] = $data['id'];
 
 $json_output = json_encode($output);
 print($json_output);

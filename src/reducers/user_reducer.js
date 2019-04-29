@@ -2,7 +2,8 @@ import types from '../actions/types';
 
 const DEFAULT_STATE = {
     auth: false,
-    email: ''
+    email: '',
+    guest_id: null//maybe change to user id
 }
 
 function userReducer(state = DEFAULT_STATE, action) {

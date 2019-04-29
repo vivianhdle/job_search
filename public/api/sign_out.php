@@ -1,6 +1,9 @@
 <?php
-    session_start();
-    session_destroy();
-    require_once('sign_up_guest.php');//change to sign_in once local storage for each guest is set
-    echo'<h1>Session Cleared</h1>';
+session_start();
+$output['success'] = false;
+session_destroy();
+$output['success'] = true;
+
+$json_output = json_encode($output);
+print($json_output);
 ?>
