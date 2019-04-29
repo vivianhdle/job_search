@@ -3,14 +3,21 @@ import './stats.scss'
 import axios from 'axios';
 import StatTable from './stats_table';
 import Loader from '../general/loader';
-
+import { connect } from 'react-redux';
+import { signInGuest, signUpNewGuest } from '../../actions';
 
 class Stats extends Component {
     state={
         metaStats:null
     }
     componentDidMount(){
+        console.log(this.props);
         this.props.handlePageRender('Career Assistant');
+        if(localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn')){
+            this.props.signInGuest();
+        }else if(!localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn')){
+            this.props.signUpNewGuest();
+        }
         this.getStats();
         // setTimeout(()=>{
         //     this.photo.style.opacity = '1';
@@ -49,4 +56,7 @@ class Stats extends Component {
     }
 }
 
-export default Stats;
+export default connect(null, {
+    signInGuest,
+    signUpNewGuest
+})(Stats);
