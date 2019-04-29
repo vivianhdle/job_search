@@ -18,7 +18,6 @@ class Stats extends Component {
             this.photo.style.opacity = '1';
             this.greeting.style.opacity="0";
         },2000)
-        //turn on after debug
     }
     async checkSession() {
         const resp = await axios.get('./api/sessiontest.php');

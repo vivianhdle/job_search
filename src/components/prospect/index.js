@@ -9,6 +9,9 @@ class Prospect extends Component {
         errorMsg: '',
         error: false
     }
+    componentDidMount(){
+        this.props.handlePageRender('Job Tracker');
+    }
     goToTracker = () => {
         this.props.history.push('/tracker');
     }

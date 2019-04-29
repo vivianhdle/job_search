@@ -7,7 +7,7 @@ import './tracker.scss';
 
 class Tracker extends Component {
     componentDidMount(){
-        this.props.handlePageRender('a');
+        this.props.handlePageRender('Job Tracker');
     }
     goToProspect = () => {
         this.props.history.push('/prospect');
