@@ -15,6 +15,7 @@ class Status extends Component {
     }
     async getDetails() {
         const resp = await axios.get('/api/get_jobcard_display.php');
+        resp.data.data.reverse();
         this.setState({
             cards: resp.data.data
         })
