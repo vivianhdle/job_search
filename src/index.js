@@ -12,22 +12,23 @@ import { checkAuth } from './actions';
 
 const store = createStore(rootReducer, applyMiddleware(think));
 
-// if(localStorage.getItem('signedIn') === 'true'){
-//     store.dispatch({
-//         type: types.SIGN_IN,
-//         email: 'loading'
-//     })
+if (localStorage.getItem('signedIn') === 'true') {
+    store.dispatch({
+        type: types.SIGN_IN
+    })
 
-//     checkAuth()(store.dispatch);
-// }
-function renderApp() {
-    ReactDOM.render(
-        <Provider store={store}>
-            <Router>
-                <App />
-            </Router>
-        </Provider>,
-        document.getElementById('root')
-    );
+    checkAuth()(store.dispatch);
+} else {
+    store.dispatch({
+        type: types.SIGN_IN_GUEST
+    })
+
 }
-checkAuth()(store.dispatch).finally(renderApp);
+ReactDOM.render(
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
+    document.getElementById('root')
+);

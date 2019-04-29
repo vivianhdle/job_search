@@ -4,7 +4,6 @@ import React from 'react';
 export default props => {
     const { input, icon, classes = '', type = "text", label, id, col = 's12', meta: { touched, error, warning }} = props;
     const {value} = input;
-    console.log(value);
     return (
         <div className={`input-field col ${col}`}>
             {icon && <i className="material-icons prefix">{icon}</i>}

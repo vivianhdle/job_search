@@ -4,33 +4,31 @@ import './sign_in.scss';
 import Header from '../../general/header';
 import {connect} from 'react-redux';
 import {signIn} from '../../../actions';
-import ErrorHandler from '../../general/error_handler';
+
 
 
 class SignIn extends Component{
-    state={
-        errorMsg: '',
-        error: false
-    }
+
     signIn=values=>{
         this.props.signIn(values);
-
-    }
-    closeErrorModal = ()=>{
-        this.setState({
-            error: false
-        })
     }
 
     render(){
+        console.log('props', this.props);
+        const {error, errorMsg} = this.props;
+
         return(
             <div className="signin-container row">
-            {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 <div className="signin-box col m6 offset-m3 s10 offset-s1">
                     <div className="signin-content">
                         <div className="photo"></div>
                     </div>
                     <Header alignment = "left-align" title="Sign In" newClass = "teal-text text-darken-1"/>
+                    {error && 
+                    <div className='errorMsg row'>
+                        <i className='material-icons warning prefix'>warning</i>
+                        <div className="col s10 offset-s1" >{errorMsg}</div>
+                    </div>}
                     <SignInForm signIn={this.signIn}/>
                 </div>
             </div>
@@ -38,7 +36,14 @@ class SignIn extends Component{
     }
 }
 
+function mapStateToProps(state){ 
+    return{
+        errorMsg: state.user.errorMsg,
+        error: state.user.error
+    }
 
-export default connect(null,{
+}
+
+export default connect(mapStateToProps,{
     signIn:signIn
 })(SignIn);
