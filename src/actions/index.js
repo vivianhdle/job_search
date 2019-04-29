@@ -2,7 +2,7 @@ import types from './types';
 import axios from 'axios';
 
 export const checkAuth = () => async dispatch => {
-    const {data: success, email = '', guest} = await axios.get('/api/sign_in_check.php');
+    const {data: {success, email = '', guest}} = await axios.get('/api/sign_in_check.php');
     if(success && guest){
         return dispatch({
             type: types.SIGN_IN,
@@ -15,7 +15,8 @@ export const checkAuth = () => async dispatch => {
 }
 export function signUpNewGuest(){
     return function(dispatch){
-        axios.post('/api/sign_up_guest.php').then(resp=>{
+        return axios.post('/api/sign_up_guest.php').then(resp=>{
+            console.log(resp);
             if(resp.data.success){
                 localStorage.setItem('guest_id', resp.data.guest);
                 dispatch({
@@ -29,6 +30,7 @@ export function signUpNewGuest(){
         }).then(()=>{//can't i just call it here??
             const guest_id = localStorage.getItem('guest_id');
             axios.post('/api/sign_in_guest.php', {guest_id}).then(nextResp=>{
+                console.log(nextResp);
                 if(nextResp.data.success){
                     localStorage.setItem('guestSignedIn',true);
                     dispatch({
@@ -46,7 +48,7 @@ export function signUpNewGuest(){
 export function signInGuest(user){
     return function(dispatch){
         const guest_id = localStorage.getItem('guest_id');
-        axios.post('/api/sign_in_guest.php', {guest_id}).then(resp=>{
+        return axios.post('/api/sign_in_guest.php', {guest_id}).then(resp=>{
             if(resp.data.success){
                 localStorage.setItem('guestSignedIn',true);
                 dispatch({

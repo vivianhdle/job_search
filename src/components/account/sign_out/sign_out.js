@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { signOut, signInGuest, signUpNewGuest } from '../../../actions';
 
 class SignOut extends Component {
-    componentDidMount() {
+    async componentDidMount() {
         this.props.signOut();
         if(localStorage.getItem('guest_id')){
-            this.props.signInGuest();
+            await this.props.signInGuest();
         }else{
-            this.props.signUpNewGuest();
+            await this.props.signUpNewGuest();
         }
         this.props.history.push('/', 'signedOut');
     }
