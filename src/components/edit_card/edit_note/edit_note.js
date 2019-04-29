@@ -12,7 +12,9 @@ class EditNote extends Component {
     constructor(props){
         super(props);
         this.state={
-            deleteConfirmationOpen:false
+            deleteConfirmationOpen:false,
+            error: false,
+            errorMsg: ''
         }
     }
     componentDidMount() {
@@ -25,8 +27,15 @@ class EditNote extends Component {
             id: id,
             note: values.note
         }
-        axios.post('/api/update_note_item.php', editNoteValues);
-        this.props.view();
+        const resp = await axios.post('/api/update_note_item.php', editNoteValues);
+        if(resp.data.success){
+            this.props.view();;
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
     handleDeleteNote = async () => {
         const { id } = this.props;
@@ -49,6 +58,7 @@ class EditNote extends Component {
         const { handleSubmit, closeModal } = this.props;
         return (
             <div className="action row">
+                {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
                 {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteNote} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
                 <Modal modalClass="edit-note-modal" mscss="note">
                     <div>

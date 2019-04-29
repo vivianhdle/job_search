@@ -6,7 +6,8 @@ import Modal from '../general/modals/modal';
 
 class Prospect extends Component {
     state={
-        errorMsg: ''
+        errorMsg: '',
+        error: false
     }
     goToTracker = () => {
         this.props.history.push('/tracker');
@@ -27,6 +28,14 @@ class Prospect extends Component {
                 note: values.note
             }
             const resp = await axios.post('/api/add_tracker_item.php', values);
+            if(!resp.data.success){
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: false
+                })
+            }else{
+                this.goToTracker();
+            }
     }
 
     render() {
@@ -34,7 +43,7 @@ class Prospect extends Component {
         const number = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
         return (
             <div className="add-form-progress">
-            <div>{this.state.errorMsg}</div>
+            {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
                 <div className="form">
                     <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} number={number} />
                         

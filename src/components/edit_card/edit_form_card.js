@@ -12,6 +12,7 @@ import AddContact from './add_contact/add_contact';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import DeleteModal from '../general/modals/delete_confirmation';
+import Modal from '../general/modals/modal';
 
 class EditFormCard extends Component {
     constructor(props){
@@ -19,7 +20,9 @@ class EditFormCard extends Component {
         this.state = {
             addContactOpen: false,
             addNoteOpen: false,
-            deleteConfirmation:false
+            deleteConfirmation:false,
+            errorMsg: '',
+            error: false
         }
     }
     componentDidMount() {
@@ -29,8 +32,14 @@ class EditFormCard extends Component {
     handleUpdate = async values => {
         const newValues = { ...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
-        console.log('Resp',resp);
-        //this.goToViewMode();
+        if(resp.data.success){
+            this.goToViewMode();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
     addContactModal = () => {
         this.setState({
@@ -67,15 +76,13 @@ class EditFormCard extends Component {
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
         console.log('Resp',resp);
             if(resp.data.success){
-                //this.goToTracker();
+                this.goToViewMode();
             }else{
-                // this.setState({
-                //     errorMsg: resp.data.error
-                // })
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
             }
-            //console.log(this.state.resp.data.error)
-
-        //this.goToViewMode();
     }
     handleAddNote = async values => {
         const { id } = this.props;
@@ -85,16 +92,14 @@ class EditFormCard extends Component {
         };
         const resp = await axios.post(`/api/add_note_item.php`, noteValue);
         console.log('Resp',resp);
-            if(resp.data.success){
-                //this.goToTracker();
-            }else{
-                // this.setState({
-                //     errorMsg: resp.data.error
-                // })
-            }
-            //console.log(this.state.resp.data.error)
-
-        //this.goToViewMode();
+        if(resp.data.success){
+            this.goToViewMode();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
     deleteConfirmationToggle=()=>{
         this.state.deleteConfirmation ? this.setState({
@@ -113,6 +118,7 @@ class EditFormCard extends Component {
         const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone } = this.props;
         return (
             <div className="form">
+                {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
                 {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} numberPhone={numberPhone}/>}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}

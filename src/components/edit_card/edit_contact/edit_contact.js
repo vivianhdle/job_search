@@ -17,7 +17,9 @@ class EditContactModal extends Component {
                 name: '',
                 email: '',
                 phone: ''
-            }
+            },
+            error: false,
+            errorMsg: ''
         }
     }
     componentDidMount() {
@@ -48,8 +50,15 @@ class EditContactModal extends Component {
                 phone: value.phone
             }
         }
-        await axios.post(`/api/update_contact_item.php`, editContact);
-        this.props.view();
+        const resp = await axios.post(`/api/update_contact_item.php`, editContact);
+        if(resp.data.success){
+            this.props.view();;
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
     deleteConfirmation=()=>{
         this.setState({
@@ -66,6 +75,7 @@ class EditContactModal extends Component {
         const { phone, email, name } = this.state.form
         return (
             <div className="action row">
+                {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
                 {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteContact} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
                 <Modal modalClass="edit-contact-modal" mscss="contact">
                     <button className="edit-exit" onClick={exitModal}><i className="material-icons exit">close</i></button>
