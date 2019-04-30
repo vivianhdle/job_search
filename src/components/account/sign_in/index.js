@@ -8,15 +8,11 @@ import {signIn} from '../../../actions';
 
 
 class SignIn extends Component{
-
     signIn=values=>{
         this.props.signIn(values);
     }
-
     render(){
-        console.log('props', this.props);
         const {error, errorMsg} = this.props;
-
         return(
             <div className="signin-container row">
                 <div className="signin-box col m6 offset-m3 s10 offset-s1">
