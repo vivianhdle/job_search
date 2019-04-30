@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Status from './status';
 import NavCookies from '../nav/navcookies';
-import { Route } from 'react-router-dom';
 import ActionButton from '../general/buttons/action_button';
 import './tracker.scss';
 import axios from 'axios';
@@ -14,7 +13,7 @@ class Tracker extends Component {
         this.state={
             allJobProspects:[],
             filteredList:[],
-            isOpen:true
+            isOpen:false
         }
     }
     componentDidMount(){
@@ -46,20 +45,14 @@ class Tracker extends Component {
     render() {
         return (
             <div className="tracker-container">
-                <Route render={(routingprops) => {
-                    return (
-                        <Fragment>
-                            <SearchModal runSearch={this.getSearchValues} searchResults={this.state.filteredList} isOpen={this.state.isOpen} closeModal={this.toggleOpenSearch}/>
-                            <Status progress="Started Application" id="started-app" {...routingprops} />
-                            <Status progress="Waiting for Response" id="waiting" {...routingprops} />
-                            <Status progress="Follow-up Needed" id="follow-up" {...routingprops} />
-                            <Status progress="Archived" id="archived" {...routingprops} />
-                            <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1 add-prospect" icon="add"/>
-                            <ActionButton handleClick={this.toggleOpenSearch} size="btn btn-floating" classes="yellow search-prospect" icon="search"/>
-                        </Fragment>
-                    )
-                }} />
+                <Status progress="Started Application" id="started-app" />
+                <Status progress="Waiting for Response" id="waiting" />
+                <Status progress="Follow-up Needed" id="follow-up" />
+                <Status progress="Archived" id="archived" />
+                <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1 add-prospect" icon="add"/>
+                <ActionButton handleClick={this.toggleOpenSearch} size="btn btn-floating" classes="yellow search-prospect" icon="search"/>   
                 <NavCookies />
+                <SearchModal runSearch={this.getSearchValues} searchResults={this.state.filteredList} isOpen={this.state.isOpen} closeModal={this.toggleOpenSearch}/>
             </div>
         )
     }

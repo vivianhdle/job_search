@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import './status.scss';
 import axios from 'axios';
 import Header from '../general/header';
@@ -95,6 +96,6 @@ class Status extends Component {
     }
 }
 
-export default Status;
+export default withRouter(Status);
 
 

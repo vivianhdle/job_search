@@ -3,9 +3,9 @@ import './modal.scss';
 
 class Modal extends Component {
     render() {
-        const { children, modalClass, mscss,innerRef } = this.props
+        const { children, modalClass, mscss } = this.props
         return (
-            <div ref={innerRef} className={modalClass}>
+            <div  className={modalClass}>
                 <div className={mscss}>
                     {children}
                 </div>

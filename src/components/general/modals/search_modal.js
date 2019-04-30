@@ -13,12 +13,12 @@ class SearchModal extends Component{
                 <Modal modalClass="search" mscss="search-area">
                     <div className="row">
                         <button onClick={closeModal}><i className="material-icons exit">close</i></button>
-                            <form onSubmit={handleSubmit(runSearch)}>
-                                <Field id="searched" col="s10 offset-s1" name="searched" component={Input} label="Type to search!"icon="search"/>
-                                <div className="right-align col s10 offset-s1">
-                                    <button className="btn blue-grey">SEARCH</button>
-                                </div> 
-                            </form>
+                        <form onSubmit={handleSubmit(runSearch)}>
+                            <Field id="searched" col="s10 offset-s1" name="searched" component={Input} label="Type to search!"icon="search"/>
+                            <div className="right-align col s10 offset-s1">
+                                <button className="btn blue-grey">SEARCH</button>
+                            </div> 
+                        </form>
                     </div>
                     <div className="search-result-container">
                         <SearchResults searchResults={searchResults}/>
@@ -33,3 +33,4 @@ class SearchModal extends Component{
 export default reduxForm({
     form: 'search-prospects'
 })(SearchModal);
+
