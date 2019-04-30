@@ -13,7 +13,6 @@ import Stats from './stats';
 import AccountRoutes from './account';
 import About from './about';
 
-
 class App extends React.Component {
     state = {
         currentPage: null

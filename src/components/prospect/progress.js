@@ -43,22 +43,22 @@ class DropDown extends Component {
         const {progress, input, meta: { touched, error, warning }} = props;
         return (
             <div>
-            <i className="material-icons prefix">trending_up</i>
-            {progress && <select {...input} ref={(element) => { this.progress = element }}  value={progress}>
-                <option value="" disabled>Application Status *</option>
-                <option value="Started Application">Started Application</option>
-                <option value="Waiting for Response">Waiting for Response</option>
-                <option value="Follow-up Needed">Follow-up Needed</option>
-                <option value="Archived">Archived</option>
-            </select>}
-            {!progress && <select {...input} ref={(element) => { this.progress = element }}>
-                <option value="" disabled>Application Status *</option>
-                <option value="Started Application">Started Application</option>
-                <option value="Waiting for Response">Waiting for Response</option>
-                <option value="Follow-up Needed">Follow-up Needed</option>
-                <option value="Archived">Archived</option>
-            </select>}
-            {touched && ((error && <span className="red-text">{error}</span>) || (warning && <span className="red-text">{warning}</span>))}
+                <i className="material-icons prefix">trending_up</i>
+                {progress && <select {...input} ref={(element) => { this.progress = element }}  value={progress}>
+                    <option value="" disabled>Application Status *</option>
+                    <option value="Started Application">Started Application</option>
+                    <option value="Waiting for Response">Waiting for Response</option>
+                    <option value="Follow-up Needed">Follow-up Needed</option>
+                    <option value="Archived">Archived</option>
+                </select>}
+                {!progress && <select {...input} ref={(element) => { this.progress = element }}>
+                    <option value="" disabled>Application Status *</option>
+                    <option value="Started Application">Started Application</option>
+                    <option value="Waiting for Response">Waiting for Response</option>
+                    <option value="Follow-up Needed">Follow-up Needed</option>
+                    <option value="Archived">Archived</option>
+                </select>}
+                {touched && ((error && <span className="red-text">{error}</span>) || (warning && <span className="red-text">{warning}</span>))}
             </div>
         );
     }

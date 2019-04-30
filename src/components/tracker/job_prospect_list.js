@@ -3,7 +3,7 @@ import SmallCard from '../cards/small_card';
 import { Route } from 'react-router-dom';
 
 function JobProspectList(props){
-    const {list} = props
+    const {list = []} = props
     var cards = list.map((card) => {
         return (
             <Route key={card.id} render={(routingprops) => {

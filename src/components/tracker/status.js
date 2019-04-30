@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import './status.scss';
 import axios from 'axios';
 import Header from '../general/header';
@@ -32,12 +33,12 @@ class Status extends Component {
         const unsortedListCopy = [...this.state.unsortedList];
         let sortedList = [];
         switch(this.state.sortOrder){
-            case 'date-dec':
+            case 'date-asc':
                 this.setState({
                     sortedCards: unsortedListCopy
                 })
                 break;
-            case 'date-asc':
+            case 'date-dec':
                 sortedList = unsortedListCopy.reverse();
                 this.setState({
                     sortedCards:sortedList
@@ -94,6 +95,6 @@ class Status extends Component {
     }
 }
 
-export default Status;
+export default withRouter(Status);
 
 

@@ -5,7 +5,7 @@ class Modal extends Component {
     render() {
         const { children, modalClass, mscss } = this.props
         return (
-            <div className={modalClass}>
+            <div  className={modalClass}>
                 <div className={mscss}>
                     {children}
                 </div>

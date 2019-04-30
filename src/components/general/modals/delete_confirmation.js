@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from './modal';
 import './delete_confirmation.scss';
-import ActionButton from '../buttons/action_button';
 
 function DeleteConfirmation(props){
     const {handleDelete,closeModal}=props;
