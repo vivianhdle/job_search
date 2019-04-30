@@ -43,7 +43,7 @@ class Status extends Component {
                 break;
             case 'AtoZ':
                 sortedList = unsortedListCopy.sort((card1,card2)=>{
-                    let greater = card1.company>card2.company;
+                    let greater = card1.company.toUpperCase()>card2.company.toUpperCase();
                     return greater ? 1:-1
                 })
                 this.setState({
@@ -52,7 +52,7 @@ class Status extends Component {
                 break;
             case 'ZtoA':
                 sortedList = unsortedListCopy.sort((card1,card2)=>{
-                    let greater = card1.company>card2.company;
+                    let greater = card1.company.toUpperCase()>card2.company.toUpperCase();
                     return greater ? -1:1
                 })
                 this.setState({
