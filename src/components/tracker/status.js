@@ -8,15 +8,30 @@ import { Route } from 'react-router-dom';
 class Status extends Component {
     state = {
         cards: [],
-        redirect: false
+        redirect: false,
+        errorMsg: '',
+        error: false
+        
     }
     componentDidMount() {
         this.getDetails();
     }
     async getDetails() {
         const resp = await axios.get('/api/get_jobcard_display.php');
+        if(resp.data.success){
+            this.setState({
+                cards: resp.data.data
+            })
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
+    }
+    closeErrorModal = ()=>{
         this.setState({
-            cards: resp.data.data
+            error: false
         })
     }
     render() {
@@ -33,6 +48,7 @@ class Status extends Component {
         return (
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
+                    {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                     <Header title={progress} alignment="center"/>
                     <div className="card-container row col s12">
                         {cards}

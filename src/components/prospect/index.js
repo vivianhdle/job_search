@@ -40,15 +40,18 @@ class Prospect extends Component {
                 this.goToTracker();
             }
     }
-
+    closeErrorModal = ()=>{
+        this.setState({
+            error: false
+        })
+    }
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
-        const number = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
         return (
             <div className="add-form-progress">
-            {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
+            {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 <div className="form">
-                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} number={number} />
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} />
                         
                 </div>
             </div>

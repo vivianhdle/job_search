@@ -13,6 +13,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import DeleteModal from '../general/modals/delete_confirmation';
 import Modal from '../general/modals/modal';
+import ErrorHandler from '../general/error_handler';
 
 class EditFormCard extends Component {
     constructor(props){
@@ -109,15 +110,28 @@ class EditFormCard extends Component {
     deleteJobProspect = async () => {
         if(this.state.deleteConfirmation){
         const {id}=this.props.match.params;
-        const resp = await axios.get(`/api/delete_tracker_item.php?tracker_id=${id}`);}
-        this.goToTracker();
+        const resp = await axios.get(`/api/delete_tracker_item.php?tracker_id=${id}`);
+        if(resp.data.success){
+            this.goToTracker();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }}
+
+    }
+    closeErrorModal = ()=>{
+        this.setState({
+            error: false
+        })
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required } = this.props;
         return (
             <div className="form">
-                {this.state.error && <Modal><div>{this.state.errorMsg}</div></Modal>}
-                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} numberPhone={numberPhone}/>}
+                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
+                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
                 <form onSubmit={handleSubmit(this.handleUpdate)}>
@@ -138,7 +152,7 @@ class EditFormCard extends Component {
                 </form>
                 <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
-                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} numberPhone={numberPhone}/>}
+                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
                 {/* {<Modal></Modal>} */}

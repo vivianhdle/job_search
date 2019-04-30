@@ -15,11 +15,16 @@ class EditCard extends Component {
     async getData() {
         const { params } = this.props.match;
         const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
-        this.setState({
+        if(resp.data.success){this.setState({
             respData: resp.data.data,
             isLoaded: true,
             params: params
-        })
+        })}else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
 
     }
     handleChange = e => {
@@ -31,7 +36,6 @@ class EditCard extends Component {
     }
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
-        const numberPhone = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>
@@ -39,7 +43,7 @@ class EditCard extends Component {
         } else {
             return (
                 <div className="edit-container">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} numberPhone={numberPhone} />
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required}/>
                 </div>
             )
         }
