@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 class DropDown extends Component {
-    state = {
-        fontColor: false,
+    constructor(props){
+        super(props)
+        this.state ={
+            isSelected: false,
+            
+        }
+        this.select = null;
+        this.input = null;
     }
+    
     handleDropDownOpened() {
         M.FormSelect.getInstance(this.progress);
     }
@@ -15,8 +22,24 @@ class DropDown extends Component {
     }
 
     componentDidMount() {
-        M.FormSelect.init(this.progress);
+        const formSelect = M.FormSelect.init(this.progress);
+        this.select =formSelect.el;
+        this.input =formSelect.input;
+        if(this.select.value === ''){
+            this.input.style.color = '#9e9e9e';
+        }else{
+            this.input.style.color = 'rgba(0, 0, 0, 0.87)';
+        }
     }
+
+    handleChange =(e)=>{
+        if(e.target.value !== ''){
+            this.input.style.color = 'rgba(0, 0, 0, 0.87)';
+        } else{
+            this.input.style.color = '#9e9e9e';
+        }
+    }
+
     renderSelect = (props) => {
         const {progress, input, meta: { touched, error, warning }} = props;
         return (
@@ -45,7 +68,7 @@ class DropDown extends Component {
         return (
             <div className="row">
                 <div className={`input-field ${col}`}>
-                    <Field name="progress" component={this.renderSelect} validate={required} progress={progress}/>
+                    <Field name="progress" component={this.renderSelect} validate={required} progress={progress} onChange={this.handleChange}/>
                 </div>
             </div>
         );
