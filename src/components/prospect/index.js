@@ -32,10 +32,12 @@ class Prospect extends Component {
             }
             let resp = null;
             if(localStorage.getItem('guest_id') && localStorage.getItem('guestSignedIn')){
+                debugger;
                 const guestValues = {...values, guest: true};
                 resp = await axios.post('/api/add_tracker_item.php', guestValues)
                 console.log(resp);
             }else{
+                debugger;
                 resp = await axios.post('/api/add_tracker_item.php', values);
             }
             if(!resp.data.success){

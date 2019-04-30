@@ -33,9 +33,7 @@ if(!empty($input['guest'])){
     if(!$guest_result){
         throw new Exception(mysqli_error($conn));
     }
-    print_r(mysqli_fetch_assoc($guest_result));
-    die()
-    if(count(mysqli_fetch_assoc($guest_result)) > 10){
+    if(mysqli_num_rows($guest_result) >= 10){
         throw new Exception('Guest has reached max prospect items, please sign up to unlock unlimited items');
     }
 }
