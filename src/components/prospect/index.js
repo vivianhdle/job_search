@@ -32,10 +32,8 @@ class Prospect extends Component {
             }
             let resp = null;
             if(localStorage.getItem('guest_id') && localStorage.getItem('guestSignedIn')){
-                debugger;
                 const guestValues = {...values, guest: true};
                 resp = await axios.post('/api/add_tracker_item.php', guestValues)
-                console.log(resp);
             }else{
                 debugger;
                 resp = await axios.post('/api/add_tracker_item.php', values);
@@ -45,6 +43,7 @@ class Prospect extends Component {
                     errorMsg: resp.data.error,
                     error: false
                 })
+                this.props.history.push('/account/sign-up');
             }else{
                 this.goToTracker();
             }
