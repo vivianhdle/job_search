@@ -1,7 +1,9 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    auth: false
+    auth: false,
+    errorMsg: '',
+    error: false
 }
 
 function userReducer(state = DEFAULT_STATE, action) {
@@ -11,7 +13,9 @@ function userReducer(state = DEFAULT_STATE, action) {
         case types.SIGN_IN_GUEST:
             return { ...DEFAULT_STATE };
         case types.SIGN_OUT:
-            return { ...DEFAULT_STATE }
+            return { ...DEFAULT_STATE };
+        case types.SIGN_IN_ERROR:
+            return {...DEFAULT_STATE, errorMsg: action.errorMsg, error: true}
         default: return state;
     }
 }

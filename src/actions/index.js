@@ -72,7 +72,8 @@ export function signIn(user) {
                 })
             } else {
                 dispatch({
-                    type: types.SIGN_IN_ERROR
+                    type:types.SIGN_IN_ERROR,
+                    errorMsg: resp.data.error
                 })
             }
         })
