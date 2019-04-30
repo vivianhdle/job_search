@@ -17,7 +17,7 @@ class ViewDetails extends Component {
                         <div className="view-main-text company">{company}</div>
                         <div className="view-main-text grey-text text-darken-2">{title}</div>
                         <div className="view-main-text grey-text text-darken-2">{progress}</div>
-                        <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Posting Link</a>
+                        {link && <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Posting Link</a>}
                         <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
                     </div>
                 </div>

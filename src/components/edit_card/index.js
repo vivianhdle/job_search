@@ -36,6 +36,7 @@ class EditCard extends Component {
     }
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
+        const linkCheck = values => (values && !/^https?:\/\//.test(values) ? 'Please enter a valid URL with https://' : undefined)
         if (!this.state.isLoaded) {
             return (
                 <div className="row Loading">Loading...</div>
@@ -43,7 +44,7 @@ class EditCard extends Component {
         } else {
             return (
                 <div className="edit-container">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required}/>
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck}/>
                 </div>
             )
         }

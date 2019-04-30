@@ -31,16 +31,16 @@ class EditFormCard extends Component {
         this.props.dispatch(action);
     }
     handleUpdate = async values => {
-        let {company, link, progress, title} = values;
-        const regexTest= /^https?:\/\//;
-        const result = regexTest.test(link);
-        if(!result){
-            link = 'https://'+link;
-        }else{
-            link = link;
-        }
+        // let {company, link, progress, title} = values;
+        // const regexTest= /^https?:\/\//;
+        // const result = regexTest.test(link);
+        // if(!result){
+        //     link = 'https://'+link;
+        // }else{
+        //     link = link;
+        // }
 
-        const newValues = {company, link, progress, title, "tracker_id": parseInt(this.props.match.params.id) }
+        const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
         if(resp.data.success){
             this.goToViewMode();
@@ -136,7 +136,7 @@ class EditFormCard extends Component {
         })
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required } = this.props;
+        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, linkCheck } = this.props;
         return (
             <div className="form">
                 {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
@@ -153,7 +153,7 @@ class EditFormCard extends Component {
                         <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required} value={company}/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label={"Posting Link"} />
+                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" validate={linkCheck}/>
                     </div>
                     <div className="btn-wrapper row right-align">
                         <button className="btn blue-grey save-button">SAVE</button>
