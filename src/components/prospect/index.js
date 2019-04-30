@@ -23,6 +23,7 @@ class Prospect extends Component {
                     newContact.push(values[object]);
             }
             let {link, progress, company, note, title} = values;
+            if(link){
             const regexTest= /^https?:\/\//;
             const result = regexTest.test(link);
             if(!result){
@@ -30,6 +31,8 @@ class Prospect extends Component {
             }else{
                 link;
             }
+            }
+            
             values = {
                 progress,
                 company,
