@@ -30,12 +30,22 @@ class Prospect extends Component {
                 contact: newContact,
                 note: values.note
             }
-            const resp = await axios.post('/api/add_tracker_item.php', values);
+            let resp = null;
+            if(localStorage.getItem('guest_id') && localStorage.getItem('guestSignedIn')){
+                const guestValues = {...values, guest: true};
+                resp = await axios.post('/api/add_tracker_item.php', guestValues)
+            }else{
+                debugger;
+                resp = await axios.post('/api/add_tracker_item.php', values);
+            }
             if(!resp.data.success){
                 this.setState({
                     errorMsg: resp.data.error,
                     error: false
                 })
+                setTimeout(()=>{
+                    this.props.history.push('/account/sign-up');
+                },2000)
             }else{
                 this.goToTracker();
             }

@@ -24,6 +24,20 @@ if(empty($input['progress'])){
 
 $output['success'] = false;
 
+if(!empty($input['guest'])){
+    $user_id = (int)$_SESSION['user']['user_id'];
+    $guest_query = "SELECT `id` FROM `tracker_item` WHERE `user_id`=$user_id";
+
+    $guest_result = mysqli_query($conn, $guest_query);
+
+    if(!$guest_result){
+        throw new Exception(mysqli_error($conn));
+    }
+    if(mysqli_num_rows($guest_result) >= 10){
+        throw new Exception('Guest has reached max prospect items, please sign up to unlock unlimited items');
+    }
+}
+
 $user_id = (int)$_SESSION['user']['user_id'];
 $title = $input['title'];
 $company = $input['company'];
