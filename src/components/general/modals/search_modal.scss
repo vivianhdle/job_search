@@ -8,12 +8,23 @@
     z-index:2;
 
     .search-area{
-        height:60%;
+        height:80%;
         background-color:white;
         width:90%;
         position:relative;
-        top:20%;
+        top:10%;
         left:5%;
+        overflow-y: scroll;
+        .row{
+            >button{
+                border: none;
+                background-color: transparent;
+                position: relative;
+                left: 88%;
+                top: 11px;
+            }
+        }
     }
+    
 
 }

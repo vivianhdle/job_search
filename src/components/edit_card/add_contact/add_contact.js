@@ -13,11 +13,11 @@ class AddContactModal extends Component {
                 <Modal modalClass="add-contact-modal" mscss="contact">
                     <button onClick={exitModal}><i className="material-icons exit">close</i></button>
                     <form onSubmit={handleSubmit(addContact)} className="center">
-                        <Header alignment="left" title="Add Contact" newClass="col s10 offset-s1" />
+                        <Header title="Add Contact" newClass="col s10 offset-s1" />
                         <Field id="name" col="s10 offset-s1" name="name" component={Input} label="Name" />
                         <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email"/>
                         <Field id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone"/>
-                        <button className="btn add-contacts blue-grey">SUBMIT</button>
+                        <button className="btn add-contacts transparentblue-grey">SUBMIT</button>
                     </form>
                 </Modal>
             </div>
