@@ -22,7 +22,7 @@ class Tracker extends Component {
                             <Status progress="Waiting for Response" id="waiting" {...routingprops} />
                             <Status progress="Follow-up Needed" id="follow-up" {...routingprops} />
                             <Status progress="Archived" id="archived" {...routingprops} />
-                            <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey darken-1 add-prospect" icon="add"/>
+                            <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey add-prospect" icon="add"/>
                         </Fragment>
                     )
                 }} />

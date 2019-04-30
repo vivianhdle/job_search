@@ -17,8 +17,8 @@ class ButtonList extends Component{
                     <i className="large material-icons">sort</i>
                 </a>
                 <ul>
-                    <li onClick={sortDate}><a className="btn-floating grey btn-small"><i className="material-icons">date_range</i></a></li>
-                    <li onClick={sortAlphabetically}><a className="btn-floating btn-small yellow darken-1"><i className="material-icons">sort_by_alpha</i></a></li>
+                    <li onClick={sortDate}><a className="btn-floating grey darken-1 btn-small"><i className="material-icons">date_range</i></a></li>
+                    <li onClick={sortAlphabetically}><a className="btn-floating btn-small grey darken-1"><i className="material-icons">sort_by_alpha</i></a></li>
                 </ul>
             </div>
         )

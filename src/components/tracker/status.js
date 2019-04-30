@@ -63,8 +63,7 @@ class Status extends Component {
                 break;
         }
     }
-    toggleAlphabetical=async ()=>{
-
+    toggleAlphabetical=async (e)=>{
         await this.state.sortOrder === 'AtoZ' ? this.setState({
             sortOrder:'ZtoA'
         }):this.setState({
@@ -72,7 +71,7 @@ class Status extends Component {
         })
         this.sortCards();
     }
-    toggleDates=async ()=>{
+    toggleDates=async (e)=>{
         await this.state.sortOrder === 'date-dec' ? this.setState({
             sortOrder:'date-asc'
         }):this.setState({

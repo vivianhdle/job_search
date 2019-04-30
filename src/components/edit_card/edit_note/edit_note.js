@@ -41,7 +41,7 @@ class EditNote extends Component {
     }
     handleDeleteNote = async () => {
         const { id } = this.props;
-        await axios.post('/api/delete_note_item.php', { "id": id });
+        const resp = await axios.post('/api/delete_note_item.php', { "id": id });
         if(resp.data.success){
             this.props.view();
         }else{
