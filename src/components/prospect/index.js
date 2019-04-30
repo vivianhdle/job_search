@@ -43,7 +43,9 @@ class Prospect extends Component {
                     errorMsg: resp.data.error,
                     error: false
                 })
-                this.props.history.push('/account/sign-up');
+                setTimeout(()=>{
+                    this.props.history.push('/account/sign-up');
+                },2000)
             }else{
                 this.goToTracker();
             }
