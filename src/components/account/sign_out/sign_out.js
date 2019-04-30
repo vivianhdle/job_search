@@ -15,7 +15,6 @@ class SignOut extends Component {
         this.props.history.push('/', 'signedOut');
     }
     render() {
-        debugger;
         return (
             <Loader />
         )

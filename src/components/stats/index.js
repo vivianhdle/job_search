@@ -76,7 +76,7 @@ class Stats extends Component {
                         </div>
                         <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
                     </div>
-                    <StatTable {...this.state.metaStats} />
+                    <StatTable {...this.state.metaStats} {...this.props}/>
                 </div>
             )
         } else {
