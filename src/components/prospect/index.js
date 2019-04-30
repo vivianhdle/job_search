@@ -22,11 +22,21 @@ class Prospect extends Component {
                 if (typeof values[object] === 'object')
                     newContact.push(values[object]);
             }
+            let {link} = values;
+            console.log(values);
+            const regexTest= /^https?:\/\//;
+            const result = regexTest.test(link);
+            let newUrl = null;
+            if(!result){
+                newUrl = 'https://'+url;
+            }else{
+                newUrl = url;
+            }
             values = {
                 progress: values.progress,
                 company: values.company,
                 title: values.title,
-                link: values.link,
+                link: newUrl,
                 contact: newContact,
                 note: values.note
             }
