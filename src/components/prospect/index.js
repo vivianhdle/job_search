@@ -22,23 +22,21 @@ class Prospect extends Component {
                 if (typeof values[object] === 'object')
                     newContact.push(values[object]);
             }
-            let {link} = values;
-            console.log(values);
+            let {link, progress, company, note, title} = values;
             const regexTest= /^https?:\/\//;
             const result = regexTest.test(link);
-            let newUrl = null;
             if(!result){
-                newUrl = 'https://'+url;
+                link = 'https://'+link;
             }else{
-                newUrl = url;
+                link;
             }
             values = {
-                progress: values.progress,
-                company: values.company,
-                title: values.title,
-                link: newUrl,
+                progress,
+                company,
+                title,
+                link,
                 contact: newContact,
-                note: values.note
+                note
             }
             const resp = await axios.post('/api/add_tracker_item.php', values);
             if(!resp.data.success){

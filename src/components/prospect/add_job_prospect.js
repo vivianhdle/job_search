@@ -46,7 +46,7 @@ class AddJobProspect extends Component {
                     <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name *"icon="business" validate={[required]}/>
                 </div>
                 <div className="row">
-                    <Field id="link" col="s10 offset-s1" name="linm" component={Input} label="Posting Link" icon="link" />
+                    <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" />
                 </div>
                 <div className="row">
                     {contactForm}
