@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './sign_out';
 import { connect } from 'react-redux';
 import { signOut, signInGuest, signUpNewGuest } from '../../../actions';
+import Loader from '../../general/loader';
 
 class SignOut extends Component {
     async componentDidMount() {
@@ -14,13 +15,9 @@ class SignOut extends Component {
         this.props.history.push('/', 'signedOut');
     }
     render() {
+        debugger;
         return (
-            <div className="sign-out">
-                <div className="sign-out-header center">
-                    <h1 className="center">Thank you for using our application</h1>
-                    <h2 className="center">You have been signed out</h2>
-                </div>
-            </div>
+            <Loader />
         )
     }
 }
