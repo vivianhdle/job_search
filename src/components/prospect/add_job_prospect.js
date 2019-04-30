@@ -12,7 +12,8 @@ import axios from 'axios';
 class AddJobProspect extends Component {
     state = {
         contactForm: [],
-        contactCount: 0
+        contactCount: 0,
+        
     }
     componentDidMount() {
         this.addNewContact();

@@ -6,7 +6,6 @@ class DropDown extends Component {
         super(props)
         this.state ={
             isSelected: false,
-            
         }
         this.select = null;
         this.input = null;

@@ -22,13 +22,21 @@ class Prospect extends Component {
                 if (typeof values[object] === 'object')
                     newContact.push(values[object]);
             }
+            let {link, progress, company, note, title} = values;
+            const regexTest= /^https?:\/\//;
+            const result = regexTest.test(link);
+            if(!result){
+                link = 'https://'+link;
+            }else{
+                link;
+            }
             values = {
-                progress: values.progress,
-                company: values.company,
-                title: values.title,
-                link: values.link,
+                progress,
+                company,
+                title,
+                link,
                 contact: newContact,
-                note: values.note
+                note
             }
             let resp = null;
             if(localStorage.getItem('guest_id') && localStorage.getItem('guestSignedIn')){
