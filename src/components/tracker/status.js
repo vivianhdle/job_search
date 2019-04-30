@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import './status.scss';
-import SmallCard from '../cards/small_card';
 import axios from 'axios';
 import Header from '../general/header';
-import { Route } from 'react-router-dom';
+import ButtonList from '../general/buttons/button_list';
+import JobProspectList from './job_prospect_list';
 
 class Status extends Component {
     state = {
-        cards: [],
+        unsortedList:[],
+        sortedCards: [],
+        sortOrder:'date-dec',
         redirect: false
     }
     componentDidMount() {
@@ -15,29 +17,75 @@ class Status extends Component {
     }
     async getDetails() {
         const resp = await axios.get('/api/get_jobcard_display.php');
-        resp.data.data.reverse();
-        this.setState({
-            cards: resp.data.data
+        const unsortedList = resp.data.data.filter(card=>{
+            return card.progress === this.props.progress
         })
+        const cards = [...unsortedList].reverse();
+        this.setState({
+            unsortedList:unsortedList,
+            sortedCards: cards
+        })
+    }
+    sortCards(){
+        const unsortedListCopy = [...this.state.unsortedList];
+        let sortedList = [];
+        switch(this.state.sortOrder){
+            case 'date-dec':
+                this.setState({
+                    sortedCards: unsortedListCopy
+                })
+                break;
+            case 'date-asc':
+                sortedList = unsortedListCopy.reverse();
+                this.setState({
+                    sortedCards:sortedList
+                })
+                break;
+            case 'AtoZ':
+                sortedList = unsortedListCopy.sort((card1,card2)=>{
+                    let greater = card1.company>card2.company;
+                    return greater ? 1:-1
+                })
+                this.setState({
+                    sortedCards:sortedList
+                })
+                break;
+            case 'ZtoA':
+                sortedList = unsortedListCopy.sort((card1,card2)=>{
+                    let greater = card1.company>card2.company;
+                    return greater ? -1:1
+                })
+                this.setState({
+                    sortedCards:sortedList
+                })
+                break;
+        }
+    }
+    toggleAlphabetical=async ()=>{
+
+        await this.state.sortOrder === 'AtoZ' ? this.setState({
+            sortOrder:'ZtoA'
+        }):this.setState({
+            sortOrder:'AtoZ'
+        })
+        this.sortCards();
+    }
+    toggleDates=async ()=>{
+        await this.state.sortOrder === 'date-dec' ? this.setState({
+            sortOrder:'date-asc'
+        }):this.setState({
+            sortOrder:'date-dec'
+        })
+        this.sortCards();
     }
     render() {
         const { progress, id } = this.props;
-        const cards = this.state.cards.filter((card) => {
-            return card.progress === progress
-        }).map((card) => {
-            return (
-                <Route key={card.id} render={(routingprops) => {
-                    return (<SmallCard key={card.id} {...card} {...routingprops} />)
-                }} />
-            )
-        })
         return (
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
+                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates}/>
                     <Header title={progress} alignment="center"/>
-                    <div className="card-container row col s12">
-                        {cards}
-                    </div>
+                    <JobProspectList list={this.state.sortedCards}/>
                 </div>
             </Fragment>
         )
