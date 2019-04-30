@@ -3,7 +3,9 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+ob_start();
 require_once('sign_in_check.php');
+ob_end_clean();
 
 $output['success'] = false;
 

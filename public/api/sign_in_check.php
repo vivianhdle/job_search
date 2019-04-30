@@ -1,4 +1,9 @@
 <?php
+require_once('functions.php');
+set_exception_handler('handleError');
+require_once('config.php');
+require_once('mysqlconnect.php');
+
 $output['success'] = false;
 
 if(empty($_SESSION['user']['token'])){
@@ -32,4 +37,7 @@ if(!empty($_SESSION['user'])){
         'token'=>$token
     ];
 }
+
+$json_output = json_encode($output);
+print($json_output);
 ?>
