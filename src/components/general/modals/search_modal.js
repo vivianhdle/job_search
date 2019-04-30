@@ -4,14 +4,13 @@ import './search_modal.scss';
 import Input from '../input';
 import { reduxForm, Field} from 'redux-form';
 import SearchResults from '../../search/search_results';
-import Header from '../header';
 
 class SearchModal extends Component{
     render(){
-        const {handleSubmit, runSearch,searchResults,closeModal,innerRef} = this.props
-        console.log(searchResults);
+        const {handleSubmit, runSearch,searchResults,closeModal,isOpen} = this.props;
+        if(isOpen){
             return(
-                <Modal innerRef={innerRef} modalClass="search" mscss="search-area">
+                <Modal modalClass="search" mscss="search-area">
                     <div className="row">
                         <button onClick={closeModal}><i className="material-icons exit">close</i></button>
                             <form onSubmit={handleSubmit(runSearch)}>
@@ -26,8 +25,9 @@ class SearchModal extends Component{
                     </div>
                 </Modal>
             )
+        }
+        return null;
     }
-    
 }
 
 export default reduxForm({

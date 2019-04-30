@@ -14,18 +14,13 @@ class Tracker extends Component {
         this.state={
             allJobProspects:[],
             filteredList:[],
-            isOpen:false
+            isOpen:true
         }
     }
     componentDidMount(){
         this.props.handlePageRender('Job Tracker');
         this.getDetails();
-        this.modal = M.Modal.init(this.modalRef);
-        this.modal.close();
     }
-    // componentWillUnmount(){
-    //     this.modal.destroy();
-    // }
     goToProspect = () => {
         this.props.history.push('/prospect');
     }
@@ -37,11 +32,6 @@ class Tracker extends Component {
     }
     toggleOpenSearch=()=>{
         this.setState({isOpen:!this.state.isOpen});
-        if(!this.state.isOpen)
-            {this.modal.open();
-        }else{
-            this.modal.close();
-        };
     }
     getSearchValues= event =>{
         const {allJobProspects}= this.state;
@@ -59,7 +49,7 @@ class Tracker extends Component {
                 <Route render={(routingprops) => {
                     return (
                         <Fragment>
-                            <SearchModal innerRef={(elem)=>this.modalRef=elem} runSearch={this.getSearchValues} searchResults={this.state.filteredList} closeModal={this.toggleOpenSearch}/>
+                            <SearchModal runSearch={this.getSearchValues} searchResults={this.state.filteredList} isOpen={this.state.isOpen} closeModal={this.toggleOpenSearch}/>
                             <Status progress="Started Application" id="started-app" {...routingprops} />
                             <Status progress="Waiting for Response" id="waiting" {...routingprops} />
                             <Status progress="Follow-up Needed" id="follow-up" {...routingprops} />
