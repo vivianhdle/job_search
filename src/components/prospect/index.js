@@ -43,7 +43,6 @@ class Prospect extends Component {
                 const guestValues = {...values, guest: true};
                 resp = await axios.post('/api/add_tracker_item.php', guestValues)
             }else{
-                debugger;
                 resp = await axios.post('/api/add_tracker_item.php', values);
             }
             if(!resp.data.success){
