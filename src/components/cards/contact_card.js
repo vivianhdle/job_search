@@ -5,7 +5,8 @@ import EditContactModal from '../edit_card/edit_contact/edit_contact';
 
 class ContactCard extends Component {
     state = {
-        open: false,
+        open: false
+
     }
     handleClick = () => {
         this.setState({
@@ -18,7 +19,11 @@ class ContactCard extends Component {
         })
     }
     render() {
-        const { id, name, email, phone, edit, view } = this.props;
+        let { id, name, email, phone, edit, view } = this.props;
+        console.log(this.props);
+        if(phone === 0){
+            phone = ''
+        }
         return (
             <Fragment>
                 <li >
@@ -27,20 +32,19 @@ class ContactCard extends Component {
                         <i className="material-icons grey-text text-darken-2">contacts</i>
                         {name}
                     </div>
-                    <div className="collapsible-body">
-                        <span>
+                    <div className="collapsible-body col-body">
+                        {email && <div>
                             <i className="material-icons prefix grey-text text-darken-2">email</i>
                             <div className="contact-email grey-text text-darken-2">
                                 {email}
                             </div>
-                        </span>
-                        <br />
-                        <span>
+                        </div>}
+                        {phone && <div>
                             <i className="material-icons prefix grey-text text-darken-2">phone</i>
                             <div className="contact-phone grey-text text-darken-2">
                                 {phone}
                             </div>
-                        </span>
+                        </div>}
                     </div>
                 </li>
             </Fragment>

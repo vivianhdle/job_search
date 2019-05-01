@@ -5,6 +5,7 @@ import StatTable from './stats_table';
 import Loader from '../general/loader';
 import { connect } from 'react-redux';
 import { signInGuest, signUpNewGuest } from '../../actions';
+import ErrorHandler from '../general/error_handler';
 
 class Stats extends Component {
     constructor(props){

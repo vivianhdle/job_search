@@ -33,7 +33,7 @@ class AddJobProspect extends Component {
     
     render() {
         
-        const { required, add, handleSubmit } = this.props;
+        const { required, add, handleSubmit, error } = this.props;
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
