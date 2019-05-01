@@ -31,15 +31,6 @@ class EditFormCard extends Component {
         this.props.dispatch(action);
     }
     handleUpdate = async values => {
-        // let {company, link, progress, title} = values;
-        // const regexTest= /^https?:\/\//;
-        // const result = regexTest.test(link);
-        // if(!result){
-        //     link = 'https://'+link;
-        // }else{
-        //     link = link;
-        // }
-
         const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
         if(resp.data.success){
@@ -147,10 +138,10 @@ class EditFormCard extends Component {
                     <Header title="Edit Job Prospect" alignment="left-align" />
                     <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} value={title} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} />
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required} value={company}/>
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
                     </div>
                     <div className="row">
                         <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" validate={linkCheck}/>

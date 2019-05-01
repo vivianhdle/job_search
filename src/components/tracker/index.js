@@ -34,7 +34,6 @@ class Tracker extends Component {
     }
     getSearchValues= event =>{
         const {allJobProspects}= this.state;
-        console.log(allJobProspects);
         let regex = new RegExp(`${event.searched}`,"gmi")
         var filteredList = allJobProspects.filter((jobProspect)=>{
             return (regex.test(jobProspect["title"]) || regex.test(jobProspect["company"]) || regex.test(jobProspect["progress"]))
