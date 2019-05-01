@@ -60,28 +60,23 @@ class Stats extends Component {
         })
     }
     render() {
-        if (this.state.metaStats) {
-            const { user_name } = this.state.metaStats
-            return (
-                <div className="stats-page row">
-                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
-                    <div className="greeting-content">
-                        <div className="greeting center" ref={(element) => { this.greeting = element }}>
-                            <div className="greeting-text grey-text text-darken-2">
-                                {user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
-                                <div>
-                                    {user_name}!
-                                </div>
+        return (
+            <div className="stats-page row">
+            {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
+                <div className="greeting-content">
+                    {this.state.metaStats && <div className="greeting center" ref={(element) => { this.greeting = element }}>
+                        <div className="greeting-text grey-text text-darken-2">
+                            {this.state.metaStats.user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
+                            <div>
+                                {this.state.metaStats.user_name}!
                             </div>
                         </div>
-                        <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
-                    </div>
-                    <StatTable {...this.state.metaStats} {...this.props}/>
+                    </div>}
+                    <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
                 </div>
-            )
-        } else {
-            return <Loader />
-        }
+                {this.state.metaStats ? <StatTable {...this.state.metaStats} {...this.props}/>:<Loader />}
+            </div>
+        )
     }
 }
 

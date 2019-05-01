@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Header from './../general/header';
-
+import {Link} from 'react-router-dom';
 
 function StatsTable(props) {
     const { archived, started_application, total_prospects, waiting_for_response, started_today } = props;
@@ -10,14 +10,24 @@ function StatsTable(props) {
             <div className="stats-table col s10 offset-s1 m6 offset-m3 l10 offset-l1">
                 <table className="responsive-table">
                     <thead>
-                        <tr onClick={() => {
-                            props.history.push(`/tracker`);
-                        }}>
+                        <tr>
                             <th>Started Today</th>
-                            <th>Started Applications</th>
-                            <th>Waiting for Response</th>
-                            <th>Follow-up Needed</th>
-                            <th>Archived</th>
+                            <th><Link to={{
+                                pathname:"/tracker",
+                                search:"?active=started-app"
+                            }}>Started Applications</Link></th>
+                            <th><Link to={{
+                                pathname:"/tracker",
+                                search:"?active=waiting"
+                            }}>Waiting for Response</Link></th>
+                            <th><Link to={{
+                                pathname:"/tracker",
+                                search:"?active=follow-up"
+                            }}>Follow-up Needed</Link></th>
+                            <th><Link to={{
+                                pathname:"/tracker",
+                                search:"?active=archived"
+                            }}>Archived</Link></th>
                             <th>Total</th>
                         </tr>
                     </thead>
