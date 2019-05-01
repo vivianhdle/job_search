@@ -25,7 +25,7 @@ class Tracker extends Component {
                 <Status progress="Follow-up Needed" id="follow-up" />
                 <Status progress="Archived" id="archived" />
                 <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey add-prospect" icon="add"/>
-                <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="grey search-prospect" icon="search"/>   
+                <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="grey darken-1 search-prospect" icon="search"/>   
                 <NavCookies/>
             </div>
         )

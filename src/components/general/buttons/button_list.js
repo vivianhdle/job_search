@@ -3,16 +3,17 @@ import './button_list.scss';
 
 class ButtonList extends Component{
     componentDidMount(){
+        const {direction}=this.props
         const options={
             hoverEnabled:false,
-            direction:'bottom'
+            direction: direction
         }
         M.FloatingActionButton.init(this.buttonlist, options);
     }
     render(){
-        const {sortAlphabetically, sortDate}=this.props
+        const {sortAlphabetically, sortDate,classes}=this.props
         return (
-            <div className="fixed-action-btn" ref={(element) => this.buttonlist = element}>
+            <div className={`fixed-action-btn ${classes}`} ref={(element) => this.buttonlist = element}>
                 <a className="btn-floating btn blue-grey">
                     <i className="large material-icons">sort</i>
                 </a>

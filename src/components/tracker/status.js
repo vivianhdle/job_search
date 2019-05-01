@@ -86,7 +86,7 @@ class Status extends Component {
             <Fragment>
                 <div className="job-container show-on-medium-and-up" id={id}>
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
-                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates}/>
+                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>
                     <Header title={progress} alignment="center"/>
                     <JobProspectList list={this.state.sortedCards}/>
                 </div>
