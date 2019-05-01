@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
-import { SubmissionError } from 'redux-form';
-import Modal from '../general/modals/modal';
+import {Link} from 'react-router-dom';
 
 class Prospect extends Component {
     state={
@@ -48,33 +47,38 @@ class Prospect extends Component {
             }else{
                 resp = await axios.post('/api/add_tracker_item.php', values);
             }
+            console.log(resp);
             if(!resp.data.success){
                 this.setState({
                     errorMsg: resp.data.error,
-                    error: false
+                    error: true
                 })
-                setTimeout(()=>{
-                    this.props.history.push('/account/sign-up');
-                },2000)
             }else{
                 this.goToTracker();
             }
     }
-    closeErrorModal = ()=>{
-        this.setState({
-            error: false
-        })
-    }
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
+        const errorMsgCheck = /sign up/;
+        let {errorMsg} = this.state;
+        const link = (<Link to="/account/sign-up" key={"sign-up"}>sign up</Link>);
+        if(errorMsgCheck.test(errorMsg)){
+            let splitSignUp = errorMsg.split("sign up");
+            splitSignUp.splice(1, 0, link);
+            errorMsg = splitSignUp
+        }
         return (
             <div className="add-form-progress">
-            {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 <div className="form">
-                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} />
-                        
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}/>
                 </div>
+                {this.state.error && 
+                    <div className='errorMsg row'>
+                    <i className='material-icons warning prefix'>warning</i>
+                        <div className="col s10 offset-s1" >{errorMsg}</div>
+                    </div>}
             </div>
+            
         )
     }
 }
