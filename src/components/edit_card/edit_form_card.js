@@ -31,15 +31,6 @@ class EditFormCard extends Component {
         this.props.dispatch(action);
     }
     handleUpdate = async values => {
-        // let {company, link, progress, title} = values;
-        // const regexTest= /^https?:\/\//;
-        // const result = regexTest.test(link);
-        // if(!result){
-        //     link = 'https://'+link;
-        // }else{
-        //     link = link;
-        // }
-
         const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
         if(resp.data.success){
@@ -164,7 +155,6 @@ class EditFormCard extends Component {
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
-                {/* {<Modal></Modal>} */}
             </div>
         )
     }

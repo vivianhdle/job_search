@@ -17,7 +17,7 @@ class AddContactModal extends Component {
                         <Field id="name" col="s10 offset-s1" name="name" component={Input} label="Name" />
                         <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email"/>
                         <Field id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone"/>
-                        <button className="btn add-contacts transparentblue-grey">SUBMIT</button>
+                        <button className="btn add-contacts blue-grey">SUBMIT</button>
                     </form>
                 </Modal>
             </div>
