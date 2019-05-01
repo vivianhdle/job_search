@@ -12,6 +12,7 @@ import Error404 from './404';
 import Stats from './stats';
 import AccountRoutes from './account';
 import About from './about';
+import Search from './search';
 
 class App extends React.Component {
     state = {
@@ -47,6 +48,9 @@ class App extends React.Component {
                     }} />
                     <Route path="/about" render={(routingprops) => {
                         return <About {...routingprops} handlePageRender={this.handlePageRender}/>
+                    }} />
+                    <Route path="/search" render={(routingprops) => {
+                        return <Search {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
                     <Route render={(routingprops) => {
                         return <Error404 {...routingprops} handlePageRender={this.handlePageRender}/>
