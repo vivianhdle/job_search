@@ -4,10 +4,23 @@
     transition: 1s ease-in all;
     .search-sort{
         position: fixed;
-        bottom: 10%;
+        top: 7%;
+        bottom:auto;
         right: 3%;
+        padding-top: 10px;
         ul{
-            bottom: 38px;
+            top: 48px;
+        }
+    }
+    .input-field{
+        >input{
+            width:87%
+        }
+        >button{
+            background-color:transparent;
+            border:none;
+            position: relative;
+            top: 10px;
         }
     }
 }

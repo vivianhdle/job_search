@@ -7,19 +7,26 @@ import { connect } from 'react-redux';
 import { signInGuest, signUpNewGuest } from '../../actions';
 
 class Stats extends Component {
-    state = {
-        metaStats: null,
-        errorMsg: '',
-        error: false
+    constructor(props){
+        super(props);
+        this.timeoutID = null;
+        this.state = {
+            metaStats: null,
+            errorMsg: '',
+            error: false
+        }
     }
-    async componentDidMount() {
+    async componentDidMount(){
         this.props.handlePageRender('Career Assistant');
         await this.checkSession();
         this.getStats();
-        setTimeout(() => {
+        this.timeoutID = setTimeout(()=>{
             this.photo.style.opacity = '1';
-            this.greeting.style.opacity = "0";
-        }, 2000)
+            this.greeting.style.opacity="0";
+        },2000);
+    }
+    componentWillUnmount(){
+        clearTimeout(this.timeoutID);
     }
     async checkSession() {
         const resp = await axios.get('./api/sessiontest.php');

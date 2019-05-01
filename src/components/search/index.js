@@ -102,7 +102,7 @@ class Search extends Component{
                 <div className="search-result-container">
                     {sortedCards.length ? <SearchResults searchResults={sortedCards}/>:<SearchResults searchResults={filteredList}/>}
                 </div>
-                {searched && <ButtonList classes="search-sort" sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="top"/>}
+                {searched && <ButtonList classes="search-sort" sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>}
             </div>
         )
     }
