@@ -4,7 +4,6 @@ import Header from './../general/header';
 
 function StatsTable(props) {
     const { archived, started_application, total_prospects, waiting_for_response, started_today } = props;
-    console.log(props);
     return (
         <Fragment>
             <Header title="Job Stats" />
