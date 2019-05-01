@@ -68,7 +68,7 @@ class EditNote extends Component {
         })
     }
     render() {
-        const { handleSubmit, closeModal } = this.props;
+        const { handleSubmit, closeModal, fieldInput } = this.props;
         return (
             <div className="action row">
                 {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}

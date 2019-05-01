@@ -6,7 +6,12 @@
     }
     .collapsible-body{
         padding: 1rem;
+        
     }
+    .collapsible-body.col-body-none{
+        padding: 0px;
+    }
+
     .input-field{
         float: none;
     }

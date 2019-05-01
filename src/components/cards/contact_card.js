@@ -21,6 +21,10 @@ class ContactCard extends Component {
     render() {
         let { id, name, email, phone, edit, view } = this.props;
         console.log(this.props);
+        let classAdapt = null;
+        if(phone === 0  && email === ''){
+            classAdapt = 'col-body-none'
+        }
         if(phone === 0){
             phone = ''
         }
@@ -32,7 +36,7 @@ class ContactCard extends Component {
                         <i className="material-icons grey-text text-darken-2">contacts</i>
                         {name}
                     </div>
-                    <div className="collapsible-body col-body">
+                    <div className={`collapsible-body ${classAdapt}`}>
                         {email && <div>
                             <i className="material-icons prefix grey-text text-darken-2">email</i>
                             <div className="contact-email grey-text text-darken-2">
@@ -46,6 +50,7 @@ class ContactCard extends Component {
                             </div>
                         </div>}
                     </div>
+                    
                 </li>
             </Fragment>
         )
