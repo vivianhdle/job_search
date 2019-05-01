@@ -17,9 +17,9 @@ class ContactForm extends Component {
                         <li>
                             <div className="collapsible-header"><i className="material-icons">person_add</i>Contacts</div>
                             <div className="collapsible-body">
-                                <Field id="name" col="s12" name="name" component={Input} label="Name" icon="person_outline"/>
-                                <Field id="email" col="s12" name="email" component={Input} label="Email" icon="mail_outline"/>
-                                <Field id="phone" col="s12" name="phone" component={Input} label="Phone" icon="smartphone" />
+                                <Field id="name" col="s12" name="name" component={Input} label="Name" />
+                                <Field id="email" col="s12" name="email" component={Input} label="Email" />
+                                <Field id="phone" col="s12" name="phone" component={Input} label="Phone" />
                             </div>
                         </li>
                     </ul>

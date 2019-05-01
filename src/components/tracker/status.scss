@@ -10,6 +10,14 @@
             overflow-x:hidden;
             
     }
+    .fixed-action-btn.direction-bottom{
+        bottom:auto;
+        padding-top: 10px;
+        right: 3%;
+        ul>li+li{
+            margin-top:0;
+        }
+    }
 }
 .card-container::-webkit-scrollbar {
     display: none;

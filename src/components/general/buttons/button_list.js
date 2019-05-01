@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './button_list.scss';
 
 class ButtonList extends Component{
     componentDidMount(){
@@ -11,7 +10,7 @@ class ButtonList extends Component{
         M.FloatingActionButton.init(this.buttonlist, options);
     }
     render(){
-        const {sortAlphabetically, sortDate,classes}=this.props
+        const {sortAlphabetically, sortDate,classes=""}=this.props
         return (
             <div className={`fixed-action-btn ${classes}`} ref={(element) => this.buttonlist = element}>
                 <a className="btn-floating btn blue-grey">

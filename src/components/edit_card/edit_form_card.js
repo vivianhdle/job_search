@@ -139,6 +139,7 @@ class EditFormCard extends Component {
         const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, linkCheck } = this.props;
         return (
             <div className="form">
+                <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-prospect" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
@@ -159,7 +160,6 @@ class EditFormCard extends Component {
                         <button className="btn blue-grey save-button">SAVE</button>
                     </div>
                 </form>
-                <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>

@@ -17,9 +17,6 @@ span.contact{
     right: 40px;
     position: absolute;
 }
-.collapsible{
-    box-shadow:none;
-}
 
 .edit-container{
     background-color: $very-light-gray;
@@ -38,10 +35,10 @@ span.contact{
             }
         }
     }
-    .delete-note{
+    .delete-prospect{
         position: fixed;
-        bottom: 10%;
         right: 3%;
+        top:8%;
     }
 }
 
