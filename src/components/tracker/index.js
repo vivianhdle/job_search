@@ -18,7 +18,6 @@ class Tracker extends Component {
         this.props.history.push('/search');
     }
     render() {
-        console.log('props location:',this.props.location);
         return (
             <div className="tracker-container">
                 <Status progress="Started Application" id="started-app"/>
@@ -26,7 +25,7 @@ class Tracker extends Component {
                 <Status progress="Follow-up Needed" id="follow-up" />
                 <Status progress="Archived" id="archived" />
                 <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey add-prospect" icon="add"/>
-                <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="grey darken-1 search-prospect" icon="search"/>   
+                <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="blue-grey search-prospect" icon="search"/>   
                 <NavCookies active={this.props.location.search.replace('?active=','')}/>
             </div>
         )

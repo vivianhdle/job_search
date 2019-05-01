@@ -11,34 +11,34 @@ function StatsTable(props) {
                 <table className="responsive-table">
                     <thead>
                         <tr>
-                            <th>Started Today</th>
-                            <th><Link to={{
+                            <th><Link className="teal-text text-lighten-2" to={{
                                 pathname:"/tracker",
                                 search:"?active=started-app"
                             }}>Started Applications</Link></th>
-                            <th><Link to={{
+                            <th><Link className="teal-text text-lighten-2" to={{
                                 pathname:"/tracker",
                                 search:"?active=waiting"
                             }}>Waiting for Response</Link></th>
-                            <th><Link to={{
+                            <th><Link className="teal-text text-lighten-2" to={{
                                 pathname:"/tracker",
                                 search:"?active=follow-up"
                             }}>Follow-up Needed</Link></th>
-                            <th><Link to={{
+                            <th><Link className="teal-text text-lighten-2" to={{
                                 pathname:"/tracker",
                                 search:"?active=archived"
                             }}>Archived</Link></th>
-                            <th>Total</th>
+                            <th className="grey-text text-darken-2">Total</th>
+                            <th className="grey-text text-darken-2">Started Today</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{started_today}</td>
                             <td>{started_application}</td>
                             <td>{waiting_for_response}</td>
                             <td>{props["follow-up_needed"]}</td>
                             <td>{archived}</td>
                             <td>{total_prospects}</td>
+                            <td>{started_today}</td>
                         </tr>
                     </tbody>
                 </table>

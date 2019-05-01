@@ -16,10 +16,10 @@ class Stats extends Component {
         this.props.handlePageRender('Career Assistant');
         await this.checkSession();
         this.getStats();
-        setTimeout(()=>{
+        setTimeout(() => {
             this.photo.style.opacity = '1';
-            this.greeting.style.opacity="0";
-        },2000)
+            this.greeting.style.opacity = "0";
+        }, 2000)
     }
     async checkSession() {
         const resp = await axios.get('./api/sessiontest.php');
@@ -31,12 +31,12 @@ class Stats extends Component {
             } else if (!localStorage.getItem('guest_id')) {
                 await this.props.signUpNewGuest();
             }
-        }else{
+        } else {
             if (localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn') && this.props.location.state !== 'signedOut') {
                 await this.props.signInGuest();
             } else if (!localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn') && this.props.location.state !== 'signedOut') {
                 await this.props.signUpNewGuest();
-            }    
+            }
         }
     }
     clearUserLog() {
@@ -45,38 +45,45 @@ class Stats extends Component {
     }
     async getStats() {
         const resp = await axios.get('./api/get_user_stats.php');
-        if(resp.data.success){this.setState({
-            metaStats: resp.data.data
-        })}else{
+        if (resp.data.success) {
+            this.setState({
+                metaStats: resp.data.data
+            })
+        } else {
             this.setState({
                 errorMsg: resp.data.error,
                 error: true
             })
         }
     }
-    closeErrorModal = ()=>{
+    closeErrorModal = () => {
         this.setState({
             error: false
         })
     }
     render() {
-        return (
-            <div className="stats-page row">
-            {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
-                <div className="greeting-content">
-                    {this.state.metaStats && <div className="greeting center" ref={(element) => { this.greeting = element }}>
-                        <div className="greeting-text grey-text text-darken-2">
-                            {this.state.metaStats.user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
-                            <div>
-                                {this.state.metaStats.user_name}!
+        if (this.state.metaStats) {
+            const {metaStats} = this.state;
+            return (
+                <div className="stats-page row">
+                    {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal} />}
+                    <div className="greeting-content">
+                        <div className="greeting center" ref={(element) => { this.greeting = element }}>
+                            <div className="greeting-text grey-text text-darken-2">
+                                {this.state.metaStats.user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
+                                <div>
+                                    {metaStats.user_name}!
+                            </div>
                             </div>
                         </div>
-                    </div>}
-                    <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
+                        <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
+                    </div>
+                    <StatTable {...metaStats} {...this.props} />
                 </div>
-                {this.state.metaStats ? <StatTable {...this.state.metaStats} {...this.props}/>:<Loader />}
-            </div>
-        )
+            )
+        } else {
+            return <Loader />
+        }
     }
 }
 
