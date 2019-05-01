@@ -14,7 +14,7 @@ class Search extends Component{
             filteredList:[],
             searched:false,
             sortedCards:[],
-            sortOrder:'date-dec'
+            sortOrder:'date-asc'
         }
     }
     componentDidMount(){
@@ -92,7 +92,7 @@ class Search extends Component{
         const {filteredList,searched,sortedCards} = this.state;
         return(
             <div className="search-container">
-                <Header  title="Search Job Prospects" col='col s10 offset-s1'/>
+                <Header  title="Search Job Prospects" col='col s10 offset-s1' alignment="left-align"/>
                 <SearchForm runSearch={this.getSearchValues}/>
                 <div className="row">
                     <div className="col s10 offset-s1">
