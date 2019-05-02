@@ -6,12 +6,12 @@ class SignInForm extends Component{
     render(){
         const {handleSubmit,signIn}=this.props
         return (
-            <div className="signin-form">
+            <div className="signin-form field-input">
                 <form onSubmit={handleSubmit(signIn)}>
-                    <div className="row field-input">
+                    <div className="row">
                         <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email *" icon="perm_identity"/>
                     </div>
-                    <div className="row field-input">
+                    <div className="row">
                         <Field id="password" col="s10 offset-s1" name="password" component={Input} label="Password *" type="password" icon="lock_open"/>
                     </div>
                     <div className="row">

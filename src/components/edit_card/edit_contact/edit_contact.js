@@ -7,6 +7,7 @@ import Header from '../../general/header';
 import axios from 'axios';
 import './edit_contact.scss'
 import DeleteModal from '../../general/modals/delete_confirmation';
+import ErrorHandler from '../../general/error_handler';
 
 class EditContactModal extends Component {
     constructor(props){

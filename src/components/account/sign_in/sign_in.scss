@@ -3,6 +3,7 @@
 
     .signin-box{
         top:10rem;
+        padding-top:1rem;
         position:relative;
         height:28.5rem;
         background-color:white;
@@ -11,23 +12,21 @@
         
         .errorMsg{
             color: red;
-            margin-left: 1rem;
             font-size: 1rem;
-            .warning{
-                position: absolute;
-                margin-left: 0.5rem;
-            }
-        }
+            position: relative;
+            top: 1rem;
 
-        .signin-content{
-            height:1rem;            
+            i{
+                vertical-align: bottom;
+            }
         }
         .signin-form{
             height:60%;
+            margin: 1rem 0;
+        }
 
-            .field-input{
-                margin: 1rem 0;
-            }
+        .field-input{
+            margin: 1rem 0;
         }
     }
 }
