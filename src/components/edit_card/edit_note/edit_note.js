@@ -71,7 +71,6 @@ class EditNote extends Component {
         const { handleSubmit, closeModal, fieldInput } = this.props;
         return (
             <div className="action row">
-                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteNote} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
                 <Modal modalClass="edit-note-modal" mscss="note">
                     <div>
@@ -80,9 +79,16 @@ class EditNote extends Component {
                     <Header title="Edit Note" newClass="col s10 offset-s1" alignment="center"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
                         <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
-                        <button className="btn save blue-grey">SAVE</button>
+                        <button className="btn save">SAVE</button>
                     </form>
-                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
+                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
+                    {this.state.error &&
+                    <div className='errorNoteMsg row'>
+                        <div className="col s10 offset-s1 left-align" >
+                            <i className='material-icons prefix'>warning</i>
+                            {this.state.errorMsg = 'No alterations were made.'}
+                        </div>
+                    </div>}
                 </Modal>}
             </div>
         )

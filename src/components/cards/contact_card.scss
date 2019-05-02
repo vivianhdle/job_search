@@ -1,3 +1,5 @@
+@import '../../assets/css/variables.scss';
+
 .contact-email,
 .contact-phone {
     display: inline-block;
@@ -11,5 +13,15 @@
     padding-right: 7%;
 }
 
+.collapsible{ 
+    .collapsible-body.col-body{
+        padding: 0px;
+        background-color:$contact-collapsible;
+        color:$main-text;
+    }
+    .collapsible-header{
+        color:$main-text;
+    }
+}
 
 

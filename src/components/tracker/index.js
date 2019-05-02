@@ -24,8 +24,8 @@ class Tracker extends Component {
                 <Status progress="Waiting for Response" id="waiting" />
                 <Status progress="Follow-up Needed" id="follow-up" />
                 <Status progress="Archived" id="archived" />
-                <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="blue-grey add-prospect" icon="add"/>
-                <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="blue-grey search-prospect" icon="search"/>   
+                <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add"/>
+                <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search"/>   
                 <NavCookies active={this.props.location.search.replace('?active=','')}/>
             </div>
         )

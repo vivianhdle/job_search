@@ -10,10 +10,10 @@ import DeleteModal from '../../general/modals/delete_confirmation';
 import ErrorHandler from '../../general/error_handler';
 
 class EditContactModal extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            deleteConfirmationOpen:false,
+            deleteConfirmationOpen: false,
             form: {
                 name: '',
                 email: '',
@@ -38,9 +38,9 @@ class EditContactModal extends Component {
     handleDeleteContact = async () => {
         const { id } = this.props;
         const resp = await axios.post('/api/delete_contact_item.php', { "id": id });
-        if(resp.data.success){
+        if (resp.data.success) {
             this.props.view();
-        }else{
+        } else {
             this.setState({
                 errorMsg: resp.data.error,
                 error: true
@@ -59,48 +59,54 @@ class EditContactModal extends Component {
             }
         }
         const resp = await axios.post(`/api/update_contact_item.php`, editContact);
-        if(resp.data.success){
+        if (resp.data.success) {
             this.props.view();;
-        }else{
+        } else {
             this.setState({
                 errorMsg: resp.data.error,
                 error: true
             })
         }
     }
-    deleteConfirmation=()=>{
+    deleteConfirmation = () => {
         this.setState({
-            deleteConfirmationOpen:true
+            deleteConfirmationOpen: true
         })
     }
-    closeConfirmation=()=>{
+    closeConfirmation = () => {
         this.setState({
-            deleteConfirmationOpen:false
+            deleteConfirmationOpen: false
         })
     }
-    closeErrorModal = ()=>{
+    closeErrorModal = () => {
         this.setState({
             error: false
         })
     }
     render() {
         const { handleSubmit, exitModal } = this.props;
-        const { phone, email, name } = this.state.form
+        const { phone, email, name } = this.state.form;
         return (
             <div className="action row">
-                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
-                {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteContact} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
-                <Modal modalClass="edit-contact-modal" mscss="contact">
-                    <button className="edit-exit" onClick={exitModal}><i className="material-icons exit">close</i></button>
-                    <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
-                        <Header title="Edit Contact" newClass="col s10 offset-s1" />
-                        <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label={"Name"} />
-                        <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label={"Email"} />
-                        <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={"Phone"} />
-                        <button className="btn blue-grey edit-submit">SAVE</button>
-                    </form>
-                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
-                </Modal>}
+                {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteContact} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note" /> :
+                    <Modal modalClass="edit-contact-modal" mscss="contact">
+                        <button className="edit-exit" onClick={exitModal}><i className="material-icons exit">close</i></button>
+                        <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
+                            <Header title="Edit Contact" newClass="col s10 offset-s1" />
+                            <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label={!name && "Name"} />
+                            <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label={!email && "Email"} />
+                            <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
+                            <button className="btn edit-submit">SAVE</button>
+                        </form>
+                        <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
+                        {this.state.error &&
+                            <div className='errorMsg row'>
+                                <div className="col s10 offset-s1 left-align" >
+                                    <i className='material-icons prefix'>warning</i>
+                                    {this.state.errorMsg = 'No alterations were made.'}
+                                </div>
+                            </div>}
+                    </Modal>}
             </div>
         )
     }

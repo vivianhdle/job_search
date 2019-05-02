@@ -130,7 +130,7 @@ class EditFormCard extends Component {
         const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, linkCheck } = this.props;
         return (
             <div className="form">
-                <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-prospect" size="btn" handleClick={this.deleteConfirmationToggle}/>
+                <ActionButton icon="delete_forever" classes="btn-floating delete-prospect" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
@@ -139,16 +139,16 @@ class EditFormCard extends Component {
                     <Header title="Edit Job Prospect" alignment="left-align" />
                     <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} icon="title"/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required} icon="business"/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" validate={linkCheck}/>
+                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" validate={linkCheck}/>
                     </div>
                     <div className="btn-wrapper row right-align">
-                        <button className="btn blue-grey save-button">SAVE</button>
+                        <button className="btn save-button">SAVE</button>
                     </div>
                 </form>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>

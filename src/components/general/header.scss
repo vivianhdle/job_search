@@ -1,3 +1,5 @@
+@import '../../assets/css/variables.scss';
+
 .title-header{
     height:50px;
     font-size:1.75rem;
@@ -6,6 +8,7 @@
     +div{
         i{
             padding: .85rem 0;
+            color:$edit-add-icon
         }
     }
 }

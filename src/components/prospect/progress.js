@@ -27,13 +27,13 @@ class DropDown extends Component {
         if(this.select.value === ''){
             this.input.style.color = '#9e9e9e';
         }else{
-            this.input.style.color = 'rgba(0, 0, 0, 0.87)';
+            this.input.style.color = '#616161';
         }
     }
 
     handleChange =(e)=>{
         if(e.target.value !== ''){
-            this.input.style.color = 'rgba(0, 0, 0, 0.87)';
+            this.input.style.color = '#616161';
         } else{
             this.input.style.color = '#9e9e9e';
         }

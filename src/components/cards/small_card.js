@@ -18,10 +18,10 @@ class SmallCard extends Component {
         return (
             <div className="row">
                 <div className="col s10 offset-s1">
-                    <div className="card grey white" onClick={this.handleCardClick}>
-                        <div className="card-content black-text">
+                    <div className="card" onClick={this.handleCardClick}>
+                        <div className="card-content">
                             <span className="card-title">{company}</span>
-                            <span className="title grey-text text-darken-2">{title}</span>
+                            <span className="title">{title}</span>
                             <br />
                             <span className="created right"><em>{formatTime(created)}</em></span>
                         </div>

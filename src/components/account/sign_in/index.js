@@ -36,7 +36,6 @@ function mapStateToProps(state){
         errorMsg: state.user.errorMsg,
         error: state.user.error
     }
-
 }
 
 export default connect(mapStateToProps,{

@@ -20,9 +20,8 @@ class ContactCard extends Component {
     }
     render() {
         let { id, name, email, phone, edit, view } = this.props;
-        console.log(this.props);
-        let classAdapt = null;
-        if(phone === 0  && email === ''){
+        let classAdapt = '';
+        if(!phone && !email){
             classAdapt = 'col-body-none'
         }
         if(phone === 0){
@@ -32,20 +31,20 @@ class ContactCard extends Component {
             <Fragment>
                 <li >
                     {this.state.open && <EditContactModal view={view} exitModal={this.exitContactModal} name={name} email={email} phone={phone} id={id} />}
-                    <div className="collapsible-header grey-text text-darken-2" onClick={edit && this.handleClick}>
-                        <i className="material-icons grey-text text-darken-2">contacts</i>
+                    <div className="collapsible-header" onClick={edit && this.handleClick}>
+                        <i className="material-icons">contacts</i>
                         {name}
                     </div>
                     <div className={`collapsible-body ${classAdapt}`}>
                         {email && <div>
-                            <i className="material-icons prefix grey-text text-darken-2">email</i>
-                            <div className="contact-email grey-text text-darken-2">
+                            <i className="material-icons prefix">email</i>
+                            <div className="contact-email">
                                 {email}
                             </div>
                         </div>}
                         {phone && <div>
-                            <i className="material-icons prefix grey-text text-darken-2">phone</i>
-                            <div className="contact-phone grey-text text-darken-2">
+                            <i className="material-icons prefix">phone</i>
+                            <div className="contact-phone">
                                 {phone}
                             </div>
                         </div>}
@@ -56,9 +55,5 @@ class ContactCard extends Component {
         )
     }
 }
-
-
-
-
 
 export default ContactCard;
