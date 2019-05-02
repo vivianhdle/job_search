@@ -131,7 +131,6 @@ class EditFormCard extends Component {
         return (
             <div className="form">
                 <ActionButton icon="delete_forever" classes="btn-floating delete-prospect" size="btn" handleClick={this.deleteConfirmationToggle}/>
-                {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                 {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
@@ -151,6 +150,13 @@ class EditFormCard extends Component {
                         <button className="btn save-button">SAVE</button>
                     </div>
                 </form>
+                {this.state.error &&
+                            <div className='errorMsg row'>
+                                <div className="col s10 offset-s1 left-align" >
+                                    <i className='material-icons prefix'>warning</i>
+                                    {this.state.errorMsg = 'No alterations were made.'}
+                                </div>
+                            </div>}
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>

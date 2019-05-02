@@ -16,6 +16,17 @@ span.contact{
             height: 100%;
             width: 100%;
         }
+
+        .errorMsg{
+            color: red;
+            font-size: 1rem;
+            position: relative;
+            margin: 1rem 0;
+
+            i{
+                vertical-align: bottom;
+            }
+        }
     }
     .delete-prospect{
         position: fixed;
