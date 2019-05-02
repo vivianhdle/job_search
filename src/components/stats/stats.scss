@@ -2,6 +2,9 @@
 
 .stats-page{
     height:calc(100% - 56px); 
+    .add-prospect{
+        padding:1.5rem;
+    }
     .greeting-content{
         position:relative;
         min-height:38%;

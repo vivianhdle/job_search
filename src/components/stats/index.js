@@ -69,6 +69,9 @@ class Stats extends Component {
             error: false
         })
     }
+    goToProspect = () => {
+        this.props.history.push('/prospect');
+    }
     render() {
         if (this.state.metaStats) {
             const {metaStats} = this.state;
@@ -87,6 +90,9 @@ class Stats extends Component {
                         <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
                     </div>
                     <StatTable {...metaStats} {...this.props} />
+                    <div className="col s10 offset-s1 center add-prospect">
+                        <button onClick={this.goToProspect} className="btn-small blue-grey">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
+                    </div>
                 </div>
             )
         } else {
