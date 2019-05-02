@@ -31,7 +31,6 @@ class Prospect extends Component {
                 link;
             }
             }
-            debugger;
             values = {
                 progress,
                 company,
@@ -47,7 +46,6 @@ class Prospect extends Component {
             }else{
                 resp = await axios.post('/api/add_tracker_item.php', values);
             }
-            console.log(resp.data);
             if(!resp.data.success){
                 this.setState({
                     errorMsg: resp.data.error,
