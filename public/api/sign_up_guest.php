@@ -7,7 +7,7 @@ require_once('mysqlconnect.php');
 $output['success'] = false;
 
 $email = 'guest';
-$user_name = 'Guest';
+$user_name = null;
 $password = 'guest';
 $hashedPassword = sha1($password);
 

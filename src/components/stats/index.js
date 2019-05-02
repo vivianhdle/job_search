@@ -78,9 +78,9 @@ class Stats extends Component {
                     <div className="greeting-content">
                         <div className="greeting center" ref={(element) => { this.greeting = element }}>
                             <div className="greeting-text">
-                                {this.state.metaStats.user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
+                                {!metaStats.user_name ? 'Welcome,' : 'Welcome back,'}
                                 <div>
-                                    {metaStats.user_name}!
+                                    {metaStats.user_name || 'Guest'}!
                             </div>
                             </div>
                         </div>
