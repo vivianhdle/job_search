@@ -48,7 +48,7 @@ class AddJobProspect extends Component {
                 <div className="row">
                     <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" />
                 </div>
-                <div className="row">
+                <div className="row contact-row">
                     {contactForm}
                 </div>
                 <div className="row">
