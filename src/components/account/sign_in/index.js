@@ -16,16 +16,15 @@ class SignIn extends Component{
         return(
             <div className="signin-container row">
                 <div className="signin-box col m6 offset-m3 s10 offset-s1">
-                    <div className="signin-content">
-                    </div>
                     <Header alignment = "left-align" title="Sign In" newClass = "teal-text text-darken-1"/>
+                    <SignInForm signIn={this.signIn}/>
                     {error && 
                     <div className='errorMsg row'>
-                        <i className='material-icons warning prefix'>warning</i>
-                        <div className="col s10 offset-s1" >{errorMsg}</div>
+                        <div className="col s10 offset-s1 left-align" >
+                        <i className='material-icons prefix'>warning</i>
+                        {errorMsg}
+                        </div>
                     </div>}
-                    <SignInForm signIn={this.signIn}/>
-                    
                 </div>
             </div>
         )

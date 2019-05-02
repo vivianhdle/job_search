@@ -7,7 +7,7 @@ function SignUpForm(props){
     return(
         <div className="signup-form">
             <form onSubmit={handleSubmit(signUp)}>
-                <div className="row">
+                <div className="row field-input">
                     <Field id="user_name" col="s10 offset-s1" name="user_name" component={Input} label="Username *" icon="person_outline"/>
                     <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email *" icon="mail_outline"/>
                     <Field id="password" col="s10 offset-s1" name="password" component={Input} label="Password *" type="password" icon="lock_open"/>

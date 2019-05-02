@@ -34,7 +34,7 @@ if(!$result){
 }
 
 if(!mysqli_num_rows($result)){
-    throw new Exception('invalid email or password');
+    throw new Exception('Invalid email or password');
 }
 
 $data = mysqli_fetch_assoc($result);
