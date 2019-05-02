@@ -17,7 +17,7 @@ $output['success'] = false;
 $guest_id = $input['guest_id'];
 $email = 'guest';
 $password = 'guest';
-$hashedPassword = sha1($password);//DO NOT HASH ID just (int)
+$hashedPassword = sha1($password);
 
 $query="SELECT `id` FROM `user` WHERE `email`=? AND `password`=? AND `id`=?";
 
