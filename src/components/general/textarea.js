@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './textarea.scss';
 
 class TextArea extends Component {
     render() {

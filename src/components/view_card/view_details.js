@@ -15,10 +15,10 @@ class ViewDetails extends Component {
                     <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey action-button btn-floating" size="btn" />
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
-                        <div className="view-main-text grey-text text-darken-2">{title}</div>
-                        <div className="view-main-text grey-text text-darken-2">{progress}</div>
-                        {link && <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">Posting Link</a>}
-                        <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
+                        <div className="view-main-text">{title}</div>
+                        <div className="view-main-text">{progress}</div>
+                        {link && <a href={link} target="_blank" className="view-main-text posting-link">Posting Link</a>}
+                        <div className="right-align view-main-text created "><em>Added {formatTime(created)}</em></div>
                     </div>
                 </div>
                 <Header title="Contacts" alignment="left" newClass="view-section-header" />

@@ -21,7 +21,7 @@ class SmallCard extends Component {
                     <div className="card grey white" onClick={this.handleCardClick}>
                         <div className="card-content black-text">
                             <span className="card-title">{company}</span>
-                            <span className="title grey-text text-darken-2">{title}</span>
+                            <span className="title">{title}</span>
                             <br />
                             <span className="created right"><em>{formatTime(created)}</em></span>
                         </div>

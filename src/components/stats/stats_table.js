@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Header from './../general/header';
 import {Link} from 'react-router-dom';
+import './stats_table.scss'
 
 function StatsTable(props) {
     const { archived, started_application, total_prospects, waiting_for_response, started_today } = props;
@@ -11,24 +12,24 @@ function StatsTable(props) {
                 <table className="responsive-table">
                     <thead>
                         <tr>
-                            <th><Link className="teal-text text-lighten-2" to={{
+                            <th><Link className="header-link" to={{
                                 pathname:"/tracker",
                                 search:"?active=started-app"
                             }}>Started Applications</Link></th>
-                            <th><Link className="teal-text text-lighten-2" to={{
+                            <th><Link className="header-link" to={{
                                 pathname:"/tracker",
                                 search:"?active=waiting"
                             }}>Waiting for Response</Link></th>
-                            <th><Link className="teal-text text-lighten-2" to={{
+                            <th><Link className="header-link" to={{
                                 pathname:"/tracker",
                                 search:"?active=follow-up"
                             }}>Follow-up Needed</Link></th>
-                            <th><Link className="teal-text text-lighten-2" to={{
+                            <th><Link className="header-link" to={{
                                 pathname:"/tracker",
                                 search:"?active=archived"
                             }}>Archived</Link></th>
-                            <th className="grey-text text-darken-2">Total</th>
-                            <th className="grey-text text-darken-2">Started Today</th>
+                            <th className="header-total">Total</th>
+                            <th className="header-total">Started Today</th>
                         </tr>
                     </thead>
                     <tbody>

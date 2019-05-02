@@ -40,7 +40,7 @@ class AddJobProspect extends Component {
                 <Header title="Add Job Prospect" alignment="left-align"/>
                 <DropDown col="s10 offset-s1 col" required={required}/>
                 <div className="row">
-                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" icon="business_center" validate={[required]}/>
+                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" icon="title" validate={[required]}/>
                 </div>
                 <div className="row">
                     <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name *"icon="business" validate={[required]}/>

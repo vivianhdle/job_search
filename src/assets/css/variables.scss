@@ -1,3 +1,21 @@
-$tracker-background:rgba(243, 243, 243, 0.856);
-$dark-gray:rgba(0, 0, 0, 0.87);
-$form-background:'white';
+$grey:#616161;//grey darken-2
+$teal:#26a69a;//teal lighten-1
+$dark-grey:rgba(0, 0, 0, 0.87);
+$light-grey:rgba(243, 243, 243, 0.856);
+$white:white;
+$green:#4caf50;
+$red:#f44336;
+
+
+
+
+$tracker-background:$light-grey;
+$header-text:$dark-grey;
+$main-text:$grey;
+$active-text:$teal;
+$created-date-text:rgb(172, 172, 172);
+$contact-collapsible:$white;
+$yes-text:$green;
+$no-text:$red;
+$modal-content:$white;
+$modal:rgba(0,0,0,.75);

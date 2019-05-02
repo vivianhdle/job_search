@@ -77,7 +77,7 @@ class Stats extends Component {
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal} />}
                     <div className="greeting-content">
                         <div className="greeting center" ref={(element) => { this.greeting = element }}>
-                            <div className="greeting-text grey-text text-darken-2">
+                            <div className="greeting-text">
                                 {this.state.metaStats.user_name === 'Guest' ? 'Welcome,' : 'Welcome back,'}
                                 <div>
                                     {metaStats.user_name}!

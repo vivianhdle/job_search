@@ -19,7 +19,6 @@ span.contact{
 }
 
 .edit-container{
-    background-color: $very-light-gray;
     height: 93%;
     width: 100%;
     overflow-y:scroll;
@@ -29,10 +28,6 @@ span.contact{
         form{
             height: 100%;
             width: 100%;
-
-            .select-dropdown{
-                color:$light-gray
-            }
         }
     }
     .delete-prospect{
