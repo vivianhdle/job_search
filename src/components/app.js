@@ -11,7 +11,7 @@ import EditCard from './edit_card';
 import Error404 from './404';
 import Stats from './stats';
 import AccountRoutes from './account';
-import About from './about';
+// import About from './about';
 import Search from './search';
 
 class App extends React.Component {
@@ -46,9 +46,9 @@ class App extends React.Component {
                     <Route path="/account" render={routingprops => {
                         return <AccountRoutes {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
-                    <Route path="/about" render={(routingprops) => {
+                    {/* <Route path="/about" render={(routingprops) => {
                         return <About {...routingprops} handlePageRender={this.handlePageRender}/>
-                    }} />
+                    }} /> */}
                     <Route path="/search" render={(routingprops) => {
                         return <Search {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />

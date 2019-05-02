@@ -36,7 +36,7 @@ class ContactCard extends Component {
                         {name}
                     </div>
                     <div className={`collapsible-body ${classAdapt}`}>
-                        {email && <div>
+                        {email && <div className={email && phone ? 'double-info' : ''}>
                             <i className="material-icons prefix">email</i>
                             <div className="contact-email">
                                 {email}

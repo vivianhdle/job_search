@@ -34,7 +34,6 @@ class EditFormCard extends Component {
         if(resp.data.success){
             this.goToViewMode();
         }else{
-            console.log(resp.data.error);
             this.setState({
                 errorMsg: resp.data.error,
                 error: true
