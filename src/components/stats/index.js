@@ -72,13 +72,15 @@ class Stats extends Component {
     render() {
         if (this.state.metaStats) {
             const {metaStats} = this.state;
+            const greeting = (metaStats.user_name && metaStats.user_name !== 'Guest')
+            ? 'Welcome back, ' : 'Welcome, ';
             return (
                 <div className="stats-page row">
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal} />}
                     <div className="greeting-content">
                         <div className="greeting center" ref={(element) => { this.greeting = element }}>
                             <div className="greeting-text">
-                                {!metaStats.user_name ? 'Welcome,' : 'Welcome back,'}
+                                {greeting}
                                 <div>
                                     {metaStats.user_name || 'Guest'}!
                             </div>
