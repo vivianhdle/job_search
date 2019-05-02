@@ -24,7 +24,6 @@ $note_item_query = "UPDATE `note_item` SET
     `input`=?
     WHERE `id`=?
 ";
-//need to catch dupe entry error
 
 $note_item_statement = mysqli_prepare($conn, $note_item_query);
 mysqli_stmt_bind_param($note_item_statement, 'si', $note, $id);

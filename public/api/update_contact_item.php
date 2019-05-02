@@ -28,7 +28,6 @@ $contact_item_query = "UPDATE `contact_info` SET
     `phone`=?
     WHERE `id`=?
 ";
-//need to catch dupe entry error
 
 $contact_item_statement = mysqli_prepare($conn, $contact_item_query);
 mysqli_stmt_bind_param($contact_item_statement, 'ssii', $name, $email, $phone, $id);
