@@ -1,10 +1,10 @@
 .signin-container{
-    height:calc(100% - 56px);//56px to account for top nav bar
+    height:calc(100% - 56px);
 
     .signin-box{
-        top:10%;
+        top:10rem;
         position:relative;
-        height:80%;
+        height:28.5rem;
         background-color:white;
         box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
         border-radius: 0 0 2px 2px;
@@ -20,20 +20,14 @@
         }
 
         .signin-content{
-        height:40%;
-            
-            .photo{
-                background-image:url("../../../../public/dist/job-search.png");
-                height:100%;
-                background-size:contain;
-                background-repeat:no-repeat;
-                background-position: center;
-
-            }
+            height:1rem;            
         }
         .signin-form{
             height:60%;
 
+            .field-input{
+                margin: 1rem 0;
+            }
         }
     }
 }
