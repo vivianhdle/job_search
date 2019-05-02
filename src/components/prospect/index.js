@@ -31,7 +31,6 @@ class Prospect extends Component {
                 link;
             }
             }
-            
             values = {
                 progress,
                 company,
@@ -47,7 +46,6 @@ class Prospect extends Component {
             }else{
                 resp = await axios.post('/api/add_tracker_item.php', values);
             }
-            console.log(resp);
             if(!resp.data.success){
                 this.setState({
                     errorMsg: resp.data.error,
@@ -70,13 +68,14 @@ class Prospect extends Component {
         return (
             <div className="add-form-progress">
                 <div className="form">
-                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}/>
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}>
+                        {this.state.error && 
+                        <div className='errorMsg row'>
+                            <i className='material-icons warning prefix'>warning</i>
+                            <div className="col s10 offset-s1" >{errorMsg}</div>
+                        </div>}
+                    </AddJobProspect>
                 </div>
-                {this.state.error && 
-                    <div className='errorMsg row'>
-                    <i className='material-icons warning prefix'>warning</i>
-                        <div className="col s10 offset-s1" >{errorMsg}</div>
-                    </div>}
             </div>
             
         )

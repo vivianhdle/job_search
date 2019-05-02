@@ -56,7 +56,7 @@ $sign_up_result = mysqli_stmt_execute($sign_up_statement);
 $sign_up_result = mysqli_stmt_get_result($sign_up_statement);
 
 if(mysqli_affected_rows($conn) === 0){
-    throw new Exception('user was not signed up');
+    throw new Exception('User was not signed up');
 }
 
 $output['success'] = true;

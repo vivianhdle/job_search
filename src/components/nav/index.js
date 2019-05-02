@@ -51,9 +51,9 @@ class Nav extends Component {
                 <li className="sidenav-close">
                     <Link to="/prospect">Add Prospect</Link>
                 </li>
-                <li className="sidenav-close">
+                {/* <li className="sidenav-close">
                     <Link to="/about">About</Link>
-                </li>
+                </li> */}
                 <li className="sidenav-close">
                     <Link to="/search">Search</Link>
                 </li>

@@ -2,7 +2,7 @@
 
 
 .tracker-container{
-    height:calc(100% - 56px); //56px is top nav bar (mobile) 
+    height:calc(100% - 56px);
     margin:0;
     display:flex;
     width: 100%;
@@ -11,7 +11,7 @@
     .carousel{
         height:100%;
         width:100%;
-        padding-bottom:48px; //48 px to account for bottom navbar (mobile)
+        padding-bottom:48px;
     }
     .add-prospect{
         position: fixed;

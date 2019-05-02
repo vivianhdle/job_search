@@ -33,7 +33,7 @@ class AddJobProspect extends Component {
     
     render() {
         
-        const { required, add, handleSubmit, error } = this.props;
+        const { required, add, handleSubmit, error,children } = this.props;
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>
@@ -48,7 +48,7 @@ class AddJobProspect extends Component {
                 <div className="row">
                     <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" />
                 </div>
-                <div className="row">
+                <div className="row contact-row">
                     {contactForm}
                 </div>
                 <div className="row">
@@ -59,6 +59,7 @@ class AddJobProspect extends Component {
                 <div className="row">
                     <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" icon="note_add"/>
                 </div>
+                {children}
                 <div className="row">
                     <div className="col s10 offset-s1 center extra-contact">
                         <button className="btn blue-grey">Submit</button>

@@ -60,12 +60,16 @@ class EditContactModal extends Component {
         }
         const resp = await axios.post(`/api/update_contact_item.php`, editContact);
         if (resp.data.success) {
-            this.props.view();;
+            this.props.view();
         } else {
-            this.setState({
-                errorMsg: resp.data.error,
-                error: true
-            })
+            if (resp.data.error === ""){
+                this.props.view();
+            }else {
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
         }
     }
     deleteConfirmation = () => {
@@ -93,9 +97,9 @@ class EditContactModal extends Component {
                         <button className="edit-exit" onClick={exitModal}><i className="material-icons exit">close</i></button>
                         <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
                             <Header title="Edit Contact" newClass="col s10 offset-s1" />
-                            <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label={!name && "Name"} />
-                            <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label={!email && "Email"} />
-                            <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
+                            <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label="Name" />
+                            <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label="Email"/>
+                            <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone" />
                             <button className="btn edit-submit">SAVE</button>
                         </form>
                         <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
@@ -103,7 +107,7 @@ class EditContactModal extends Component {
                             <div className='errorMsg row'>
                                 <div className="col s10 offset-s1 left-align" >
                                     <i className='material-icons prefix'>warning</i>
-                                    {this.state.errorMsg = 'No alterations were made.'}
+                                    {this.state.errorMsg}
                                 </div>
                             </div>}
                     </Modal>}

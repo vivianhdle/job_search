@@ -33,10 +33,15 @@ class EditNote extends Component {
         if(resp.data.success){
             this.props.view();;
         }else{
-            this.setState({
-                errorMsg: resp.data.error,
-                error: true
-            })
+            if (resp.data.error === ""){
+                this.props.view();
+            } else {
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
+            
         }
     }
     handleDeleteNote = async () => {
@@ -78,7 +83,7 @@ class EditNote extends Component {
                     </div>
                     <Header title="Edit Note" newClass="col s10 offset-s1" alignment="center"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
-                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
+                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label='Notes' />
                         <button className="btn save">SAVE</button>
                     </form>
                     <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
@@ -86,7 +91,7 @@ class EditNote extends Component {
                     <div className='errorNoteMsg row'>
                         <div className="col s10 offset-s1 left-align" >
                             <i className='material-icons prefix'>warning</i>
-                            {this.state.errorMsg = 'No alterations were made.'}
+                            {this.state.errorMsg}
                         </div>
                     </div>}
                 </Modal>}
