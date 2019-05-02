@@ -9,11 +9,11 @@ $input = json_decode($json_input, true);
 
 
 if(empty($input['email'])){
-    throw new Exception('email is a required field');
+    throw new Exception('Email is a required field');
 }
 
 if(empty($input['password'])){
-    throw new Exception('password is a required field');
+    throw new Exception('Password is a required field');
 }
 
 $email = $input['email'];
@@ -50,11 +50,11 @@ $connect_result = mysqli_stmt_execute($connect_statement);
 $connect_result = mysqli_stmt_get_result($connect_statement);
 
 if(mysqli_errno($conn)){
-    throw new Exception('invalid query:', mysqli_errno($conn));
+    throw new Exception('Invalid query:', mysqli_errno($conn));
 }
 
 if(mysqli_affected_rows($conn) !== 1){
-    throw new Exception('failed to log in: connection not saved');
+    throw new Exception('Failed to log in: connection not saved');
 }
 
 $_SESSION['user'] = [

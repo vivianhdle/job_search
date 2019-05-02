@@ -24,7 +24,7 @@ $sign_up_result = mysqli_stmt_get_result($sign_up_statement);
 $returned_guest_id = $sign_up_statement->insert_id;
 
 if(mysqli_affected_rows($conn) === 0){
-    throw new Exception('user was not signed up');
+    throw new Exception('User was not signed up');
 }
 
 $output['success'] = true;
