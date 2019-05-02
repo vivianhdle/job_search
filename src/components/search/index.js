@@ -20,7 +20,8 @@ class Search extends Component {
         }
     }
     componentDidMount() {
-        this.getDetails();
+        this.props.handlePageRender('Tracker');
+        this.getDetails();        
     }
     async getDetails(someStr) {
         const resp = await axios.get('/api/get_jobcard_display.php');
