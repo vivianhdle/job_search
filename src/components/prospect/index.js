@@ -31,7 +31,6 @@ class Prospect extends Component {
                 link;
             }
             }
-            debugger;
             values = {
                 progress,
                 company,
