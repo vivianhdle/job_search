@@ -1,5 +1,7 @@
+@import '../../../assets/css/variables.scss';
+
 .edit-contact-modal{
-    background-color:rgba(0,0,0,.75);
+    background-color:$modal;
     position:fixed;
     height:100vh;
     width:100%;
@@ -9,10 +11,11 @@
 
     .edit-submit{
         margin-top:5%;
+        background-color:$primary-button;
     }
     .contact{
         height:28.5rem;
-        background-color:white;
+        background-color:$modal-content;
         width:90%;
         position:relative;
         top:25%;
@@ -24,6 +27,7 @@
             background-color: transparent;
             position: relative;
             bottom: 85px;
+            color:$main-text;
             i{
                 font-size: 2.5em;
             }
@@ -35,6 +39,7 @@
             position: relative;
             left: 88%;
             top: 11px;
+            color:$main-text;
 
         }
         .add-contacts{
@@ -46,10 +51,4 @@
             top:2%;
         }
     }
-    .exit-modal{
-        position:absolute;
-        left:90%;
-        top:3%;
-    }
-
 }

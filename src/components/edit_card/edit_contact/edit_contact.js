@@ -96,9 +96,9 @@ class EditContactModal extends Component {
                         <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label={!name && "Name"} />
                         <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label={!email && "Email"} />
                         <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label={!phone && "Phone"} />
-                        <button className="btn blue-grey edit-submit">SAVE</button>
+                        <button className="btn edit-submit">SAVE</button>
                     </form>
-                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
+                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
                 </Modal>}
             </div>
         )
