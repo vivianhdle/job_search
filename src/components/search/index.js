@@ -95,8 +95,8 @@ class Search extends Component{
                 <Header  title="Search Job Prospects" col='col s10 offset-s1' alignment="left-align"/>
                 <SearchForm runSearch={this.getSearchValues}/>
                 <div className="row">
-                    <div className="col s10 offset-s1">
-                    {searched && (filteredList.length ? <span>{filteredList.length} items found</span>:<span>0 items found</span>)}
+                    <div className="col s10 offset-s1 total-results">
+                    {searched && (filteredList.length ? <span>{filteredList.length} results found</span>:<span>0 results found</span>)}
                     </div>
                 </div>
                 <div className="search-result-container">

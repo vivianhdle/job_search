@@ -17,7 +17,6 @@ class SignIn extends Component{
             <div className="signin-container row">
                 <div className="signin-box col m6 offset-m3 s10 offset-s1">
                     <div className="signin-content">
-                        <div className="photo"></div>
                     </div>
                     <Header alignment = "left-align" title="Sign In" newClass = "teal-text text-darken-1"/>
                     {error && 
@@ -26,6 +25,7 @@ class SignIn extends Component{
                         <div className="col s10 offset-s1" >{errorMsg}</div>
                     </div>}
                     <SignInForm signIn={this.signIn}/>
+                    
                 </div>
             </div>
         )
