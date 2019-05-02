@@ -33,10 +33,15 @@ class EditNote extends Component {
         if(resp.data.success){
             this.props.view();;
         }else{
-            this.setState({
-                errorMsg: resp.data.error,
-                error: true
-            })
+            if (resp.data.error === ""){
+                this.props.view();
+            } else {
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
+            
         }
     }
     handleDeleteNote = async () => {
@@ -86,7 +91,7 @@ class EditNote extends Component {
                     <div className='errorNoteMsg row'>
                         <div className="col s10 offset-s1 left-align" >
                             <i className='material-icons prefix'>warning</i>
-                            {this.state.errorMsg = 'No alterations were made.'}
+                            {this.state.errorMsg}
                         </div>
                     </div>}
                 </Modal>}

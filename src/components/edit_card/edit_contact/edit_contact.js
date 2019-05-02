@@ -60,12 +60,16 @@ class EditContactModal extends Component {
         }
         const resp = await axios.post(`/api/update_contact_item.php`, editContact);
         if (resp.data.success) {
-            this.props.view();;
+            this.props.view();
         } else {
-            this.setState({
-                errorMsg: resp.data.error,
-                error: true
-            })
+            if (resp.data.error === ""){
+                this.props.view();
+            }else {
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
         }
     }
     deleteConfirmation = () => {
@@ -103,7 +107,7 @@ class EditContactModal extends Component {
                             <div className='errorMsg row'>
                                 <div className="col s10 offset-s1 left-align" >
                                     <i className='material-icons prefix'>warning</i>
-                                    {this.state.errorMsg = 'No alterations were made.'}
+                                    {this.state.errorMsg}
                                 </div>
                             </div>}
                     </Modal>}
