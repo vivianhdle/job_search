@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ViewDetails from './view_details';
 import ErrorHandler from '../general/error_handler';
+import Loader from '../general/loader';
 
 class ViewCard extends Component {
     state = {
@@ -42,7 +43,7 @@ class ViewCard extends Component {
     render() {
         if (!this.state.isLoaded) {
             return (
-                <div className="row Loading">Loading...</div>
+                <Loader/>
             )
         } else {
             return (

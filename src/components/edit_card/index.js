@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EditCardForm from './edit_form_card';
 import axios from 'axios';
+import Loader from '../general/loader';
 
 class EditCard extends Component {
     state = {
@@ -39,7 +40,7 @@ class EditCard extends Component {
         const linkCheck = values => (values && !/^https?:\/\//.test(values) ? 'Please enter a valid URL with https://' : undefined)
         if (!this.state.isLoaded) {
             return (
-                <div className="row Loading">Loading...</div>
+                <Loader/>
             )
         } else {
             return (
