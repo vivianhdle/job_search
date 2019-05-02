@@ -33,10 +33,15 @@ class EditNote extends Component {
         if(resp.data.success){
             this.props.view();;
         }else{
-            this.setState({
-                errorMsg: resp.data.error,
-                error: true
-            })
+            if (resp.data.error === ""){
+                this.props.view();
+            } else {
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
+            
         }
     }
     handleDeleteNote = async () => {
