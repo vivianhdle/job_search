@@ -78,7 +78,7 @@ class EditNote extends Component {
                     </div>
                     <Header title="Edit Note" newClass="col s10 offset-s1" alignment="center"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
-                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
+                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label='Notes' />
                         <button className="btn save">SAVE</button>
                     </form>
                     <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
