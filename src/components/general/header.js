@@ -10,7 +10,7 @@ function Header(props) {
                         {title}
                     </div>
                 </div>
-                {addButton && <div><i onClick={addHandler} className="material-icons teal-text text-lighten-1">add</i></div>}
+                {addButton && <div><i onClick={addHandler} className="material-icons">add</i></div>}
             </div>
     )
 }
