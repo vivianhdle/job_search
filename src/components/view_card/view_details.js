@@ -22,7 +22,7 @@ class ViewDetails extends Component {
                     </div>
                 </div>
                 <Header title="Contacts" alignment="left" newClass="view-section-header" />
-                {contact.length ? <ContactList contact={contact} /> : <ContactList contact={[{ name: 'No Contacts Added', phone: '', email: '', id: 1 }]} />}
+                {contact.length ? <ContactList contact={contact} /> : <ContactList contact={[{ name: 'No Contacts Added', phone: 0, email: '', id: 1 }]} />}
                 <Header title="Notes" alignment="left" newClass="view-section-header" />
                 {note.length ? <NoteList note={note} /> : <NoteList note={[{ input: 'No Notes Added', created: "1970-01-01 00:00:00", id: 1 }]} />}
             </Fragment>

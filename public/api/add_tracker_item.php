@@ -83,9 +83,18 @@ if($contact_info){
     ";
 
     foreach($contact_info as $value){
-        $name = $value['name'];
-        $email = $value['email'];
-        $phone = $value['phone'];
+        $name = '';
+        $email = '';
+        $phone = 0;
+        if(isset($value['name'])){
+            $name = $value['name'];
+        }
+        if(isset($value['email'])){
+            $email = $value['email'];
+        }
+        if(isset($value['phone'])){
+            $phone = $value['phone'];
+        }
 
         $contact_item_statement = mysqli_prepare($conn, $contact_query);
         mysqli_stmt_bind_param($contact_item_statement, 'issi', $returned_tracker_id, $name, $email, $phone);
