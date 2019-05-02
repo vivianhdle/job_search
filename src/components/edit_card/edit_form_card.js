@@ -12,8 +12,6 @@ import AddContact from './add_contact/add_contact';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import DeleteModal from '../general/modals/delete_confirmation';
-import Modal from '../general/modals/modal';
-import ErrorHandler from '../general/error_handler';
 
 class EditFormCard extends Component {
     constructor(props){
@@ -146,17 +144,17 @@ class EditFormCard extends Component {
                     <div className="row">
                         <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" validate={linkCheck}/>
                     </div>
-                    <div className="btn-wrapper row right-align">
-                        <button className="btn save-button">SAVE</button>
-                    </div>
-                </form>
-                {this.state.error &&
+                    {this.state.error &&
                             <div className='errorMsg row'>
                                 <div className="col s10 offset-s1 left-align" >
                                     <i className='material-icons prefix'>warning</i>
                                     {this.state.errorMsg = 'No alterations were made.'}
                                 </div>
                             </div>}
+                    <div className="btn-wrapper row right-align">
+                        <button className="btn save-button">SAVE</button>
+                    </div>
+                </form>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
                 {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: 0, email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>

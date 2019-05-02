@@ -36,11 +36,10 @@ span.contact{
     }
 }
 
-.save-button {
+.save-button,.save-button:active,.save-button:hover {
     margin-right: 11%;
     background-color:$primary-button;
 }
-
 .edit-section-header {
     font-size: 1.2rem;
     margin-left: 7%;
