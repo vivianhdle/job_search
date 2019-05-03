@@ -4,11 +4,13 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-$output['success'] = false;
-
 if(empty($_SESSION['user']['token'])){
+    ob_start();
     require_once('sign_up_guest.php');
+    ob_end_clean();
 }
+
+$output['success'] = false;
 
 $token = $_SESSION['user']['token'];
 

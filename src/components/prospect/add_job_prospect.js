@@ -6,8 +6,6 @@ import DropDown from './progress';
 import Header from '../general/header';
 import TextArea from '../general/textarea';
 import './add_job_prospect.scss';
-import {actions} from 'react-redux';
-import axios from 'axios';
 
 class AddJobProspect extends Component {
     state = {
@@ -33,7 +31,7 @@ class AddJobProspect extends Component {
     
     render() {
         
-        const { required, add, handleSubmit, error,children } = this.props;
+        const { required, add, handleSubmit, children } = this.props;
         const { contactForm } = this.state;
         return (
             <form onSubmit={handleSubmit(add)}>

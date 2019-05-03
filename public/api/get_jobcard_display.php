@@ -11,7 +11,7 @@ $output['success'] = false;
 
 $user_id = (int)$_SESSION['user']['user_id'];
 
-$query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE u.`id`=$user_id";
+$query = "SELECT ti.`id`, CONVERT_TZ(ti.`created`,'+00:00','-7:00') AS 'created', ti.`title`, ti.`company`, ti.`progress` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE u.`id`=$user_id";
 
 $result = mysqli_query($conn, $query);
 
