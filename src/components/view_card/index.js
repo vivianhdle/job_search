@@ -41,6 +41,7 @@ class ViewCard extends Component {
         })
     }
     render() {
+        console.log(this.state);
         if (!this.state.isLoaded) {
             return (
                 <Loader/>
