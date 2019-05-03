@@ -1,15 +1,18 @@
+@import '../../assets/css/variables.scss';
+
 .collapsible{
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: none;
 
-    .collapsible-header{
-        color: #616161;
-    }
     .collapsible-body{
         padding: 1rem;
+        background-color:$contact-collapsible;
+        color:$main-text;
     }
+    .collapsible-body.col-body-none{
+        padding: 0px;
+        color:$main-text;
+    }
+
     .input-field{
         float: none;
     }

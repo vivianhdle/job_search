@@ -8,8 +8,10 @@ import Nav from './nav';
 import Prospect from './prospect';
 import ViewCard from './view_card';
 import EditCard from './edit_card';
-import NotFound from './404/404';
+import Error404 from './404';
 import Stats from './stats';
+import AccountRoutes from './account';
+import Search from './search';
 
 class App extends React.Component {
     state = {
@@ -23,20 +25,32 @@ class App extends React.Component {
     render() {
         return (
             <div className="app-container" >
-                {this.state.currentPage !== 'Career Assistant' ? <Nav title={'Tracker'}/> : <Nav title={this.state.currentPage}/>}
+                <Nav title={this.state.currentPage}/>
                 <Switch>
                     <Route exact path="/" render={routingprops => {
                         return <Stats {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
-                    <Route path="/tracker/edit/:id" component={EditCard}/>
-                    <Route path="/tracker/:id" component={ViewCard}/>
+                    <Route path="/tracker/edit/:id" render={routingprops => {
+                        return <EditCard {...routingprops} handlePageRender={this.handlePageRender}/>
+                    }} />
+                    <Route path="/tracker/:id" render={routingprops => {
+                        return <ViewCard {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
                     <Route path="/tracker" render={(routingprops) => {
                         return <Tracker {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
-                    <Route path="/prospect" component={Prospect}/>
+                    <Route path="/prospect" render={routingprops => {
+                        return <Prospect {...routingprops} handlePageRender={this.handlePageRender}/>
                     }} />
-                    <Route component={NotFound}/>
+                    <Route path="/account" render={routingprops => {
+                        return <AccountRoutes {...routingprops} handlePageRender={this.handlePageRender}/>
+                    }} />
+                    <Route path="/search" render={(routingprops) => {
+                        return <Search {...routingprops} handlePageRender={this.handlePageRender}/>
+                    }} />
+                    <Route render={(routingprops) => {
+                        return <Error404 {...routingprops} handlePageRender={this.handlePageRender}/>
+                    }} />
                 </Switch>
             </div>
         )

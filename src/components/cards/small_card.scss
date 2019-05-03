@@ -1,15 +1,21 @@
+@import '../../assets/css/variables.scss';
+
 .created{
-    color:rgb(172, 172, 172);
+    color:$created-date-text;
     font-size:.85em;
 }
 .row{
     margin-bottom:0;
 
     .card{
-        box-shadow:none;
         
         .card-title{
-            color:#26a69a
+            color:$active-text
+        }
+        .card-content{
+            .title{
+                color:$grey;
+            }
         }
     }
 }

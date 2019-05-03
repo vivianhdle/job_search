@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
-import { SubmissionError } from 'redux-form';
+import {Link} from 'react-router-dom';
 
 class Prospect extends Component {
     state={
-        errorMsg: ''
+        errorMsg: '',
+        error: false
+    }
+    componentDidMount(){
+        this.props.handlePageRender('Job Tracker');
     }
     goToTracker = () => {
         this.props.history.push('/tracker');
@@ -17,31 +21,63 @@ class Prospect extends Component {
                 if (typeof values[object] === 'object')
                     newContact.push(values[object]);
             }
-            values = {
-                progress: values.progress,
-                company: values.company,
-                title: values.title,
-                link: values.link,
-                contact: newContact,
-                note: values.note
-            }
-            const resp = await axios.post('/api/add_tracker_item.php', values);
-            if(resp.data.success){
-                this.goToTracker();
+            let {link, progress, company, note, title} = values;
+            if(link){
+            const regexTest= /^https?:\/\//;
+            const result = regexTest.test(link);
+            if(!result){
+                link = 'https://'+link;
             }else{
-
+                link;
+            }
+            }
+            values = {
+                progress,
+                company,
+                title,
+                link,
+                contact: newContact,
+                note
+            }
+            let resp = null;
+            if(localStorage.getItem('guest_id') && localStorage.getItem('guestSignedIn')){
+                const guestValues = {...values, guest: true};
+                resp = await axios.post('/api/add_tracker_item.php', guestValues)
+            }else{
+                resp = await axios.post('/api/add_tracker_item.php', values);
+            }
+            if(!resp.data.success){
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }else{
+                this.goToTracker();
             }
     }
-
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
-        const number = values => (values && !/[0-9]?\(?([0-9]{3})\)?[ -]?([0-9]{3})[ -]?([0-9]{4})/gm.test(values)) ? 'Must be a valid phone number' : undefined;
+        const errorMsgCheck = /sign up/;
+        let {errorMsg} = this.state;
+        const link = (<Link to="/account/sign-up" key={"sign-up"}>sign up</Link>);
+        if(errorMsgCheck.test(errorMsg)){
+            let splitSignUp = errorMsg.split("sign up");
+            splitSignUp.splice(1, 0, link);
+            errorMsg = splitSignUp
+        }
         return (
             <div className="add-form-progress">
                 <div className="form">
-                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} number={number} />
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}>
+                        {this.state.error && 
+                        <div className='errorMsg row'>
+                            <i className='material-icons warning prefix'>warning</i>
+                            <div className="col s10 offset-s1" >{errorMsg}</div>
+                        </div>}
+                    </AddJobProspect>
                 </div>
             </div>
+            
         )
     }
 }
@@ -49,38 +85,3 @@ class Prospect extends Component {
 
 export default Prospect
 
-
-
-
-
-
-
-
-
-/*
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-        return sleep(1000).then(() => {
-            if (!values.title) {
-                throw new SubmissionError({
-                    title: "You must enter a Job Title",
-                    _error: 'Creation Failed'
-                })
-
-            }
-            if (!values.company) {
-                throw new SubmissionError({
-                    company: "You must enter a Company Name",
-                    _error: 'Creation Failed'
-                })
-            }
-            if(!values.progress){
-                throw new SubmissionError({
-                    progress: "You must choose an App status",
-                    _error: 'Creation Failed'
-                })
-            }
-            
-            
-            
-        })
-*/

@@ -15,14 +15,14 @@ class ViewDetails extends Component {
                     <ActionButton handleClick={handleEdit} icon="edit" classes="blue-grey action-button btn-floating" size="btn" />
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
-                        <div className="view-main-text grey-text text-darken-2">{title}</div>
-                        <div className="view-main-text grey-text text-darken-2">{progress}</div>
-                        <a href={link} target="_blank" className="view-main-text teal-text text-lighten-2">{link}</a>
-                        <div className="right-align created view-main-text"><em>Added {formatTime(created)}</em></div>
+                        <div className="view-main-text">{title}</div>
+                        <div className="view-main-text">{progress}</div>
+                        {link && <a href={link} target="_blank" className="view-main-text posting-link">Posting Link</a>}
+                        <div className="right-align view-main-text created "><em>Added {formatTime(created)}</em></div>
                     </div>
                 </div>
                 <Header title="Contacts" alignment="left" newClass="view-section-header" />
-                {contact.length ? <ContactList contact={contact} /> : <ContactList contact={[{ name: 'No Contacts Added', phone: '', email: '', id: 1 }]} />}
+                {contact.length ? <ContactList contact={contact} /> : <ContactList contact={[{ name: 'No Contacts Added', phone: 0, email: '', id: 1 }]} />}
                 <Header title="Notes" alignment="left" newClass="view-section-header" />
                 {note.length ? <NoteList note={note} /> : <NoteList note={[{ input: 'No Notes Added', created: "1970-01-01 00:00:00", id: 1 }]} />}
             </Fragment>

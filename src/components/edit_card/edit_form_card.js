@@ -19,7 +19,9 @@ class EditFormCard extends Component {
         this.state = {
             addContactOpen: false,
             addNoteOpen: false,
-            deleteConfirmation:false
+            deleteConfirmation:false,
+            errorMsg: '',
+            error: false
         }
     }
     componentDidMount() {
@@ -27,9 +29,16 @@ class EditFormCard extends Component {
         this.props.dispatch(action);
     }
     handleUpdate = async values => {
-        const newValues = { ...values, "tracker_id": parseInt(this.props.match.params.id) }
+        const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
-        this.goToViewMode();
+        if(resp.data.success){
+            this.goToViewMode();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
     addContactModal = () => {
         this.setState({
@@ -64,7 +73,14 @@ class EditFormCard extends Component {
             contact: values
         }
         const resp = await axios.post('/api/add_contact_item.php', contactValue);
-        this.goToViewMode();
+            if(resp.data.success){
+                this.goToViewMode();
+            }else{
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
     }
     handleAddNote = async values => {
         const { id } = this.props;
@@ -73,7 +89,14 @@ class EditFormCard extends Component {
             note: values.note
         };
         const resp = await axios.post(`/api/add_note_item.php`, noteValue);
-        this.goToViewMode();
+        if(resp.data.success){
+            this.goToViewMode();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
     deleteConfirmationToggle=()=>{
         this.state.deleteConfirmation ? this.setState({
@@ -85,35 +108,55 @@ class EditFormCard extends Component {
     deleteJobProspect = async () => {
         if(this.state.deleteConfirmation){
         const {id}=this.props.match.params;
-        const resp = await axios.get(`/api/delete_tracker_item.php?tracker_id=${id}`);}
-        this.goToTracker();
+        const resp = await axios.get(`/api/delete_tracker_item.php?tracker_id=${id}`);
+        if(resp.data.success){
+            this.goToTracker();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }}
+
+    }
+    closeErrorModal = ()=>{
+        this.setState({
+            error: false
+        })
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, numberPhone } = this.props;
+        const { contact = [], note = [], progress, handleSubmit, required, linkCheck } = this.props;
         return (
             <div className="form">
-                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} numberPhone={numberPhone}/>}
+                <ActionButton icon="delete_forever" classes="btn-floating delete-prospect" size="btn" handleClick={this.deleteConfirmationToggle}/>
+                {this.state.addContactOpen && <AddContact addContact={this.handleAddContact} exitModal={this.exitContactModal} />}
                 {this.state.addNoteOpen && <AddNote addNote={this.handleAddNote} exitModal={this.exitNoteModal} />}
                 {this.state.deleteConfirmation && <DeleteModal handleDelete={this.deleteJobProspect} closeModal={this.deleteConfirmationToggle} modalClass="edit-note-modal" mscss="note"/>}
                 <form onSubmit={handleSubmit(this.handleUpdate)}>
                     <Header title="Edit Job Prospect" alignment="left-align" />
                     <DropDown ref={(input) => this.dropdown = input} col="s10 offset-s1 col edit-progress" progress={progress} required={required}/>
                     <div className="row">
-                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} />
+                        <Field ref={(input) => this.title = input} id="title" col="s10 offset-s1" name="title" component={Input} label={"Job Title *"} validate={required} icon="title"/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required}/>
+                        <Field ref={(input) => this.company = input} id="company" col="s10 offset-s1" name="company" label={"Company Name *"} component={Input} validate={required} icon="business"/>
                     </div>
                     <div className="row">
-                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} name="link" label={"Posting Link"} />
+                        <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" validate={linkCheck}/>
                     </div>
+                    {this.state.error &&
+                            <div className='errorMsg row'>
+                                <div className="col s10 offset-s1 left-align" >
+                                    <i className='material-icons prefix'>warning</i>
+                                    {this.state.errorMsg = 'No alterations were made.'}
+                                </div>
+                            </div>}
                     <div className="btn-wrapper row right-align">
-                        <button className="btn blue-grey save-button">SAVE</button>
+                        <button className="btn save-button">SAVE</button>
                     </div>
                 </form>
-                <ActionButton icon="delete_forever" color="white-text" classes="blue-grey btn-floating delete-note" size="btn" handleClick={this.deleteConfirmationToggle}/>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addContactModal}/>
-                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode}  numberPhone={numberPhone} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: '', email: '', id: 1 }]} view={this.goToViewMode} numberPhone={numberPhone}/>}
+                {contact.length ? <ContactList contact={contact} edit={true} view={this.goToViewMode} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: 0, email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.addNoteModal}/>
                 {note.length ? <NoteList note={note} edit={true} view={this.goToViewMode} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
             </div>

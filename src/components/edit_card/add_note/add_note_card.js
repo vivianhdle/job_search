@@ -15,7 +15,7 @@ class AddNote extends Component {
                     <Header title="Add Note" newClass="col s10 offset-s1" />
                     <form onSubmit={handleSubmit(addNote)} className="center">
                         <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" />
-                        <button className="btn blue-grey">submit</button>
+                        <button className="btn save">submit</button>
                     </form>
                 </Modal>
             </div>

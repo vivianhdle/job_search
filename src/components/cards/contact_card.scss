@@ -1,14 +1,26 @@
+@import '../../assets/css/variables.scss';
+
 .contact-email,
 .contact-phone {
     display: inline-block;
     vertical-align: top;
 }
 
-.contact-email {
-    margin-bottom: 11%;
-}
 .material-icons.prefix {
     padding-right: 7%;
 }
 
+.collapsible{ 
+    .collapsible-body.col-body{
+        padding: 0px;
+        background-color:$contact-collapsible;
+        color:$main-text;
+    }
+    .collapsible-header{
+        color:$main-text;
+    }
+}
 
+.double-info{
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,9 @@
+@import '../../../assets/css/variables.scss';
+
+.fixed-action-btn{
+    ul{
+        li>a{
+            background-color:$secondary-button;
+        }
+    }
+}

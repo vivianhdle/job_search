@@ -1,0 +1,9 @@
+POST 
+http://localhost/api/sign_up.php
+Body: raw
+
+{
+    "user_name":"dan paschal",
+    "email":"dan@test.com",
+    "password":"password1"
+}

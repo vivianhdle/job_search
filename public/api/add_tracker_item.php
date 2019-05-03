@@ -1,8 +1,11 @@
-<?php
+<?php 
 require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+ob_start();
+require_once('sign_in_check.php');
+ob_end_clean();
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
@@ -21,7 +24,21 @@ if(empty($input['progress'])){
 
 $output['success'] = false;
 
-$user_id = 1;
+if(!empty($input['guest'])){
+    $user_id = (int)$_SESSION['user']['user_id'];
+    $guest_query = "SELECT `id` FROM `tracker_item` WHERE `user_id`=$user_id";
+
+    $guest_result = mysqli_query($conn, $guest_query);
+
+    if(!$guest_result){
+        throw new Exception(mysqli_error($conn));
+    }
+    if(mysqli_num_rows($guest_result) >= 10){
+        throw new Exception('Guest has reached max prospect items, please sign up to unlock unlimited items');
+    }
+}
+
+$user_id = (int)$_SESSION['user']['user_id'];
 $title = $input['title'];
 $company = $input['company'];
 $progress = $input['progress'];
@@ -66,9 +83,18 @@ if($contact_info){
     ";
 
     foreach($contact_info as $value){
-        $name = $value['name'];
-        $email = $value['email'];
-        $phone = $value['phone'];
+        $name = '';
+        $email = '';
+        $phone = 0;
+        if(isset($value['name'])){
+            $name = $value['name'];
+        }
+        if(isset($value['email'])){
+            $email = $value['email'];
+        }
+        if(isset($value['phone'])){
+            $phone = $value['phone'];
+        }
 
         $contact_item_statement = mysqli_prepare($conn, $contact_query);
         mysqli_stmt_bind_param($contact_item_statement, 'issi', $returned_tracker_id, $name, $email, $phone);

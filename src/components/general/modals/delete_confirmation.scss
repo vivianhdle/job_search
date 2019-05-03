@@ -1,3 +1,5 @@
+@import '../../../assets/css/variables.scss';
+
 
 .delete-confirmation{
     background-color:rgba(0,0,0,.75);
@@ -10,7 +12,7 @@
 
     .delete-area{
         height:40%;
-        background-color:white;
+        background-color:$modal-content;
         width:90%;
         position:relative;
         top:30%;
@@ -25,11 +27,13 @@
                 left:5%;
                 i{
                     font-size:140px;
+                    color:$main-text;
                 }
             }
         }
         .confirm-text{
             font-size: 1.5rem;
+            color:$main-text;
         }
         .confirm-btns{
             padding:1rem;
@@ -38,6 +42,12 @@
             }
             button:active{
                 background-color:rgba(0,0,0,.75);
+            }
+            div>button{
+                color:$yes-text;
+            }
+            button+button{
+                color:$no-text;
             }
         }
 

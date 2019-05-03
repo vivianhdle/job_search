@@ -7,12 +7,15 @@ import './edit_note.scss';
 import axios from 'axios';
 import DeleteModal from '../../general/modals/delete_confirmation';
 import { connect } from 'react-redux';
+import ErrorHandler from '../../general/error_handler';
 
 class EditNote extends Component {
     constructor(props){
         super(props);
         this.state={
-            deleteConfirmationOpen:false
+            deleteConfirmationOpen:false,
+            error: false,
+            errorMsg: ''
         }
     }
     componentDidMount() {
@@ -25,13 +28,33 @@ class EditNote extends Component {
             id: id,
             note: values.note
         }
-        axios.post('/api/update_note_item.php', editNoteValues);
-        this.props.view();
+        const resp = await axios.post('/api/update_note_item.php', editNoteValues);
+        
+        if(resp.data.success){
+            this.props.view();;
+        }else{
+            if (resp.data.error === ""){
+                this.props.view();
+            } else {
+                this.setState({
+                    errorMsg: resp.data.error,
+                    error: true
+                })
+            }
+            
+        }
     }
     handleDeleteNote = async () => {
         const { id } = this.props;
-        await axios.post('/api/delete_note_item.php', { "id": id });
-        this.props.view();
+        const resp = await axios.post('/api/delete_note_item.php', { "id": id });
+        if(resp.data.success){
+            this.props.view();
+        }else{
+            this.setState({
+                errorMsg: resp.data.error,
+                error: true
+            })
+        }
     }
 
     deleteConfirmation=()=>{
@@ -44,9 +67,13 @@ class EditNote extends Component {
             deleteConfirmationOpen:false
         })
     }
-
+    closeErrorModal = ()=>{
+        this.setState({
+            error: false
+        })
+    }
     render() {
-        const { handleSubmit, closeModal } = this.props;
+        const { handleSubmit, closeModal, fieldInput } = this.props;
         return (
             <div className="action row">
                 {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteNote} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note"/>:
@@ -56,10 +83,17 @@ class EditNote extends Component {
                     </div>
                     <Header title="Edit Note" newClass="col s10 offset-s1" alignment="center"/>
                     <form className="center" onSubmit={handleSubmit(this.handleEditNote)} >
-                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} />
-                        <button className="btn blue-grey">SAVE</button>
+                        <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label='Notes' />
+                        <button className="btn save">SAVE</button>
                     </form>
-                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons text-darken-2 grey-text">delete</i></button>
+                    <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>
+                    {this.state.error &&
+                    <div className='errorNoteMsg row'>
+                        <div className="col s10 offset-s1 left-align" >
+                            <i className='material-icons prefix'>warning</i>
+                            {this.state.errorMsg}
+                        </div>
+                    </div>}
                 </Modal>}
             </div>
         )

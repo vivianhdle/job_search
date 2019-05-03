@@ -3,6 +3,9 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+ob_start();
+require_once('sign_in_check.php');
+ob_end_clean();
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
@@ -25,7 +28,6 @@ $contact_item_query = "UPDATE `contact_info` SET
     `phone`=?
     WHERE `id`=?
 ";
-//need to catch dupe entry error
 
 $contact_item_statement = mysqli_prepare($conn, $contact_item_query);
 mysqli_stmt_bind_param($contact_item_statement, 'ssii', $name, $email, $phone, $id);

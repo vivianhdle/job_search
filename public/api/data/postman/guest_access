@@ -1,0 +1,15 @@
+POST
+http://localhost/api/sign_in_check.php
+
+if json json file shows with success true and token, guest is new and will be logged in
+if nothing shows, then guest already has a session user_id and token and is already logged in
+
+
+http://localhost/api/sessiontest.php
+
+to view the guest user data = user_id & token
+
+http://localhost/api/clear_session.php
+
+to clear your session and reset the guest user
+- will create new guest when using app next time

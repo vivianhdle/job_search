@@ -3,6 +3,9 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+ob_start();
+require_once('sign_in_check.php');
+ob_end_clean();
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
@@ -29,7 +32,11 @@ $tracker_id = $input['tracker_id'];
 $title = $input['title'];
 $company = $input['company'];
 $progress = $input['progress'];
-$link = $input['link'];
+$link = '';
+
+if(isset($input['link'])){
+    $link = $input['link'];
+}
 
 $tracker_item_query = "UPDATE `tracker_item` SET 
     `title`=?,

@@ -12,24 +12,23 @@
     .view-main-text.company {
         font-size: 24px;
         font-weight:300;
+        color:$header-text;
     }
     
     .view-main-text {
         margin: 6% 0;
+        color:$main-text;
+    }
+    .view-main-text.posting-link{
+        color:$active-text;
+    }
+    .view-main-text.created{
+        color:$created-date-text;
     }
 }
 
 .loading{
     font-size: 3em;
-}
-
-.collapsible {
-    background-color: white;
-}
-
-.card {
-    margin: 4% 0;
-    border-radius: 5px;
 }
 
 .view-section-header {

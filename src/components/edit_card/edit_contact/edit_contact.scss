@@ -1,55 +1,71 @@
-.edit-contact-modal{
-    background-color:rgba(0,0,0,.75);
-    position:fixed;
-    height:100vh;
-    width:100%;
-    top:0;
-    left:0;
-    z-index:2;
+@import '../../../assets/css/variables.scss';
 
-    .edit-submit{
-        margin-top:5%;
-    }
-    .contact{
-        height:50%;
-        background-color:white;
-        width:90%;
-        position:relative;
-        top:25%;
-        left:5%;
-        border-radius:5px;
-        
-        .trash{
-            border: none;
-            background-color: transparent;
-            position: relative;
-            bottom: 85px;
-            i{
-                font-size: 2.5em;
+.action.row{    
+    .edit-contact-modal{
+        background-color:$modal;
+        position:fixed;
+        height:100vh;
+        width:100%;
+        top:0;
+        left:0;
+        z-index:2;
+
+        .title-header{
+            float: none;
+        }
+        .edit-submit{
+            margin-top:5%;
+            background-color:$primary-button;
+        }
+        .contact{
+            height:28.5rem;
+            background-color:$modal-content;
+            width:90%;
+            position:relative;
+            top:25%;
+            left:5%;
+            border-radius:5px;
+            
+            .errorMsg{
+                z-index: 2;
+                color: red;
+                font-size: 1rem;
+                position: relative;
+                bottom: 8rem;
+
+                i{
+                    vertical-align: bottom;
+                }
+            }
+            .trash{
+                border: none;
+                background-color: transparent;
+                position: relative;
+                bottom: 85px;
+                color:$main-text;
+                z-index: 3;
+                i{
+                    font-size: 2.5em;
+                }
+            }
+
+            .edit-exit{
+                border: none;
+                background-color: transparent;
+                position: relative;
+                left: 88%;
+                top: 11px;
+                color:$main-text;
+
+            }
+            .add-contacts{
+                margin-top:5%
+            }
+            .title-header{
+                height:10%;
+                position:relative;
+                top:2%;
             }
         }
-
-        .edit-exit{
-            border: none;
-            background-color: transparent;
-            position: relative;
-            left: 88%;
-            top: 11px;
-
-        }
-        .add-contacts{
-            margin-top:5%
-        }
-        .title-header{
-            height:10%;
-            position:relative;
-            top:2%;
-        }
     }
-    .exit-modal{
-        position:absolute;
-        left:90%;
-        top:3%;
-    }
-
 }

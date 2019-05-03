@@ -1,0 +1,29 @@
+.search-container{
+    height:calc(100% - 56px);
+    overflow-x: hidden;
+    transition: 1s ease-in all;
+    .search-sort{
+        position: fixed;
+        top: 7%;
+        bottom:auto;
+        right: 3%;
+        padding-top: 10px;
+        ul{
+            top: 48px;
+        }
+    }
+    .input-field{
+        >input{
+            width:87%
+        }
+        >button{
+            background-color:transparent;
+            border:none;
+            position: relative;
+            top: 10px;
+        }
+    }
+    .total-results{
+        margin-top:1.2rem;
+    }
+}

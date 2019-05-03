@@ -19,13 +19,14 @@ class NavCookies extends Component {
         M.Tabs.init(this.navcookie, this.state.options);
     }
     render() {
+        const {active='started-app'} = this.props
         return (
             <Fragment>
                 <ul ref={(element) => this.navcookie = element} id="tabs-swipe-demo" className="tabs navcookie hide-on-med-and-up">
-                    <li className="tab col s4 "><a href="#test-swipe-1"><i className="material-icons">note_add</i></a></li>
-                    <li className="tab col s4"><a className="active" href="#test-swipe-2"><i className="material-icons">watch_later</i></a></li>
-                    <li className="tab col s4"><a href="#test-swipe-3"><i className="material-icons">whatshot</i></a></li>
-                    <li className="tab col s4"><a href="#test-swipe-4"><i className="material-icons">archive</i></a></li>
+                    <li className="tab col s4 "><a className={active === 'started-app' ? 'active':''} href="#started-app"><i className="material-icons">note_add</i></a></li>
+                    <li className="tab col s4"><a className={active === 'waiting' ? 'active':''} href="#waiting"><i className="material-icons">watch_later</i></a></li>
+                    <li className="tab col s4"><a className={active === 'follow-up' ? 'active':''} href="#follow-up"><i className="material-icons">whatshot</i></a></li>
+                    <li className="tab col s4"><a className={active === 'archived' ? 'active':''} href="#archived"><i className="material-icons">archive</i></a></li>
                 </ul>
             </Fragment>
         )

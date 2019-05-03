@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import './textarea.scss';
 
 class TextArea extends Component {
     render() {
-        const { label, id, col = 's12', input } = this.props;
+        const { label, id, col = 's12', input, icon } = this.props;
+        const {value} = input;
         return (
             <div className="row">
                 <div className={`input-field col ${col}`}>
+                    {icon && <i className="material-icons prefix">{icon}</i>}
                     <textarea id={id} className="materialize-textarea" {...input}></textarea>
-                    <label htmlFor={id}>{label}</label>
+                    <label htmlFor={id}>{!value && label}</label>
                 </div>
             </div>
         )

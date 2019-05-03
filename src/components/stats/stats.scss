@@ -1,5 +1,10 @@
+@import '../../assets/css/variables.scss';
+
 .stats-page{
-    height:calc(100% - 56px); //56px for top nav bar
+    height:calc(100% - 56px); 
+    .add-prospect{
+        padding:1.5rem;
+    }
     .greeting-content{
         position:relative;
         min-height:38%;
@@ -20,6 +25,7 @@
                 height:50%;
                 top:25%;
                 position:relative;
+                color:$main-text;
             }
         }
         .greeting-photo{

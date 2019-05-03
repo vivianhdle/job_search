@@ -3,6 +3,9 @@ require_once('functions.php');
 set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
+ob_start();
+require_once('sign_in_check.php');
+ob_end_clean();
 
 $json_input = file_get_contents("php://input");
 $input = json_decode($json_input, true);
@@ -21,7 +24,6 @@ $note_item_query = "UPDATE `note_item` SET
     `input`=?
     WHERE `id`=?
 ";
-//need to catch dupe entry error
 
 $note_item_statement = mysqli_prepare($conn, $note_item_query);
 mysqli_stmt_bind_param($note_item_statement, 'si', $note, $id);

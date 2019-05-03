@@ -1,6 +1,8 @@
+@import '../../assets/css/variables.scss';
+
 .row{
     margin-bottom:0;
-}
-.card{
-    box-shadow:none;
+    .card-content{
+        color:$note-text;
+    }
 }

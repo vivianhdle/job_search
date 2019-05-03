@@ -1,0 +1,34 @@
+@import '../../assets/css/variables.scss';
+
+.error-modal{
+    background-color:$modal;
+    position:fixed;
+    height:100vh;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:2;
+
+    .error-wrapper{
+        height:40%;
+        background-color:$modal-content;
+        width:80%;
+        position:relative;
+        top:30%;
+        left:10%;
+        border-radius: 5px;
+        .error-message-content{
+            font-size: 1.5rem;
+            height: 80%;
+            top: 10%;
+            position: relative;
+        }
+        .exit{
+            border: none;
+            background-color: transparent;
+            position: relative;
+            left: 88%;
+            top: 11px;
+        }
+    }
+}

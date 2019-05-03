@@ -7,6 +7,7 @@ class NoteList extends Component {
     }
     componentDidMount() {
         const { note } = this.props;
+        note.reverse();
         const noteElements = note.map((note) => {
             return (
                 <NoteCard edit={this.props.edit} key={note.id} {...note} view={this.props.view} />

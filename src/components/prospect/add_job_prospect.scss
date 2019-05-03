@@ -8,6 +8,22 @@
     left:0;
     background-color:$tracker-background;
 
+    .errorMsg{
+        color: red;
+        margin: 0 0 1rem 2.5rem;
+        font-size: 1rem;
+        top: 90%;
+        
+        .warning{
+            position: absolute;
+            margin-top: 0.7rem;
+            margin-left: 0.5rem;
+        }
+        .link{
+            font-size: 1rem;
+        }
+    }
+
     .form{
         height:100%;
         width:100%;
@@ -18,11 +34,13 @@
             height: 100%;
             width: 100%;
 
+            .contact-row{
+                margin: 1rem 0;
+            }
             .extra-contact{
                 margin-top: 1rem;
                 margin-bottom: 1rem;
             }
-
         }
     }
 
