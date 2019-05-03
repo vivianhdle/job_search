@@ -23,7 +23,7 @@ class Search extends Component {
         this.props.handlePageRender('Tracker');
         this.getDetails();        
     }
-    async getDetails(someStr) {
+    async getDetails() {
         const resp = await axios.get('/api/get_jobcard_display.php');
         this.setState({
             allJobProspects: resp.data.data
@@ -55,7 +55,7 @@ class Search extends Component {
                     sortedCards: sortedList
                 })
                 break;
-            case 'AtoZ':
+            case 'ZtoA':
                 sortedList = unsortedListCopy.sort((card1, card2) => {
                     let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
                     return greater ? 1 : -1
@@ -64,7 +64,7 @@ class Search extends Component {
                     sortedCards: sortedList
                 })
                 break;
-            case 'ZtoA':
+            case 'AtoZ':
                 sortedList = unsortedListCopy.sort((card1, card2) => {
                     let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
                     return greater ? -1 : 1

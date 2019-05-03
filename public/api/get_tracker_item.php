@@ -15,7 +15,7 @@ $tracker_id = (int)$_GET['tracker_id'];
 
 $output['success'] = false;
 
-$tracker_item_query = "SELECT ti.`id`, ti.`created`, ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE ti.`id`=$tracker_id LIMIT 1";
+$tracker_item_query = "SELECT ti.`id`, CONVERT_TZ(ti.`created`,'+00:00','-7:00') AS 'created', ti.`title`, ti.`company`, ti.`progress`, ti.`link` FROM `user` AS u JOIN `tracker_item` AS ti ON u.`id`=ti.`user_id` WHERE ti.`id`=$tracker_id LIMIT 1";
 
 $result = mysqli_query($conn, $tracker_item_query);
 

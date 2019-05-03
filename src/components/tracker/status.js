@@ -46,7 +46,7 @@ class Status extends Component {
                     sortedCards: sortedList
                 })
                 break;
-            case 'AtoZ':
+            case 'ZtoA':
                 sortedList = unsortedListCopy.sort((card1, card2) => {
                     let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
                     return greater ? 1 : -1
@@ -55,7 +55,7 @@ class Status extends Component {
                     sortedCards: sortedList
                 })
                 break;
-            case 'ZtoA':
+            case 'AtoZ':
                 sortedList = unsortedListCopy.sort((card1, card2) => {
                     let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
                     return greater ? -1 : 1

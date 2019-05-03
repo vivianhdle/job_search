@@ -125,7 +125,7 @@ class EditFormCard extends Component {
         })
     }
     render() {
-        const { title, company, contact = [], created, link, note = [], progress, handleChange, handleSubmit, required, linkCheck } = this.props;
+        const { contact = [], note = [], progress, handleSubmit, required, linkCheck } = this.props;
         return (
             <div className="form">
                 <ActionButton icon="delete_forever" classes="btn-floating delete-prospect" size="btn" handleClick={this.deleteConfirmationToggle}/>

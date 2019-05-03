@@ -7,7 +7,6 @@ import Header from '../../general/header';
 import axios from 'axios';
 import './edit_contact.scss'
 import DeleteModal from '../../general/modals/delete_confirmation';
-import ErrorHandler from '../../general/error_handler';
 
 class EditContactModal extends Component {
     constructor(props) {
@@ -89,7 +88,6 @@ class EditContactModal extends Component {
     }
     render() {
         const { handleSubmit, exitModal } = this.props;
-        const { phone, email, name } = this.state.form;
         return (
             <div className="action row">
                 {this.state.deleteConfirmationOpen ? <DeleteModal handleDelete={this.handleDeleteContact} closeModal={this.closeConfirmation} modalClass="edit-note-modal" mscss="note" /> :
