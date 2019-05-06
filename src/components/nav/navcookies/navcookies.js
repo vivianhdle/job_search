@@ -5,7 +5,7 @@ import './navcookies.scss';
 class NavCookies extends Component {
     state = {
         options: {
-            swipeable: true
+            swipeable: false
         }
     }
     renderLinks() {

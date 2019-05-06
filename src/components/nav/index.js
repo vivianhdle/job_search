@@ -66,15 +66,17 @@ class Nav extends Component {
         const { title } = this.props;
         return (
             <Fragment>
-                <nav>
-                    <div className="nav-wrapper navbar-fixed blue-grey">
-                        <Link className="brand-logo center" to="/">{title}</Link>
-                        <a href="#" data-target="sidenav" className="sidenav-trigger">
-                            <i className="material-icons">menu</i>
-                        </a>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">{links}</ul>
-                    </div>
-                </nav>
+                <div className="navbar-fixed">
+                    <nav>
+                        <div className="nav-wrapper blue-grey">
+                            <Link className="brand-logo" to="/">{title}</Link>
+                            <a href="#" data-target="sidenav" className="sidenav-trigger">
+                                <i className="material-icons">menu</i>
+                            </a>
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">{links}</ul>
+                        </div>
+                    </nav>
+                </div>
                 <SideNav links={links} />
             </Fragment>
         )

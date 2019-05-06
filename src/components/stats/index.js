@@ -84,7 +84,7 @@ class Stats extends Component {
                                 Welcome,
                                 <div>
                                     {metaStats.user_name || 'Guest'}!
-                            </div>
+                                </div>
                             </div>
                         </div>
                         <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>

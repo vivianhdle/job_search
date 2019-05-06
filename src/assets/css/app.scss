@@ -2,10 +2,9 @@
 
 body {
     margin: 0;
-    background-color:$tracker-background;
     #root{
         height:100vh;
-        background-color:$tracker-background;
+        background-color:$body-background;
 
         .app-container{
             height:100%;

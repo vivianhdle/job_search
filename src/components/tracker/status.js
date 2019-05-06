@@ -119,5 +119,3 @@ class Status extends Component {
 }
 
 export default withRouter(Status);
-
-
