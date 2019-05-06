@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import './status.scss';
-import axios from 'axios';
 import Header from '../general/header';
 import ButtonList from '../general/buttons/button_list';
 import JobProspectList from './job_prospect_list';
@@ -18,17 +17,11 @@ class Status extends Component {
         redirect: false
     }
     componentDidMount() {
-        this.getDetails();
-    }
-    async getDetails() {
-        const resp = await axios.get('/api/get_jobcard_display.php');
-        const unsortedList = resp.data.data.filter(card => {
-            return card.progress === this.props.progress
-        })
-        const cards = [...unsortedList].reverse();
+        const {filteredList} = this.props
+        const cards = [...filteredList].reverse()
         this.setState({
-            unsortedList: unsortedList,
-            sortedCards: cards
+            unsortedList:filteredList,
+            sortedCards:cards
         })
     }
     sortCards() {
