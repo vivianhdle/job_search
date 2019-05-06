@@ -72,7 +72,7 @@ class Prospect extends Component {
                         {this.state.error && 
                         <div className='errorMsg row'>
                             <i className='material-icons warning prefix'>warning</i>
-                            <div className="col s10 offset-s1" >{errorMsg}</div>
+                            <div className="col s10 l8 offset-s1 offset-l2" >{errorMsg}</div>
                         </div>}
                     </AddJobProspect>
                 </div>

@@ -36,30 +36,27 @@ class AddJobProspect extends Component {
         return (
             <form onSubmit={handleSubmit(add)}>
                 <Header title="Add Job Prospect" alignment="left-align"/>
-                <DropDown col="s10 offset-s1 col" required={required}/>
+                <DropDown col="s10 l8 offset-s1 col offset-l2" required={required}/>
                 <div className="row">
-                    <Field id="title" col="s10 offset-s1" name="title" component={Input} label="Job Title *" icon="title" validate={[required]}/>
+                    <Field id="title" col="s10 l8 offset-s1 col offset-l2" name="title" component={Input} label="Job Title *" icon="title" validate={[required]}/>
+                    <Field id="company" col="s10 l8 offset-s1 col offset-l2" name="company" component={Input} label="Company Name *"icon="business" validate={[required]}/>
+                    <Field id="link" col="s10 l8 offset-s1 col offset-l2" name="link" component={Input} label="Posting Link" icon="link" />
                 </div>
-                <div className="row">
-                    <Field id="company" col="s10 offset-s1" name="company" component={Input} label="Company Name *"icon="business" validate={[required]}/>
-                </div>
-                <div className="row">
-                    <Field id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" />
-                </div>
+
                 <div className="row contact-row">
                     {contactForm}
                 </div>
                 <div className="row">
-                    <div className="col s10 offset-s1 center">
+                    <div className="col s10 l8 offset-s1 offset-l2 center">
                         <button type="button" className="btn-floating center btn-small waves-effect blue-grey" onClick={this.addNewContact}><i className="material-icons">add</i></button>
                     </div>
                 </div>
                 <div className="row">
-                    <Field id="note" col="s10 offset-s1" name="note" component={TextArea} label="Notes" icon="note_add"/>
+                    <Field id="note" col="s10 l8 offset-s1 col offset-l2" name="note" component={TextArea} label="Notes" icon="note_add"/>
                 </div>
                 {children}
                 <div className="row">
-                    <div className="col s10 offset-s1 center extra-contact">
+                    <div className="col s10 l8 offset-s1 offset-l2 center extra-contact">
                         <button className="btn blue-grey">Submit</button>
                     </div>
                 </div>

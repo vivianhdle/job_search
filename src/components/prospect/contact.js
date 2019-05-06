@@ -9,7 +9,7 @@ class ContactForm extends Component {
     }
     render() {
         return (
-            <div className="col s10 offset-s1">
+            <div className="col s10 l8 offset-s1 offset-l2">
                 <FormSection name={this.props.name}>
                     <ul className="collapsible" ref={(element) => {
                         this.contact = element
