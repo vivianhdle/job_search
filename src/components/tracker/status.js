@@ -107,7 +107,7 @@ class Status extends Component {
         const { progress, id } = this.props;
         return (
             <Fragment>
-                <div className="job-container show-on-medium-and-up" id={id}>
+                <div className="job-container" id={id}>
                     <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal} />}
                     <Header title={progress} alignment="center" />

@@ -1,8 +1,15 @@
+@import "../../assets/css/variables.scss";
+
 .job-container{
         height:100%;
         width:100%;
         padding-bottom:48px;
-        min-width:306px;
+        min-width:341px;
+        background-color: $tracker-background;
+
+        @media only screen and (min-width: 401px){
+            display: block !important;
+        }
 
         .card-container{
             padding-bottom:48px;
