@@ -6,7 +6,11 @@
     width:100%;
     top:0;
     left:0;
+    max-width:992px;
     background-color:$tracker-background;
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+    }
 
     .errorMsg{
         color: red;
@@ -43,6 +47,8 @@
             }
         }
     }
-
+    .form::-webkit-scrollbar {
+        display: none;
+    }
 
 }
