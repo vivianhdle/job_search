@@ -103,7 +103,6 @@ class Stats extends Component {
                     </div>
                     <StatTable {...metaStats} {...this.props} />
                     
-                    
                 </div>
             )
         } else {
