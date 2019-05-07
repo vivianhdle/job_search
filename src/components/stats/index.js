@@ -6,8 +6,8 @@ import Loader from '../general/loader';
 import { connect } from 'react-redux';
 import { signInGuest, signUpNewGuest } from '../../actions';
 import ErrorHandler from '../general/error_handler';
-import ToolTips from '../general/tooltips';
-import '../general/tooltips/feature_discovery';
+import FeatureDiscovery from '../general/feature_discovery';
+import '../general/feature_discovery/feature_discovery_text';
 
 class Stats extends Component {
     constructor(props){
@@ -103,7 +103,7 @@ class Stats extends Component {
                         <button onClick={this.goToProspect} className="btn-small blue-grey">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
                     </div>
                 </div>
-                <ToolTips text={text} title={title}/>
+                <FeatureDiscovery text={text} title={title}/>
                 </Fragment>
             )
         } else {

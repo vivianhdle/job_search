@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import './tooltips.scss';
+import './feature_discovery.scss';
 
-class ToolTips extends Component {
+class FeatureDiscovery extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -54,4 +54,4 @@ class ToolTips extends Component {
     }
 }
 
-export default ToolTips;
+export default FeatureDiscovery;
