@@ -13,7 +13,8 @@
         }
 
         .card-container{
-            height:calc(100% - 50px);
+            height:calc(100% - 4rem - 39px); //4 rem to account for padding and margin
+            width:100%;
             overflow-y: scroll;
             overflow-x:hidden;
             @media only screen and (min-width: 601px){
