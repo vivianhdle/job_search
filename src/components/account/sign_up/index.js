@@ -24,7 +24,7 @@ class SignUp extends Component{
     render(){
         return(
         <div className="signup-container row">
-            <div className="signup-box col m6 offset-m3 s10 offset-s1">
+            <div className="signup-box row">
                 <Header alignment = "left-align" title="Sign Up" newClass = "teal-text text-darken-1"/>
                 <SignUpForm signUp={this.signUp}/>
             </div>
