@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './stats.scss'
 import axios from 'axios';
 import StatTable from './stats_table';
@@ -6,6 +6,8 @@ import Loader from '../general/loader';
 import { connect } from 'react-redux';
 import { signInGuest, signUpNewGuest } from '../../actions';
 import ErrorHandler from '../general/error_handler';
+import ToolTips from '../general/tooltips';
+import '../general/tooltips/feature_discovery';
 
 class Stats extends Component {
     constructor(props){
@@ -25,17 +27,8 @@ class Stats extends Component {
             this.photo.style.opacity = '1';
             this.greeting.style.opacity="0";
         },2000);
-        this.toolTip();
         
     }
-
-    toolTip(){
-        const initial = M.TapTarget.init(this.tutorial);
-        if(this.state.metaStats.total_prospects ===0){
-            initial.open();
-        }
-    }
-
     componentWillUnmount(){
         clearTimeout(this.timeoutID);
     }
@@ -85,9 +78,13 @@ class Stats extends Component {
         this.props.history.push('/prospect');
     }
     render() {
+        const text = featureDiscoveryText.statsPage;
+        const title = featureDiscoveryTitle.statsPage;
+        console.log(text);
         if (this.state.metaStats) {
             const {metaStats} = this.state;
             return (
+                <Fragment>
                 <div className="stats-page row">
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal} />}
                     <div className="greeting-content">
@@ -102,8 +99,12 @@ class Stats extends Component {
                         <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
                     </div>
                     <StatTable {...metaStats} {...this.props} />
-                    
+                    <div className="col s10 offset-s1 center add-prospect">
+                        <button onClick={this.goToProspect} className="btn-small blue-grey">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
+                    </div>
                 </div>
+                <ToolTips text={text} title={title}/>
+                </Fragment>
             )
         } else {
             return <Loader />

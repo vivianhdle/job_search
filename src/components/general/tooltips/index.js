@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from './node_modules/react';
-import axios from './node_modules/axios';
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+import './tooltips.scss';
 
-class Tutorial extends Component {
+class ToolTips extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -30,22 +31,27 @@ class Tutorial extends Component {
     }
 
     render() {
+        const {text, title} = this.props
         return (
-            <div className="row"> 
-                <div>
-                <a id="menu" className="waves-effect waves-light btn" onClick={this.manageTips}>
-                    <i className="material-icons">menu</i>
+            <div className="row "> 
+                <div className="fixed-action-btn col s12 right-align tooltip">
+                <a id="menu" className="waves-effect waves-light btn btn-floating" onClick={this.manageTips}>
+                    ?
                 </a>
-                <div className="tap-target" data-target="menu" ref={(element) => { this.tutorial = element }}>
-                    <div className="tap-target-content">
-                        <h5>Tool Tip</h5>
-                        <p>A bunch of text</p>
-                    </div>
                 </div>
+                <div className="tap-target teal lighten-2" data-target="menu" ref={(element) => { this.tutorial = element }}>
+                    <div className="tap-target-content">
+                    <div className="center">
+                        <h5>{title}</h5>
+                    </div>
+                        <div className="col s10 offset-s1">
+                        <p>{text}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default Tutorial;
+export default ToolTips;
