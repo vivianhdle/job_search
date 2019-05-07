@@ -56,7 +56,7 @@ class AddJobProspect extends Component {
                 </div>
                 {children}
                 <div className="row">
-                    <div className="col s10  offset-s1 center extra-contact">
+                    <div className="col s10  offset-s1 right-align extra-contact">
                         <button className="btn blue-grey">Submit</button>
                     </div>
                 </div>
