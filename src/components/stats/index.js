@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './stats.scss'
 import axios from 'axios';
 import StatTable from './stats_table';
@@ -6,6 +6,8 @@ import Loader from '../general/loader';
 import { connect } from 'react-redux';
 import { signInGuest, signUpNewGuest } from '../../actions';
 import ErrorHandler from '../general/error_handler';
+import FeatureDiscovery from '../general/feature_discovery';
+import '../general/feature_discovery/feature_discovery_text';
 
 class Stats extends Component {
     constructor(props){
@@ -20,11 +22,12 @@ class Stats extends Component {
     async componentDidMount(){
         this.props.handlePageRender('Career Assistant');
         await this.checkSession();
-        this.getStats();
+        await this.getStats();
         this.timeoutID = setTimeout(()=>{
             this.photo.style.opacity = '1';
             this.greeting.style.opacity="0";
         },2000);
+        
     }
     componentWillUnmount(){
         clearTimeout(this.timeoutID);
@@ -39,6 +42,7 @@ class Stats extends Component {
             } else if (!localStorage.getItem('guest_id')) {
                 await this.props.signUpNewGuest();
             }
+            
         } else {
             if (localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn') && this.props.location.state !== 'signedOut') {
                 await this.props.signInGuest();
@@ -57,6 +61,7 @@ class Stats extends Component {
             this.setState({
                 metaStats: resp.data.data
             })
+            
         } else {
             this.setState({
                 errorMsg: resp.data.error,
@@ -73,9 +78,13 @@ class Stats extends Component {
         this.props.history.push('/prospect');
     }
     render() {
+        const text = featureDiscoveryText.statsPage;
+        const title = featureDiscoveryTitle.statsPage;
+        console.log(text);
         if (this.state.metaStats) {
             const {metaStats} = this.state;
             return (
+                <Fragment>
                 <div className="stats-page row">
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal} />}
                     <div className="greeting-content">
@@ -94,6 +103,8 @@ class Stats extends Component {
                         <button onClick={this.goToProspect} className="btn-small blue-grey">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
                     </div>
                 </div>
+                <FeatureDiscovery text={text} title={title}/>
+                </Fragment>
             )
         } else {
             return <Loader />

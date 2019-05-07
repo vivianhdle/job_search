@@ -1,0 +1,11 @@
+@import '../../../assets/css/variables.scss';
+
+.row{
+    .tap-target-wrapper.open{
+        .tap-target{
+            opacity: 0.9;
+            color: $feature-discovery-text;
+        }
+    }
+    
+}
