@@ -6,6 +6,7 @@ import './tracker.scss';
 import axios from 'axios';
 import Loader from '../general/loader';
 
+
 class Tracker extends Component {
     constructor(props){
         super(props);
@@ -52,6 +53,7 @@ class Tracker extends Component {
                     <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add"/>
                     <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search"/>   
                     <NavCookies active={this.props.location.search.replace('?active=','')}/>
+                    
                 </div>
             )
         }else{

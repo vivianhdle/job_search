@@ -2,6 +2,9 @@
 
 .stats-page{
     height:calc(100% - 56px); 
+    .tap-target-wrapper{
+        position: fixed;
+    }
     .add-prospect{
         padding:1.5rem;
     }

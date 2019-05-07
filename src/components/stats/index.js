@@ -20,12 +20,22 @@ class Stats extends Component {
     async componentDidMount(){
         this.props.handlePageRender('Career Assistant');
         await this.checkSession();
-        this.getStats();
+        await this.getStats();
         this.timeoutID = setTimeout(()=>{
             this.photo.style.opacity = '1';
             this.greeting.style.opacity="0";
         },2000);
+        this.toolTip();
+        
     }
+
+    toolTip(){
+        const initial = M.TapTarget.init(this.tutorial);
+        if(this.state.metaStats.total_prospects ===0){
+            initial.open();
+        }
+    }
+
     componentWillUnmount(){
         clearTimeout(this.timeoutID);
     }
@@ -39,6 +49,7 @@ class Stats extends Component {
             } else if (!localStorage.getItem('guest_id')) {
                 await this.props.signUpNewGuest();
             }
+            
         } else {
             if (localStorage.getItem('guest_id') && !localStorage.getItem('signedIn') && !localStorage.getItem('guestSignedIn') && this.props.location.state !== 'signedOut') {
                 await this.props.signInGuest();
@@ -57,6 +68,7 @@ class Stats extends Component {
             this.setState({
                 metaStats: resp.data.data
             })
+            
         } else {
             this.setState({
                 errorMsg: resp.data.error,
@@ -90,9 +102,17 @@ class Stats extends Component {
                         <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
                     </div>
                     <StatTable {...metaStats} {...this.props} />
-                    <div className="col s10 offset-s1 center add-prospect">
-                        <button onClick={this.goToProspect} className="btn-small blue-grey">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
+                    <div className="fixed-action-btn direction-top add-prospect col s10 offset-s1 center">
+                    <a id="menu" onClick={this.goToProspect} className="waves-effect waves-light btn btn-floating">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}
+                        </a>
                     </div>
+                    <div className="tap-target" data-target="menu" ref={(element) => { this.tutorial = element }}>
+                    <div className="tap-target-content">
+                        <h5>Tool Tip</h5>
+                        <p>A bunch of text</p>
+                    </div>
+                </div>
+                    
                 </div>
             )
         } else {
