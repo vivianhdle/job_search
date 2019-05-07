@@ -10,7 +10,8 @@
     +div{
         i{
             padding: .85rem 0;
-            color:$edit-add-icon
+            color:$edit-add-icon;
+            cursor:pointer;
         }
     }
 
