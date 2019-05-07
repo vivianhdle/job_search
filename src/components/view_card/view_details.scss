@@ -1,7 +1,14 @@
 @import '../../assets/css/variables.scss';
 
 .details-container{
-    min-height: 93%;
+    height:calc(100% - 56px);
+    background-color:$tracker-background;
+    max-width:992px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+    }
     
     .action-button{
         position: fixed;
@@ -16,7 +23,7 @@
     }
     
     .view-main-text {
-        margin: 6% 0;
+        margin: 1.5rem 0;
         color:$main-text;
     }
     .view-main-text.posting-link{
@@ -34,4 +41,8 @@
 .view-section-header {
     font-size: 1.2rem;
     margin-left: 7%;
+}
+
+.details-container::-webkit-scrollbar {
+    display: none;
 }

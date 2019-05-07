@@ -8,6 +8,8 @@
     margin-bottom:0;
 
     .card{
+        overflow: hidden;
+        cursor:pointer;
         
         .card-title{
             color:$active-text

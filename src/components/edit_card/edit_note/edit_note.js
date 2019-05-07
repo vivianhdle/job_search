@@ -7,7 +7,6 @@ import './edit_note.scss';
 import axios from 'axios';
 import DeleteModal from '../../general/modals/delete_confirmation';
 import { connect } from 'react-redux';
-import ErrorHandler from '../../general/error_handler';
 
 class EditNote extends Component {
     constructor(props){

@@ -44,7 +44,7 @@ class EditCard extends Component {
             )
         } else {
             return (
-                <div className="edit-container">
+                <div className="edit-container row">
                     <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck}/>
                 </div>
             )

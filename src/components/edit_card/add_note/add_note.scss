@@ -3,20 +3,31 @@
 .add-note-modal{
     background-color:$modal;
     position:fixed;
-    height:100vh;
+    height:calc(100% - 56px);
+    margin-top:56px;
     width:100%;
     top:0;
     left:0;
     z-index:2;
+    min-height:36rem;
+
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+        margin-top:64px;
+    }
+    
 
     .note{
         height:28.5rem;
         background-color:$modal-content;
-        width:90%;
+        max-width:28rem;
+        min-width:20rem;
         position:relative;
-        top:25%;
-        left:5%;
+        top:50%;
+        transform:translateY(-50%);
+        margin:auto;
         border-radius:5px;
+        width:90%;
         
         .exit{
             color:$main-text;
@@ -48,6 +59,9 @@
             overflow: hidden;
             overflow-y: scroll;
             min-height: scrollHeight;
+        }
+        .materialize-textarea::-webkit-scrollbar {
+            display: none;
         }
     }
 }
