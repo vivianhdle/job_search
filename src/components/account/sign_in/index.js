@@ -15,8 +15,8 @@ class SignIn extends Component{
         const {error, errorMsg} = this.props;
         return(
             <div className="signin-container row">
-                <div className="signin-box row">
-                    <Header alignment = "left-align" title="Sign In" newClass = "teal-text text-darken-1"/>
+                <div className="signin-box row m6 offset-m3 s10 offset-s1">
+                    <Header alignment = "left-align" title="Sign In"/>
                     <SignInForm signIn={this.signIn}/>
                     {error && 
                     <div className='errorMsg row'>

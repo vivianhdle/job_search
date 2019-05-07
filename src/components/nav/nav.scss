@@ -2,8 +2,10 @@
 
     .brand-logo {
         width: 70%;
-        max-width: 30rem;
+        max-width: 28rem;
+        margin-left: 1.5rem;
         @media only screen and (max-width: 992px){
+            margin-left: 0;
             text-align:center;
         }
 

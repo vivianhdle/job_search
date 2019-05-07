@@ -2,35 +2,21 @@
 
 .signin-container{
     height:calc(100% - 56px);
+    background-color: $tracker-background;
+    max-width: 992px;
 
-    .signin-box{
-        background-color: $tracker-background;
-        top:2rem;
-        margin-bottom: 2rem;
-        padding-top:1rem;
-        position:relative;
-        height:28.5rem;
-        box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-        border-radius: 0 0 2px 2px;
-        max-width: 992px;
-        
-        .errorMsg{
-            color: red;
-            font-size: 1rem;
-            position: relative;
-            top: 0.6rem;
+    .errorMsg{
+        color: red;
+        font-size: 1rem;
+        position: relative;
+        top: 0.6rem;
 
-            i{
-                vertical-align: bottom;
-            }
+        i{
+            vertical-align: bottom;
         }
-        .signin-form{
-            height:60%;
-            margin: 1rem 0;
-        }
+    }
 
-        .field-input{
-            margin: 1rem 0;
-        }
+    .field-input{
+        margin: 1rem 0;
     }
 }
