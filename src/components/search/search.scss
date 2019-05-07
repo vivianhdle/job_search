@@ -1,7 +1,12 @@
+@import '../../assets/css/variables.scss';
+
 .search-container{
     height:calc(100% - 56px);
     overflow-x: hidden;
     transition: 1s ease-in all;
+    max-width:992px;
+    background-color:$tracker-background;
+
     .search-sort{
         position: fixed;
         top: 7%;
@@ -25,5 +30,12 @@
     }
     .total-results{
         margin-top:1.2rem;
+        color: $main-text;
     }
 }
+
+.search-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
