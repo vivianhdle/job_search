@@ -5,6 +5,10 @@
     background-color: $tracker-background;
     max-width: 992px;
 
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+    }
+
     .errorMsg{
         color: red;
         font-size: 1rem;
