@@ -13,7 +13,6 @@ class FeatureDiscovery extends Component {
     }
     async getDetails() {
         const resp = await axios.get('/api/get_jobcard_display.php');
-        console.log(resp);
         this.setState({
             applications: resp.data.data
         })
@@ -34,8 +33,8 @@ class FeatureDiscovery extends Component {
         const {text, title} = this.props
         return (
             <div className="row "> 
-                <div className="fixed-action-btn col s12 right-align tooltip">
-                <a id="menu" className="waves-effect waves-light btn btn-floating" onClick={this.manageTips}>
+                <div className="fixed-action-btn col s12 left-align tooltip">
+                <a id="menu" className="waves-effect waves-light btn btn-small btn-floating teal lighten-2" onClick={this.manageTips}>
                     ?
                 </a>
                 </div>
