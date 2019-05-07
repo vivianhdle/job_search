@@ -19,8 +19,7 @@ class Tracker extends Component {
             sortedList: {},
             sortOrder: 'date-dec',
             lastAlphabetOrder: '',
-            lastDateOrder: '',
-            redirect: false
+            lastDateOrder: ''
         }
     }
     async componentDidMount() {
