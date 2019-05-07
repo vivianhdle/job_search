@@ -20,7 +20,7 @@ class Search extends Component {
         }
     }
     componentDidMount() {
-        this.props.handlePageRender('Tracker');
+        this.props.handlePageRender('Job Tracker');
         this.getDetails();        
     }
     async getDetails() {
@@ -122,7 +122,7 @@ class Search extends Component {
     render() {
         const { filteredList, searched, sortedCards } = this.state;
         return (
-            <div className="search-container">
+            <div className="search-container row">
                 <Header title="Search Job Prospects" col='col s10 offset-s1' alignment="left-align" />
                 <SearchForm runSearch={this.getSearchValues} />
                 <div className="row">

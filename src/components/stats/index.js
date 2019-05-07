@@ -96,22 +96,13 @@ class Stats extends Component {
                                 Welcome,
                                 <div>
                                     {metaStats.user_name || 'Guest'}!
-                            </div>
+                                </div>
                             </div>
                         </div>
                         <div className="greeting-photo" ref={(element) => { this.photo = element }}></div>
                     </div>
                     <StatTable {...metaStats} {...this.props} />
-                    <div className="fixed-action-btn direction-top add-prospect col s10 offset-s1 center">
-                    <a id="menu" onClick={this.goToProspect} className="waves-effect waves-light btn btn-floating">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}
-                        </a>
-                    </div>
-                    <div className="tap-target" data-target="menu" ref={(element) => { this.tutorial = element }}>
-                    <div className="tap-target-content">
-                        <h5>Tool Tip</h5>
-                        <p>A bunch of text</p>
-                    </div>
-                </div>
+                    
                     
                 </div>
             )
