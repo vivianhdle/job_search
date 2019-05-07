@@ -1,6 +1,7 @@
 @import '../../assets/css/variables.scss';
 
 .stats-page{
+
     height:calc(100% - 56px);
     overflow-y:scroll;
     background-color:$tracker-background;
