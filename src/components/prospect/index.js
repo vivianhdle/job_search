@@ -66,13 +66,13 @@ class Prospect extends Component {
             errorMsg = splitSignUp
         }
         return (
-            <div className="add-form-progress">
+            <div className="add-form-progress row">
                 <div className="form">
                     <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}>
                         {this.state.error && 
                         <div className='errorMsg row'>
                             <i className='material-icons warning prefix'>warning</i>
-                            <div className="col s10 offset-s1" >{errorMsg}</div>
+                            <div className="col s10 l8 offset-s1 offset-l2" >{errorMsg}</div>
                         </div>}
                     </AddJobProspect>
                 </div>
