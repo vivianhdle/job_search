@@ -9,13 +9,12 @@
 
         @media only screen and (min-width: 401px){
             display: block !important;
+            padding-bottom:0;
         }
 
         .card-container{
-            padding-bottom:48px;
-            height:calc(100% - 2rem);
+            height:calc(100% - 50px);
             overflow-y: scroll;
-            margin-bottom:0;
             overflow-x:hidden;
             @media only screen and (min-width: 601px){
                 padding-bottom:0px;
