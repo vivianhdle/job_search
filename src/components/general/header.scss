@@ -4,7 +4,8 @@
     height:50px;
     font-size:1.75rem;
     font-weight:300;
-    padding:2rem 0;
+    // padding:2rem 0;
+    padding: 10px 0;
     
     +div{
         i{
@@ -13,7 +14,7 @@
         }
     }
 
-    @media only screen and (min-width: 600px){
-        padding: 4rem 0;
-    }
+    // @media only screen and (min-width: 600px){
+    //     padding: 4rem 0;
+    // }
 }
