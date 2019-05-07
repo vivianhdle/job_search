@@ -28,6 +28,14 @@
         right: 3%;
         background-color:$primary-button;
     }
+    .fixed-action-btn.direction-bottom{
+        bottom:auto;
+        padding-top: 10px;
+        right: 3%;
+        ul>li+li{
+            margin-top:0;
+        }
+    }
 }
 
 
