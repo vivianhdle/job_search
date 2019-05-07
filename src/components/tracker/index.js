@@ -143,7 +143,7 @@ class Tracker extends Component {
         if (this.state.isLoaded) {
             return (
                 <div className="tracker-container">
-                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />
+                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>
                     <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} />
                     <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} />
                     <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} />
