@@ -12,6 +12,9 @@
     }
     .add-prospect{
         padding:1.5rem;
+        >button{
+            background-color:$primary-button;
+        }
     }
     .greeting-content{
         position:relative;

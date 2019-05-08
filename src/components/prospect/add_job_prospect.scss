@@ -44,6 +44,9 @@
             .extra-contact{
                 margin-top: 1rem;
                 margin-bottom: 1rem;
+                >button{
+                    background-color:$primary-button;
+                }
             }
         }
     }

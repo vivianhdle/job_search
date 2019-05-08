@@ -1,5 +1,7 @@
-.nav-wrapper {
+@import '../../assets/css/variables.scss';
 
+.nav-wrapper {
+    background-color:$primary-button;
     .brand-logo {
         width: 70%;
         max-width: 28rem;

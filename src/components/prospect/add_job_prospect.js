@@ -47,8 +47,8 @@ class AddJobProspect extends Component {
                     {contactForm}
                 </div>
                 <div className="row">
-                    <div className="col s10 offset-s1  center">
-                        <button type="button" className="btn-floating center btn-small waves-effect blue-grey" onClick={this.addNewContact}><i className="material-icons">add</i></button>
+                    <div className="col s10 offset-s1 extra-contact center">
+                        <button type="button" className="btn-floating center btn-small waves-effect" onClick={this.addNewContact}><i className="material-icons">add</i></button>
                     </div>
                 </div>
                 <div className="row">
@@ -57,7 +57,7 @@ class AddJobProspect extends Component {
                 {children}
                 <div className="row">
                     <div className="col s10  offset-s1 right-align extra-contact">
-                        <button className="btn blue-grey">Submit</button>
+                        <button className="btn">Submit</button>
                     </div>
                 </div>
             </form>
