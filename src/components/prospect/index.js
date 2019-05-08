@@ -18,7 +18,6 @@ class Prospect extends Component {
     }
 
     handleAdd = async values => {
-        console.log(values);
         let newContact = [];
             for (let object in values) {
                 if (typeof values[object] === 'object')

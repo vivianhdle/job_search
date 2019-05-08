@@ -20,7 +20,6 @@ class SignIn extends Component{
         this.setState({
             error
         });
-        console.log('sign',this.state);
     }
     componentWillUnmount(){
         this.setState({
@@ -28,7 +27,6 @@ class SignIn extends Component{
         });
     }
     render(){
-        console.log('state',this.state);
         const {error, errorMsg} = this.props;
         return(
             <div className="signin-container row">

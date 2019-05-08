@@ -31,7 +31,6 @@ class EditFormCard extends Component {
     handleUpdate = async values => {
         const newValues = {...values, "tracker_id": parseInt(this.props.match.params.id) }
         const resp = await axios.post('/api/update_tracker_item.php', newValues);
-        console.log(resp);
         if(resp.data.success){
             this.goToViewMode();
         }else{
