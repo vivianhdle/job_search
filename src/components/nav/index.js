@@ -51,9 +51,6 @@ class Nav extends Component {
                 <li className="sidenav-close">
                     <Link to="/prospect">Add Prospect</Link>
                 </li>
-                {/* <li className="sidenav-close">
-                    <Link to="/about">About</Link>
-                </li> */}
                 <li className="sidenav-close">
                     <Link to="/search">Search</Link>
                 </li>
@@ -68,7 +65,7 @@ class Nav extends Component {
             <Fragment>
                 <div className="navbar-fixed">
                     <nav>
-                        <div className="nav-wrapper blue-grey">
+                        <div className="nav-wrapper">
                             <Link className="brand-logo" to="/">{title}</Link>
                             <a href="#" data-target="sidenav" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>

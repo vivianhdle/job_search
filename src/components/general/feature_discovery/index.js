@@ -26,13 +26,13 @@ class FeatureDiscovery extends Component {
         return (
             <div className="row feature-discovery"> 
                 <div className="fixed-action-btn col s12 left-align tooltips">
-                <a id="menu" className="waves-effect waves-light btn btn-floating" onClick={this.manageTips}>
+                <a id="menu" className="waves-effect waves-light btn btn-floating btn-small teal lighten-2" onClick={this.manageTips}>
                     ?
                 </a>
                 </div>
                 <div className="tap-target teal lighten-2" data-target="menu" ref={(element) => { this.tutorial = element }}>
                     <div className="tap-target-content">
-                    <div className="">
+                    <div className="col s10 offset-s1">
                         <h5>{title}</h5>
                     </div>
                         <div className="col s10 offset-s1">

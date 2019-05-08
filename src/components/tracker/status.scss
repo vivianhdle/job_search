@@ -9,13 +9,17 @@
 
         @media only screen and (min-width: 401px){
             display: block !important;
+            padding-bottom:0;
+            transform:none !important;
+            opacity:1 !important;
+            z-index:0 !important;
+            visibility:visible !important;
         }
 
         .card-container{
-            padding-bottom:48px;
-            height:calc(100% - 2rem);
+            height:calc(100% - 4rem - 39px);
+            width:100%;
             overflow-y: scroll;
-            margin-bottom:0;
             overflow-x:hidden;
             @media only screen and (min-width: 601px){
                 padding-bottom:0px;
@@ -25,4 +29,8 @@
 }
 .card-container::-webkit-scrollbar {
     display: none;
+}
+
+.job-container:nth-child(even){
+    background-color:$alternate-colors;
 }

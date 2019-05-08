@@ -12,6 +12,9 @@
     }
     .add-prospect{
         padding:1.5rem;
+        >button{
+            background-color:$primary-button;
+        }
     }
     .greeting-content{
         position:relative;
@@ -49,7 +52,8 @@
         }
     }
     .row{
-        padding-bottom: 1rem;
+        padding-bottom:1rem;
+        padding-top:0;
 
         .title-header {
             padding: 0;

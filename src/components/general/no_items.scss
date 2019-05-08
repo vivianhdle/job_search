@@ -1,0 +1,20 @@
+@import '../../assets/css/variables.scss';
+
+.photo-container{
+    height:15rem;
+    .photo-content{
+        height:90%;
+        background-image:url('../../../public/dist/add-item.png');
+        background-size:contain;
+        background-repeat:no-repeat;
+        background-position:center;
+        opacity:.2;
+    }
+    .text-content{
+        height:10%;
+        margin:2rem;
+        color:$main-text;
+        font-size:1.5rem;
+        font-weight:300;
+    }
+}

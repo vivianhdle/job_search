@@ -7,14 +7,10 @@
     display:flex;
     width: 100%;
     background-color:$tracker-background;
+    
     @media only screen and (min-width: 601px){
         height:calc(100% - 64px);
     }
-
-    .tooltips{
-        top: 85%;
-    }
-
     .carousel{
         height:100%;
         width:100%;
@@ -22,26 +18,46 @@
     }
     .add-prospect{
         position: fixed;
-        bottom: 10%;
+        bottom: 4.1rem;
         right: 3%;
         background-color:$primary-button;
     }
     .search-prospect{
         position: fixed;
-        bottom: 16%;
+        bottom: 7.6rem;
         right: 3%;
         background-color:$primary-button;
     }
     .fixed-action-btn.direction-bottom{
         bottom:auto;
-        padding-top: 10px;
+        padding-top: 2rem;
         right: 3%;
         ul>li+li{
             margin-top:0;
         }
     }
 }
-
+.app-container{
+    .row{
+        .tooltips{
+            pointer-events:none;
+            bottom: 4.1rem;
+            @media only screen and (min-width: 601px){
+                left: 1rem;
+            }
+            #menu{
+                pointer-events: all;
+            }
+        }
+        .tap-target-wrapper.open{
+            .tap-target{
+                opacity: 0.9;
+                color: $feature-discovery-text;
+            }
+        }
+        
+    }
+}
 
 
 

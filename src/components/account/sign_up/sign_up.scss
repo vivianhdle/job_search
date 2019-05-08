@@ -4,8 +4,19 @@
     height:calc(100% - 56px);
     max-width: 992px;
     background-color: $tracker-background;
+    overflow-y:scroll;
 
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+    }
+    button{
+        margin-bottom: 1rem;
+    }
     .field-input{
         margin: 1rem 0;
     }
+}
+
+.signup-container::-webkit-scrollbar {
+    display: none;
 }

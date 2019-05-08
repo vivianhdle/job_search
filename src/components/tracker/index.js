@@ -22,13 +22,41 @@ class Tracker extends Component {
             sortedList: {},
             sortOrder: 'date-dec',
             lastAlphabetOrder: '',
-            lastDateOrder: ''
+            lastDateOrder: '',
+            width: 0,
+            options: {
+                swipeable: false
+            }    
         }
     }
     async componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions)
         this.props.handlePageRender('Job Tracker');
         await this.getDetails();
         this.sortCards();
+    }
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.updateWindowDimensions)
+    }
+    updateWindowDimensions = async () => {
+        await this.setState({
+            width: window.innerWidth
+        })
+        var options = {
+            swipeable: false
+        }
+        if(this.state.width < 400){
+            options.swipeable = true;
+            this.setState({
+                options
+            })
+        }else{
+            options.swipeable = false;
+            this.setState({
+                options
+            })
+        }
     }
     goToProspect = () => {
         this.props.history.push('/prospect');
@@ -146,19 +174,20 @@ class Tracker extends Component {
         const title = featureDiscoveryTitle.viewPage;
         if (this.state.isLoaded) {
             return (
+                <Fragment>
                 <div className="tracker-container">
-                    <div>
-                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />
-                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} />
-                    <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} />
-                    <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} />
-                    <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} />
+                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>
+                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} goToProspect={this.goToProspect}/>
+                    <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} goToProspect={this.goToProspect}/>
+                    <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} goToProspect={this.goToProspect}/>
+                    <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} goToProspect={this.goToProspect}/>
                     <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
                     <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
-                    <FeatureDiscovery text={text} title={title}/>
-                    <NavCookies active={this.props.location.search.replace('?active=', '')} />
-                    </div>
+                    
+                    <NavCookies active={this.props.location.search.replace('?active=', '')} options={this.state.options}/>
                 </div>
+                <FeatureDiscovery text={text} title={title}/>
+                </Fragment>
                 
             )
         } else {
