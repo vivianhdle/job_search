@@ -102,7 +102,7 @@ class Stats extends Component {
                         <button onClick={this.goToProspect} className="btn-small">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
                     </div>
                 </div>
-                <FeatureDiscovery text={text} title={title}/>
+                <FeatureDiscovery text={text} title={title} stats={metaStats.total_prospects}/>
                 </Fragment>
             )
         } else {

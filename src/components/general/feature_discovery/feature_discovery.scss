@@ -1,6 +1,12 @@
 @import '../../../assets/css/variables.scss';
 
 .row{
+    .tooltips{
+        pointer-events:none;
+        #menu{
+            pointer-events: all;
+        }
+    }
     .tap-target-wrapper.open{
         .tap-target{
             opacity: 0.9;

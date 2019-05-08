@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 class Prospect extends Component {
     state={
@@ -56,6 +58,8 @@ class Prospect extends Component {
             }
     }
     render() {
+        const text = featureDiscoveryText.addPage;
+        const title = featureDiscoveryTitle.addPage;
         const required = values => (values || values ? undefined : 'Required Field');
         const errorMsgCheck = /sign up/;
         let {errorMsg} = this.state;
@@ -66,6 +70,7 @@ class Prospect extends Component {
             errorMsg = splitSignUp
         }
         return (
+            <Fragment>
             <div className="add-form-progress row">
                 <div className="form">
                     <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}>
@@ -76,8 +81,10 @@ class Prospect extends Component {
                         </div>}
                     </AddJobProspect>
                 </div>
+                <FeatureDiscovery text={text} title={title}/>
             </div>
             
+            </Fragment>
         )
     }
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Status from './status';
 import NavCookies from '../nav/navcookies';
 import ActionButton from '../general/buttons/action_button';
@@ -6,6 +6,8 @@ import './tracker.scss';
 import axios from 'axios';
 import Loader from '../general/loader';
 import ButtonList from '../general/buttons/button_list';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 
 class Tracker extends Component {
@@ -24,7 +26,7 @@ class Tracker extends Component {
             width: 0,
             options: {
                 swipeable: false
-            }    
+            }
         }
     }
     async componentDidMount() {
@@ -34,7 +36,7 @@ class Tracker extends Component {
         await this.getDetails();
         this.sortCards();
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions)
     }
     updateWindowDimensions = async () => {
@@ -44,12 +46,12 @@ class Tracker extends Component {
         var options = {
             swipeable: false
         }
-        if(this.state.width < 400){
+        if (this.state.width < 400) {
             options.swipeable = true;
             this.setState({
                 options
             })
-        }else{
+        } else {
             options.swipeable = false;
             this.setState({
                 options
@@ -78,8 +80,8 @@ class Tracker extends Component {
     }
     sortCards = async () => {
         const newList = {};
-        const {lists} = this.state;
-        for(var key in lists){
+        const { lists } = this.state;
+        for (var key in lists) {
             newList[key] = [...lists[key]]
         }
         switch (this.state.sortOrder) {
@@ -89,31 +91,31 @@ class Tracker extends Component {
                 })
                 break;
             case 'date-dec':
-            for(var key in newList){
-                newList[key].reverse();
-            }
+                for (var key in newList) {
+                    newList[key].reverse();
+                }
                 await this.setState({
                     sortedList: newList
                 })
                 break;
             case 'ZtoA':
-                for(var key in newList){
+                for (var key in newList) {
                     newList[key].sort((card1, card2) => {
-                    let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
-                    return greater ? 1 : -1
-                })
-            }
+                        let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
+                        return greater ? 1 : -1
+                    })
+                }
                 await this.setState({
                     sortedList: newList
                 })
                 break;
             case 'AtoZ':
-            for(var key in newList){
-                newList[key].sort((card1, card2) => {
-                    let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
-                    return greater ? -1 : 1
-                })
-            }
+                for (var key in newList) {
+                    newList[key].sort((card1, card2) => {
+                        let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
+                        return greater ? -1 : 1
+                    })
+                }
                 await this.setState({
                     sortedList: newList
                 })
@@ -168,18 +170,23 @@ class Tracker extends Component {
         this.sortCards();
     }
     render() {
+        const text = featureDiscoveryText.viewPage;
+        const title = featureDiscoveryTitle.viewPage;
         if (this.state.isLoaded) {
             return (
-                <div className="tracker-container">
-                    <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>
-                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} goToProspect={this.goToProspect}/>
-                    <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} goToProspect={this.goToProspect}/>
-                    <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} goToProspect={this.goToProspect}/>
-                    <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} goToProspect={this.goToProspect}/>
-                    <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
-                    <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
-                    <NavCookies active={this.props.location.search.replace('?active=', '')} options={this.state.options}/>
-                </div>
+                <Fragment>
+                    <div className="tracker-container">
+                        <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />
+                        <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} goToProspect={this.goToProspect} />
+                        <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} goToProspect={this.goToProspect} />
+                        <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} goToProspect={this.goToProspect} />
+                        <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} goToProspect={this.goToProspect} />
+                        <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
+                        <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
+                        <NavCookies active={this.props.location.search.replace('?active=', '')} options={this.state.options} />
+                    </div>
+                    <FeatureDiscovery text={text} title={title} />
+                </Fragment>
             )
         } else {
             return <Loader />;
