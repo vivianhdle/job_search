@@ -20,13 +20,41 @@ class Tracker extends Component {
             sortedList: {},
             sortOrder: 'date-dec',
             lastAlphabetOrder: '',
-            lastDateOrder: ''
+            lastDateOrder: '',
+            width: 0,
+            options: {
+                swipeable: false
+            }    
         }
     }
     async componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions)
         this.props.handlePageRender('Job Tracker');
         await this.getDetails();
         this.sortCards();
+    }
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.updateWindowDimensions)
+    }
+    updateWindowDimensions = async () => {
+        await this.setState({
+            width: window.innerWidth
+        })
+        var options = {
+            swipeable: false
+        }
+        if(this.state.width < 400){
+            options.swipeable = true;
+            this.setState({
+                options
+            })
+        }else{
+            options.swipeable = false;
+            this.setState({
+                options
+            })
+        }
     }
     goToProspect = () => {
         this.props.history.push('/prospect');
@@ -144,13 +172,13 @@ class Tracker extends Component {
             return (
                 <div className="tracker-container">
                     <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>
-                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} />
+                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']}/>
                     <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} />
                     <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} />
                     <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} />
                     <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
                     <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
-                    <NavCookies active={this.props.location.search.replace('?active=', '')} />
+                    <NavCookies active={this.props.location.search.replace('?active=', '')} options={this.state.options}/>
                 </div>
             )
         } else {

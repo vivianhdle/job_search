@@ -15,8 +15,16 @@ class NavCookies extends Component {
             </li>
         );
     }
-    componentDidMount() {
+    async componentDidMount() {
+        const {options} = this.props;
+        this.setState({
+            options
+        })
         M.Tabs.init(this.navcookie, this.state.options);
+    }
+    componentDidUpdate(){
+        const {options} = this.props;
+        M.Tabs.init(this.navcookie, options);
     }
     render() {
         const {active='started-app'} = this.props
