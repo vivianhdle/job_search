@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Status from './status';
 import NavCookies from '../nav/navcookies';
 import ActionButton from '../general/buttons/action_button';
@@ -6,6 +6,8 @@ import './tracker.scss';
 import axios from 'axios';
 import Loader from '../general/loader';
 import ButtonList from '../general/buttons/button_list';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 
 class Tracker extends Component {
@@ -140,9 +142,12 @@ class Tracker extends Component {
         this.sortCards();
     }
     render() {
+        const text = featureDiscoveryText.viewPage;
+        const title = featureDiscoveryTitle.viewPage;
         if (this.state.isLoaded) {
             return (
                 <div className="tracker-container">
+                    <div>
                     <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />
                     <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} />
                     <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} />
@@ -150,8 +155,11 @@ class Tracker extends Component {
                     <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} />
                     <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
                     <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
+                    <FeatureDiscovery text={text} title={title}/>
                     <NavCookies active={this.props.location.search.replace('?active=', '')} />
+                    </div>
                 </div>
+                
             )
         } else {
             return <Loader />;

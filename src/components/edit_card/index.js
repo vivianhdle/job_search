@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import EditCardForm from './edit_form_card';
 import axios from 'axios';
 import Loader from '../general/loader';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 class EditCard extends Component {
     state = {
@@ -38,15 +40,20 @@ class EditCard extends Component {
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
         const linkCheck = values => (values && !/^https?:\/\//.test(values) ? 'Please enter a valid URL with https://' : undefined)
+        const text = featureDiscoveryText.editPage;
+        const title = featureDiscoveryTitle.editPage;
         if (!this.state.isLoaded) {
             return (
                 <Loader/>
             )
         } else {
             return (
+                <Fragment>
                 <div className="edit-container row">
                     <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck}/>
                 </div>
+                <FeatureDiscovery text={text} title={title}/>
+                </Fragment>
             )
         }
     }
