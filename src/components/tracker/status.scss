@@ -6,6 +6,7 @@
         padding-bottom:48px;
         min-width:341px;
         background-color: $tracker-background;
+        min-height: 470px;
 
         @media only screen and (min-width: 401px){
             display: block !important;
