@@ -100,7 +100,7 @@ class Stats extends Component {
                     </div>
                     <StatTable {...metaStats} {...this.props} />
                     <div className="col s10 offset-s1 center add-prospect">
-                        <button onClick={this.goToProspect} className="btn-small blue-grey">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
+                        <button onClick={this.goToProspect} className="btn-small">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
                     </div>
                 </div>
                 <FeatureDiscovery text={text} title={title}/>

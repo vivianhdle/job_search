@@ -26,3 +26,7 @@
 .card-container::-webkit-scrollbar {
     display: none;
 }
+
+.job-container:nth-child(even){
+    background-color:$alternate-colors;
+}
