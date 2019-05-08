@@ -36,6 +36,7 @@ class Search extends Component {
             return (regex.test(jobProspect["title"]) || regex.test(jobProspect["company"]) || regex.test(jobProspect["progress"]))
         })
         this.setState({
+            sortedCards=[],
             filteredList: filteredList,
             searched: true
         })
