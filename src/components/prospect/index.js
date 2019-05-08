@@ -18,6 +18,7 @@ class Prospect extends Component {
     }
 
     handleAdd = async values => {
+        console.log(values);
         let newContact = [];
             for (let object in values) {
                 if (typeof values[object] === 'object')
@@ -60,7 +61,7 @@ class Prospect extends Component {
     render() {
         const text = featureDiscoveryText.addPage;
         const title = featureDiscoveryTitle.addPage;
-        const required = values => (values || values ? undefined : 'Required Field');
+        const required = values => {(values || values ? undefined : 'Required Field');}
         const errorMsgCheck = /sign up/;
         let {errorMsg} = this.state;
         const link = (<Link to="/account/sign-up" key={"sign-up"}>sign up</Link>);
@@ -73,7 +74,7 @@ class Prospect extends Component {
             <Fragment>
             <div className="add-form-progress row">
                 <div className="form">
-                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}>
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} progress={this.props.location.search.replace('?progress=', '')}>
                         {this.state.error && 
                         <div className='errorMsg row'>
                             <i className='material-icons warning prefix'>warning</i>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, SubmissionError  } from 'redux-form';
+import { reduxForm, Field, initialize} from 'redux-form';
 import Input from '../general/input';
 import ContactForm from './contact';
 import DropDown from './progress';
@@ -14,6 +14,8 @@ class AddJobProspect extends Component {
         
     }
     componentDidMount() {
+        const action = initialize('add-job-card', {progress: this.props.progress.split('%20').join(' ')});
+        this.props.dispatch(action);
         this.addNewContact();
     }
 
@@ -31,12 +33,13 @@ class AddJobProspect extends Component {
     
     render() {
         
-        const { required, add, handleSubmit, children } = this.props;
+        const { required, add, handleSubmit, children} = this.props;
         const { contactForm } = this.state;
+        const progress = this.props.progress.split('%20').join(' ');
         return (
             <form onSubmit={handleSubmit(add)}>
                 <Header title="Add Job Prospect" alignment="left-align" col="col s10 offset-s1"/>
-                <DropDown col="s10 offset-s1 col " required={required}/>
+                <DropDown col="s10 offset-s1 col " required={required} progress={progress}/>
                 <div className="row">
                     <Field id="title" col="s10  offset-s1 col " name="title" component={Input} label="Job Title *" icon="title" validate={[required]}/>
                     <Field id="company" col="s10 offset-s1 col " name="company" component={Input} label="Company Name *"icon="business" validate={[required]}/>

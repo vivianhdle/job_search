@@ -11,7 +11,7 @@ function Status(props) {
         <Fragment>
             <div className="job-container" id={id}>
                 <Header title={progress} alignment="center" />
-                {filteredList.length>0 ? <JobProspectList list={filteredList}/>:<NoItems goToProspect={goToProspect}/>}
+                {filteredList.length>0 ? <JobProspectList list={filteredList}/>:<NoItems progress={progress}/>}
             </div>
         </Fragment>
     )

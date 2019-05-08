@@ -1,11 +1,12 @@
 import React from 'react';
 import './no_items.scss';
+import {Link} from 'react-router-dom';
 
 function NoItems(props){
-    const {goToProspect} = props;
+    const {progress} = props;
     return(
         <div className="photo-container">
-            <div className="photo-content" onClick={goToProspect}></div>
+            <Link to={{pathname:"/prospect",search:`?progress=${progress}`}}><div className="photo-content"></div></Link>
             <div className="text-content center">You have no job prospects, click the plus button to add.</div>
         </div>
     )
