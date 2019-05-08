@@ -3,7 +3,6 @@ import './no_items.scss';
 
 function NoItems(props){
     const {goToProspect} = props;
-    console.log(goToProspect);
     return(
         <div className="photo-container">
             <div className="photo-content" onClick={goToProspect}></div>
