@@ -13,7 +13,6 @@ class EditCard extends Component {
     }
     componentDidMount() {
         this.getData();
-        this.props.handlePageRender('Job Tracker');
     }
     async getData() {
         const { params } = this.props.match;
