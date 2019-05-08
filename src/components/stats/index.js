@@ -80,7 +80,6 @@ class Stats extends Component {
     render() {
         const text = featureDiscoveryText.statsPage;
         const title = featureDiscoveryTitle.statsPage;
-        console.log(text);
         if (this.state.metaStats) {
             const {metaStats} = this.state;
             return (
