@@ -144,10 +144,10 @@ class Tracker extends Component {
             return (
                 <div className="tracker-container">
                     <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom"/>
-                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} />
-                    <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} />
-                    <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} />
-                    <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} />
+                    <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} goToProspect={this.goToProspect}/>
+                    <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} goToProspect={this.goToProspect}/>
+                    <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} goToProspect={this.goToProspect}/>
+                    <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} goToProspect={this.goToProspect}/>
                     <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
                     <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
                     <NavCookies active={this.props.location.search.replace('?active=', '')} />
