@@ -10,13 +10,9 @@ class Prospect extends Component {
         errorMsg: '',
         error: false
     }
-    componentDidMount(){
-        this.props.handlePageRender('Job Tracker');
-    }
     goToTracker = () => {
         this.props.history.push('/tracker');
     }
-
     handleAdd = async values => {
         let newContact = [];
             for (let object in values) {

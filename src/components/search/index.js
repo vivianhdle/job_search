@@ -20,7 +20,6 @@ class Search extends Component {
         }
     }
     componentDidMount() {
-        this.props.handlePageRender('Job Tracker');
         this.getDetails();        
     }
     async getDetails() {

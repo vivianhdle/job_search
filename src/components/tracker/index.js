@@ -31,13 +31,12 @@ class Tracker extends Component {
     }
     async componentDidMount() {
         this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions)
-        this.props.handlePageRender('Job Tracker');
+        window.addEventListener('resize', this.updateWindowDimensions);
         await this.getDetails();
         this.sortCards();
     }
     componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions)
+        window.removeEventListener('resize', this.updateWindowDimensions);
     }
     updateWindowDimensions = async () => {
         await this.setState({

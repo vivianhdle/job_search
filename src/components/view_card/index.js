@@ -13,7 +13,6 @@ class ViewCard extends Component {
         error: false
     }
     componentDidMount() {
-        this.props.handlePageRender('Job Tracker');
         this.getRespData();
     }
     async getRespData() {

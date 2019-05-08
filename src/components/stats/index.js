@@ -20,7 +20,6 @@ class Stats extends Component {
         }
     }
     async componentDidMount(){
-        this.props.handlePageRender('Career Assistant');
         await this.checkSession();
         await this.getStats();
         this.timeoutID = setTimeout(()=>{
