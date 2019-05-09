@@ -57,12 +57,12 @@ class AddJobProspect extends Component {
                 <div className="row">
                     <Field id="note" col="s10 offset-s1 col " name="note" component={TextArea} label="Notes" icon="note_add"/>
                 </div>
-                {children}
                 <div className="row">
                     <div className="col s10  offset-s1 right-align extra-contact">
                         <button className="btn">Submit</button>
                     </div>
                 </div>
+                {children}
             </form>
         )
     }

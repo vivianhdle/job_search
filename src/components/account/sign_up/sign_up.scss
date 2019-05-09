@@ -20,7 +20,10 @@
         color: red;
         font-size: 1rem;
         position: relative;
-        top: 0.6rem;
+
+        >div{
+            margin: 1rem 0;
+        }
 
         i{
             vertical-align: bottom;
