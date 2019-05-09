@@ -17,10 +17,11 @@ class Tracker extends Component {
         this.state = {
             lists: null,
             isLoaded: false,
+            searched: false,
             errorMsg: '',
             error: false,
             sortedList: {},
-            sortOrder: 'date-dec',
+            sortOrder: 'Newest',
             lastAlphabetOrder: '',
             lastDateOrder: '',
             width: 0,
@@ -75,6 +76,7 @@ class Tracker extends Component {
         })
         await this.setState({
             lists: totalFiltered,
+            searched: false
         })
     }
     sortCards = async () => {
@@ -84,20 +86,22 @@ class Tracker extends Component {
             newList[key] = [...lists[key]]
         }
         switch (this.state.sortOrder) {
-            case 'date-asc':
+            case 'Oldest':
                 await this.setState({
-                    sortedList: newList
+                    sortedList: newList,
+                    searched: true
                 })
                 break;
-            case 'date-dec':
+            case 'Newest':
                 for (var key in newList) {
                     newList[key].reverse();
                 }
                 await this.setState({
-                    sortedList: newList
+                    sortedList: newList,
+                    searched: true
                 })
                 break;
-            case 'ZtoA':
+            case 'A to Z':
                 for (var key in newList) {
                     newList[key].sort((card1, card2) => {
                         let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
@@ -105,10 +109,11 @@ class Tracker extends Component {
                     })
                 }
                 await this.setState({
-                    sortedList: newList
+                    sortedList: newList,
+                    searched: true
                 })
                 break;
-            case 'AtoZ':
+            case 'Z to A':
                 for (var key in newList) {
                     newList[key].sort((card1, card2) => {
                         let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
@@ -116,7 +121,8 @@ class Tracker extends Component {
                     })
                 }
                 await this.setState({
-                    sortedList: newList
+                    sortedList: newList,
+                    searched: true
                 })
                 break;
         }
@@ -125,45 +131,45 @@ class Tracker extends Component {
         })
     }
     toggleAlphabetical = async () => {
-        if (this.state.sortOrder === 'AtoZ') {
+        if (this.state.sortOrder === 'Z to A') {
             await this.setState({
-                sortOrder: 'ZtoA',
-                lastAlphabetOrder: 'AtoZ'
+                sortOrder: 'A to Z',
+                lastAlphabetOrder: 'Z to A'
             })
-        } else if (this.state.sortOrder === 'ZtoA') {
+        } else if (this.state.sortOrder === 'A to Z') {
             await this.setState({
-                sortOrder: 'AtoZ',
-                lastAlphabetOrder: 'ZtoA'
+                sortOrder: 'Z to A',
+                lastAlphabetOrder: 'A to Z'
             })
         } else {
-            this.state.lastAlphabetOrder === 'AtoZ' ? await this.setState({
-                sortOrder: 'AtoZ',
-                lastAlphabetOrder: 'ZtoA',
+            this.state.lastAlphabetOrder === 'Z to A' ? await this.setState({
+                sortOrder: 'Z to A',
+                lastAlphabetOrder: 'A to Z',
             }) : await this.setState({
-                sortOrder: 'ZtoA',
-                lastAlphabetOrder: 'AtoZ'
+                sortOrder: 'A to Z',
+                lastAlphabetOrder: 'Z to A'
             })
         }
         this.sortCards();
     }
     toggleDates = async () => {
-        if (this.state.sortOrder === 'date-dec') {
+        if (this.state.sortOrder === 'Newest') {
             await this.setState({
-                sortOrder: 'date-asc',
-                lastDateOrder: 'date-dec'
+                sortOrder: 'Oldest',
+                lastDateOrder: 'Newest'
             })
-        } else if (this.state.sortOrder === 'date-asc') {
+        } else if (this.state.sortOrder === 'Oldest') {
             await this.setState({
-                sortOrder: 'date-dec',
-                lastDateOrder: 'date-asc'
+                sortOrder: 'Newest',
+                lastDateOrder: 'Oldest'
             })
         } else {
-            this.state.lastDateOrder === 'date-dec' ? await this.setState({
-                sortOrder: 'date-dec',
-                lastDateOrder: 'date-asc'
+            this.state.lastDateOrder === 'Newest' ? await this.setState({
+                sortOrder: 'Newest',
+                lastDateOrder: 'Oldest'
             }) : await this.setState({
-                sortOrder: 'date-asc',
-                lastDateOrder: 'date-dec'
+                sortOrder: 'Oldest',
+                lastDateOrder: 'Newest'
             })
         }
         this.sortCards();
@@ -171,18 +177,20 @@ class Tracker extends Component {
     render() {
         const text = featureDiscoveryText.viewPage;
         const title = featureDiscoveryTitle.viewPage;
+        const {sortedList, searched, options, sortOrder} = this.state;
         if (this.state.isLoaded) {
             return (
                 <Fragment>
                     <div className="tracker-container">
                         <ButtonList sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />
-                        <Status progress="Started Application" id="started-app" filteredList={this.state.sortedList['Started Application']} goToProspect={this.goToProspect} />
-                        <Status progress="Waiting for Response" id="waiting" filteredList={this.state.sortedList['Waiting for Response']} goToProspect={this.goToProspect} />
-                        <Status progress="Follow-up Needed" id="follow-up" filteredList={this.state.sortedList['Follow-up Needed']} goToProspect={this.goToProspect} />
-                        <Status progress="Archived" id="archived" filteredList={this.state.sortedList['Archived']} goToProspect={this.goToProspect} />
+                        {searched && (sortedList ? <span className="order-state">Sort Order: {sortOrder}</span> : null)}
+                        <Status progress="Started Application" id="started-app" filteredList={sortedList['Started Application']} goToProspect={this.goToProspect} />
+                        <Status progress="Waiting for Response" id="waiting" filteredList={sortedList['Waiting for Response']} goToProspect={this.goToProspect} />
+                        <Status progress="Follow-up Needed" id="follow-up" filteredList={sortedList['Follow-up Needed']} goToProspect={this.goToProspect} />
+                        <Status progress="Archived" id="archived" filteredList={sortedList['Archived']} goToProspect={this.goToProspect} />
                         <ActionButton handleClick={this.goToProspect} size="btn btn-floating" classes="add-prospect" icon="add" />
                         <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
-                        <NavCookies active={this.props.location.search.replace('?active=', '')} options={this.state.options} />
+                        <NavCookies active={this.props.location.search.replace('?active=', '')} options={options} />
                     </div>
                     <FeatureDiscovery text={text} title={title} />
                 </Fragment>
