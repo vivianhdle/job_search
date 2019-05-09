@@ -26,10 +26,10 @@ class Stats extends Component {
             this.photo.style.opacity = '1';
             this.greeting.style.opacity="0";
         },2000);
-        
     }
     componentWillUnmount(){
         clearTimeout(this.timeoutID);
+        localStorage.removeItem('newGuestStats');
     }
     async checkSession() {
         const resp = await axios.get('./api/sessiontest.php');
@@ -101,7 +101,7 @@ class Stats extends Component {
                         <button onClick={this.goToProspect} className="btn-small">{metaStats['total_prospects'] ? 'Add Job Prospect':'Get Started!'}</button>
                     </div>
                 </div>
-                <FeatureDiscovery text={text} title={title} stats={metaStats.total_prospects}/>
+                <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestStats')}/>
                 </Fragment>
             )
         } else {
