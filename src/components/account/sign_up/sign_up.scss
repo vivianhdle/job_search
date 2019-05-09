@@ -15,6 +15,17 @@
     .field-input{
         margin: 1rem 0;
     }
+
+    .errorMsg{
+        color: red;
+        font-size: 1rem;
+        position: relative;
+        top: 0.6rem;
+
+        i{
+            vertical-align: bottom;
+        }
+    }
 }
 
 .signup-container::-webkit-scrollbar {

@@ -75,10 +75,18 @@ export function signIn(user) {
                     type:types.SIGN_IN_ERROR,
                     errorMsg: resp.data.error
                 })
+
             }
         })
     }
 }
+
+export function clearAuthError(){
+    return {
+        type: types.CLEAR_AUTH_ERROR
+    }
+}
+
 export function signOut(user) {
     return function (dispatch) {
         axios.get('/api/sign_out.php').then(resp => {
@@ -94,13 +102,15 @@ export function signOut(user) {
 export function signUp(user) {
     return function (dispatch) {
         axios.post('/api/sign_up.php', user).then(resp => {
+            console.log(resp)
             if (resp.data.success) {
                 dispatch({
                     type: types.SIGN_UP
                 })
             } else {
                 dispatch({
-                    type: types.SIGN_UP_ERROR
+                    type: types.SIGN_UP_ERROR,
+                    errorMsg: resp.data.error
                 })
             }
         })
