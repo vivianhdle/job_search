@@ -33,6 +33,13 @@
     .view-main-text.created{
         color:$created-date-text;
     }
+    .notes{
+        .row{
+            .card{
+                cursor:auto;
+            }
+        }
+    }
 }
 
 .loading{

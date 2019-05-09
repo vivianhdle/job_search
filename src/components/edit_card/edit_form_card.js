@@ -152,9 +152,9 @@ class EditFormCard extends Component {
                     </div>
                 </form>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.toggleContactModal}/>
-                {contact.length ? <ContactList contact={contact} edit={true} update={this.getData} /> : <ContactList contact={[{ name: 'Please Add a Contact', phone: 0, email: '', id: 1 }]} view={this.goToViewMode} />}
+                {contact.length ? <ContactList contact={contact} edit={true} update={this.getData} /> : <ContactList css={{cursor:"auto"}} contact={[{ name: 'Please Add a Contact', phone: 0, email: '', id: 1 }]} view={this.goToViewMode} />}
                 <Header title="Notes" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.toggleNoteModal}/>
-                {note.length ? <NoteList note={note} edit={true} update={this.getData} /> : <NoteList note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
+                {note.length ? <NoteList note={note} edit={true} update={this.getData} /> : <NoteList css={{cursor:"auto"}} note={[{ input: 'Please Add a Note', created: "1970-01-01 00:00:00", id: 1 }]} view={this.goToViewMode} />}
             </div>
         )
     }

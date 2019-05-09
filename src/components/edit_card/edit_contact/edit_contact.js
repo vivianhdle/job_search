@@ -98,8 +98,8 @@ class EditContactModal extends Component {
                         <form onSubmit={handleSubmit(this.handleEditContact)} className="center">
                             <Header title="Edit Contact" newClass="col s10 offset-s1" />
                             <Field ref={(input) => { this.name = input }} id="name" col="s10 offset-s1" name="name" component={Input} label="Name" />
-                            <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} label="Email"/>
-                            <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone" />
+                            <Field ref={(input) => { this.email = input }} id="email" col="s10 offset-s1" name="email" component={Input} type="email" label="Email"/>
+                            <Field ref={(input) => { this.phone = input }} id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone"  type="number"/>
                             <button className="btn edit-submit">SAVE</button>
                         </form>
                         <button className="trash right" onClick={this.deleteConfirmation}><i className="material-icons">delete</i></button>

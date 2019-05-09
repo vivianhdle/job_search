@@ -15,8 +15,8 @@ class AddContactModal extends Component {
                     <form onSubmit={handleSubmit(addContact)} className="center">
                         <Header title="Add Contact" newClass="col s10 offset-s1" />
                         <Field id="name" col="s10 offset-s1" name="name" component={Input} label="Name" />
-                        <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email"/>
-                        <Field id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone"/>
+                        <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email" type="email"/>
+                        <Field id="phone" col="s10 offset-s1" name="phone" component={Input} label="Phone"  type="number"/>
                         <button className="btn add-contacts">SUBMIT</button>
                     </form>
                 </Modal>

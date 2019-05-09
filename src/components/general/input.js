@@ -3,7 +3,7 @@ import './input.scss';
 
 
 export default props => {
-    const { search=false,input, icon, classes = '', type = "text", label, id, col = 's12', placeholder, meta: { touched, error, warning }} = props;
+    const { search=false,input, icon, classes = '', type = "text", label, id, col = 's12', meta: { touched, error, warning }} = props;
     const {value} = input;
     return (
         <div className={`input-field col ${col}`}>
