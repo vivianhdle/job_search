@@ -74,9 +74,8 @@ class Prospect extends Component {
                 <div className="form">
                     <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} progress={this.props.location.search.replace('?progress=', '')}>
                         {this.state.error && 
-                        <div className='errorMsg row'>
-                            <i className='material-icons warning prefix'>warning</i>
-                            <div className="col s10 l8 offset-s1 offset-l2" >{errorMsg}</div>
+                        <div className='errorMsg col s10 offset-s1'>
+                            <div><i className='material-icons warning'>warning</i>{errorMsg}</div>
                         </div>}
                     </AddJobProspect>
                 </div>

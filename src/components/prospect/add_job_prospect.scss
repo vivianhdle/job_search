@@ -14,14 +14,13 @@
 
     .errorMsg{
         color: red;
-        margin: 0 0 1rem 2.5rem;
+        margin:1rem 0 1rem 0;
         font-size: 1rem;
         top: 90%;
         
         .warning{
-            position: absolute;
-            margin-top: 0.7rem;
-            margin-left: 0.5rem;
+            vertical-align: bottom;
+            margin-right:1rem;
         }
         .link{
             font-size: 1rem;

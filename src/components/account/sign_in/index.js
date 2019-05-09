@@ -23,14 +23,15 @@ class SignIn extends Component{
             <div className="signin-container row">
                 <div className="signin-box row m6 offset-m3 s10 offset-s1">
                     <Header alignment = "left-align" title="Sign In"/>
-                    <SignInForm signIn={this.signIn}/>
-                    {error && 
-                    <div className='errorMsg'>
-                        <div className="col s10 offset-s1 left-align" >
-                        <i className='material-icons prefix'>warning</i>
-                        {errorMsg}
-                        </div>
-                    </div>}
+                    <SignInForm signIn={this.signIn}>
+                        {error && 
+                        <div className='errorMsg'>
+                            <div className="col s10 offset-s1 left-align" >
+                            <i className='material-icons prefix'>warning</i>
+                            {errorMsg}
+                            </div>
+                        </div>}
+                    </SignInForm>
                 </div>
             </div>
         )
