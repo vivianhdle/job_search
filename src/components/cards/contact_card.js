@@ -19,7 +19,7 @@ class ContactCard extends Component {
         })
     }
     render() {
-        let { id, name, email, phone, edit, view } = this.props;
+        let { id, name, email, phone, edit, update } = this.props;
         let classAdapt = '';
         if(!phone && !email){
             classAdapt = 'col-body-none'
@@ -30,7 +30,7 @@ class ContactCard extends Component {
         return (
             <Fragment>
                 <li >
-                    {this.state.open && <EditContactModal view={view} exitModal={this.exitContactModal} name={name} email={email} phone={phone} id={id} />}
+                    {this.state.open && <EditContactModal update={update} exitModal={this.exitContactModal} name={name} email={email} phone={phone} id={id} />}
                     <div className="collapsible-header" onClick={edit && this.handleClick}>
                         <i className="material-icons">contacts</i>
                         {name}

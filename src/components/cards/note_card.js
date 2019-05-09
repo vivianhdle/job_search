@@ -18,11 +18,11 @@ class NoteCard extends Component {
         })
     }
     render() {
-        const { id, created, input, edit, view } = this.props;
+        const { id, created, input, edit, update } = this.props;
         return (
             <div className="row" >
                 <div className="col s10 offset-s1">
-                    {this.state.editNoteOpen && <EditNote fieldInput={input} id={id} closeModal={this.handleClose} view={view} />}
+                    {this.state.editNoteOpen && <EditNote fieldInput={input} id={id} closeModal={this.handleClose} update={update} />}
                     <div className="card white" onClick={edit && this.handleClick}>
                         <div className="card-content">
                             <p>{input}</p>
