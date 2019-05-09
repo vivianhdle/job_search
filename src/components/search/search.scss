@@ -30,6 +30,11 @@
             border:none;
             position: relative;
             top: 10px;
+            cursor: pointer;
+
+            i{
+                color: $active-text;
+            }
         }
     }
     .total-results{

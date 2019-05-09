@@ -14,7 +14,7 @@ class Search extends Component {
             filteredList: [],
             searched: false,
             sortedCards: [],
-            sortOrder: 'date-asc',
+            sortOrder: 'Oldest',
             lastAlphabetOrder: '',
             lastDateOrder: ''
         }
@@ -36,6 +36,7 @@ class Search extends Component {
         })
         this.setState({
             filteredList: filteredList,
+            sortedCards: [],
             searched: true
         })
     }
@@ -43,18 +44,18 @@ class Search extends Component {
         const unsortedListCopy = [...this.state.filteredList];
         let sortedList = [];
         switch (this.state.sortOrder) {
-            case 'date-asc':
+            case 'Oldest':
                 this.setState({
                     sortedCards: unsortedListCopy
                 })
                 break;
-            case 'date-dec':
+            case 'Newest':
                 sortedList = unsortedListCopy.reverse();
                 this.setState({
                     sortedCards: sortedList
                 })
                 break;
-            case 'ZtoA':
+            case 'A to Z':
                 sortedList = unsortedListCopy.sort((card1, card2) => {
                     let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
                     return greater ? 1 : -1
@@ -63,7 +64,7 @@ class Search extends Component {
                     sortedCards: sortedList
                 })
                 break;
-            case 'AtoZ':
+            case 'Z to A':
                 sortedList = unsortedListCopy.sort((card1, card2) => {
                     let greater = card1.company.toUpperCase() > card2.company.toUpperCase();
                     return greater ? -1 : 1
@@ -75,51 +76,51 @@ class Search extends Component {
         }
     }
     toggleAlphabetical = async (e) => {
-        if (this.state.sortOrder === 'AtoZ') {
+        if (this.state.sortOrder === 'Z to A') {
             await this.setState({
-                sortOrder: 'ZtoA',
-                lastAlphabetOrder: 'AtoZ'
+                sortOrder: 'A to Z',
+                lastAlphabetOrder: 'Z to A'
             })
-        } else if (this.state.sortOrder === 'ZtoA') {
+        } else if (this.state.sortOrder === 'A to Z') {
             await this.setState({
-                sortOrder: 'AtoZ',
-                lastAlphabetOrder: 'ZtoA'
+                sortOrder: 'Z to A',
+                lastAlphabetOrder: 'A to Z'
             })
         } else {
-            await this.state.lastAlphabetOrder === 'AtoZ' ? this.setState({
-                sortOrder: 'AtoZ',
-                lastAlphabetOrder: 'ZtoA',
+            await this.state.lastAlphabetOrder === 'Z to A' ? this.setState({
+                sortOrder: 'Z to A',
+                lastAlphabetOrder: 'A to Z',
             }) : await this.setState({
-                sortOrder: 'ZtoA',
-                lastAlphabetOrder: 'AtoZ'
+                sortOrder: 'A to Z',
+                lastAlphabetOrder: 'Z to A'
             })
         }
         this.sortCards();
     }
     toggleDates = async (e) => {
-        if (this.state.sortOrder === 'date-dec') {
+        if (this.state.sortOrder === 'Newest') {
             await this.setState({
-                sortOrder: 'date-asc',
-                lastDateOrder: 'date-dec'
+                sortOrder: 'Oldest',
+                lastDateOrder: 'Newest'
             })
-        } else if (this.state.sortOrder === 'date-asc') {
+        } else if (this.state.sortOrder === 'Oldest') {
             await this.setState({
-                sortOrder: 'date-dec',
-                lastDateOrder: 'date-asc'
+                sortOrder: 'Newest',
+                lastDateOrder: 'Oldest'
             })
         } else {
-            await this.state.lastDateOrder === 'date-dec' ? this.setState({
-                sortOrder: 'date-dec',
-                lastDateOrder: 'date-asc'
+            await this.state.lastDateOrder === 'Newest' ? this.setState({
+                sortOrder: 'Newest',
+                lastDateOrder: 'Oldest'
             }) : await this.setState({
-                sortOrder: 'date-asc',
-                lastDateOrder: 'date-dec'
+                sortOrder: 'Oldest',
+                lastDateOrder: 'Newest'
             })
         }
         this.sortCards();
     }
     render() {
-        const { filteredList, searched, sortedCards } = this.state;
+        const { filteredList, searched, sortedCards, sortOrder } = this.state;
         return (
             <div className="search-container row">
                 <Header title="Search Job Prospects" col='col s10 offset-s1' alignment="left-align" />
@@ -127,6 +128,7 @@ class Search extends Component {
                 <div className="row">
                     <div className="col s10 offset-s1 total-results">
                         {searched && (filteredList.length ? <span>{filteredList.length} results found</span> : <span>0 results found</span>)}
+                        {searched && (sortedCards.length ? <span className="right">Sort Order: {sortOrder}</span> : null)}
                     </div>
                 </div>
                 <div className="search-result-container">
