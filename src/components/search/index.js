@@ -30,10 +30,14 @@ class Search extends Component {
     }
     getSearchValues = event => {
         const { allJobProspects } = this.state;
-        let regex = new RegExp(`${event.searched}`, "gmi")
-        var filteredList = allJobProspects.filter((jobProspect) => {
-            return (regex.test(jobProspect["title"]) || regex.test(jobProspect["company"]) || regex.test(jobProspect["progress"]))
-        })
+        if (!event.searched){
+            var filteredList = allJobProspects;
+        } else {
+            let regex = new RegExp(`${event.searched}`, "gmi")
+            var filteredList = allJobProspects.filter((jobProspect) => {
+                return (regex.test(jobProspect["title"]) || regex.test(jobProspect["company"]) || regex.test(jobProspect["progress"]))
+            })
+        }
         this.setState({
             sortedCards:[],
             filteredList: filteredList,
