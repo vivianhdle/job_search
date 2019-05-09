@@ -14,6 +14,9 @@ class EditCard extends Component {
     componentDidMount() {
         this.getData();
     }
+    componentWillUnmount(){
+        localStorage.removeItem('newGuestEdit');
+    }
     getData = async () => {
         const { params } = this.props.match;
         const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
@@ -53,7 +56,7 @@ class EditCard extends Component {
                 <div className="edit-container row">
                     <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck} getData={this.getData}/>
                 </div>
-                <FeatureDiscovery text={text} title={title}/>
+                <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestEdit')}/>
                 </Fragment>
             )
         }

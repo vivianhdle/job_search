@@ -38,6 +38,7 @@ class Tracker extends Component {
     }
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
+        localStorage.removeItem('newGuestView');
     }
     updateWindowDimensions = async () => {
         await this.setState({
@@ -192,7 +193,7 @@ class Tracker extends Component {
                         <ActionButton handleClick={this.goToSearch} size="btn btn-floating" classes="search-prospect" icon="search" />
                         <NavCookies active={this.props.location.search.replace('?active=', '')} options={options} />
                     </div>
-                    <FeatureDiscovery text={text} title={title} />
+                    <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestView')}/>
                 </Fragment>
             )
         } else {

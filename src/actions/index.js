@@ -32,6 +32,10 @@ export function signUpNewGuest() {
             axios.post('/api/sign_in_guest.php', { guest_id }).then(nextResp => {
                 if (nextResp.data.success) {
                     localStorage.setItem('guestSignedIn', true);
+                    localStorage.setItem('newGuestStats', true);
+                    localStorage.setItem('newGuestAdd', true);
+                    localStorage.setItem('newGuestView', true);
+                    localStorage.setItem('newGuestEdit', true);
                     dispatch({
                         type: types.SIGN_IN_GUEST
                     })
@@ -102,7 +106,6 @@ export function signOut(user) {
 export function signUp(user) {
     return function (dispatch) {
         axios.post('/api/sign_up.php', user).then(resp => {
-            console.log(resp)
             if (resp.data.success) {
                 dispatch({
                     type: types.SIGN_UP

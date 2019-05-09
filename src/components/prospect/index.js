@@ -10,6 +10,9 @@ class Prospect extends Component {
         errorMsg: '',
         error: false
     }
+    componentWillUnmount(){
+        localStorage.removeItem('newGuestAdd');
+    }
     goToTracker = () => {
         this.props.history.push('/tracker');
     }
@@ -77,7 +80,7 @@ class Prospect extends Component {
                         </div>}
                     </AddJobProspect>
                 </div>
-                <FeatureDiscovery text={text} title={title}/>
+                <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestAdd')}/>
             </div>
             
             </Fragment>

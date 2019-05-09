@@ -8,19 +8,17 @@ class FeatureDiscovery extends Component {
             applications: [],
             tips: null
         }
-
     }
     componentDidMount(){
         const initial = M.TapTarget.init(this.tutorial);
         this.state.tips = initial;
-        if(this.props.stats < 1){
+        if(this.props.newGuest){
             initial.open();
         }
     }
     manageTips = () =>{
         this.state.tips.open();
     }
-
     render() {
         const {text, title} = this.props
         return (
