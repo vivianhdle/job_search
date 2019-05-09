@@ -38,7 +38,8 @@ class EditContactModal extends Component {
         const { id } = this.props;
         const resp = await axios.post('/api/delete_contact_item.php', { "id": id });
         if (resp.data.success) {
-            this.props.view();
+            this.props.update();
+            this.props.exitModal();
         } else {
             this.setState({
                 errorMsg: resp.data.error,
@@ -59,10 +60,11 @@ class EditContactModal extends Component {
         }
         const resp = await axios.post(`/api/update_contact_item.php`, editContact);
         if (resp.data.success) {
-            this.props.view();
+            this.props.update();
+            this.props.exitModal();
         } else {
             if (resp.data.error === ""){
-                this.props.view();
+                this.props.update();
             }else {
                 this.setState({
                     errorMsg: resp.data.error,

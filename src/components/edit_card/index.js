@@ -15,15 +15,17 @@ class EditCard extends Component {
         this.getData();
         this.props.handlePageRender('Job Tracker');
     }
-    async getData() {
+    getData = async () => {
         const { params } = this.props.match;
         const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
-        if(resp.data.success){this.setState({
-            respData: resp.data.data,
-            isLoaded: true,
-            params: params
-        })}else{
-            this.setState({
+        if(resp.data.success){
+            await this.setState({
+                respData: resp.data.data,
+                isLoaded: true,
+                params: params
+            })
+        }else{
+            await this.setState({
                 errorMsg: resp.data.error,
                 error: true
             })
@@ -50,7 +52,7 @@ class EditCard extends Component {
             return (
                 <Fragment>
                 <div className="edit-container row">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck}/>
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck} getData={this.getData}/>
                 </div>
                 <FeatureDiscovery text={text} title={title}/>
                 </Fragment>
