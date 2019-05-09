@@ -20,6 +20,8 @@ class ContactCard extends Component {
     }
     render() {
         let { id, name, email, phone, edit, update } = this.props;
+        name = !name ? 'No Name' : name;
+        console.log(name);
         let classAdapt = '';
         if(!phone && !email){
             classAdapt = 'col-body-none'
