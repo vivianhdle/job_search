@@ -8,9 +8,9 @@ import {signUp, signIn, clearAuthError} from '../../../actions';
 
 class SignUp extends Component{
     signUp= async values=>{
-        const {email, password} = values;
+        const {user_name, email, password} = values;
         const signUpInfo = {
-            user_name: values.user_name,
+            user_name,
             email,
             password
         }
@@ -18,8 +18,10 @@ class SignUp extends Component{
             email,
             password
         }
-        await this.props.signUp(signUpInfo);
-        this.props.signIn(signInInfo);
+        const resp = await this.props.signUp(signUpInfo);
+        if(resp.data.success){
+            this.props.signIn(signInInfo);
+        }
     }
     componentWillUnmount(){
         this.props.clearAuthError();
