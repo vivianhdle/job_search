@@ -3,3 +3,6 @@
 .materialize-textarea{
     color:$main-text;
 }
+.materialize-textarea::-webkit-scrollbar {
+    display: none;
+ }
