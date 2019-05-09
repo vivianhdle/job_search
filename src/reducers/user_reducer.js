@@ -16,7 +16,11 @@ function userReducer(state = DEFAULT_STATE, action) {
         case types.SIGN_OUT:
             return { ...DEFAULT_STATE };
         case types.SIGN_IN_ERROR:
-            return {...DEFAULT_STATE, errorMsg: action.errorMsg, error: true}
+            return {...DEFAULT_STATE, errorMsg: action.errorMsg, error: true};
+        case types.CLEAR_AUTH_ERROR:
+            return {...state, error: false };
+        case types.SIGN_UP_ERROR:
+            return {...DEFAULT_STATE, errorMsg: action.errorMsg, error: true};
         default: return state;
     }
 }
