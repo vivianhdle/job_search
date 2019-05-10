@@ -36,6 +36,7 @@ export function signUpNewGuest() {
                     localStorage.setItem('newGuestAdd', true);
                     localStorage.setItem('newGuestView', true);
                     localStorage.setItem('newGuestEdit', true);
+                    localStorage.setItem('newGuestSearch', true);
                     dispatch({
                         type: types.SIGN_IN_GUEST
                     })
