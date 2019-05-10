@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './textarea.scss';
+import {accountSpecials} from'../helpers';
 
 class TextArea extends Component {
     render() {
         const { label, id, col = 's12', input, icon } = this.props;
         const {value} = input;
-        const noteLength = Math.ceil(value.length/25);
-        let notePx = noteLength*22;
+        const formattedValue = accountSpecials(value);
+        console.log(formattedValue)
+        const noteLength = Math.ceil(formattedValue/40);
+        console.log(noteLength);
+        let notePx = noteLength*25;
         return (
             <div className="row">
                 <div className={`input-field col ${col}`}>
