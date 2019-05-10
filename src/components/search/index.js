@@ -5,6 +5,8 @@ import Header from '../general/header';
 import SearchForm from './search_form';
 import axios from 'axios';
 import ButtonList from '../general/buttons/button_list';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 class Search extends Component {
     constructor(props) {
@@ -21,6 +23,9 @@ class Search extends Component {
     }
     componentDidMount() {
         this.getDetails();        
+    }
+    componentWillUnmount(){
+        localStorage.removeItem('newGuestSearch');
     }
     async getDetails() {
         const resp = await axios.get('/api/get_jobcard_display.php');
@@ -126,6 +131,8 @@ class Search extends Component {
     }
     render() {
         const { filteredList, searched, sortedCards, sortOrder } = this.state;
+        const text = featureDiscoveryText.searchPage;
+        const title = featureDiscoveryTitle.searchPage;
         return (
             <div className="search-container row">
                 <Header title="Search Job Prospects" col='col s10 offset-s1' alignment="left-align" />
@@ -140,6 +147,7 @@ class Search extends Component {
                     {sortedCards.length ? <SearchResults searchResults={sortedCards} /> : <SearchResults searchResults={filteredList} />}
                 </div>
                 {searched && <ButtonList classes="search-sort" sortAlphabetically={this.toggleAlphabetical} sortDate={this.toggleDates} direction="bottom" />}
+                <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestSearch')}/>
             </div>
         )
     }
