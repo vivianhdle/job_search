@@ -7,6 +7,15 @@ import { formatTime } from '../helpers/index';
 import ActionButton from '../general/buttons/action_button';
 
 class ViewDetails extends Component {
+    constructor(props){
+        super(props);
+        this.icons={
+            'Started Application':'note_add',
+            'Waiting for Response':'watch_later',
+            'Follow-up Needed': 'whatshot',
+            'Archived':'archive'
+        }
+    }
     render() {
         const { title, company, contact = [], created, link, note = [], progress, handleEdit } = this.props;
         return (
@@ -15,6 +24,7 @@ class ViewDetails extends Component {
                     <ActionButton handleClick={handleEdit} icon="edit" classes="action-button btn-floating" size="btn" />
                     <div className="info col s10 offset-s1">
                         <div className="view-main-text company">{company}</div>
+                        <span className="right"><i className="material-icons grey-text ">{this.icons[progress]}</i></span>
                         <div className="view-main-text">{title}</div>
                         <div className="view-main-text">{progress}</div>
                         {link && <a href={link} target="_blank" className="view-main-text posting-link">Posting Link</a>}
