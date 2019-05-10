@@ -8,9 +8,9 @@ import {signUp, signIn, clearAuthError} from '../../../actions';
 
 class SignUp extends Component{
     signUp= async values=>{
-        const {email, password} = values;
+        const {user_name, email, password} = values;
         const signUpInfo = {
-            user_name: values.user_name,
+            user_name,
             email,
             password
         }
@@ -18,8 +18,10 @@ class SignUp extends Component{
             email,
             password
         }
-        await this.props.signUp(signUpInfo);
-        this.props.signIn(signInInfo);
+        const resp = await this.props.signUp(signUpInfo);
+        if(resp.data.success){
+            this.props.signIn(signInInfo);
+        }
     }
     componentWillUnmount(){
         this.props.clearAuthError();
@@ -30,15 +32,17 @@ class SignUp extends Component{
         <div className="signup-container row">
             <div className="signup-box row m6 offset-m3 s10 offset-s1">
                 <Header alignment = "left-align" title="Sign Up"/>
-                <SignUpForm signUp={this.signUp}/>
+                <SignUpForm signUp={this.signUp}>
+                    {error && 
+                        <div className='errorMsg'>
+                            <div className="col s10 offset-s1 left-align" >
+                            <i className='material-icons prefix'>warning</i>
+                            {errorMsg}
+                            </div>
+                        </div>}
+                </SignUpForm>
             </div>
-            {error && 
-                    <div className='errorMsg'>
-                        <div className="col s10 offset-s1 left-align" >
-                        <i className='material-icons prefix'>warning</i>
-                        {errorMsg}
-                        </div>
-                    </div>}
+            
         </div>
         )
     }

@@ -140,16 +140,16 @@ class EditFormCard extends Component {
                     <div className="row">
                         <Field ref={(input) => this.link = input} id="link" col="s10 offset-s1" name="link" component={Input} label="Posting Link" icon="link" validate={linkCheck}/>
                     </div>
-                    {this.state.error &&
-                            <div className='errorMsg row'>
-                                <div className="col s10 offset-s1 left-align" >
-                                    <i className='material-icons prefix'>warning</i>
-                                    {this.state.errorMsg = 'No alterations were made.'}
-                                </div>
-                            </div>}
                     <div className="btn-wrapper row right-align">
-                        <button className="btn save-button">SAVE</button>
+                        <div className="col s10 offset-s1"><button className="btn save-button">SAVE</button></div>
                     </div>
+                    {this.state.error &&
+                        <div className='errorMsg row'>
+                            <div className="col s10 offset-s1 left-align" >
+                                <i className='material-icons prefix'>warning</i>
+                                {this.state.errorMsg = 'No alterations were made.'}
+                            </div>
+                        </div>}
                 </form>
                 <Header title="Contacts" alignment="left" newClass=" edit-section-header" addButton={true} addHandler={this.toggleContactModal}/>
                 {contact.length ? <ContactList contact={contact} edit={true} update={this.getData} /> : <ContactList css={{cursor:"auto"}} contact={[{ name: 'Please Add a Contact', phone: 0, email: '', id: 1 }]} view={this.goToViewMode} />}
