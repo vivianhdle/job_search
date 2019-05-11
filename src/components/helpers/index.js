@@ -23,12 +23,12 @@ export function accountSpecials(string){
     var originLength= string.length;
     var halfAWidth= [];
     var thirdOfAWidth=[];
-    var mcharacter = [];
+    var mAndCapsCharacter = [];
     var capitals= [];
     var regexhalf = / |t|\"/;
     var regexthird = /\||\.|\,|\!|\;|\'|l|j|i|1/;
-    var regexbonus = /m/;
-    var regexCapitals = /[A-Z]/;
+    var regexbonus = /m|I|J/;
+    var regexCapitals = /[A-H]|[K-Z]/;
     for(var index = 0; index<originLength; index++){
         
         if(
@@ -44,7 +44,7 @@ export function accountSpecials(string){
         else if(
             regexbonus.test(string[index])
         ){
-            mcharacter.push(string[index]);
+            mAndCapsCharacter.push(string[index]);
         }else if(
             regexCapitals.test(string[index])
         ){
