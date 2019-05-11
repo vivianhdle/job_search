@@ -7,7 +7,7 @@ function JobProspectList(props){
     var cards = list.map((card) => {
         return (
             <Route key={card.id} render={(routingprops) => {
-                return (<SmallCard key={card.id} {...card} {...routingprops} />)
+                return (<SmallCard key={card.id} {...card} {...routingprops}/>)
             }} />
         )
     })

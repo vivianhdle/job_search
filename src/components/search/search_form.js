@@ -7,7 +7,7 @@ function SearchForm(props){
     return(
         <div className="row">
             <form onSubmit={handleSubmit(runSearch)}>
-                <Field id="searched" search={true} col="s10 offset-s1" name="searched" component={Input} label="Type to search!"icon="search"/>
+                <Field id="searched" search={true} col="s10 offset-s1" name="searched" component={Input} label="Search by company, title, progress"icon="search"/>
             </form>
         </div>
     )
