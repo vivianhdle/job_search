@@ -26,8 +26,8 @@ export function accountSpecials(string){
     var mAndCapsCharacter = [];
     var capitals= [];
     var regexhalf = / |t|\"/;
-    var regexthird = /\||\.|\,|\!|\;|\'|l|j|i|1/;
-    var regexbonus = /m|I|J/;
+    var regexthird = /\||\.|\,|\!|\;|\'|l|j|i|1|I/;
+    var regexbonus = /m|J/;
     var regexCapitals = /[A-H]|[K-Z]/;
     for(var index = 0; index<originLength; index++){
         
@@ -53,7 +53,7 @@ export function accountSpecials(string){
     }
     var totalHalf = Math.ceil(halfAWidth.length/2);
     var thirdTotal = Math.ceil(thirdOfAWidth.length/3);
-    var mChar = Math.floor(mcharacter.length*0.1);
+    var mChar = Math.floor(mAndCapsCharacter.length*0.1);
     var caps = Math.floor(capitals.length*0.15);
 
     var result = originLength-(halfAWidth.length-totalHalf)-(thirdOfAWidth.length-thirdTotal)+mChar+caps;
