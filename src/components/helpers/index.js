@@ -14,12 +14,6 @@ export function formatTime(timestamp) {
 }
 
 export function accountSpecials(string){
-    //base length is character a which requires 40 uses before a new row
-    //" ", ", t = 1/2, 
-    //commas,colons,semicolons,periods,exclamations, ', i, l, j, 1 =1/3 
-    //m and capitals are roughly 1.15x
-    //capitals are 1.1x
-
     var originLength= string.length;
     var halfAWidth= [];
     var thirdOfAWidth=[];

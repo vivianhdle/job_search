@@ -9,7 +9,7 @@ class SmallCard extends Component {
         super(props);
         this.id = null;
         this.icons={
-            'Started Application':'note_add',
+            'Started Application':'description',
             'Waiting for Response':'watch_later',
             'Follow-up Needed': 'whatshot',
             'Archived':'archive'
