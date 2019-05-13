@@ -200,7 +200,6 @@ class Tracker extends Component {
             return <Loader />;
         }
     }
-
 }
 
 
