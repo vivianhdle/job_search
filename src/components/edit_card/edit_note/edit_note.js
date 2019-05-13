@@ -14,7 +14,8 @@ class EditNote extends Component {
         this.state={
             deleteConfirmationOpen:false,
             error: false,
-            errorMsg: ''
+            errorMsg: '',
+            
         }
     }
     componentDidMount() {
