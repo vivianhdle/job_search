@@ -90,7 +90,7 @@ class Nav extends Component {
                     <div className="divider"></div>
                 </li>
                 <li className="sidenav-close">
-                    <Link to="/prospect"><i className='material-icons'>view_list</i>Add Prospect</Link>
+                    <Link to="/prospect"><i className='material-icons'>playlist_add</i>Add Prospect</Link>
                     <div className="divider"></div>
                 </li>
                 <li className="sidenav-close">

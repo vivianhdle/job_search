@@ -10,7 +10,7 @@ class ViewDetails extends Component {
     constructor(props){
         super(props);
         this.icons={
-            'Started Application':'note_add',
+            'Started Application':'description',
             'Waiting for Response':'watch_later',
             'Follow-up Needed': 'whatshot',
             'Archived':'archive'
