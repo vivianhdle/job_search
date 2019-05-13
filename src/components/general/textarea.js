@@ -13,8 +13,8 @@ class TextArea extends Component {
             <div className="row">
                 <div className={`input-field col ${col}`}>
                     {icon && <i className="material-icons prefix">{icon}</i>}
-                    {value && <textarea id={id} className="materialize-textarea value-true" {...input} style={{height:`${notePx}px`}} ></textarea>}
-                    {!value && <textarea id={id} className="materialize-textarea" {...input} style={{height:`${notePx}px`}} ></textarea>}
+                    {value && <textarea id={id} className="materialize-textarea value-true" autoFocus {...input} style={{height:`${notePx}px`}} ></textarea>}
+                    {!value && <textarea id={id} className="materialize-textarea" {...input} autoFocus style={{height:`${notePx}px`}} ></textarea>}
                     <label htmlFor={id}>{!value && label}</label>
                 </div>
             </div>
