@@ -1,6 +1,15 @@
-.nav-wrapper {
+@import '../../assets/css/variables.scss';
 
+.nav-wrapper {
+    background-color:$primary-button;
     .brand-logo {
         width: 70%;
+        max-width: 28rem;
+        margin-left: 1.5rem;
+        @media only screen and (max-width: 992px){
+            margin-left: 0;
+            text-align:center;
+        }
+
     }
 }

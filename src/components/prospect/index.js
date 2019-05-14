@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import AddJobProspect from './add_job_prospect';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 class Prospect extends Component {
     state={
         errorMsg: '',
         error: false
     }
-    componentDidMount(){
-        this.props.handlePageRender('Job Tracker');
+    componentWillUnmount(){
+        localStorage.removeItem('newGuestAdd');
     }
     goToTracker = () => {
         this.props.history.push('/tracker');
     }
-
     handleAdd = async values => {
         let newContact = [];
             for (let object in values) {
@@ -56,7 +57,9 @@ class Prospect extends Component {
             }
     }
     render() {
-        const required = values => (values || values ? undefined : 'Required Field');
+        const text = featureDiscoveryText.addPage;
+        const title = featureDiscoveryTitle.addPage;
+        const required = values => {(values || values ? undefined : 'Required Field');}
         const errorMsgCheck = /sign up/;
         let {errorMsg} = this.state;
         const link = (<Link to="/account/sign-up" key={"sign-up"}>sign up</Link>);
@@ -66,18 +69,20 @@ class Prospect extends Component {
             errorMsg = splitSignUp
         }
         return (
-            <div className="add-form-progress">
+            <Fragment>
+            <div className="add-form-progress row">
                 <div className="form">
-                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required}>
+                    <AddJobProspect add={this.handleAdd} goToTracker={this.goToTracker} required={required} progress={this.props.location.search.replace('?progress=', '')}>
                         {this.state.error && 
-                        <div className='errorMsg row'>
-                            <i className='material-icons warning prefix'>warning</i>
-                            <div className="col s10 offset-s1" >{errorMsg}</div>
+                        <div className='errorMsg col s10 offset-s1'>
+                            <div><i className='material-icons warning'>warning</i>{errorMsg}</div>
                         </div>}
                     </AddJobProspect>
                 </div>
+                <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestAdd')}/>
             </div>
             
+            </Fragment>
         )
     }
 }

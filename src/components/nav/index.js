@@ -9,17 +9,20 @@ class Nav extends Component {
         authLinks: [
             {
                 to: '/account/sign-out',
-                text: 'Sign Out'
+                text: 'Sign Out',
+                icon:'fas fa-sign-out-alt'
             },
         ],
         guestLinks: [
             {
                 to: '/account/sign-in',
-                text: 'Sign In'
+                text: 'Sign In',
+                icon:'fas fa-sign-in-alt'
             },
             {
                 to: '/account/sign-up',
-                text: 'Sign Up'
+                text: 'Sign Up',
+                icon:'fas fa-user-plus'
             }
         ]
     }
@@ -27,6 +30,14 @@ class Nav extends Component {
         return (
             <li key={link.to} className="sidenav-close">
                 <Link to={link.to}>{link.text}</Link>
+            </li>
+        )
+    }
+    buildSidenavLink(link){
+        return (
+            <li key={link.to} className="sidenav-close">
+                <Link to={link.to}><i className={`${link.icon}`}></i>{link.text}</Link>
+                <div className="divider"></div>
             </li>
         )
     }
@@ -51,9 +62,6 @@ class Nav extends Component {
                 <li className="sidenav-close">
                     <Link to="/prospect">Add Prospect</Link>
                 </li>
-                {/* <li className="sidenav-close">
-                    <Link to="/about">About</Link>
-                </li> */}
                 <li className="sidenav-close">
                     <Link to="/search">Search</Link>
                 </li>
@@ -61,21 +69,56 @@ class Nav extends Component {
             </Fragment>
         )
     }
+    renderSidenavLinks() {
+        const {userAuth} = this.props;
+        const {authLinks, guestLinks} = this.state;
+        let navLinks = null;
+
+        if(userAuth){
+            navLinks = authLinks.map(this.buildSidenavLink);
+        }else{
+            navLinks = guestLinks.map(this.buildSidenavLink);
+        }
+        return (
+            <Fragment>
+                <li className="sidenav-close">
+                    <Link to="/"><i className='material-icons'>home</i>Home</Link>
+                    <div className="divider"></div>
+                </li>
+                <li className="sidenav-close">
+                    <Link to="/tracker"><i className='material-icons'>view_list</i>View Prospects</Link>
+                    <div className="divider"></div>
+                </li>
+                <li className="sidenav-close">
+                    <Link to="/prospect"><i className='material-icons'>playlist_add</i>Add Prospect</Link>
+                    <div className="divider"></div>
+                </li>
+                <li className="sidenav-close">
+                    <Link to="/search"><i className='material-icons'>search</i>Search</Link>
+                    <div className="divider"></div>
+                </li>
+                {navLinks}
+            </Fragment>
+        )
+    }
     render() {
-        const links = this.renderLinks()
+        const links = this.renderLinks();
+        const sidenavLinks=this.renderSidenavLinks();
         const { title } = this.props;
         return (
             <Fragment>
-                <nav>
-                    <div className="nav-wrapper navbar-fixed blue-grey">
-                        <Link className="brand-logo center" to="/">{title}</Link>
-                        <a href="#" data-target="sidenav" className="sidenav-trigger">
-                            <i className="material-icons">menu</i>
-                        </a>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">{links}</ul>
-                    </div>
-                </nav>
-                <SideNav links={links} />
+                <div className="navbar-fixed">
+                    <nav>
+                        <div className="nav-wrapper">
+                            <Link className="brand-logo" to="/">{title}</Link>
+                            <a href="#" data-target="sidenav" className="sidenav-trigger">
+                                <i className="material-icons">menu</i>
+                            </a>
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">{links}</ul>
+                        </div>
+                    </nav>
+                </div>
+                <SideNav links={sidenavLinks} />
             </Fragment>
         )
     }

@@ -2,22 +2,25 @@
 
 .add-form-progress{
     position: relative;
-    height:93%;
+    height:calc(100% - 56px);
     width:100%;
     top:0;
     left:0;
+    max-width:992px;
     background-color:$tracker-background;
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+    }
 
     .errorMsg{
         color: red;
-        margin: 0 0 1rem 2.5rem;
+        margin:1rem 0 1rem 0;
         font-size: 1rem;
         top: 90%;
         
         .warning{
-            position: absolute;
-            margin-top: 0.7rem;
-            margin-left: 0.5rem;
+            vertical-align: bottom;
+            margin-right:1rem;
         }
         .link{
             font-size: 1rem;
@@ -40,9 +43,14 @@
             .extra-contact{
                 margin-top: 1rem;
                 margin-bottom: 1rem;
+                >button{
+                    background-color:$primary-button;
+                }
             }
         }
     }
-
+    .form::-webkit-scrollbar {
+        display: none;
+    }
 
 }

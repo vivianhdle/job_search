@@ -2,10 +2,11 @@
 
 body {
     margin: 0;
-    background-color:$tracker-background;
+    background-color: $body-background;
+    
     #root{
         height:100vh;
-        background-color:$tracker-background;
+        background-color:$body-background;
 
         .app-container{
             height:100%;
@@ -15,4 +16,7 @@ body {
         height:100%;
         width:100%;
     }
+}
+body::-webkit-scrollbar {
+   display: none;
 }

@@ -1,14 +1,17 @@
 @import '../../assets/css/variables.scss';
 
 .title-header{
-    height:50px;
     font-size:1.75rem;
     font-weight:300;
-    padding:10px 0;
-    +div{
+    padding:2rem 0;
+
+    
+    +.add{
         i{
-            padding: .85rem 0;
-            color:$edit-add-icon
+            padding: 2rem 0;
+            color:$edit-add-icon;
+            cursor:pointer;
         }
     }
+
 }

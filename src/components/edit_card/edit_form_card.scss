@@ -6,14 +6,21 @@ span.contact{
 }
 
 .edit-container{
-    height: 93%;
+    height:calc(100% - 56px);
     width: 100%;
-    overflow-y:scroll;
+    max-width:992px;
+    background-color:$tracker-background;
+    @media only screen and (min-width: 601px){
+        height:calc(100% - 64px);
+    }
+    .form::-webkit-scrollbar {
+        display: none;
+    }
     .form{
         overflow:scroll;
+        height:100%;
 
         form{
-            height: 100%;
             width: 100%;
         }
 
@@ -31,14 +38,14 @@ span.contact{
     .delete-prospect{
         position: fixed;
         right: 3%;
-        top:8%;
+        top: 6rem;
         background-color:$primary-button;
     }
 }
 
 .save-button,.save-button:active,.save-button:hover {
-    margin-right: 11%;
     background-color:$primary-button;
+    margin:1rem 0;
 }
 .edit-section-header {
     font-size: 1.2rem;

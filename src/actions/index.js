@@ -32,6 +32,11 @@ export function signUpNewGuest() {
             axios.post('/api/sign_in_guest.php', { guest_id }).then(nextResp => {
                 if (nextResp.data.success) {
                     localStorage.setItem('guestSignedIn', true);
+                    localStorage.setItem('newGuestStats', true);
+                    localStorage.setItem('newGuestAdd', true);
+                    localStorage.setItem('newGuestView', true);
+                    localStorage.setItem('newGuestEdit', true);
+                    localStorage.setItem('newGuestSearch', true);
                     dispatch({
                         type: types.SIGN_IN_GUEST
                     })
@@ -79,6 +84,13 @@ export function signIn(user) {
         })
     }
 }
+
+export function clearAuthError(){
+    return {
+        type: types.CLEAR_AUTH_ERROR
+    }
+}
+
 export function signOut(user) {
     return function (dispatch) {
         axios.get('/api/sign_out.php').then(resp => {
@@ -93,15 +105,18 @@ export function signOut(user) {
 }
 export function signUp(user) {
     return function (dispatch) {
-        axios.post('/api/sign_up.php', user).then(resp => {
+        return axios.post('/api/sign_up.php', user).then(resp => {
             if (resp.data.success) {
                 dispatch({
                     type: types.SIGN_UP
                 })
+                return resp;
             } else {
                 dispatch({
-                    type: types.SIGN_UP_ERROR
+                    type: types.SIGN_UP_ERROR,
+                    errorMsg: resp.data.error
                 })
+                return resp;
             }
         })
     }

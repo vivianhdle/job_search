@@ -4,16 +4,18 @@
     position: relative;
 
     .collapsible-body{
-        padding: 1rem;
+        padding: 1rem 2rem;
         background-color:$contact-collapsible;
         color:$main-text;
     }
     .collapsible-body.col-body-none{
         padding: 0px;
         color:$main-text;
+        
     }
 
     .input-field{
         float: none;
     }
 }
+

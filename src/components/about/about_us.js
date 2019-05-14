@@ -21,9 +21,6 @@ class AboutUs extends Component {
             }
         ]
     }
-    componentDidMount() {
-        this.props.handlePageRender('About Us');
-    }
     buildBios(dev) {
         return (
             <div key={dev.name} className="about_me">

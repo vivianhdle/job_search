@@ -1,4 +1,5 @@
 export default{
+    CLEAR_AUTH_ERROR: 'clear_auth_error',
     SIGN_IN:'sign_in',
     SIGN_IN_ERROR:'sign_in_error',
     SIGN_UP:'sign_up',

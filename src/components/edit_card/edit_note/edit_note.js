@@ -7,7 +7,6 @@ import './edit_note.scss';
 import axios from 'axios';
 import DeleteModal from '../../general/modals/delete_confirmation';
 import { connect } from 'react-redux';
-import ErrorHandler from '../../general/error_handler';
 
 class EditNote extends Component {
     constructor(props){
@@ -15,7 +14,8 @@ class EditNote extends Component {
         this.state={
             deleteConfirmationOpen:false,
             error: false,
-            errorMsg: ''
+            errorMsg: '',
+            
         }
     }
     componentDidMount() {
@@ -31,10 +31,11 @@ class EditNote extends Component {
         const resp = await axios.post('/api/update_note_item.php', editNoteValues);
         
         if(resp.data.success){
-            this.props.view();;
+            this.props.update();
+            this.props.closeModal();
         }else{
             if (resp.data.error === ""){
-                this.props.view();
+                this.props.update();
             } else {
                 this.setState({
                     errorMsg: resp.data.error,
@@ -48,7 +49,8 @@ class EditNote extends Component {
         const { id } = this.props;
         const resp = await axios.post('/api/delete_note_item.php', { "id": id });
         if(resp.data.success){
-            this.props.view();
+            this.props.update();
+            this.props.closeModal();
         }else{
             this.setState({
                 errorMsg: resp.data.error,

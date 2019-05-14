@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import EditCardForm from './edit_form_card';
 import axios from 'axios';
 import Loader from '../general/loader';
+import FeatureDiscovery from '../general/feature_discovery/';
+import '../general/feature_discovery/feature_discovery_text';
 
 class EditCard extends Component {
     state = {
@@ -11,17 +13,21 @@ class EditCard extends Component {
     }
     componentDidMount() {
         this.getData();
-        this.props.handlePageRender('Job Tracker');
     }
-    async getData() {
+    componentWillUnmount(){
+        localStorage.removeItem('newGuestEdit');
+    }
+    getData = async () => {
         const { params } = this.props.match;
         const resp = await axios.get(`/api/get_tracker_item.php?tracker_id=${params.id}`);
-        if(resp.data.success){this.setState({
-            respData: resp.data.data,
-            isLoaded: true,
-            params: params
-        })}else{
-            this.setState({
+        if(resp.data.success){
+            await this.setState({
+                respData: resp.data.data,
+                isLoaded: true,
+                params: params
+            })
+        }else{
+            await this.setState({
                 errorMsg: resp.data.error,
                 error: true
             })
@@ -38,15 +44,20 @@ class EditCard extends Component {
     render() {
         const required = values => (values || values ? undefined : 'Required Field');
         const linkCheck = values => (values && !/^https?:\/\//.test(values) ? 'Please enter a valid URL with https://' : undefined)
+        const text = featureDiscoveryText.editPage;
+        const title = featureDiscoveryTitle.editPage;
         if (!this.state.isLoaded) {
             return (
                 <Loader/>
             )
         } else {
             return (
-                <div className="edit-container">
-                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck}/>
+                <Fragment>
+                <div className="edit-container row">
+                    <EditCardForm {...this.state.respData} handleChange={this.handleChange} {...this.props} required={required} linkCheck={linkCheck} getData={this.getData}/>
                 </div>
+                <FeatureDiscovery text={text} title={title} newGuest={localStorage.getItem('newGuestEdit')}/>
+                </Fragment>
             )
         }
     }

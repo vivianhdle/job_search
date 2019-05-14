@@ -13,7 +13,6 @@ class ViewCard extends Component {
         error: false
     }
     componentDidMount() {
-        this.props.handlePageRender('Job Tracker');
         this.getRespData();
     }
     async getRespData() {
@@ -47,7 +46,7 @@ class ViewCard extends Component {
             )
         } else {
             return (
-                <div className="details-container">
+                <div className="details-container row">
                     {this.state.error && <ErrorHandler errorMsg={this.state.errorMsg} closeError={this.closeErrorModal}/>}
                     {!this.state.editable && <ViewDetails handleEdit={this.editMode} {...this.state.respData} />}
                 </div>

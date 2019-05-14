@@ -4,12 +4,12 @@ import Input from '../../general/input';
 
 class SignInForm extends Component{
     render(){
-        const {handleSubmit,signIn}=this.props
+        const {handleSubmit,signIn,children}=this.props
         return (
             <div className="signin-form field-input">
                 <form onSubmit={handleSubmit(signIn)}>
                     <div className="row">
-                        <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email *" icon="perm_identity"/>
+                        <Field id="email" col="s10 offset-s1" name="email" component={Input} label="Email *" type="email" icon="perm_identity"/>
                     </div>
                     <div className="row">
                         <Field id="password" col="s10 offset-s1" name="password" component={Input} label="Password *" type="password" icon="lock_open"/>
@@ -19,6 +19,7 @@ class SignInForm extends Component{
                             <button className="btn-small blue-grey right field-input">Sign In</button>
                         </div>
                     </div>
+                    {children}
                 </form>
             </div>
         )
