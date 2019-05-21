@@ -1,11 +1,14 @@
 @import "./variables.scss";
-
+html{
+    height:100%;
+}
 body {
     margin: 0;
     background-color: $body-background;
+    height:100%;
     
     #root{
-        height:100vh;
+        height:100%;
         background-color:$body-background;
 
         .app-container{
@@ -17,6 +20,6 @@ body {
         width:100%;
     }
 }
-body::-webkit-scrollbar {
-   display: none;
-}
+// body::-webkit-scrollbar {
+//    display: none;
+// }
